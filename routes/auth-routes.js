@@ -5,10 +5,10 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user-model');
 
 //signup
-authRoutes.get('/signup', (req, res, next) => {
-   console.log('hello');
-   res.json('hello');
-});
+// authRoutes.get('/signup', (req, res, next) => {
+//    console.log('hello');
+//    res.json('hello');
+// });
 
 authRoutes.post('/signup', (req, res, next) => {
    const {
@@ -17,13 +17,11 @@ authRoutes.post('/signup', (req, res, next) => {
       password,
       userType,
       location,
-      dashboard,
       expertise,
       description,
       avaibility_start_date,
       avaibility_end_date,
    } = req.body;
-
    //validations
    if (!username || !password) {
       res.status(400).json({ message: 'Provide username and password' });
@@ -50,11 +48,18 @@ authRoutes.post('/signup', (req, res, next) => {
          const hashPass = bcrypt.hashSync(password, salt);
 
          const aNewUser = new User({
+            email: email,
             username: username,
             password: hashPass,
+            userType: userType,
+            location: location,
+            expertise: expertise,
+            description: description,
+            avaibility_start_date: avaibility_start_date,
+            avaibility_end_date: avaibility_end_date,
          });
 
-         aNewuser
+         aNewUser
             .save()
             .then(() => {
                req.session.currentUser = aNewUser;
