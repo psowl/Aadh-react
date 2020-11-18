@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const User = require('../models/user-model');
 
+//signup
 authRoutes.post('/signup', (req, res, next) => {
    const {
       username,
@@ -20,13 +21,13 @@ authRoutes.post('/signup', (req, res, next) => {
    //validations
    if (!email || !password) {
       console.log(email, password);
-      res.status(400).json({ message: 'Please provide email and password' });
+      res.status(400).json({ message: "Merci d'entrer un email et un mot de passe" });
       return;
    }
 
    if (password.length < 7) {
       res.status(400).json({
-         message: 'Please make your password at least 8 characters long for security purposes.',
+         message: 'Merci de choisir un mot de passe contenant au moins 8 caractères.',
       });
       return;
    }
@@ -82,9 +83,43 @@ authRoutes.post('/signup', (req, res, next) => {
 });
 
 //login
+authRoutes.post('/login', (req, res, next) => {
+   const { email, password } = req.body;
+   User.findOne({ email })
+      .then((user) => {
+         if (!user) {
+            res.status(400).json({
+               message: 'Aucun compte relié à cet email',
+            });
+            return;
+         }
+         // compareSync
+         if (bcrypt.compareSync(password, user.password) !== true) {
+            res.status(400).json({ message: 'Mot de passe incorrect' });
+         } else {
+            req.session.currentUser = user;
+            res.json(user);
+         }
+      })
+      .catch((err) => {
+         res.status(500).json({ message: 'Login route was not found' });
+      });
+});
 
 //loggedin
+authRoutes.get('/loggedin', (req, res, next) => {
+   console.log('route loggedin');
+   if (req.session.currentUser) {
+      res.status(200).json(req.session.currentUser);
+      return;
+   }
+   res.status(403).json({ message: 'Unauthorized' });
+});
 
 //logout
+authRoutes.post('/logout', (req, res, next) => {
+   req.session.destroy();
+   res.json({ message: "Vous n'êtes plus connecté à votre compte" });
+});
 
 module.exports = authRoutes;
