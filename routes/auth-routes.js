@@ -15,9 +15,12 @@ authRoutes.post('/signup', (req, res, next) => {
       location,
       expertise,
       description,
-      avaibility_start_date,
-      avaibility_end_date,
+      availibility_start_date,
+      availibility_end_date,
+      availibility_frequency,
    } = req.body;
+
+   console.log(availibility_frequency);
    //validations
    if (!email || !password) {
       console.log(email, password);
@@ -43,13 +46,6 @@ authRoutes.post('/signup', (req, res, next) => {
          //validation mot de passe
          const salt = bcrypt.genSaltSync(10);
          const hashPass = bcrypt.hashSync(password, salt);
-
-         console.log(
-            avaibility_start_date,
-            new Date(avaibility_start_date),
-            avaibility_end_date,
-            new Date(avaibility_end_date)
-         );
          const aNewUser = new User({
             email: email,
             username: username,
@@ -58,8 +54,9 @@ authRoutes.post('/signup', (req, res, next) => {
             location: location,
             expertise: expertise,
             description: description,
-            avaibility_start_date: new Date(avaibility_start_date),
-            avaibility_end_date: new Date(avaibility_end_date),
+            availibility_start_date: new Date(availibility_start_date),
+            availibility_end_date: new Date(availibility_end_date),
+            availibility_frequency: availibility_frequency,
          });
 
          aNewUser

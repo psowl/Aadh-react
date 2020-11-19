@@ -13,6 +13,9 @@ const userSchema = new Schema(
          required: true,
          unique: true,
       },
+      link: {
+         type: String,
+      },
       password: {
          type: String,
          required: [true, 'Le mot de passe est requis'],
@@ -20,7 +23,7 @@ const userSchema = new Schema(
       userType: {
          type: String,
          required: true,
-         enum: ['demandeur', 'bénévole'],
+         enum: ['solliciteur', 'bénévole'],
       },
       location: {
          type: String,
@@ -29,7 +32,7 @@ const userSchema = new Schema(
       profilePic: String,
       dashboard: { type: Schema.Types.ObjectId, ref: 'Mission' },
       expertise: {
-         type: String,
+         type: [String],
          required: [true, 'Merci de sélectionner une expertise'],
          enum: [
             "Droits de l'Homme et l'enfant",
@@ -43,13 +46,21 @@ const userSchema = new Schema(
          required: [true, 'Merci de vous décrire vous ou votre organisation en quelques mots'],
       },
       logo: String,
-      avaibility_start_date: {
+      availibility_start_date: {
+         type: Date,
+      },
+      availibility_end_date: {
          type: Date,
          required: [true, 'Merci de remplir vos dates de disponibilités'],
       },
-      avaibility_end_date: {
-         type: Date,
-         required: [true, 'Merci de remplir vos dates de disponibilités'],
+      availibility_frequency: {
+         type: String,
+         enum: ['Régulier', 'Ponctuellement', 'Temps plein'],
+         required: [true, "Le rythme d'intervention est requis"],
+      },
+      status: {
+         type: String,
+         enum: ['Disponible', 'En mission', 'Bientôt disponible'],
       },
    },
    {

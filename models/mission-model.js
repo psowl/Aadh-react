@@ -7,6 +7,11 @@ const missionSchema = new Schema(
          type: String,
          required: [true, 'Le titre est requis'],
       },
+      sector: {
+         type: String,
+         required: [true, 'Le secteur est requis'],
+      },
+
       expertise_required: {
          type: String,
          enum: [
@@ -26,6 +31,10 @@ const missionSchema = new Schema(
          type: String,
          required: [true, 'La description est requise'],
       },
+      peopleRequired: {
+         type: Number,
+         required: [true, 'Le nombre de bénévoles recherchés est requise'],
+      },
       start_date: {
          type: Date,
          required: [true, 'Les dates sont requises'],
@@ -41,10 +50,20 @@ const missionSchema = new Schema(
       },
       status: {
          type: String,
-         enum: ['Disponible', 'Pourvue', 'Terminée'],
+         enum: ['Disponible', 'En attente de confirmation', 'Pourvue', 'Terminée'],
       },
-      candidates: { type: [Schema.Types.ObjectId], ref: 'User' }, //array of IDs
-      volonteerSelected: { type: Schema.Types.ObjectId, ref: 'User' }, //1 ID
+      candidates: { type: [Schema.Types.ObjectId], ref: 'User' },
+      volonteerSelected: { type: Schema.Types.ObjectId, ref: 'User' },
+      requiredSkills: {
+         type: String,
+         enum: [
+            'Règlement de litiges',
+            'Rédaction des statuts ONG  ',
+            'Contentieux',
+            'Rédaction de contrats',
+            'Langue anglaise'
+         ],
+      },
    },
    {
       timestamps: true,
