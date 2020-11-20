@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+/*
+##     ##    ###    ########  ####    ###    ########  ##       ######## 
+##     ##   ## ##   ##     ##  ##    ## ##   ##     ## ##       ##       
+##     ##  ##   ##  ##     ##  ##   ##   ##  ##     ## ##       ##       
+##     ## ##     ## ########   ##  ##     ## ########  ##       ######   
+ ##   ##  ######### ##   ##    ##  ######### ##     ## ##       ##       
+  ## ##   ##     ## ##    ##   ##  ##     ## ##     ## ##       ##       
+   ###    ##     ## ##     ## #### ##     ## ########  ######## ######## 
+*/
+:root {
+   --blue: #16286a;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+   box-sizing: border-box;
+   margin: 30px;
+   font-family: 'Palanquin', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*
+
+##    ##    ###    ##     ## 
+###   ##   ## ##   ##     ## 
+####  ##  ##   ##  ##     ## 
+## ## ## ##     ## ##     ## 
+##  #### #########  ##   ##  
+##   ### ##     ##   ## ##   
+##    ## ##     ##    ###    
+*/
+.nav {
+   display: flex;
+   align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nav .user_icon {
+   color: white;
+   font-size: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.nav .nav-row {
+   display: flex;
+   align-items: center;
+   padding: 0;
+   flex: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav img {
+   width: 250px;
+}
+
+.nav .user_button {
+   background-color: #16286a;
+   display: flex;
+   padding: 10px;
+   border-radius: 10px;
+   align-items: center;
+}
+
+.nav .user_links {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   line-height: 22px;
+   padding-left: 5px;
+}
+
+.nav .user_links a {
+   color: white;
+   text-decoration: none;
+}
+
+.nav .user_links a:nth-child(2) {
+   color: white;
+   text-decoration: none;
+   border-top: 1px solid white;
+}
+
+.nav .nav-menu {
+   margin: 0;
+   justify-content: space-evenly;
+   font-weight: bold;
+}
+
+.nav .nav-menu li {
+   list-style: none;
+   color: var(--blue);
+}
+
+.link {
+   text-decoration: none;
+   color: var(--blue);
 }
