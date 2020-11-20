@@ -43,7 +43,7 @@ const missionSchema = new Schema(
          type: Date,
          required: [true, 'Les dates sont requises'],
       },
-      availibility_frequency: {
+      availability_frequency: {
          type: String,
          enum: ['Régulier', 'Ponctuellement  ', 'Temps plein'],
          required: [true, "Le rythme d'intervention est requise"],

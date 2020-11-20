@@ -14,7 +14,7 @@ mongoose
       useUnifiedTopology: true,
    })
    .then(() => {
-      console.log('Connected to the DB !');
+      console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
    });
 
 const users = [
@@ -30,9 +30,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant", 'Soutien des associations'],
       description:
          "Dans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n",
-      availibility_start_date: '10/7/20',
-      availibility_end_date: '10/17/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '10/7/20',
+      availability_end_date: '10/17/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Delphine Gigi',
@@ -45,9 +45,9 @@ const users = [
       expertise: ['Formation'],
       description:
          "Titulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nDans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).",
-      availibility_start_date: '9/18/19',
-      availibility_end_date: '3/19/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '9/18/19',
+      availability_end_date: '3/19/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Yann Biuo',
@@ -60,9 +60,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant", 'Formation', 'Etudes de droit comparé'],
       description:
          "Titulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nAprès avoir passé deux ans au sein du Tribunal Pénal International pour l’Ex Yougoslavie, j'ai rejoint le Cabinet en janvier 2013.  \r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.",
-      availibility_start_date: '8/29/18',
-      availibility_end_date: '8/19/20',
-      availibility_frequency: 'Ponctuellement',
+      availability_start_date: '8/29/18',
+      availability_end_date: '8/19/20',
+      availability_frequency: 'Ponctuellement',
    },
    {
       username: 'Jeanne Roniul',
@@ -80,9 +80,9 @@ const users = [
       ],
       description:
          "Après avoir passé deux ans au sein du Tribunal Pénal International pour l’Ex Yougoslavie, j'ai rejoint le Cabinet en janvier 2013.  \r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n",
-      availibility_start_date: '8/9/17',
-      availibility_end_date: '9/7/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '8/9/17',
+      availability_end_date: '9/7/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Nadia Paquer',
@@ -95,9 +95,9 @@ const users = [
       expertise: ['Etudes de droit comparé'],
       description:
          "Après avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.",
-      availibility_start_date: '7/20/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '7/20/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Baptiste Biplu',
@@ -110,9 +110,9 @@ const users = [
       expertise: ['Etudes de droit comparé'],
       description:
          "A la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.",
-      availibility_start_date: '7/1/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Ponctuellement',
+      availability_start_date: '7/1/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Ponctuellement',
    },
    {
       username: 'Edouard Ramirez',
@@ -125,9 +125,9 @@ const users = [
       expertise: ['Soutien des associations'],
       description:
          "Dans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n",
-      availibility_start_date: '6/11/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '6/11/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Eliott Watson',
@@ -140,9 +140,9 @@ const users = [
       expertise: ['Formation'],
       description:
          "Titulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nDans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).",
-      availibility_start_date: '5/22/20',
-      availibility_end_date: '10/13/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '5/22/20',
+      availability_end_date: '10/13/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Marcus Macriod',
@@ -155,9 +155,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant", 'Formation'],
       description:
          "Titulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nAprès avoir passé deux ans au sein du Tribunal Pénal International pour l’Ex Yougoslavie, j'ai rejoint le Cabinet en janvier 2013.  \r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.",
-      availibility_start_date: '5/2/19',
-      availibility_end_date: '10/7/20',
-      availibility_frequency: 'Ponctuellement',
+      availability_start_date: '5/2/19',
+      availability_end_date: '10/7/20',
+      availability_frequency: 'Ponctuellement',
    },
    {
       username: 'Jef Taflert',
@@ -170,9 +170,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant"],
       description:
          "Après avoir passé deux ans au sein du Tribunal Pénal International pour l’Ex Yougoslavie, j'ai rejoint le Cabinet en janvier 2013.  \r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n",
-      availibility_start_date: '4/13/20',
-      availibility_end_date: '10/12/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '4/13/20',
+      availability_end_date: '10/12/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Isabelle Adurni',
@@ -185,9 +185,9 @@ const users = [
       expertise: ['Soutien des associations'],
       description:
          "Après avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.",
-      availibility_start_date: '3/24/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '3/24/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Lise Berand',
@@ -200,9 +200,9 @@ const users = [
       expertise: ['Etudes de droit comparé'],
       description:
          "A la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.",
-      availibility_start_date: '3/4/09',
-      availibility_end_date: '10/15/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '3/4/09',
+      availability_end_date: '10/15/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Frédéric Calvier',
@@ -215,9 +215,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant", 'Etudes de droit comparé'],
       description:
          "Dans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n",
-      availibility_start_date: '2/13/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '2/13/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Marianne Mauros',
@@ -230,9 +230,9 @@ const users = [
       expertise: ['Etudes de droit comparé', 'Soutien des associations'],
       description:
          "Dans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n",
-      availibility_start_date: '1/24/19',
-      availibility_end_date: '12/27/21',
-      availibility_frequency: 'Ponctuellement',
+      availability_start_date: '1/24/19',
+      availability_end_date: '12/27/21',
+      availability_frequency: 'Ponctuellement',
    },
    {
       username: 'Jean Poiro',
@@ -245,9 +245,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant"],
       description:
          "Dans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n",
-      availibility_start_date: '1/4/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '1/4/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Mike Hyanus',
@@ -260,9 +260,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant", 'Soutien des associations'],
       description:
          "Dans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n",
-      availibility_start_date: '10/7/20',
-      availibility_end_date: '10/17/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '10/7/20',
+      availability_end_date: '10/17/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Carmen Gigi',
@@ -275,9 +275,9 @@ const users = [
       expertise: ['Formation'],
       description:
          "Titulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nDans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).",
-      availibility_start_date: '9/18/19',
-      availibility_end_date: '3/19/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '9/18/19',
+      availability_end_date: '3/19/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Georges Biuo',
@@ -290,9 +290,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant", 'Formation', 'Etudes de droit comparé'],
       description:
          "Titulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nAprès avoir passé deux ans au sein du Tribunal Pénal International pour l’Ex Yougoslavie, j'ai rejoint le Cabinet en janvier 2013.  \r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.",
-      availibility_start_date: '8/29/18',
-      availibility_end_date: '8/19/20',
-      availibility_frequency: 'Ponctuellement',
+      availability_start_date: '8/29/18',
+      availability_end_date: '8/19/20',
+      availability_frequency: 'Ponctuellement',
    },
    {
       username: 'Marie Roniul',
@@ -310,9 +310,9 @@ const users = [
       ],
       description:
          "Après avoir passé deux ans au sein du Tribunal Pénal International pour l’Ex Yougoslavie, j'ai rejoint le Cabinet en janvier 2013.  \r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n",
-      availibility_start_date: '8/9/17',
-      availibility_end_date: '9/7/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '8/9/17',
+      availability_end_date: '9/7/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Natasha Paquer',
@@ -325,9 +325,9 @@ const users = [
       expertise: ['Etudes de droit comparé'],
       description:
          "Après avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.",
-      availibility_start_date: '7/20/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '7/20/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Mickael Biplu',
@@ -340,9 +340,9 @@ const users = [
       expertise: ['Etudes de droit comparé'],
       description:
          "A la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.",
-      availibility_start_date: '7/1/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Ponctuellement',
+      availability_start_date: '7/1/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Ponctuellement',
    },
    {
       username: 'Pierre Ramirez',
@@ -355,9 +355,9 @@ const users = [
       expertise: ['Soutien des associations'],
       description:
          "Dans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n",
-      availibility_start_date: '6/11/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '6/11/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Ben Watson',
@@ -370,9 +370,9 @@ const users = [
       expertise: ['Formation'],
       description:
          "Titulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nTitulaire de trois Diplômes d’Etudes Approfondies (DEA), Finances publiques et fiscalité et Droit des affaires et droit économique (Université Paris II) et Droit anglais et nord-américain des affaires (Université Paris I), j'ai rejoint le Cabinet en janvier 2003 et en est associée depuis 2017.\r\n\r\nElle exerce principalement dans les domaines du droit et du contentieux des affaires, du droit civil et du patrimoine y compris en droit des successions et des voies d’exécution.\r\n\r\nDans le cadre de son activité, j'interviens également dans le domaine du droit de la communication et des médias (droit de la presse et de l’édition). J'interviens dans les contentieux civils et commerciaux importants ainsi qu’en arbitrage, souvent à dimension internationale, ainsi qu’en matière de successions, de contentieux social et de droits de l’Homme.\r\n\r\nEnfin, j'ai développé une activité de conseil auprès de différents Etats, ONG et institutions internationales. Il plaide devant de nombreuses juridictions ordinaires (Cours d’Assises, Tribunaux correctionnels, Tribunaux de grande instance, Cour d’Appel), mais aussi devant les autorités administratives (AMF) et les juridictions régionales (Cour Européenne des Droits l’Homme, Cour de Justice de la CEDEAO, etc.).",
-      availibility_start_date: '5/22/20',
-      availibility_end_date: '10/13/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '5/22/20',
+      availability_end_date: '10/13/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Maurice Macriod',
@@ -385,9 +385,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant", 'Formation'],
       description:
          "Titulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nAprès avoir passé deux ans au sein du Tribunal Pénal International pour l’Ex Yougoslavie, j'ai rejoint le Cabinet en janvier 2013.  \r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.",
-      availibility_start_date: '5/2/19',
-      availibility_end_date: '10/7/20',
-      availibility_frequency: 'Ponctuellement',
+      availability_start_date: '5/2/19',
+      availability_end_date: '10/7/20',
+      availability_frequency: 'Ponctuellement',
    },
    {
       username: 'Martin Taflert',
@@ -400,9 +400,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant"],
       description:
          "Après avoir passé deux ans au sein du Tribunal Pénal International pour l’Ex Yougoslavie, j'ai rejoint le Cabinet en janvier 2013.  \r\n\r\nTitulaire d’un Master I de Droit international (Université Panthéon Sorbonne Paris I, 2008) et d’un Master in Laws du Trinity College de Dublin (2009), j'exerce principalement dans les domaines du droit pénal international, droit de l’extradition, droit pénal général, droit pénal des affaires et droit de la famille.\r\n\r\nTitulaire d’un Master 1 de Droit privé et sciences criminelles (parcours droit pénal, Université Paris Ouest La Défense, 2008) et d’un Master 2 de Droit pénal et procédure pénale (Université Paris Ouest La Défense, 2009), j'ai rejoint le Cabinet en janvier 2010.\r\n\r\nElle exerce principalement dans les domaines du droit des médias, droit pénal général, droit pénal des affaires et voies d’exécution.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n",
-      availibility_start_date: '4/13/20',
-      availibility_end_date: '10/12/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '4/13/20',
+      availability_end_date: '10/12/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Anna Adurni',
@@ -415,9 +415,9 @@ const users = [
       expertise: ['Soutien des associations'],
       description:
          "Après avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.",
-      availibility_start_date: '3/24/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '3/24/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Henriette Berand',
@@ -430,9 +430,9 @@ const users = [
       expertise: ['Etudes de droit comparé'],
       description:
          "A la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.",
-      availibility_start_date: '3/4/09',
-      availibility_end_date: '10/15/21',
-      availibility_frequency: 'Temps plein',
+      availability_start_date: '3/4/09',
+      availability_end_date: '10/15/21',
+      availability_frequency: 'Temps plein',
    },
    {
       username: 'Jean Calvier',
@@ -445,9 +445,9 @@ const users = [
       expertise: ["Droits de l'Homme et l'enfant", 'Etudes de droit comparé'],
       description:
          "A la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.",
-      availibility_start_date: '2/13/20',
-      availibility_end_date: '10/7/21',
-      availibility_frequency: 'Régulier',
+      availability_start_date: '2/13/20',
+      availability_end_date: '10/7/21',
+      availability_frequency: 'Régulier',
    },
    {
       username: 'Michelle Mauros',
@@ -460,9 +460,9 @@ const users = [
       expertise: ['Etudes de droit comparé', 'Soutien des associations'],
       description:
          "A la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.\r\n\r\nAprès avoir effectué un stage au sein du Cabinet de Monsieur le Juge Truchot à la Cour de justice de l’Union européenne en 2010 puis au Pôle financier du Parquet de PARIS en 2012, j'ai rejoint le Cabinet en janvier 2013.\r\n\r\nTitulaire d’un Master en sciences politiques de la Jamia Millia University (New Delhi), d’un Master de Droit économique (mention Contentieux économique et Arbitrage, Sciences Po Paris, 2010) et d’un Master 2 de Droit des relations économiques internationales (Paris II Panthéon-Assas, 2011), j'exerce principalement dans les domaines du droit des affaires, droit pénal des affaires, droit pénal général, propriété intellectuelle et droit des successions.\r\n\r\nA la suite d’un passage au cabinet du Procureur général près la Cour de cassation puis au sein d’un cabinet d’avocats aux Conseils (SCP Waquet, Farge et Hazan), j'ai rejoint le Cabinet en janvier 2015.\r\n\r\nJ'exerce principalement dans les domaines du droit pénal et des libertés fondamentales. Il exerce également en droit de la presse, droit pénal général, droit pénal des affaires, droit de la responsabilité civile, droit du dommage corporel et droit administratif.",
-      availibility_start_date: '1/24/19',
-      availibility_end_date: '12/27/21',
-      availibility_frequency: 'Ponctuellement',
+      availability_start_date: '1/24/19',
+      availability_end_date: '12/27/21',
+      availability_frequency: 'Ponctuellement',
    },
 
    //solliciteur

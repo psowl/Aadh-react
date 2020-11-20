@@ -14,9 +14,9 @@ function signup(
   location,
   expertise,
   description,
-  availibility_start_date,
-  availibility_end_date,
-  availibility_frequency
+  availability_start_date,
+  availability_end_date,
+  availability_frequency
 ) {
   return service.post('/signup', {      
     username,
@@ -26,9 +26,9 @@ function signup(
     location,
     expertise,
     description,
-    availibility_start_date,
-    availibility_end_date,
-    availibility_frequency})
+    availability_start_date,
+    availability_end_date,
+    availability_frequency})
     .then(response => response.data)
 }
 export {signup}

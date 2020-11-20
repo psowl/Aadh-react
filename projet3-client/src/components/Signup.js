@@ -1,7 +1,6 @@
 import React from "react";
 import {signup} from './auth-service'
 
-
 class Signup extends React.Component {
 
   state= {
@@ -12,9 +11,9 @@ class Signup extends React.Component {
     location:"",
     expertise:"",
     description:"",
-    availibility_start_date:"",
-    availibility_end_date:"",
-    availibility_frequency:""
+    availability_start_date:"",
+    availability_end_date:"",
+    availability_frequency:""
   }
 
   handleFormSubmit=(event)=>{
@@ -27,9 +26,9 @@ class Signup extends React.Component {
       location,
       expertise,
       description,
-      availibility_start_date,
-      availibility_end_date,
-      availibility_frequency
+      availability_start_date,
+      availability_end_date,
+      availability_frequency
     } = this.state;
 
     signup(
@@ -40,9 +39,9 @@ class Signup extends React.Component {
       location,
       expertise,
       description,
-      availibility_start_date,
-      availibility_end_date,
-      availibility_frequency)
+      availability_start_date,
+      availability_end_date,
+      availability_frequency)
       .then(response => {
         this.setState({
           username:"", 
@@ -52,9 +51,9 @@ class Signup extends React.Component {
           location:"",
           expertise:"",
           description:"",
-          availibility_start_date:"",
-          availibility_end_date:"",
-          availibility_frequency:""
+          availability_start_date:"",
+          availability_end_date:"",
+          availability_frequency:""
         })
         this.props.updateUser(response)
 
@@ -70,12 +69,14 @@ class Signup extends React.Component {
   }
 
   render() {
+
     return(
 
       <div className="signup">
         <form onSubmit={this.handleFormSubmit}>
         
           <select name="userType" value={this.state.userType} placeholder="Profil solliciteur ou bénévole" onChange={this.handleChange}> 
+          <option value=""> Profil solliciteur ou bénévole</option>
           <option value="solliciteur"> Solliciteur</option>
           <option value="bénévole"> Bénévole</option></select> 
 
@@ -88,30 +89,30 @@ class Signup extends React.Component {
           <input type="text" name="location" value={this.state.location} onChange={this.handleChange}placeholder="lieu"></input>
           
           <select type="text" name="expertise" value={this.state.expertise} onChange={this.handleChange}>
-          
+          <option value=""> Sélectionner votre expertise</option>
           <option value="Droits de l'Homme et l'enfant"> Droits de l'Homme et de l'enfant</option>
           <option value="Soutien des associations"> Soutien des associations/ESS</option>
           <option value="Etudes de droit comparé"> Etudes de droit comparé</option>
           <option value="Formation"> Formation</option>
           </select>
           
-          <input type="date" name="availability_start_date" value={this.state.availibility_start_date} onChange={this.handleChange} placeholder="début de disponibilité"></input>
+          <input type="date" name="availability_start_date" value={this.state.availability_start_date} onChange={this.handleChange} placeholder="début de disponibilité"></input>
           
-          <input type="date" name="availability_end_date" value={this.state.availibility_end_date} onChange={this.handleChange} placeholder="fin de disponibilité"></input>
+          <input type="date" name="availability_end_date" value={this.state.availability_end_date} onChange={this.handleChange} placeholder="fin de disponibilité"></input>
           
-          <select name="availibility_frequency" value={this.state.availibility_frequency} placeholder="Rythme" onChange={this.handleChange}> 
-          <option value="Régulier"> Régulier</option><option value="Ponctuellement"> Ponctuellement</option>
+          <select name="availability_frequency" value={this.state.availability_frequency} placeholder="Rythme" onChange={this.handleChange}> 
+          <option value=""> Sélectionner le ryhtme</option>
+          <option value="Régulier"> Régulier</option>
+          <option value="Ponctuellement"> Ponctuellement</option>
           <option value="Temps plein"> Temps plein</option></select> 
 
-          <textarea name="description" value={this.state.description} onChange={this.handleChange}placeholder="rythme"></textarea>
+          <textarea name="description" value={this.state.description} onChange={this.handleChange}placeholder="description"></textarea>
+
 
           <button>S'inscrire</button>
 
         </form>
       </div>
-
-     
-
 
     )
   }

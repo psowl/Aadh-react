@@ -15,12 +15,12 @@ authRoutes.post('/signup', (req, res, next) => {
       location,
       expertise,
       description,
-      availibility_start_date,
-      availibility_end_date,
-      availibility_frequency,
+      availability_start_date,
+      availability_end_date,
+      availability_frequency,
    } = req.body;
 
-   console.log(availibility_frequency);
+   console.log(req.body);
    //validations
    if (!email || !password) {
       console.log(email, password);
@@ -54,9 +54,9 @@ authRoutes.post('/signup', (req, res, next) => {
             location: location,
             expertise: expertise,
             description: description,
-            availibility_start_date: new Date(availibility_start_date),
-            availibility_end_date: new Date(availibility_end_date),
-            availibility_frequency: availibility_frequency,
+            availability_start_date: new Date(availability_start_date),
+            availability_end_date: new Date(availability_end_date),
+            availability_frequency: availability_frequency,
          });
 
          aNewUser

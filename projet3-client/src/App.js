@@ -17,9 +17,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-      <Signup></Signup>
 
-      Coucou
           <Switch>
             {/* <Route exact path="/" component={Home}/> */}
             <Route exact path="/signup" render={()=> <Signup updateUser={this.updateLoggedInUser}/>}/>

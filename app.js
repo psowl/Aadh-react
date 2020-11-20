@@ -54,8 +54,15 @@ app.use(
    })
 );
 
+const cors = require('cors');
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000']
+}));
+
+
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Welcome to project 3 in React ! You are in Sarah and Sophie project!';
 
 const index = require('./routes/index');
 app.use('/', index);

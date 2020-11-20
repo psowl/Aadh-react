@@ -46,14 +46,14 @@ const userSchema = new Schema(
          required: [true, 'Merci de vous décrire vous ou votre organisation en quelques mots'],
       },
       logo: String,
-      availibility_start_date: {
+      availability_start_date: {
          type: Date,
       },
-      availibility_end_date: {
+      availability_end_date: {
          type: Date,
          required: [true, 'Merci de remplir vos dates de disponibilités'],
       },
-      availibility_frequency: {
+      availability_frequency: {
          type: String,
          enum: ['Régulier', 'Ponctuellement', 'Temps plein'],
          required: [true, "Le rythme d'intervention est requis"],
