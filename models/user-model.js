@@ -22,7 +22,7 @@ const userSchema = new Schema(
       },
       userType: {
          type: String,
-         required: true,
+         required: [true,'Merci de sélectionner votre profil'],
          enum: ['solliciteur', 'bénévole'],
       },
       location: {

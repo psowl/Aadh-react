@@ -63,7 +63,7 @@ authRoutes.post('/signup', (req, res, next) => {
             .save()
             .then(() => {
                req.session.currentUser = aNewUser;
-               res.status(200).json(aNewUser);
+               res.status(200).json(aNewUser)
             })
             .catch((err) => {
                if (err instanceof mongoose.Error.ValidationError) {
@@ -84,6 +84,7 @@ authRoutes.post('/login', (req, res, next) => {
    const { email, password } = req.body;
    User.findOne({ email })
       .then((user) => {
+         console.log("📍in then of login")
          if (!user) {
             res.status(400).json({
                message: 'Aucun compte relié à cet email',
@@ -92,10 +93,11 @@ authRoutes.post('/login', (req, res, next) => {
          }
          // compareSync
          if (bcrypt.compareSync(password, user.password) !== true) {
-            res.status(400).json({ message: 'Mot de passe incorrect' });
+            return next(new Error('Mot de passe incorrect'))
          } else {
             req.session.currentUser = user;
             res.json(user);
+
          }
       })
       .catch((err) => {

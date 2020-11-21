@@ -1,9 +1,10 @@
 import React from "react";
-import {signup} from './auth-service'
+import {signup} from './auth-service';
+import { Link } from 'react-router-dom';
 
 class Signup extends React.Component {
 
-  state= {
+  state={
     username:"", 
     userType:"", 
     email:"",
@@ -58,7 +59,7 @@ class Signup extends React.Component {
         this.props.updateUser(response)
 
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log("🤚", error))
   }
    
   handleChange =(event)=> {
@@ -69,10 +70,18 @@ class Signup extends React.Component {
   }
 
   render() {
-
+    
     return(
 
       <div className="signup">
+
+        <p>
+            <Link to={"/login"}>MON ESPACE</Link>
+        </p>
+        <p>
+            <Link to={"/signup"}>S'INSCRIRE</Link>
+        </p>
+
         <form onSubmit={this.handleFormSubmit}>
         
           <select name="userType" value={this.state.userType} placeholder="Profil solliciteur ou bénévole" onChange={this.handleChange}> 
@@ -80,10 +89,10 @@ class Signup extends React.Component {
           <option value="solliciteur"> Solliciteur</option>
           <option value="bénévole"> Bénévole</option></select> 
 
-          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="mot de passe"></input>
-
           <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="email"></input>
-          
+
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="mot de passe"></input>
+                    
           <input type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder="username"></input>
 
           <input type="text" name="location" value={this.state.location} onChange={this.handleChange}placeholder="lieu"></input>
