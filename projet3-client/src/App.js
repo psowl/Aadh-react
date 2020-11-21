@@ -4,10 +4,27 @@ import Nav from "./components/Nav";
 import { Switch, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login'
+import MissionsList from "./components/missions/MissionsList";
 
 class App extends React.Component {
 
   state = { loggedInUser: null }
+
+  // fetchUser() {
+  //   if (this.state.loggedInUser === null) {
+  //     loggedin()
+  //       .then(response => {
+  //         this.setState({loggedInUser: response})
+  //       })
+  //       .catch(err => {
+  //         this.setState({loggedInUser: false}) 
+  //       })
+  //   }
+  // }
+
+  // componentDidMount() {
+  //   this.fetchUser();
+  // }
 
   updateLoggedInUser=(newUser)=>{
     this.setState ({
@@ -18,11 +35,13 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+      {/* <Nav userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} /> */}
 
           <Switch>
             {/* <Route exact path="/" component={Home}/> */}
             <Route exact path="/signup" render={()=> <Signup updateUser={this.updateLoggedInUser}/>}/>
             <Route exact path="/login" component={Login}/>
+            <Route exact path="/missions" component={MissionsList}/>
           </Switch>
       </div>
     );

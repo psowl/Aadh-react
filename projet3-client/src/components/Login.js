@@ -36,7 +36,7 @@ class Login extends React.Component {
         <p>
             <Link to={"/signup"}>S'INSCRIRE</Link>
         </p>
-
+      
         <form onSubmit={this.handleFormSubmit}>
           
           <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="email"></input>

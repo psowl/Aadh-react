@@ -64,6 +64,7 @@ authRoutes.post('/signup', (req, res, next) => {
             .then(() => {
                req.session.currentUser = aNewUser;
                res.status(200).json(aNewUser)
+               
             })
             .catch((err) => {
                if (err instanceof mongoose.Error.ValidationError) {
@@ -96,7 +97,8 @@ authRoutes.post('/login', (req, res, next) => {
             return next(new Error('Mot de passe incorrect'))
          } else {
             req.session.currentUser = user;
-            res.json(user);
+            // res.json(user);
+            res.send("user logged")
 
          }
       })

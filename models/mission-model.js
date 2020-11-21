@@ -58,7 +58,7 @@ const missionSchema = new Schema(
          type: String,
          enum: [
             'Règlement de litiges',
-            'Rédaction des statuts ONG  ',
+            'Rédaction des statuts ONG',
             'Contentieux',
             'Rédaction de contrats',
             'Langue anglaise'
