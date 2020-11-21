@@ -21,7 +21,7 @@ class MissionDetails extends React.Component {
           this.setState(theMission);
         })
         .catch((err)=>{
-          console.log('Error while fetching project', err)
+          console.log('Error while fetching mission', err)
         })
   }
 

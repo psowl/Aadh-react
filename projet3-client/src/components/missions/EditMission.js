@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class EditProject extends React.Component {
+class EditMission extends React.Component {
   state = {
     title: this.props.theMission.title, 
     sector:this.props.theMission.sector, 
@@ -34,7 +34,19 @@ class EditProject extends React.Component {
 
     event.preventDefault();
 
-    axios.put(`http://localhost:5000/missions/${this.props.theMission._id}`, { title, description })
+    axios.put(`http://localhost:5000/missions/${this.props.theMission._id}`, { 
+    title,
+    sector,
+    expertise_required,
+    description,
+    peopleRequired, 
+    location,
+    start_date,
+    end_date,
+    availability_frequency,
+    status,
+    requiredSkills 
+  })
       .then( () => {
         this.props.getTheMission();
         //Rediriger à la page missions
@@ -103,9 +115,6 @@ class EditProject extends React.Component {
           <option value="Terminée"> Terminée</option>
         </select>
 
-
-
-
           <button>Mettre à jour</button>
         </form>
       </div>
@@ -113,4 +122,4 @@ class EditProject extends React.Component {
   }
 }
 
-export default EditProject;
+export default EditMission;
