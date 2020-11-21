@@ -1,22 +1,23 @@
 import React from 'react';
 import axios from 'axios';
 
-class AddMission extends React.Component {
-  state = { 
-    title: "",
-    sector: "",
-    expertise_required: "",
-    description: "",
-    peopleRequired: "", 
-    start_date: "",
-    end_date: "",
-    availability_frequency: "",
-    status: "",
-    requiredSkills: ""
+class EditProject extends React.Component {
+  state = {
+    title: this.props.theMission.title, 
+    sector:this.props.theMission.sector, 
+    expertise_required:this.props.theMission.expertise_required,
+    description: this.props.theMission.description,
+    peopleRequired:this.props.theMission.peopleRequired,
+    location:this.props.theMission.location,
+    start_date:this.props.theMission.start_date,
+    end_date:this.props.theMission.end_date,
+    availability_frequency:this.props.theMission.availability_frequency,
+    status:this.props.theMission.status,
+    requiredSkills:this.props.theMission.requiredSkills
   }
-   
+
+    
   handleFormSubmit = (event) => {
-    event.preventDefault();
     const {
       title,
       sector,
@@ -31,36 +32,13 @@ class AddMission extends React.Component {
       requiredSkills
     }=this.state;
 
-    axios.post("http://localhost:5000/missions", { 
-      title,
-      sector,
-      expertise_required,
-      description,
-      peopleRequired, 
-      location,
-      start_date,
-      end_date,
-      availability_frequency,
-      status,
-      requiredSkills
-    })
+    event.preventDefault();
+
+    axios.put(`http://localhost:5000/missions/${this.props.theMission._id}`, { title, description })
       .then( () => {
-        this.props.getData();
-        console.log("getData 🧩", this.props.getData()) 
-        
-        this.setState({
-          title: "",
-          sector: "",
-          expertise_required: "",
-          description: "",
-          peopleRequired: "",
-          location:"", 
-          start_date: "",
-          end_date: "",
-          availability_frequency: "",
-          status: "",
-          requiredSkills: ""
-        });
+        this.props.getTheMission();
+        //Rediriger à la page missions
+        this.props.history.push('/missions');    
       })
       .catch( error => console.log(error) )
   }
@@ -71,11 +49,12 @@ class AddMission extends React.Component {
   }
 
   render(){
-    return(
+    return (
       <div>
-        <h1>Publier une mission</h1>
+        <hr />
+        <h3>Editer la mission</h3>
         <form onSubmit={this.handleFormSubmit}>
-        
+          
           <label>Secteur</label>
           <input type="text" name="sector" value={this.state.sector} onChange={ e => this.handleChange(e)}/>
 
@@ -124,11 +103,14 @@ class AddMission extends React.Component {
           <option value="Terminée"> Terminée</option>
         </select>
 
-          <button>Publier</button>
+
+
+
+          <button>Mettre à jour</button>
         </form>
       </div>
     )
   }
 }
 
-export default AddMission;
+export default EditProject;

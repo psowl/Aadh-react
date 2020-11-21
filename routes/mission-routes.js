@@ -5,15 +5,14 @@ const router  = express.Router();
 const Mission = require('../models/mission-model');
 
 //Create a mission 
-
 router.post('/missions', (req, res, next) => {
 // Check if user logged-in
-// if (!req.session.currentUser) {
-//   res.status(401).json({
-//     message: "Merci de vous connecter avant de publier une mission"
-//   });
-//   return;
-// }
+if (!req.session.currentUser) {
+  res.status(401).json({
+    message: "Merci de vous connecter avant de publier une mission"
+  });
+  return;
+}
 
   Mission.create({
     title: req.body.title,
@@ -27,7 +26,7 @@ router.post('/missions', (req, res, next) => {
     availability_frequency: req.body.availability_frequency,
     status: req.body.status,
     requiredSkills: req.body.requiredSkills,
-    // requester_id: req.session.currentUser._id
+    requester_id: req.session.currentUser._id
   })
     .then(response => {
       console.log("response🌠", response)
@@ -38,6 +37,7 @@ router.post('/missions', (req, res, next) => {
     })
 });
 
+// display all missions
 router.get('/missions', (req, res, next) => {
 
   Mission.find()
@@ -49,6 +49,60 @@ router.get('/missions', (req, res, next) => {
       res.json(err);
     })
 });
+
+// GET route => to get a specific mission view
+router.get('/missions/:id', (req, res, next)=>{
+
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified id is not valid' });
+    return;
+  }
+
+  Mission.findById(req.params.id)
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
+// PUT route => to update a specific mission
+router.put('/missions/:id', (req, res, next)=>{
+
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified id is not valid' });
+    return;
+  }
+
+  Mission.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+      console.log("📍in update",req.params.id,req.body )
+      res.json({ message: `La mission avec l'id ${req.params.id} été mise à jour` });
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
+// DELETE route => to delete a specific mission
+router.delete('/missions/:id', (req, res, next)=>{
+
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified id is not valid' });
+    return;
+  }
+
+  Mission.findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.json({ message: `La mission avec l'id ${req.params.id} a été supprimée.` });
+    })
+    .catch( err => {
+      res.json(err);
+    })
+})
+
+
 
 module.exports = router;
 

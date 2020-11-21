@@ -5,26 +5,28 @@ import { Switch, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login'
 import MissionsList from "./components/missions/MissionsList";
+import MissionDetails from "./components/missions/MissionDetails";
+import {loggedin} from './components/auth-service'; 
 
 class App extends React.Component {
 
   state = { loggedInUser: null }
 
-  // fetchUser() {
-  //   if (this.state.loggedInUser === null) {
-  //     loggedin()
-  //       .then(response => {
-  //         this.setState({loggedInUser: response})
-  //       })
-  //       .catch(err => {
-  //         this.setState({loggedInUser: false}) 
-  //       })
-  //   }
-  // }
+  fetchUser() {
+    if (this.state.loggedInUser === null) {
+      loggedin()
+        .then(response => {
+          this.setState({loggedInUser: response})
+        })
+        .catch(err => {
+          this.setState({loggedInUser: false}) 
+        })
+    }
+  }
 
-  // componentDidMount() {
-  //   this.fetchUser();
-  // }
+  componentDidMount() {
+    this.fetchUser();
+  }
 
   updateLoggedInUser=(newUser)=>{
     this.setState ({
@@ -42,6 +44,7 @@ class App extends React.Component {
             <Route exact path="/signup" render={()=> <Signup updateUser={this.updateLoggedInUser}/>}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/missions" component={MissionsList}/>
+            <Route exact path="/missions/:id" component={MissionDetails} />
           </Switch>
       </div>
     );
