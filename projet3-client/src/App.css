@@ -13,15 +13,29 @@
 
 body {
    box-sizing: border-box;
-   margin: 30px;
    font-family: 'Palanquin', sans-serif;
 }
 
+.App {
+   margin-right: auto;
+   margin-left: auto;
+   width: 95%;
+   position: relative;
+   font-size: 15px;
+   display: flex;
+   flex-direction: column;
+}
+
 @media (max-width: 768px) {
-   body {
+   .App {
       margin: 10px;
       font-size: 15px;
    }
+}
+
+.content {
+   margin-top: 98px;
+   flex: 1;
 }
 
 /*
@@ -37,6 +51,11 @@ body {
 .nav {
    display: flex;
    align-items: center;
+   position: fixed;
+   top: 0;
+   width: inherit;
+   padding-top: 10px;
+   background: white;
 }
 
 .nav .user_icon {
@@ -100,7 +119,7 @@ body {
 
 .nav .burger_menu {
    display: none;
-   }
+}
 
 .link {
    text-decoration: none;
@@ -171,4 +190,71 @@ body {
       display: flex;
       margin-left: 5px;
    }
+}
+
+@media (max-width: 320px) {
+   .nav .user_links a {
+      font-size: 13px;
+   }
+}
+
+/*
+########  #######   #######  ######## ######## ########  
+##       ##     ## ##     ##    ##    ##       ##     ## 
+##       ##     ## ##     ##    ##    ##       ##     ## 
+######   ##     ## ##     ##    ##    ######   ########  
+##       ##     ## ##     ##    ##    ##       ##   ##   
+##       ##     ## ##     ##    ##    ##       ##    ##  
+##        #######   #######     ##    ######## ##     ## 
+*/
+
+.network_links {
+   width: 50%;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.network_icon {
+   width: 20%;
+}
+
+@media (max-width: 425px) {
+   .network_links {
+      width: 100%;
+   }
+}
+
+footer h2,
+footer p {
+   margin: 0;
+}
+
+footer .bottom_footer {
+   background-color: var(--blue);
+   color: white;
+}
+
+footer .footer_links ul {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   padding: 20px 0px;
+   margin: 0;
+}
+
+footer .footer_links li {
+   width: 33%;
+   list-style: none;
+   text-align: center;
+   font-weight: bold;
+}
+
+footer .footer_links a {
+   text-decoration: none;
+   color: white;
+}
+
+footer .footer_notes h2,
+footer .footer_notes p {
+   text-align: center;
 }

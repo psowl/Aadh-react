@@ -13,9 +13,6 @@ const userSchema = new Schema(
          required: true,
          unique: true,
       },
-      link: {
-         type: String,
-      },
       password: {
          type: String,
          required: [true, 'Le mot de passe est requis'],
@@ -35,8 +32,8 @@ const userSchema = new Schema(
          type: [String],
          required: [true, 'Merci de sélectionner une expertise'],
          enum: [
-            "Droits de l'Homme et l'enfant",
-            'Soutien des associations',
+            "Droits de l'Homme et de l'enfant",
+            'Soutien des associations et des ESS',
             'Etudes de droit comparé',
             'Formation',
          ],
@@ -51,12 +48,10 @@ const userSchema = new Schema(
       },
       availibility_end_date: {
          type: Date,
-         required: [true, 'Merci de remplir vos dates de disponibilités'],
       },
       availibility_frequency: {
          type: String,
          enum: ['Régulier', 'Ponctuellement', 'Temps plein'],
-         required: [true, "Le rythme d'intervention est requis"],
       },
       status: {
          type: String,
