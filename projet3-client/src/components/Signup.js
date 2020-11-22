@@ -44,7 +44,7 @@ class Signup extends React.Component {
       availability_end_date,
       availability_frequency)
       .then(response => {
-        console.log("response signup✅", response)
+        console.log("response signup✅or❌", response)
         this.setState({
           username:"", 
           userType:"", 

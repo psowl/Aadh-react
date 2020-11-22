@@ -52,11 +52,21 @@ class MissionDetails extends React.Component {
     return(
       <div>
         <h1>{this.state.title}</h1>
+        <p>{this.state.sector}</p>
+        <p>{this.state.expertise_required}</p>
         <p>{this.state.description}</p>
+        <p>{this.state.peopleRequired}</p>
+        <p>{this.state.location}</p>
+        <p>{this.state.start_date}</p>
+        <p>{this.state.end_date}</p>
+        <p>{this.state.availability_frequency}</p>
+        <p>{this.state.status}</p>
+        <p>{this.state.requiredSkills}</p>
 
         <div>{this.renderEditForm()} </div>
-
+        <p>
         <button onClick={() => this.deleteMission()}>Supprimer la mission</button>
+        </p>
 
         <Link to={'/missions'}>Retour à la liste des missions</Link>
       </div>

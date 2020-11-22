@@ -38,11 +38,11 @@ class App extends React.Component {
     return (
       <div className="App">
       {/* <Nav userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} /> */}
-
+          COUCOU
           <Switch>
             {/* <Route exact path="/" component={Home}/> */}
             <Route exact path="/signup" render={()=> <Signup updateUser={this.updateLoggedInUser}/>}/>
-            <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser}/>}/>
+            <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} />}/>
             <Route exact path="/missions" component={MissionsList}/>
             <Route exact path="/missions/:id" component={MissionDetails} />
           </Switch>

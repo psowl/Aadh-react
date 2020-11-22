@@ -6,7 +6,9 @@ const Mission = require('../models/mission-model');
 
 //Create a mission 
 router.post('/missions', (req, res, next) => {
+  
 // Check if user logged-in
+
 if (!req.session.currentUser) {
   res.status(401).json({
     message: "Merci de vous connecter avant de publier une mission"
