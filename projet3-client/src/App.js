@@ -16,7 +16,7 @@ class App extends React.Component {
    render() {
       return (
          <div className='App'>
-            <Nav />
+            <Nav loggedInUser={this.state.loggedInUser}/> {/*On récupère le state user logué pour l'affichage conditionnel de l'enfant */}
             <Signup></Signup>
             Coucou
             <Switch>
