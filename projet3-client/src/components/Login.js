@@ -15,6 +15,7 @@ class Login extends React.Component {
 
     login(email, password)
       .then(response => {
+          console.log("response login✅", response)
           this.setState({ email: "", password: "" });
           this.props.updateUser(response)
       })

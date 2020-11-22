@@ -97,8 +97,8 @@ authRoutes.post('/login', (req, res, next) => {
             return next(new Error('Mot de passe incorrect'))
          } else {
             req.session.currentUser = user;
-            // res.json(user);
-            res.send("user logged")
+            res.json(user);
+            // res.send("user logged")
 
          }
       })
