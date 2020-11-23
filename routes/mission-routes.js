@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const router  = express.Router();
+const missionRoutes  = express.Router();
 
 const Mission = require('../models/mission-model');
 
 //Create a mission 
-router.post('/missions', (req, res, next) => {
+missionRoutes.post('/missions', (req, res, next) => {
   
 // Check if user logged-in
 
@@ -40,7 +40,7 @@ if (!req.session.currentUser) {
 });
 
 // display all missions
-router.get('/missions', (req, res, next) => {
+missionRoutes.get('/missions', (req, res, next) => {
 
   Mission.find()
     .then(allTheMissions => {
@@ -53,7 +53,7 @@ router.get('/missions', (req, res, next) => {
 });
 
 // GET route => to get a specific mission view
-router.get('/missions/:id', (req, res, next)=>{
+missionRoutes.get('/missions/:id', (req, res, next)=>{
 
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
@@ -70,7 +70,7 @@ router.get('/missions/:id', (req, res, next)=>{
 })
 
 // PUT route => to update a specific mission
-router.put('/missions/:id', (req, res, next)=>{
+missionRoutes.put('/missions/:id', (req, res, next)=>{
 
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
@@ -88,7 +88,7 @@ router.put('/missions/:id', (req, res, next)=>{
 })
 
 // DELETE route => to delete a specific mission
-router.delete('/missions/:id', (req, res, next)=>{
+missionRoutes.delete('/missions/:id', (req, res, next)=>{
 
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
@@ -106,7 +106,7 @@ router.delete('/missions/:id', (req, res, next)=>{
 
 
 
-module.exports = router;
+module.exports = missionRoutes;
 
 
 

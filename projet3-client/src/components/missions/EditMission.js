@@ -88,7 +88,7 @@ class EditMission extends React.Component {
           </p>
           <p>
           <label>Expertise attendue</label>
-          <select name="expertise_required" value={this.state.availability_frequency} placeholder="expertise" onChange={this.handleChange}> 
+          <select name="expertise_required" value={this.state.expertise_required} placeholder="expertise" onChange={this.handleChange}> 
           <option value=""> Sélectionner l'expertise</option>
           <option value="Droits de l'Homme et l'enfant"> Droits de l'Homme et l'enfant</option>
           <option value="Soutien des associations"> Soutien des associations</option>
