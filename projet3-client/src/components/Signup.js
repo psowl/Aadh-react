@@ -84,20 +84,23 @@ class Signup extends React.Component {
         </p>
 
         <form onSubmit={this.handleFormSubmit}>
-        
+        <p>
           <select name="userType" value={this.state.userType} placeholder="Profil solliciteur ou bénévole" onChange={this.handleChange}> 
           <option value=""> Profil solliciteur ou bénévole</option>
           <option value="solliciteur"> Solliciteur</option>
           <option value="bénévole"> Bénévole</option></select> 
-
+        </p>
+        <p>
           <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="email"></input>
-
+        </p>
+        <p>
           <input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="mot de passe"></input>
-                    
+        </p>   
+        <p>      
           <input type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder="username"></input>
-
+        </p> 
           <input type="text" name="location" value={this.state.location} onChange={this.handleChange}placeholder="lieu"></input>
-          
+        <p>
           <select type="text" name="expertise" value={this.state.expertise} onChange={this.handleChange}>
           <option value=""> Sélectionner votre expertise</option>
           <option value="Droits de l'Homme et l'enfant"> Droits de l'Homme et de l'enfant</option>
@@ -105,19 +108,23 @@ class Signup extends React.Component {
           <option value="Etudes de droit comparé"> Etudes de droit comparé</option>
           <option value="Formation"> Formation</option>
           </select>
-          
+        </p>
+        <p>
           <input type="date" name="availability_start_date" value={this.state.availability_start_date} onChange={this.handleChange} placeholder="début de disponibilité"></input>
-          
+        </p>
+        <p>
           <input type="date" name="availability_end_date" value={this.state.availability_end_date} onChange={this.handleChange} placeholder="fin de disponibilité"></input>
-          
+        </p> 
+        <p>
           <select name="availability_frequency" value={this.state.availability_frequency} placeholder="Rythme" onChange={this.handleChange}> 
           <option value=""> Sélectionner le ryhtme</option>
           <option value="Régulier"> Régulier</option>
           <option value="Ponctuellement"> Ponctuellement</option>
           <option value="Temps plein"> Temps plein</option></select> 
-
+        </p>
+        <p>
           <textarea name="description" value={this.state.description} onChange={this.handleChange}placeholder="description"></textarea>
-
+        </p>
 
           <button>S'inscrire</button>
 
