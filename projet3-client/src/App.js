@@ -1,16 +1,23 @@
-import React from "react";
+import React from 'react';
 import './App.css';
-import Nav from "./components/Nav";
+import Nav from './components/navbar/Nav';
 import { Switch, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login'
 import MissionsList from "./components/missions/MissionsList";
 import MissionDetails from "./components/missions/MissionDetails";
 import {loggedin} from './components/auth-service'; 
+import Footer from './components/Footer';
+import Home from './components/Home';
 
 class App extends React.Component {
+   state = { loggedInUser: null };
 
-  state = { loggedInUser: null }
+   updateLoggedInUser = (newUser) => {
+      this.setState({
+         loggedInUser: newUser,
+      });
+   };
 
   fetchUser() {
     if (this.state.loggedInUser === null) {
@@ -37,20 +44,24 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-      {/* <Nav userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} /> */}
-          COUCOU
-          <Switch>
-            {/* <Route exact path="/" component={Home}/> */}
-            <Route exact path="/signup" render={()=> <Signup updateUser={this.updateLoggedInUser}/>}/>
-            <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} />}/>
-            <Route exact path="/missions" component={MissionsList}/>
-            <Route exact path="/missions/:id" component={MissionDetails} />
-          </Switch>
-      </div>
-    );
 
+      <Nav loggedInUser={this.state.loggedInUser} />
+            {/*On récupère le state user logué pour l'affichage conditionnel de l'enfant */}
+        <div className='content'>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/signup" render={()=> <Signup updateUser={this.updateLoggedInUser}/>}/>
+              <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} />}/>
+              <Route exact path="/missions" component={MissionsList}/>
+              <Route exact path="/missions/:id" component={MissionDetails} />
+            </Switch>
+        </div>
+        <Footer/>
+
+      </div>
+    )
   }
-  
 }
+  
 
 export default App;

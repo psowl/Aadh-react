@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import service from '../auth-service'
 
 import EditMission from './EditMission.js'
 
@@ -15,7 +16,7 @@ class MissionDetails extends React.Component {
 
   getSingleMission = () => {
       const { params } = this.props.match;
-      axios.get(`http://localhost:5000/missions/${params.id}`)
+      service.get(`http://localhost:5000/missions/${params.id}`)
         .then( responseFromApi =>{
           const theMission = responseFromApi.data;
           this.setState(theMission);
@@ -38,7 +39,7 @@ class MissionDetails extends React.Component {
   // DELETE MISSION
   deleteMission = () => {
     const { params } = this.props.match;
-    axios.delete(`http://localhost:5000/missions/${params.id}`)
+    service.delete(`http://localhost:5000/missions/${params.id}`)
       .then(() =>{
           this.props.history.push('/missions');      
       })

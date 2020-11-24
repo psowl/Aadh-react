@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import service from '../auth-service'
 
 import AddMission from './AddMission'; {/*à mettre dans la nav component*/}
 
@@ -12,7 +13,7 @@ class MissionsList extends React.Component {
   }
 
   getAllMissions = () =>{
-    axios.get(`http://localhost:5000/missions`)
+    service.get(`http://localhost:5000/missions`)
       .then(responseFromApi => {
         console.log("all missions✅or❌",responseFromApi )
         this.setState({
