@@ -20,7 +20,7 @@ const missionSchema = new Schema(
             'Etudes de droit comparé',
             'Formation',
          ],
-         required: [true, "L'experise' est requis"],
+         required: [true, "L'experise' est requise"],
       },
       requester_id: { type: Schema.Types.ObjectId, ref: 'User' },
       location: {
@@ -30,10 +30,6 @@ const missionSchema = new Schema(
       description: {
          type: String,
          required: [true, 'La description est requise'],
-      },
-      peopleRequired: {
-         type: Number,
-         required: [true, 'Le nombre de bénévoles recherchés est requise'],
       },
       start_date: {
          type: Date,
@@ -45,7 +41,7 @@ const missionSchema = new Schema(
       },
       availability_frequency: {
          type: String,
-         enum: ['Régulier', 'Ponctuellement  ', 'Temps plein'],
+         enum: ['Régulier', 'Ponctuellement', 'Temps plein'],
          required: [true, "Le rythme d'intervention est requise"],
       },
       status: {

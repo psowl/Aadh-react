@@ -21,12 +21,10 @@ if (!req.session.currentUser) {
     sector: req.body.sector,
     expertise_required: req.body.expertise_required,
     description: req.body.description,
-    peopleRequired: req.body.peopleRequired, 
     location:req.body.location,
     start_date: req.body.start_date, 
     end_date: req.body.end_date,
     availability_frequency: req.body.availability_frequency,
-    status: req.body.status,
     requiredSkills: req.body.requiredSkills,
     requester_id: req.session.currentUser._id
   })

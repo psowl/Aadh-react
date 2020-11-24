@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import service from '../auth-service'
 
 class EditMission extends React.Component {
   state = {
@@ -34,7 +35,7 @@ class EditMission extends React.Component {
 
     event.preventDefault();
 
-    axios.put(`http://localhost:5000/missions/${this.props.theMission._id}`, { 
+    service.put(`http://localhost:5000/missions/${this.props.theMission._id}`, { 
     title,
     sector,
     expertise_required,
@@ -119,20 +120,6 @@ class EditMission extends React.Component {
           <option value="Langue anglaise"> Langue anglaise </option>
         </select>
           </p>
-        <p>
-        <label>Nombre de personnes nécessaires :</label>
-          <input type="number" name="peopleRequired" value={this.state.peopleRequired} onChange={ e => this.handleChange(e)}/>
-        </p>
-        <p>
-        <label>Statut</label>
-        <select type="text" name="status" value={this.state.status} onChange={this.handleChange}>
-          <option value=""> Sélectionner ici</option>
-          <option value="Disponible"> Disponible</option>
-          <option value="En attente de confirmation"> En attente de confirmation</option>
-          <option value="Pourvue"> Pourvue</option>
-          <option value="Terminée"> Terminée</option>
-        </select>
-        </p>
 
          <p>
           <button>Mettre à jour</button>
