@@ -9,7 +9,8 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
 const session = require('express-session');
-const MongoStore = require('connect-mongo') (session);
+const MongoStore = require('connect-mongo')(session);
+const Twitter = require('twitter');
 
 mongoose
    .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
@@ -55,16 +56,24 @@ app.use(
       store: new MongoStore({
          mongooseConnection: mongoose.connection,
          ttl: 60 * 60 * 24,
-       }),
+      }),
    })
 );
 
 const cors = require('cors');
-app.use(cors({
-  credentials: true,
-  origin: ['http://localhost:3000']
-}));
+app.use(
+   cors({
+      credentials: true,
+      origin: ['http://localhost:3000'],
+   })
+);
 
+//Twitter API
+const client = new Twitter({
+   consumer_key: process.env.TWITTER_CONSUMER_KEY,
+   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+   bearer_token: process.env.TWITTER_BEARER_TOKEN,
+});
 
 // default value for title local
 app.locals.title = 'Welcome to project 3 in React ! You are in Sarah and Sophie project!';
