@@ -13,9 +13,11 @@
    --height-nav-max768: 60px;
 }
 
-body {
+body,
+.nav button {
    box-sizing: border-box;
    font-family: 'Palanquin', sans-serif;
+   font-size: 15px;
 }
 
 .App {
@@ -23,7 +25,6 @@ body {
    margin-left: auto;
    width: 100%;
    position: relative;
-   font-size: 15px;
    display: flex;
    flex-direction: column;
    min-height: 100vh;
@@ -129,9 +130,17 @@ body {
    display: none;
 }
 
-.link {
+.nav .link {
    text-decoration: none;
    color: var(--blue);
+}
+
+.nav button {
+   background-color: transparent;
+   color: white;
+   border: none;
+   border-top: 1px solid white;
+   padding-top: 0px;
 }
 
 @media (max-width: 768px) {
@@ -201,7 +210,8 @@ body {
 }
 
 @media (max-width: 425px) {
-   .nav .user_links a {
+   .nav .user_links a,
+   .nav .user_links button {
       font-size: 9px;
    }
 }
