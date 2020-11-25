@@ -1,9 +1,11 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 import service from '../auth-service'
 
-import AddMission from './AddMission'; {/*à mettre dans la nav component*/}
+import AddMission from './AddMission';
+import EditMission from './EditMission';
+ {/*à mettre dans la nav component*/}
 
 class MissionsList extends React.Component {
   state = { listOfMissions: [] }
@@ -26,18 +28,23 @@ class MissionsList extends React.Component {
   render(){
     
     return(
-      <div>
-        <div>
-            <AddMission getData={() => this.getAllMissions()}{...this.props} /> {/*à mettre dans la nav component*/}
-        </div>
+      <div className="missionsList">
         <div>
         <h1>Liste des missions</h1>
           { this.state.listOfMissions.map( mission => {
             return (
               <div key={mission._id}>
+              <p>{mission.status}</p> 
+              <h3>{mission.expertise_required}</h3> 
+              <h2>{mission.title}</h2> 
                 <Link to={`/missions/${mission._id}`}>
-                  <h3>{mission.title}</h3>
-                </Link>
+                  <h3>Voir les détails</h3> 
+
+                </Link> 
+            
+                {/* <Link>
+                  <p>Modifier la mission</p>
+                </Link> */}
               </div>
             )})
           }

@@ -6,9 +6,11 @@ import Signup from './components/Signup';
 import Login from './components/Login'
 import MissionsList from "./components/missions/MissionsList";
 import MissionDetails from "./components/missions/MissionDetails";
+import AddMission from "./components/missions/AddMission";
 import {loggedin} from './components/auth-service'; 
 import Footer from './components/Footer';
 import Home from './components/Home';
+import EditMission from './components/missions/EditMission';
 
 class App extends React.Component {
    state = { loggedInUser: null };
@@ -53,7 +55,9 @@ class App extends React.Component {
               <Route exact path="/signup" render={()=> <Signup updateUser={this.updateLoggedInUser}/>}/>
               <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} />}/>
               <Route exact path="/missions" component={MissionsList}/>
+              <Route exact path="/missions/new" component={AddMission}/>
               <Route exact path="/missions/:id" component={MissionDetails} />
+              {/* <Route exact path="/missions/:id/edit" render={()=> <EditMission loggedInUser={this.state.loggedInUser}/>}/> */}
             </Switch>
         </div>
         <Footer/>

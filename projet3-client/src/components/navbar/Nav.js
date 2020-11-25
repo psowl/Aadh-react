@@ -58,7 +58,7 @@ class Nav extends React.Component {
                <div className='user_button'>
                   <FaUserCircle className='user_icon'></FaUserCircle>
                   <div className='user_links'>
-                     <Link to={'/loggedin'}>Mon espace</Link>
+                     <Link to={'/login'}>Mon espace</Link>
                      {/*Affichage conditionnel: on récupère le user logué depuis le parent, si user logué alors "se déconnecter" s'affiche, sinon "s'inscrire" s'affiche */}
                      {this.props.loggedInUser ? (
                         <form onSubmit={this.handleFormSubmit}>

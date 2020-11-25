@@ -64,10 +64,19 @@ class MissionDetails extends React.Component {
         <p>{this.state.status}</p>
         <p>{this.state.requiredSkills}</p>
 
-        <div>{this.renderEditForm()} </div>
+       <div>{this.renderEditForm()} </div>
         <p>
         <button onClick={() => this.deleteMission()}>Supprimer la mission</button>
         </p>
+        
+        {/* {this.props.loggedInUser && 
+          (<div>
+            <div>{this.renderEditForm()} </div>
+            <p>
+            <button onClick={() => this.deleteMission()}>Supprimer la mission</button>
+            </p>
+          </div>)
+        } */}
 
         <Link to={'/missions'}>Retour à la liste des missions</Link>
       </div>

@@ -47,8 +47,8 @@ class AddMission extends React.Component {
       requiredSkills
     })
       .then( () => {
-        this.props.getData();
-        console.log("getData 🧩", this.props.getData()) 
+        // this.props.getData();
+        // console.log("getData 🧩", this.props.getData()) 
         
         this.setState({
           title: "",
@@ -132,6 +132,7 @@ class AddMission extends React.Component {
           <option value="Langue anglaise"> Langue anglaise </option>
         </select>
         </p>
+
 
         <p>
           <button>Publier</button>
