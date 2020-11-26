@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { TiThMenuOutline } from 'react-icons/ti';
 import BurgerMenu from './BurgerMenu.js';
-import {logout} from '../auth-service'
+import { logout } from '../auth-service';
 
 class Nav extends React.Component {
    state = { activeBurgerMenu: false };
@@ -12,16 +12,14 @@ class Nav extends React.Component {
       this.setState({ activeBurgerMenu: !this.state.activeBurgerMenu });
    };
 
-   handleFormSubmit=(event)=> {
-   event.preventDefault();
-   logout()
-   .then(
-      response => console.log("response logout❌ ",response))
-   .catch(err=> console.log(err))
-   }
+   handleFormSubmit = (event) => {
+      event.preventDefault();
+      logout()
+         .then((response) => console.log('response logout❌ ', response))
+         .catch((err) => console.log(err));
+   };
 
    render() {
-   
       return (
          <div className='nav'>
             <Link className='link' to='/'>
@@ -58,14 +56,19 @@ class Nav extends React.Component {
                <div className='user_button'>
                   <FaUserCircle className='user_icon'></FaUserCircle>
                   <div className='user_links'>
-                     <Link to={'/login'}>Mon espace</Link>
+                     {/*Affichage conditionnel: on récupère le user logué depuis le parent, si user logué alors "se déconnecter" s'affiche, sinon "s'inscrire" s'affiche */}
+                     {this.props.loggedInUser ? (
+                        <Link to={'/'}>Mon espace</Link>
+                     ) : (
+                        <Link to={'/login'}>Me connecter</Link>
+                     )}
                      {/*Affichage conditionnel: on récupère le user logué depuis le parent, si user logué alors "se déconnecter" s'affiche, sinon "s'inscrire" s'affiche */}
                      {this.props.loggedInUser ? (
                         <form onSubmit={this.handleFormSubmit}>
                            <button>Se déconnecter</button>
                         </form>
                      ) : (
-                        <Link to={'/signup'}>S'inscrire</Link>
+                        <Link to={'/signup'}>M'inscrire</Link>
                      )}
                   </div>
                </div>

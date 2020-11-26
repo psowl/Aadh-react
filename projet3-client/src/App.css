@@ -13,9 +13,11 @@
    --height-nav-max768: 60px;
 }
 
-body {
+body,
+.nav button {
    box-sizing: border-box;
    font-family: 'Palanquin', sans-serif;
+   font-size: 15px;
 }
 
 .App {
@@ -23,7 +25,6 @@ body {
    margin-left: auto;
    width: 100%;
    position: relative;
-   font-size: 15px;
    display: flex;
    flex-direction: column;
    min-height: 100vh;
@@ -129,9 +130,17 @@ body {
    display: none;
 }
 
-.link {
+.nav .link {
    text-decoration: none;
    color: var(--blue);
+}
+
+.nav button {
+   background-color: transparent;
+   color: white;
+   border: none;
+   border-top: 1px solid white;
+   padding-top: 0px;
 }
 
 @media (max-width: 768px) {
@@ -201,7 +210,8 @@ body {
 }
 
 @media (max-width: 425px) {
-   .nav .user_links a {
+   .nav .user_links a,
+   .nav .user_links button {
       font-size: 9px;
    }
 }
@@ -359,4 +369,39 @@ footer .footer_notes p {
    color: var(--blue);
    text-shadow: 1px 1px white;
    text-align: center;
+}
+
+
+/*
+   ###    ##       ##       ##     ## ####  ######   ######  ####  #######  ##    ##  ######  
+  ## ##   ##       ##       ###   ###  ##  ##    ## ##    ##  ##  ##     ## ###   ## ##    ## 
+ ##   ##  ##       ##       #### ####  ##  ##       ##        ##  ##     ## ####  ## ##       
+##     ## ##       ##       ## ### ##  ##   ######   ######   ##  ##     ## ## ## ##  ######  
+######### ##       ##       ##     ##  ##        ##       ##  ##  ##     ## ##  ####       ## 
+##     ## ##       ##       ##     ##  ##  ##    ## ##    ##  ##  ##     ## ##   ### ##    ## 
+##     ## ######## ######## ##     ## ####  ######   ######  ####  #######  ##    ##  ######  
+*/
+.missionsList .cardContainer {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-around;
+   /* align-content: baseline; */
+   padding-inline: 15px;
+}
+
+
+.missionsList .missionCard {
+   border: 2px solid grey;
+   border-radius: 10px;
+   width: 300px;
+   height: fit-content;
+   padding: 20px;
+   margin: 20px;
+   background-color: #f8f8f9;
+   list-style:none;
+}
+
+.missionsList .missionCard a {
+   text-decoration: none;
+   color: var(--blue);;
 }

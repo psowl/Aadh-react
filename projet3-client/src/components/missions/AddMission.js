@@ -112,7 +112,7 @@ class AddMission extends React.Component {
           <p>
           <label>Rythme</label>
           <select name="availability_frequency" value={this.state.availability_frequency} placeholder="Rythme" onChange={this.handleChange}> 
-          <option value=""> Sélectionner le ryhtme</option>
+          <option value=""> Sélectionner le rythme</option>
           <option value="Régulier"> Régulier</option>
           <option value="Ponctuellement"> Ponctuellement</option>
           <option value="Temps plein"> Temps plein</option></select> 
