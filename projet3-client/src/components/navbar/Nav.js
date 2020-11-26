@@ -74,7 +74,7 @@ class Nav extends React.Component {
                </div>
             </div>
             <div className='burger_menu'>
-               <TiThMenuOutline size={40} onClick={this.changeBurgerMenu} />
+               <TiThMenuOutline size={30} onClick={this.changeBurgerMenu} />
             </div>
             {this.state.activeBurgerMenu && <BurgerMenu />}
          </div>

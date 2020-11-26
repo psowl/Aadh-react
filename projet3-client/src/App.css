@@ -507,3 +507,38 @@ footer .footer_notes p {
 .home .partenariat h3 {
    text-align: center;
 }
+
+
+/*
+   ###    ##       ##       ##     ## ####  ######   ######  ####  #######  ##    ##  ######  
+  ## ##   ##       ##       ###   ###  ##  ##    ## ##    ##  ##  ##     ## ###   ## ##    ## 
+ ##   ##  ##       ##       #### ####  ##  ##       ##        ##  ##     ## ####  ## ##       
+##     ## ##       ##       ## ### ##  ##   ######   ######   ##  ##     ## ## ## ##  ######  
+######### ##       ##       ##     ##  ##        ##       ##  ##  ##     ## ##  ####       ## 
+##     ## ##       ##       ##     ##  ##  ##    ## ##    ##  ##  ##     ## ##   ### ##    ## 
+##     ## ######## ######## ##     ## ####  ######   ######  ####  #######  ##    ##  ######  
+*/
+.missionsList .cardContainer {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-around;
+   /* align-content: baseline; */
+   padding-inline: 15px;
+}
+
+
+.missionsList .missionCard {
+   border: 2px solid grey;
+   border-radius: 10px;
+   width: 300px;
+   height: fit-content;
+   padding: 20px;
+   margin: 20px;
+   background-color: #f8f8f9;
+   list-style:none;
+}
+
+.missionsList .missionCard a {
+   text-decoration: none;
+   color: var(--blue);;
+}

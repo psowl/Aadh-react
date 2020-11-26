@@ -6,7 +6,7 @@ class Login extends React.Component {
   state = { 
     email: '', 
     password: '',
-    showUsername: false
+    // showUsername: false
   }
 
   handleFormSubmit = (event) => {
@@ -56,8 +56,8 @@ class Login extends React.Component {
           
         </form>
 
-        {this.state.showUsername && <p>Bonjour vous êtes connectés</p>}
-       
+        {/* {this.state.showUsername && <p>Bonjour vous êtes connectés</p>} */}
+
       </div>
     )
   }
