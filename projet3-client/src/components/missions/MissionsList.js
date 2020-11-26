@@ -6,7 +6,7 @@ import service from '../auth-service'
 
 import AddMission from './AddMission';
 import EditMission from './EditMission';
-import SearchBar from './SearchBar.js';
+import Search from './Search.js';
 import MissionTable from './MissionTable.js';
 
 class MissionsList extends React.Component {
@@ -93,6 +93,7 @@ class MissionsList extends React.Component {
     
     return(
       <div className="missionsList">
+      
 
       {/* 
       //search bar & filters

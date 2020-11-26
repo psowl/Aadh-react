@@ -17,7 +17,6 @@ function MissionTable(props) {
             </li>
           ))}
         </ul>
-        {/* <MissionCard mission={props.missions[0]}/> */}
       </div>
     </div>
   );
