@@ -154,6 +154,8 @@ body,
 @media (max-width: 768px) {
    .nav {
       flex-flow: wrap;
+      padding-bottom: 10px;
+      border-bottom: 1px solid grey;
    }
 
    .nav .nav-menu-desktop {
@@ -484,6 +486,7 @@ footer .footer_notes p {
 
 .home .logos_partenaires img {
    width: 5%;
+   align-self: center;
 }
 
 @media (max-width: 425px) {
@@ -497,6 +500,7 @@ footer .footer_notes p {
    .home .logos_partenaires img {
       width: 25%;
       margin-bottom: 10px;
+      align-self: center;
    }
 }
 
