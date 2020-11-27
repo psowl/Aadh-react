@@ -12,10 +12,14 @@ class Nav extends React.Component {
       this.setState({ activeBurgerMenu: !this.state.activeBurgerMenu });
    };
 
-   handleFormSubmit = (event) => {
+   logoutUser = (event) => {
       event.preventDefault();
       logout()
-         .then((response) => console.log('response logout❌ ', response))
+         .then((response) => {
+            console.log('response logout❌ ', response);
+            //supprimer le user qui est dans le state du App
+            this.props.updateUser(null);
+         })
          .catch((err) => console.log(err));
    };
 
@@ -64,9 +68,9 @@ class Nav extends React.Component {
                      )}
                      {/*Affichage conditionnel: on récupère le user logué depuis le parent, si user logué alors "se déconnecter" s'affiche, sinon "s'inscrire" s'affiche */}
                      {this.props.loggedInUser ? (
-                        <form onSubmit={this.handleFormSubmit}>
-                           <button>Se déconnecter</button>
-                        </form>
+                        <Link to={'/logout'}>
+                           <button onClick={this.logoutUser}>Se déconnecter</button>{' '}
+                        </Link>
                      ) : (
                         <Link to={'/signup'}>M'inscrire</Link>
                      )}

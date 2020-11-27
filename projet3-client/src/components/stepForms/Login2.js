@@ -1,12 +1,12 @@
 import React from 'react';
-import { login } from './auth-service';
+import { login } from '../auth-service';
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
    state = {
       email: '',
       password: '',
-      // showUsername: false
+      showUsername: false,
    };
 
    handleFormSubmit = (event) => {
@@ -64,7 +64,7 @@ class Login extends React.Component {
                <button>Se connecter</button>
             </form>
 
-            {/* {this.state.showUsername && <p>Bonjour vous êtes connectés</p>} */}
+            {this.state.showUsername && <p>Bonjour vous êtes connectés</p>}
          </div>
       );
    }
