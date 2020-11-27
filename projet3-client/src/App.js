@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Nav from './components/navbar/Nav';
 import { Switch, Route } from 'react-router-dom';
-import Signup from './components/Signup';
+import Signup from './components/stepForms/signup/Signup';
 import Login from './components/Login';
 import MissionsList from './components/missions/MissionsList';
 import MissionDetails from './components/missions/MissionDetails';
