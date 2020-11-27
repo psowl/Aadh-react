@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import MissionCard from "./MissionCard";
 
 function MissionTable(props) {
-  console.log("props.missions from MissionTable", props.missions);
-  console.log("props.missions un seul", props.missions[0]);
+  // console.log("props.missions from MissionTable", props.missions);
+  // console.log("props.missions un seul", props.missions[0]);
 
   return (
     <div className="MissionTable">
@@ -12,8 +12,11 @@ function MissionTable(props) {
         <h1>Liste des missions </h1>
         <ul className="cardContainer">
           {props.missions.map((mission) => (
-           <li>
-              <MissionCard key={mission.id} mission={mission} />
+           <li className="missionCard">
+              <MissionCard key={mission._id} mission={mission} />
+              <Link to={`/missions/${mission._id}`}>
+                  <h3>Voir les détails</h3> 
+            </Link> 
             </li>
           ))}
         </ul>

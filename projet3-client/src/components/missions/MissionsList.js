@@ -75,7 +75,7 @@ class MissionsList extends React.Component {
   getAllMissions = () =>{
     service.get(`http://localhost:5000/missions`)
       .then(responseFromApi => {
-        console.log("all missions✅or❌",responseFromApi )
+        // console.log("all missions✅or❌ froml MissionsList",responseFromApi )
         this.setState({
           listOfMissions: responseFromApi.data
         })
@@ -84,7 +84,7 @@ class MissionsList extends React.Component {
   }
 
   render(){
-    console.log("data from MissionList", this.state.listOfMissions)
+    // console.log("data from MissionList", this.state.listOfMissions)
     // const missions = this.props.missions.filter(mission => {
     //   console.log("missions", missions)
     //   const matchTitle = mission.title.includes(this.state.query);
