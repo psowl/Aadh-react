@@ -45,7 +45,7 @@ class StepOne extends React.Component {
                   ></input>
                </div>
             </div>
-            <div>
+            <div className='six columns'>
                <input
                   type='password'
                   name='password'
