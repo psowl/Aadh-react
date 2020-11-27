@@ -72,13 +72,6 @@ class Signup extends React.Component {
    render() {
       return (
          <div className='signup'>
-            <p>
-               <Link to={'/login'}>MON ESPACE</Link>
-            </p>
-            <p>
-               <Link to={'/signup'}>S'INSCRIRE</Link>
-            </p>
-
             <form onSubmit={this.handleFormSubmit}>
                <p>
                   <select

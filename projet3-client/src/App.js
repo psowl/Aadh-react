@@ -11,7 +11,6 @@ import { loggedin } from './components/auth-service';
 import Footer from './components/Footer';
 import Home from './components/home/Home';
 import EditMission from './components/missions/EditMission';
-import Logout from './components/Logout';
 
 class App extends React.Component {
    state = { loggedInUser: null };
@@ -61,11 +60,6 @@ class App extends React.Component {
                      exact
                      path='/login'
                      render={() => <Login updateUser={this.updateLoggedInUser} />}
-                  />
-                  <Route
-                     exact
-                     path='/logout'
-                     render={() => <Logout updateUser={this.updateLoggedInUser} />}
                   />
                   <Route exact path='/missions' component={MissionsList} />
                   <Route exact path='/missions/new' component={AddMission} />
