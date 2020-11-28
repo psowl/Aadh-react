@@ -2,13 +2,14 @@ import React from 'react';
 
 class StepTwo extends React.Component {
    state = {
-      username: '',
-      location: '',
-      expertise: '',
-      availability_start_date: '',
-      availability_end_date: '',
-      availability_frequency: '',
+      username: this.props.username,
+      location: this.props.location,
+      expertise: this.props.expertise,
+      availability_start_date: this.props.availability_start_date,
+      availability_end_date: this.props.availability_end_date,
+      availability_frequency: this.props.availability_frequency,
       step: 2,
+      errorMessage: '',
    };
 
    handleChange = (event) => {
@@ -17,15 +18,42 @@ class StepTwo extends React.Component {
       this.setState({ [name]: value });
    };
 
-   //pousser les inputs dans le component parent "mainSinup"
-   toContinue = () => {
-      this.props.liftState('username', this.state.username);
-      this.props.liftState('location', this.state.location);
-      this.props.liftState('expertise', this.state.expertise);
-      this.props.liftState('availability_start_date', this.state.availability_start_date);
-      this.props.liftState('availability_end_date', this.state.availability_end_date);
-      this.props.liftState('availability_frequency', this.state.availability_frequency);
-      this.props.liftState('step', this.state.step + 1); //afficher le step3 du form
+   sendToBack = (event) => {
+      event.preventDefault();
+      const {
+         username,
+         location,
+         expertise,
+         availability_start_date,
+         availability_end_date,
+         availability_frequency,
+      } = this.state;
+      //si un des champs n'est pas rempli
+      if (
+         username === '' ||
+         location === '' ||
+         expertise === '' ||
+         availability_start_date === '' ||
+         availability_end_date === '' ||
+         availability_frequency === ''
+      ) {
+         this.setState({ errorMessage: 'Merci de compléter le formulaire' });
+      }
+      //si tous les champs de step1 userType, email, password sont remplis alors passer au step2
+      else {
+         this.setState({ errorMessage: '' });
+         this.props.liftState('username', this.state.username);
+         this.props.liftState('location', this.state.location);
+         this.props.liftState('expertise', this.state.expertise);
+         this.props.liftState('availability_start_date', this.state.availability_start_date);
+         this.props.liftState('availability_end_date', this.state.availability_end_date);
+         this.props.liftState('availability_frequency', this.state.availability_frequency);
+         this.props.liftState('step', this.state.step + 1); //afficher le step3 du form
+      }
+   };
+
+   goBack = () => {
+      this.props.liftState('step', this.state.step - 1); //afficher le step3 du form
    };
 
    render() {
@@ -113,8 +141,10 @@ class StepTwo extends React.Component {
                      </select>
                   </div>
                </div>
-            </div>{' '}
-            <button onClick={this.toContinue}>Continuer</button>
+            </div>
+            <button onClick={this.goBack}>Précédent</button>
+            <button onClick={this.sendToBack}>Continuer</button>{' '}
+            <div>{this.state.errorMessage}</div>
          </div>
       );
    }

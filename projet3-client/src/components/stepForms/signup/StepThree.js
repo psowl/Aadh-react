@@ -1,7 +1,7 @@
 import React from 'react';
 
 class StepThree extends React.Component {
-   state = { description: '', step: 3 };
+   state = { description: this.props.description, step: 3, errorMessage: '' };
 
    handleChange = (event) => {
       const name = event.target.name;
@@ -9,10 +9,23 @@ class StepThree extends React.Component {
       this.setState({ [name]: value });
    };
 
-   //pousser les inputs dans le component parent "mainSinup"
-   toContinue = (event) => {
-      this.props.liftState('description', this.state.description);
-      this.props.liftState('step', this.state.step + 1);
+   sendToBack = (event) => {
+      event.preventDefault();
+      const { description } = this.state;
+
+      //si 1 des champs de step1 userType, email, password, n'est pas rempli alors afficher message 'incomplet'
+      if (description === '') {
+         this.setState({ errorMessage: 'Merci de compléter le formulaire' });
+      }
+      //si tous les champs de step1 userType, email, password sont remplis alors passer au step2
+      else {
+         this.props.liftState('description', this.state.description);
+         this.props.liftState('step', this.state.step + 1); //afficher le step3 du form
+      }
+   };
+
+   goBack = () => {
+      this.props.liftState('step', this.state.step - 1); //afficher le step3 du form
    };
 
    render() {
@@ -28,7 +41,9 @@ class StepThree extends React.Component {
                   ></textarea>
                </div>
             </div>
-            <button onClick={this.toContinue}>Je m'inscris</button>
+            <button onClick={this.goBack}>Précédent</button>
+            <button onClick={this.sendToBack}>Continuer</button>{' '}
+            <div>{this.state.errorMessage}</div>
          </div>
       );
    }

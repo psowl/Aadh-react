@@ -14,6 +14,7 @@ class Signup extends React.Component {
       availability_start_date: '',
       availability_end_date: '',
       availability_frequency: '',
+      errorMessage: '',
    };
 
    handleFormSubmit = (event) => {
