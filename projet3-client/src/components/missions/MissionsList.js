@@ -15,23 +15,23 @@ class MissionsList extends React.Component {
     super(props);
     this.state = { 
       listOfMissions: [],
-      listOfMissionsbackup:[],
+      //listOfMissionsbackup:[],
       query:'',
+
     }
   }
 
-  // handleChange = (event) => {
-  //   this.setState({
-  //     search: event.target.value
-  //   })
-  // }
-
-  updateQuery = (newValue) => {
-    this.setState(
-      {query: newValue}
-      );
+  updateQuery = (event) => {
+    this.setState({
+      query: event.target.value
+    })
   }
 
+  // updateQuery = (newValue) => {
+  //   this.setState(
+  //     {query: newValue}
+  //     );
+  // }
 
   componentDidMount() {
     this.getAllMissions();
@@ -43,7 +43,7 @@ class MissionsList extends React.Component {
         // console.log("all missions✅or❌ froml MissionsList",responseFromApi )
         this.setState({
           listOfMissions: responseFromApi.data,
-          listOfMissionsbackup: responseFromApi.data
+          //listOfMissionsbackup: responseFromApi.data
         })
       })
       .catch(err => console.log('Error while fetching missions', err))
@@ -53,15 +53,13 @@ class MissionsList extends React.Component {
   render(){
     //we filter the list 
     console.log("data from MissionList", this.state.listOfMissions)
-    const query = this.state.query;
+    // const query = this.state.query;
     
-    if (query) {
-      this.state.listOfMissions = this.state.listOfMissionsbackup.filter(mission => mission.title.includes(query))
-    } else {
-      this.state.listOfMissions = this.state.listOfMissionsbackup
-    }
-
-
+    // if (query) {
+    //   this.state.listOfMissions = this.state.listOfMissionsbackup.filter(mission => mission.title.includes(query))
+    // } else {
+    //   this.state.listOfMissions = this.state.listOfMissionsbackup
+    // }
 
     // // if (search) {
     // //   missions = missions.filter(mission => {

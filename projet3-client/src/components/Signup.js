@@ -14,6 +14,7 @@ class Signup extends React.Component {
       availability_start_date: '',
       availability_end_date: '',
       availability_frequency: '',
+      errorMessage:""
    };
 
    handleFormSubmit = (event) => {
@@ -59,7 +60,8 @@ class Signup extends React.Component {
             });
             this.props.updateUser(response);
          })
-         .catch((error) => console.log('🤚', error));
+         .catch((error) => 
+         this.setState({errorMessage: error.response.data.message}))
    };
 
    handleChange = (event) => {
@@ -188,6 +190,8 @@ class Signup extends React.Component {
 
                <button>S'inscrire</button>
             </form>
+
+            
          </div>
       );
    }
