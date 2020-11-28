@@ -37,7 +37,22 @@ if (!req.session.currentUser) {
     })
 });
 
-// display all missions
+//display all missions
+
+missionRoutes.get('/missions', (req, res, next) => {
+
+  Mission.find()
+    .then(allTheMissions => {
+      console.log("allTheMissions🎇", allTheMissions)
+      res.json(allTheMissions);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+});
+
+
+// // Filtering from backend
 missionRoutes.get('/missions', (req, res, next) => {
 const{search, availability_frequency, sector, expertise_required, location, start_date, end_date } = req.body
 console.log('req.query: ',req.query)
@@ -66,12 +81,12 @@ if (location) {
 
   Mission.find(query).sort({createdAt:-1})
     .then(allTheMissions => {
-      console.log("allTheMissions🎇", allTheMissions)
+      // console.log("allTheMissions🎇", allTheMissions)
       const typeMissions = [{name:"Droits de l'Homme et l'enfant"}, {name:"Soutien des associations"}, {name:"Etudes de droit comparé"}, {name:"Formation"}];
       let selected;
       typeMissions.forEach(type=> {
-        console.log("all missions types", typeMissions)
-        console.log("req.query.expertise_required",req.query.expertise_required)
+        // console.log("all missions types", typeMissions)
+        // console.log("req.query.expertise_required",req.query.expertise_required)
         if (req.query.expertise_required === type.name) {
           type.selected = true;
         }

@@ -10,62 +10,27 @@ import Search from './Search.js';
 import MissionTable from './MissionTable.js';
 
 class MissionsList extends React.Component {
-  state = { 
-    listOfMissions: [],
-    query:'',
+
+  constructor(props){
+    super(props);
+    this.state = { 
+      listOfMissions: [],
+      //listOfMissionsbackup:[],
+      query:'',
+
+    }
   }
 
-  updateQuery = (newValue) => {
-    this.setState({query: newValue});
+  updateQuery = (event) => {
+    this.setState({
+      query: event.target.value
+    })
   }
 
-  //   search:"",
-  //   availability_frequency:"",
-  //   sector:"",
-  //   expertise_required:"",
-  //   location:""
-
-  // handleFormSubmit = (event) => {
-  //   event.preventDefault();
-  //   const {
-  //     search,
-  //     availability_frequency,
-  //     sector,
-  //     expertise_required,
-  //     location
-  //   }=this.state;
-
-  //   service.post("/missions", { 
-  //     search,
-  //     availability_frequency,
-  //     sector,
-  //     expertise_required,
-  //     location
-  //   })
-  //     .then( () => {
-
-  //       this.setState({
-  //         title: "",
-  //         sector: "",
-  //         expertise_required: "",
-  //         description: "",
-  //         peopleRequired: "",
-  //         location:"", 
-  //         start_date: "",
-  //         end_date: "",
-  //         availability_frequency: "",
-  //         status: "",
-  //         requiredSkills: ""
-  //       });
-
-        
-  //     })
-  //     .catch( error => console.log(error) )
-  // }
-
-  // handleChange = (event) => {  
-  //   const {name, value} = event.target;
-  //   this.setState({[name]: value});
+  // updateQuery = (newValue) => {
+  //   this.setState(
+  //     {query: newValue}
+  //     );
   // }
 
   componentDidMount() {
@@ -75,22 +40,45 @@ class MissionsList extends React.Component {
   getAllMissions = () =>{
     service.get(`http://localhost:5000/missions`)
       .then(responseFromApi => {
-        console.log("all missions✅or❌",responseFromApi )
+        // console.log("all missions✅or❌ froml MissionsList",responseFromApi )
         this.setState({
-          listOfMissions: responseFromApi.data
+          listOfMissions: responseFromApi.data,
+          //listOfMissionsbackup: responseFromApi.data
         })
       })
       .catch(err => console.log('Error while fetching missions', err))
   }
+  
 
   render(){
+    //we filter the list 
     console.log("data from MissionList", this.state.listOfMissions)
-    // const missions = this.props.missions.filter(mission => {
-    //   console.log("missions", missions)
-    //   const matchTitle = mission.title.includes(this.state.query);
-    //   return matchTitle 
-    // })
+    // const query = this.state.query;
     
+    // if (query) {
+    //   this.state.listOfMissions = this.state.listOfMissionsbackup.filter(mission => mission.title.includes(query))
+    // } else {
+    //   this.state.listOfMissions = this.state.listOfMissionsbackup
+    // }
+
+    // // if (search) {
+    // //   missions = missions.filter(mission => {
+    // //     const matchTitle = mission.title.includes(search);
+    // //     return matchTitle 
+    // //   })
+    // // }
+ //write in one line
+    // if (search) {
+    //   missions = missions.filter(mission => mission.title.includes(search))
+    // }
+
+  // const missions = this.props.missions.filter(mission => {
+  //   // check the mission matches the search input
+  //   const matchTitle = mission.title.includes(this.state.query);
+  //   return matchTitle
+  // })
+
+
     return(
       <div className="missionsList">
       
@@ -120,10 +108,12 @@ class MissionsList extends React.Component {
         </form> */}
 
 
-        {/* <SearchBar
-           query={this.state.query} updateQuery={this.updateQuery}/> */}
+        <Search
+           query={this.state.query} updateQuery={this.updateQuery}/>
         
         <MissionTable missions={this.state.listOfMissions} />
+
+       
 {/* 
         <div>
         <h1>Liste des missions</h1>
