@@ -1,29 +1,25 @@
 import React from 'react';
 
-class Search extends React.Component {
+function Search (props) {
 
-  state = {
-    required_expertise: ""
-  }
-
-
-  render (){
     return (
-    <div className="Search">
+    <div className="search">
 
-{/*Filter by expertise*/}
-
-      <div>
-        <div> Droits de l'Homme et de l'enfant</div>
-        <div> Soutien des associations et ESS</div>
-        <div> Etudes de droit comparé</div>
-        <div> Formation</div>
-      </div>
-     
+      <input type="search" value={props.query} onChange={(e) => props.updateQuery(e.target.value)} />
 
     </div>
     )
-  }
+  
 }
+
+// Filter by expertise
+
+//       <div>
+//         <div> Droits de l'Homme et de l'enfant</div>
+//         <div> Soutien des associations et ESS</div>
+//         <div> Etudes de droit comparé</div>
+//         <div> Formation</div>
+//       </div>
+     
 
 export default Search;

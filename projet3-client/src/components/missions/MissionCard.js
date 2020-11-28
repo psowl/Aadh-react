@@ -6,16 +6,16 @@ const MissionCard=(props) => {
   // console.log("from mission card test", test)
   const {
     title,
-    sector,
+    //sector,
     expertise_required,
-    description,
-    peopleRequired,
-    location,
-    start_date,
-    end_date,
-    availability_frequency,
+    // description,
+    // peopleRequired,
+    // location,
+    // start_date,
+    // end_date,
+    // availability_frequency,
     status,
-    requiredSkills
+    // requiredSkills
   } = props.mission;
 
   // console.log("title",title)
