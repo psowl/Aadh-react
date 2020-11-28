@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Nav from './components/navbar/Nav';
 import { Switch, Route } from 'react-router-dom';
-import Signup from './components/Signup';
+import Signup from './components/stepForms/signup/Signup';
 import Login from './components/Login';
 import MissionsList from './components/missions/MissionsList';
 import MissionDetails from './components/missions/MissionDetails';
@@ -10,7 +10,7 @@ import AddMission from './components/missions/AddMission';
 import { loggedin } from './components/auth-service';
 import Footer from './components/Footer';
 import Home from './components/home/Home';
-
+import EditMission from './components/missions/EditMission';
 
 class App extends React.Component {
    state = { loggedInUser: null };
@@ -46,7 +46,7 @@ class App extends React.Component {
    render() {
       return (
          <div className='App'>
-            <Nav loggedInUser={this.state.loggedInUser} />
+            <Nav loggedInUser={this.state.loggedInUser} updateUser={this.updateLoggedInUser} />
             {/*On récupère le state user logué pour l'affichage conditionnel de l'enfant */}
             <div className='content'>
                <Switch>
@@ -64,6 +64,7 @@ class App extends React.Component {
                   <Route exact path='/missions' component={MissionsList} />
                   <Route exact path='/missions/new' component={AddMission} />
                   <Route exact path='/missions/:id' component={MissionDetails} />
+                  {/* <Route exact path="/missions/:id/edit" render={()=> <EditMission loggedInUser={this.state.loggedInUser}/>}/> */}
                </Switch>
             </div>
             <Footer />

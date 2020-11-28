@@ -20,8 +20,9 @@ authRoutes.post('/signup', (req, res, next) => {
       availability_frequency,
    } = req.body;
 
-   console.log(req.body);
-   //validations
+   console.log('🌽', req.body);
+
+   // validations;
    if (!email || !password) {
       console.log(email, password);
       res.status(400).json({ message: "Merci d'entrer un email et un mot de passe" });
@@ -40,6 +41,7 @@ authRoutes.post('/signup', (req, res, next) => {
       .then((foundUser) => {
          if (foundUser) {
             //comprends pas pourquoi 2 fois IF
+
             res.status(400).json({ message: 'Email or password is not valid' });
             return;
          }
@@ -63,12 +65,10 @@ authRoutes.post('/signup', (req, res, next) => {
             .save()
             .then(() => {
                req.session.currentUser = aNewUser;
-               res.status(200).json(aNewUser)
-               
+               res.status(200).json(aNewUser);
             })
             .catch((err) => {
                if (err instanceof mongoose.Error.ValidationError) {
-                  console.log(err);
                   res.status(400).json({ message: 'Merci de compléter votre inscription' });
                } else {
                   res.status(400).json({ message: 'User not created' });
@@ -85,7 +85,7 @@ authRoutes.post('/login', (req, res, next) => {
    const { email, password } = req.body;
    User.findOne({ email })
       .then((user) => {
-         console.log("📍in then of login")
+         console.log('📍in then of login');
          if (!user) {
             res.status(400).json({
                message: 'Aucun compte relié à cet email',
@@ -94,12 +94,11 @@ authRoutes.post('/login', (req, res, next) => {
          }
          // compareSync
          if (bcrypt.compareSync(password, user.password) !== true) {
-            return next(new Error('Mot de passe incorrect'))
+            return next(new Error('Mot de passe incorrect'));
          } else {
             req.session.currentUser = user;
             res.json(user);
             // res.send("user logged")
-
          }
       })
       .catch((err) => {
@@ -122,5 +121,22 @@ authRoutes.post('/logout', (req, res, next) => {
    req.session.destroy();
    res.json({ message: "Vous n'êtes plus connecté à votre compte" });
 });
+
+//validation de l'unicité du email -       //pour valider le email dès le step1
+
+// authRoutes.post('/unique', (req, res, next) => {
+//    const { email } = req.body;
+
+//    User.findOne({ email })
+//       .then((foundUser) => {
+//          if (foundUser) {
+//             //comprends pas pourquoi 2 fois IF
+
+//             res.status(400).json({ message: 'Email or password is not valid' });
+//             return;
+//          }
+//       })
+//       .catch(console.log('catch of route /unique'));
+// });
 
 module.exports = authRoutes;
