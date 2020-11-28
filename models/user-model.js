@@ -19,18 +19,18 @@ const userSchema = new Schema(
       },
       userType: {
          type: String,
-         required: [true,'Merci de sélectionner votre profil'],
+         // required: [true, 'Merci de sélectionner votre profil'],
          enum: ['solliciteur', 'bénévole'],
       },
       location: {
          type: String,
-         required: [true, 'La localisation est requise'],
+         // required: [true, 'La localisation est requise'],
       },
       profilePic: String,
       dashboard: { type: Schema.Types.ObjectId, ref: 'Mission' },
       expertise: {
          type: [String],
-         required: [true, 'Merci de sélectionner une expertise'],
+         // required: [true, 'Merci de sélectionner une expertise'],
          enum: [
             "Droits de l'Homme et de l'enfant",
             'Soutien des associations et des ESS',
@@ -40,7 +40,7 @@ const userSchema = new Schema(
       },
       description: {
          type: String,
-         required: [true, 'Merci de vous décrire vous ou votre organisation en quelques mots'],
+         // required: [true, 'Merci de vous décrire vous ou votre organisation en quelques mots'],
       },
       logo: String,
       availability_start_date: {
