@@ -22,7 +22,7 @@ class MissionsList extends React.Component {
       // start_date:'',
       // end_date:'',
       // location:''
-      listOfMissionsToShow: []
+      //listOfMissionsToShow: []
     }
   }
 
@@ -41,11 +41,15 @@ class MissionsList extends React.Component {
   // }
 
   handleInputChange = (event) => {
+    console.log("event.target.value ="+ event.target.value)
     this.setState({
         query: event.target.value
     }
     )
-   this.filterArray()
+   //this.filterArray()
+
+   //getAllMissions from back
+   //this.getAllMissions()
   }
 
   componentDidMount() {
@@ -54,12 +58,12 @@ class MissionsList extends React.Component {
 
 
   getAllMissions = () =>{
-    service.get(`http://localhost:5000/missions`)
+    service.get(`http://localhost:5000/missions?query=`+this.state.query)
       .then(responseFromApi => {
         console.log("all missions✅or❌ froml MissionsList",responseFromApi )
         this.setState({
           listOfMissions: responseFromApi.data,
-          listOfMissionsToShow:responseFromApi.data
+          //listOfMissionsToShow:responseFromApi.data
         })
       })
       .catch(err => console.log('Error while fetching missions', err))
@@ -78,21 +82,24 @@ class MissionsList extends React.Component {
   //   }
   // }
 
-    filterArray = () => {
-    let searchString = this.state.query;
-    let responseFromApi = this.state.listOfMissions;
+  //   filterArray = () => {
+  //   let searchString = this.state.query;
+  //   let responseFromApi = this.state.listOfMissions;
 
-    if(searchString.length > 0){
-        // console.log(responseFromApi.data[mission].title);
-        let filteredmissions = responseFromApi.filter(mission => mission.title.includes(searchString));
-        this.setState({
-          listOfMissionsToShow: filteredmissions
-        })
-    }
-  }
+  //   if(searchString.length > 0){
+  //       // console.log(responseFromApi.data[mission].title);
+  //       let filteredmissions = responseFromApi.filter(mission => mission.title.includes(searchString));
+  //       this.setState({
+  //         listOfMissionsToShow: filteredmissions
+  //       })
+  //   }
+  // }
 
   render(){
     console.log("data from MissionList", this.state.listOfMissions)
+
+    let listOfMissions = this.state.listOfMissions
+    listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.query));
 
     return(
       <div className="missionsList">
@@ -105,7 +112,7 @@ class MissionsList extends React.Component {
       </form>
       <div>
         {
-            this.state.listOfMissionsToShow.map((mission) =>
+            listOfMissions.map((mission) =>
                 <p>{mission.title}</p>
             )
         }

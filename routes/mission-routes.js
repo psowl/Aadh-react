@@ -55,12 +55,15 @@ if (!req.session.currentUser) {
 // Displaying missions & Filtering from backend
 missionRoutes.get('/missions', (req, res, next) => {
 const{search, availability_frequency, expertise_required, location, start_date, end_date } = req.body
-console.log('req.query: ',req.query)
+console.log('req.query: ',req.query.query)
 
 let dbquery = {};
 
-if (search) {
-  dbquery.title = {"$regex": req.query.search, "$options":"i"}
+if (req.query.query!="") {
+  //if (search) {
+  dbquery.title = {"$regex": req.query.query, "$options":"i"}
+  console.log('dbquery ',dbquery)
+  console.log('dbquery.title ',dbquery.title)
 }
 
 if (availability_frequency) {
@@ -86,7 +89,7 @@ if (end_date) {
 
   Mission.find(dbquery).sort({createdAt:-1})
     .then(allTheMissions => {
-      console.log("allTheMissions🎇", allTheMissions)
+      // console.log("allTheMissions🎇", allTheMissions)
       const typeMissions = [{name:"Droits de l'Homme et de l'enfant"}, {name:"Soutien des associations et des ESS"}, {name:"Etudes de droit comparé"}, {name:"Formation"}];
       let selected;
       typeMissions.forEach(type=> {
