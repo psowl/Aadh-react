@@ -15,12 +15,12 @@ const missionSchema = new Schema(
       expertise_required: {
          type: String,
          enum: [
-            "Droits de l'Homme et l'enfant",
-            'Soutien des associations',
+            "Droits de l'Homme et de l'enfant",
+            'Soutien des associations et des ESS',
             'Etudes de droit comparé',
             'Formation',
          ],
-         required: [true, "L'experise' est requise"],
+         required: [true, "L'expertise' est requise"],
       },
       requester_id: { type: Schema.Types.ObjectId, ref: 'User' },
       location: {

@@ -9,133 +9,110 @@ import EditMission from './EditMission';
 import Search from './Search.js';
 import MissionTable from './MissionTable.js';
 
+
+
 class MissionsList extends React.Component {
 
   constructor(props){
     super(props);
     this.state = { 
       listOfMissions: [],
-      //listOfMissionsbackup:[],
       query:'',
-
+      // availability_frequency:'',
+      // start_date:'',
+      // end_date:'',
+      // location:''
+      listOfMissionsToShow: []
     }
   }
 
-  updateQuery = (event) => {
-    this.setState({
-      query: event.target.value
-    })
-  }
-
-  // updateQuery = (newValue) => {
+  // updateQuery = (name, newValue) => {
   //   this.setState(
-  //     {query: newValue}
+  //     {[name]: newValue}
   //     );
   // }
 
-  componentDidMount() {
-    this.getAllMissions();
+  // handleInputChange = (event) => {
+  //   this.setState({
+  //       query: event.target.value
+  //   }
+  //   )
+  //  this.filterArray()
+  // }
+
+  handleInputChange = (event) => {
+    this.setState({
+        query: event.target.value
+    }
+    )
+   this.filterArray()
   }
+
+  componentDidMount() {
+    this.getAllMissions()
+  }
+
 
   getAllMissions = () =>{
     service.get(`http://localhost:5000/missions`)
       .then(responseFromApi => {
-        // console.log("all missions✅or❌ froml MissionsList",responseFromApi )
+        console.log("all missions✅or❌ froml MissionsList",responseFromApi )
         this.setState({
           listOfMissions: responseFromApi.data,
-          //listOfMissionsbackup: responseFromApi.data
+          listOfMissionsToShow:responseFromApi.data
         })
       })
       .catch(err => console.log('Error while fetching missions', err))
   }
   
+  // filterArray = () => {
+  //   let searchString = this.state.query;
+  //   let responseFromApi = this.state.listOfMissions;
+
+  //   if(searchString.length > 0){
+  //       // console.log(responseFromApi.data[mission].title);
+  //       filteredmissions = responseFromApi.filter(mission => mission.title === searchString);
+  //       this.setState({
+  //         responseFromApi
+  //       })
+  //   }
+  // }
+
+    filterArray = () => {
+    let searchString = this.state.query;
+    let responseFromApi = this.state.listOfMissions;
+
+    if(searchString.length > 0){
+        // console.log(responseFromApi.data[mission].title);
+        let filteredmissions = responseFromApi.filter(mission => mission.title.includes(searchString));
+        this.setState({
+          listOfMissionsToShow: filteredmissions
+        })
+    }
+  }
 
   render(){
-    //we filter the list 
     console.log("data from MissionList", this.state.listOfMissions)
-    // const query = this.state.query;
-    
-    // if (query) {
-    //   this.state.listOfMissions = this.state.listOfMissionsbackup.filter(mission => mission.title.includes(query))
-    // } else {
-    //   this.state.listOfMissions = this.state.listOfMissionsbackup
-    // }
-
-    // // if (search) {
-    // //   missions = missions.filter(mission => {
-    // //     const matchTitle = mission.title.includes(search);
-    // //     return matchTitle 
-    // //   })
-    // // }
- //write in one line
-    // if (search) {
-    //   missions = missions.filter(mission => mission.title.includes(search))
-    // }
-
-  // const missions = this.props.missions.filter(mission => {
-  //   // check the mission matches the search input
-  //   const matchTitle = mission.title.includes(this.state.query);
-  //   return matchTitle
-  // })
-
 
     return(
       <div className="missionsList">
-      
-
-      {/* 
-      //search bar & filters
-        <form className="searchform">
-        <p>
-         <input type="text" name="search" placeholder="Saisir le mot clé" value={this.state.search} onChange={ e => this.handleChange(e)}/>
-        </p>
-          <select name="availability_frequency" value={this.state.availability_frequency} onChange={this.handleChange}> 
-          <option value=""> Sélectionner le rythme</option>
-          <option value="Régulier"> Régulier</option>
-          <option value="Ponctuellement"> Ponctuellement</option>
-          <option value="Temps plein"> Temps plein</option>
-          </select> 
-
-          <input type="text" name="sector" value={this.state.sector} onChange={ e => this.handleChange(e)} placeholder="secteur"/>
-
-          <input type="date" name="start_date" value={this.state.start_date} onChange={this.handleChange} placeholder="date de début"/>
-
-          <input type="date" name="end_date" value={this.state.end_date} onChange={this.handleChange} placeholder="date de fin"/>
-          
-          <input type="text" name="location" value={this.state.location} onChange={ e => this.handleChange(e)} placeholder="lieu"/>
-
-          <button>Rechercher</button>
-        </form> */}
-
-
+{/* 
         <Search
-           query={this.state.query} updateQuery={this.updateQuery}/>
-        
+           query={this.state.query}  availability_frequency={this.state.availability_frequency} start_date={this.start_date} end_date={this.end_date} location={this.location} updateQuery={this.updateQuery}/> */}
+
+        <form>
+        <input type="text" name="search" placeholder="saisir le mot clé"  onChange={this.handleInputChange}/>
+      </form>
+      <div>
+        {
+            this.state.listOfMissionsToShow.map((mission) =>
+                <p>{mission.title}</p>
+            )
+        }
+      </div>
+
         <MissionTable missions={this.state.listOfMissions} />
 
-       
-{/* 
-        <div>
-        <h1>Liste des missions</h1>
-        <ul className="cardContainer">
-          { this.state.listOfMissions.map( mission => {
-            return (
-
-              <li key={mission._id} className="missionCard">
-              <p>{mission.status}</p> 
-              <h3>{mission.expertise_required}</h3> 
-              <h2>{mission.title}</h2> 
-                <Link to={`/missions/${mission._id}`}>
-                  <h3>Voir les détails</h3> 
-                </Link> 
-            
-
-              </li>
-              
-            )})
-          }
-          </ul>
-        </div> */}
 
       </div>
     )

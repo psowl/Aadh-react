@@ -12,8 +12,8 @@ function MissionTable(props) {
         <h1>Liste des missions </h1>
         <ul className="cardContainer">
           {props.missions.map((mission) => (
-           <li className="missionCard">
-              <MissionCard key={mission._id} mission={mission} />
+           <li key={mission._id}  className="missionCard">
+              <MissionCard mission={mission} />
               <Link to={`/missions/${mission._id}`}>
                   <h3>Voir les détails</h3> 
             </Link> 
