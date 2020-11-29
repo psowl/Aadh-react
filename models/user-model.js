@@ -37,6 +37,12 @@ const userSchema = new Schema(
             'Etudes de droit comparé',
             'Formation',
          ],
+         default: [
+            "Droits de l'Homme et de l'enfant",
+            'Soutien des associations et des ESS',
+            'Etudes de droit comparé',
+            'Formation',
+         ],
       },
       description: {
          type: String,
@@ -45,14 +51,18 @@ const userSchema = new Schema(
       logo: String,
       availability_start_date: {
          type: Date,
+         default: Date.now,
       },
       availability_end_date: {
          type: Date,
+         default: Date.now,
       },
       availability_frequency: {
          type: String,
          enum: ['Régulier', 'Ponctuellement', 'Temps plein'],
+         default: ['Régulier', 'Ponctuellement', 'Temps plein'],
       },
+      cause: String,
       status: {
          type: String,
          enum: ['Disponible', 'En mission', 'Bientôt disponible'],

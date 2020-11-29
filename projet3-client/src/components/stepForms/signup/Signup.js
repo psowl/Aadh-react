@@ -1,6 +1,6 @@
 import React from 'react';
 import StepOne from './StepOne';
-import StepTwo from './StepTwoBenevole';
+import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import StepFinal from './StepFinal';
 
@@ -19,7 +19,7 @@ class MainSignup extends React.Component {
       availability_start_date: '',
       availability_end_date: '',
       availability_frequency: '',
-      errorMessage: '', //pour aller chercher la recherche dans le back et la ramener dans le front
+      errorMessage: '',
       successMessage: '',
    };
 
@@ -85,7 +85,6 @@ class MainSignup extends React.Component {
    };
 
    render() {
-
       return (
          <div className='mainSinup'>
             {this.state.step === 1 && (
