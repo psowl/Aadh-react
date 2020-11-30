@@ -22,16 +22,15 @@ class MissionsList extends React.Component {
       // start_date:'',
       // end_date:'',
       // location:''
-      //searchmodeIsBackend: false 
     }
   }
 
 
-  updateQuery = (newValue) => {
-    this.setState(
-      {query: newValue}
-      );
-  }
+  // updateQuery = (newValue) => {
+  //   this.setState(
+  //     {query: newValue}
+  //     );
+  // }
 
   handleInputChange = (event) => {
     console.log("event.target.value ="+ event.target.value)
@@ -39,7 +38,7 @@ class MissionsList extends React.Component {
         query: event.target.value
     })
    //getAllMissions if backend filtering
-      this.getAllMissions()
+      //this.getAllMissions()
   }
 
   componentDidMount() {
@@ -48,7 +47,9 @@ class MissionsList extends React.Component {
 
 
   getAllMissions = () =>{
-    service.get(`http://localhost:5000/missions?query=`+this.state.query)
+    //For backend filtering
+    service.get(`http://localhost:5000/missions?query=`+this.state.query) 
+    //service.get(`http://localhost:5000/missions`)
       .then(responseFromApi => {
         console.log("all missions✅or❌ froml MissionsList",responseFromApi )
         this.setState({
@@ -60,11 +61,12 @@ class MissionsList extends React.Component {
   
 
   render(){
+    
     console.log("data from MissionList", this.state.listOfMissions)
 
-    // front filtering
-      // let listOfMissions = this.state.listOfMissions
-      // listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.query));
+    //front filtering
+      let listOfMissions = this.state.listOfMissions
+      listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.query));
 
   
     return(
@@ -90,7 +92,8 @@ class MissionsList extends React.Component {
         }
       </div> */}
 
-        <MissionTable missions={this.state.listOfMissions} />
+{/* for front filtering */}
+        <MissionTable missions={listOfMissions} />
 
 
       </div>
