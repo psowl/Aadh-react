@@ -37,8 +37,8 @@ class MissionsList extends React.Component {
     this.setState({
         query: event.target.value
     })
-   //getAllMissions if backend filtering
-      //this.getAllMissions()
+   //getAllMissions if backend filtering to uncomment below
+      this.getAllMissions()
   }
 
   componentDidMount() {
@@ -47,9 +47,8 @@ class MissionsList extends React.Component {
 
 
   getAllMissions = () =>{
-    //For backend filtering
+
     service.get(`http://localhost:5000/missions?query=`+this.state.query) 
-    //service.get(`http://localhost:5000/missions`)
       .then(responseFromApi => {
         console.log("all missions✅or❌ froml MissionsList",responseFromApi )
         this.setState({
@@ -65,8 +64,8 @@ class MissionsList extends React.Component {
     console.log("data from MissionList", this.state.listOfMissions)
 
     //front filtering
-      let listOfMissions = this.state.listOfMissions
-      listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.query));
+      // let listOfMissions = this.state.listOfMissions
+      // listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.query));
 
   
     return(
@@ -78,23 +77,12 @@ class MissionsList extends React.Component {
         <Search
            query={this.state.query}  onChange={this.handleInputChange} />
 
-{/* list just for testing front filtering */}
-
-        {/* <form>
-        <input type="text" name="search" placeholder="saisir le mot clé"  onChange={this.handleInputChange}/>
-      </form> */}
-      
-      {/* <div>
-        {
-            listOfMissions.map((mission) =>
-                <p>{mission.title}</p>
-            )
-        }
-      </div> */}
 
 {/* for front filtering */}
-        <MissionTable missions={listOfMissions} />
+        {/* <MissionTable missions={listOfMissions} /> */}
 
+{/* for back filtering  */}
+         <MissionTable missions={this.state.listOfMissions} />
 
       </div>
     )
