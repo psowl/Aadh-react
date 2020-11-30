@@ -66,9 +66,9 @@ class Home extends React.Component {
                {/*1 component Nav + 4 components : */}
                <Presentation />
             </div>
-            <div className="partenariat">
+            <div className='partenariat'>
                <h3>PARTENAIRES ASSOCIATIFS</h3>
-               <div className="logos_partenaires">
+               <div className='logos_partenaires'>
                   <img
                      src='https://namati.org/wp-content/uploads/2019/04/logo-ong-avet-768x768.jpg'
                      alt=''
@@ -86,10 +86,7 @@ class Home extends React.Component {
                      src='https://www.ongconseil.com/php/wp-content/uploads/2013/06/logo_MdM_nouveau-300x300.jpg'
                      alt=''
                   />
-                  <img
-                     src='https://lh3.googleusercontent.com/proxy/2CZ5TsCMGzTuFSEeKHEkwHD3DF4KRc0JzxzOuxg0MDnMJQHHz31a3XGQsP6XB_HXxahdOksfjOUwO7qddO1rZlChJcRn4dR81DZPkKOmgcUjXJTv1ebZM3VuYoy5YZCniKgTnz5sem0it9aeaxgBxZG56ZXhY4X3wi7plMU'
-                     alt=''
-                  />
+                  <img src='https://logonews.fr/wp-content/uploads/2018/01/HI-APRES.png' alt='' />
                   <img
                      src='https://www.helloasso.com/assets/img/logos/ong%20la%20pioche-ce7f120103834643b00260366927722c.png?bb=0x0x200x200&sb=200x200'
                      alt=''

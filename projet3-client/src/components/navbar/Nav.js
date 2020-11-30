@@ -62,7 +62,7 @@ class Nav extends React.Component {
                   <div className='user_links'>
                      {/*Affichage conditionnel: on récupère le user logué depuis le parent, si user logué alors "se déconnecter" s'affiche, sinon "s'inscrire" s'affiche */}
                      {this.props.loggedInUser ? (
-                        <Link to={'/'}>Mon espace</Link>
+                        <Link to={`/users/${this.props.loggedInUser._id}`}>Mon espace</Link>
                      ) : (
                         <Link to={'/login'}>Me connecter</Link>
                      )}
