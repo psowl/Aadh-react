@@ -33,7 +33,7 @@ class StepTwoSolliciteur extends React.Component {
    };
 
    goBack = () => {
-      this.props.liftState('step', this.state.step - 1); //afficher le step3 du form
+      this.props.liftState('step', this.state.step - 1); //afficher le step1 du form
    };
 
    render() {

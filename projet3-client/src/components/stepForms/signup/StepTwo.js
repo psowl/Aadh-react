@@ -91,6 +91,7 @@ class StepTwo extends React.Component {
                         name='expertise'
                         value={this.state.expertise}
                         onChange={this.handleChange}
+                        //multiple={true} à faire
                      >
                         <option value=''> Sélectionner votre expertise</option>
                         <option value="Droits de l'Homme et de l'enfant">
@@ -133,6 +134,7 @@ class StepTwo extends React.Component {
                         value={this.state.availability_frequency}
                         placeholder='Rythme'
                         onChange={this.handleChange}
+                        //multiple={true} à faire
                      >
                         <option value=''> Sélectionner le ryhtme</option>
                         <option value='Régulier'> Régulier</option>

@@ -18,13 +18,13 @@ authRoutes.post('/signup', (req, res, next) => {
       availability_start_date,
       availability_end_date,
       availability_frequency,
+      cause,
    } = req.body;
 
    console.log('🌽', req.body);
 
    // validations;
    if (!email || !password) {
-      console.log(email, password);
       res.status(400).json({ message: "Merci d'entrer un email et un mot de passe" });
       return;
    }
@@ -59,8 +59,8 @@ authRoutes.post('/signup', (req, res, next) => {
             availability_start_date: new Date(availability_start_date),
             availability_end_date: new Date(availability_end_date),
             availability_frequency: availability_frequency,
+            cause: cause,
          });
-
          aNewUser
             .save()
             .then(() => {

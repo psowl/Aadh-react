@@ -32,17 +32,13 @@ const userSchema = new Schema(
          type: [String],
          // required: [true, 'Merci de sélectionner une expertise'],
          enum: [
+            '', //pour solliciteur, cette propriété n'a pas à etre complétée
             "Droits de l'Homme et de l'enfant",
             'Soutien des associations et des ESS',
             'Etudes de droit comparé',
             'Formation',
          ],
-         default: [
-            "Droits de l'Homme et de l'enfant",
-            'Soutien des associations et des ESS',
-            'Etudes de droit comparé',
-            'Formation',
-         ],
+         default: '',
       },
       description: {
          type: String,
@@ -51,16 +47,15 @@ const userSchema = new Schema(
       logo: String,
       availability_start_date: {
          type: Date,
-         default: Date.now,
+         default: new Date(null), //pour solliciteur, que le user soit créé meme si les dates sont vides
       },
       availability_end_date: {
          type: Date,
-         default: Date.now,
+         default: new Date(null), //pour solliciteur, que le user soit créé meme si les dates sont vides
       },
       availability_frequency: {
-         type: String,
-         enum: ['Régulier', 'Ponctuellement', 'Temps plein'],
-         default: ['Régulier', 'Ponctuellement', 'Temps plein'],
+         type: [String],
+         enum: ['', 'Régulier', 'Ponctuellement', 'Temps plein'], //'': pour solliciteur, cette propriété n'a pas à etre complétée
       },
       cause: String,
       status: {
