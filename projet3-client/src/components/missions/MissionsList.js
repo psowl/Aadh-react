@@ -22,34 +22,24 @@ class MissionsList extends React.Component {
       // start_date:'',
       // end_date:'',
       // location:''
-      //listOfMissionsToShow: []
+      //searchmodeIsBackend: false 
     }
   }
 
-  // updateQuery = (name, newValue) => {
-  //   this.setState(
-  //     {[name]: newValue}
-  //     );
-  // }
 
-  // handleInputChange = (event) => {
-  //   this.setState({
-  //       query: event.target.value
-  //   }
-  //   )
-  //  this.filterArray()
-  // }
+  updateQuery = (newValue) => {
+    this.setState(
+      {query: newValue}
+      );
+  }
 
   handleInputChange = (event) => {
     console.log("event.target.value ="+ event.target.value)
     this.setState({
         query: event.target.value
-    }
-    )
-   //this.filterArray()
-
-   //getAllMissions from back
-   //this.getAllMissions()
+    })
+   //getAllMissions if backend filtering
+      this.getAllMissions()
   }
 
   componentDidMount() {
@@ -62,61 +52,43 @@ class MissionsList extends React.Component {
       .then(responseFromApi => {
         console.log("all missions✅or❌ froml MissionsList",responseFromApi )
         this.setState({
-          listOfMissions: responseFromApi.data,
-          //listOfMissionsToShow:responseFromApi.data
+          listOfMissions: responseFromApi.data
         })
       })
       .catch(err => console.log('Error while fetching missions', err))
   }
   
-  // filterArray = () => {
-  //   let searchString = this.state.query;
-  //   let responseFromApi = this.state.listOfMissions;
-
-  //   if(searchString.length > 0){
-  //       // console.log(responseFromApi.data[mission].title);
-  //       filteredmissions = responseFromApi.filter(mission => mission.title === searchString);
-  //       this.setState({
-  //         responseFromApi
-  //       })
-  //   }
-  // }
-
-  //   filterArray = () => {
-  //   let searchString = this.state.query;
-  //   let responseFromApi = this.state.listOfMissions;
-
-  //   if(searchString.length > 0){
-  //       // console.log(responseFromApi.data[mission].title);
-  //       let filteredmissions = responseFromApi.filter(mission => mission.title.includes(searchString));
-  //       this.setState({
-  //         listOfMissionsToShow: filteredmissions
-  //       })
-  //   }
-  // }
 
   render(){
     console.log("data from MissionList", this.state.listOfMissions)
 
-    let listOfMissions = this.state.listOfMissions
-    listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.query));
+    // front filtering
+      // let listOfMissions = this.state.listOfMissions
+      // listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.query));
 
+  
     return(
       <div className="missionsList">
-{/* 
-        <Search
-           query={this.state.query}  availability_frequency={this.state.availability_frequency} start_date={this.start_date} end_date={this.end_date} location={this.location} updateQuery={this.updateQuery}/> */}
 
-        <form>
+        {/* <Search
+           query={this.state.query}  availability_frequency={this.state.availability_frequency} start_date={this.start_date} end_date={this.end_date} location={this.location} updateQuery={this.updateQuery} /> */}
+
+        <Search
+           query={this.state.query}  onChange={this.handleInputChange} />
+
+{/* list just for testing front filtering */}
+
+        {/* <form>
         <input type="text" name="search" placeholder="saisir le mot clé"  onChange={this.handleInputChange}/>
-      </form>
-      <div>
+      </form> */}
+      
+      {/* <div>
         {
             listOfMissions.map((mission) =>
                 <p>{mission.title}</p>
             )
         }
-      </div>
+      </div> */}
 
         <MissionTable missions={this.state.listOfMissions} />
 

@@ -15,6 +15,9 @@ import EditMission from './components/missions/EditMission';
 class App extends React.Component {
    state = { loggedInUser: null };
 
+
+
+
    updateLoggedInUser = (newUser) => {
       this.setState({
          loggedInUser: newUser,

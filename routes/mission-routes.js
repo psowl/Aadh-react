@@ -55,9 +55,11 @@ if (!req.session.currentUser) {
 // Displaying missions & Filtering from backend
 missionRoutes.get('/missions', (req, res, next) => {
 const{search, availability_frequency, expertise_required, location, start_date, end_date } = req.body
-console.log('req.query: ',req.query.query)
+console.log('req.query🎒: ',req.query.query)//pourquoi query est un objet?
 
 let dbquery = {};
+
+//ne filtre pas avec une lettre saisie, retard ?
 
 if (req.query.query!="") {
   //if (search) {
@@ -96,7 +98,7 @@ if (end_date) {
         // console.log("all missions types", typeMissions)
         // console.log("req.query.expertise_required",req.query.expertise_required)
         if (req.query.expertise_required === type.name) {
-          type.selected = true;
+          //type.selected = true;
         }
       })
       res.json(allTheMissions);
