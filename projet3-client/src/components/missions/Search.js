@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 function Search (props) {
 
@@ -28,6 +29,16 @@ function Search (props) {
 
           {/* <button>Rechercher</button> */}
         </form>
+
+{/*filtering by clicking on below expertise*/}
+        <div className="expertise_boxes">
+          <ul>
+            <li><Link to='/missions?expertise_required=Droits%20de%20l%27Homme%20et%20de%20l%27enfant'>Droits de l'Homme et de l'enfant</Link></li>
+            <li><Link to='/missions?expertise_required=Soutien%20des%20associations%20et%20des%20ESS'>Soutien des associations et des ESS</Link></li>
+            <li><Link to='/missions?expertise_required=Etudes%20de%20droit%20compar%C3%A9'>Etudes de droit comparé</Link></li>
+            <li><Link to='/missions?expertise_required=Formation'>Formation</Link></li>
+          </ul>
+        </div>
 
     </div>
     )
