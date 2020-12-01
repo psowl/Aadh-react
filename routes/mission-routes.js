@@ -54,21 +54,21 @@ if (!req.session.currentUser) {
 
 // Displaying missions & Filtering from backend
 missionRoutes.get('/missions', (req, res, next) => {
-const{search, availability_frequency, expertise_required, location, start_date, end_date } = req.body
-console.log('req.query🎒: ',req.query.query)//pourquoi query est un objet?
+const{searchfield, availability_frequency, expertise_required, location, start_date, end_date } = req.query
+console.log('req.query🎒: ',req.query)
 
 let dbquery = {};
 
-//ne filtre pas avec une lettre saisie, retard ?
+//ne filtre pas une lettre saisie, affiche les résultats avec 1 lettre de retard ?
 
-if (req.query.query!="") {
-  //if (search) {
-  dbquery.title = {"$regex": req.query.query, "$options":"i"}
+if (searchfield) {
+  dbquery.title = {"$regex": req.query.searchfield, "$options":"i"}
   console.log('dbquery ',dbquery)
   console.log('dbquery.title ',dbquery.title)
 }
 
 if (availability_frequency) {
+  console.log('dbquery.availability_frequency ',dbquery.availability_frequency)
   dbquery.availability_frequency = req.query.availability_frequency
 }
 
@@ -92,13 +92,13 @@ if (end_date) {
   Mission.find(dbquery).sort({createdAt:-1})
     .then(allTheMissions => {
       // console.log("allTheMissions🎇", allTheMissions)
-      const typeMissions = [{name:"Droits de l'Homme et de l'enfant"}, {name:"Soutien des associations et des ESS"}, {name:"Etudes de droit comparé"}, {name:"Formation"}];
+      const allexpertise = [{name:"Droits de l'Homme et de l'enfant"}, {name:"Soutien des associations et des ESS"}, {name:"Etudes de droit comparé"}, {name:"Formation"}];
       let selected;
-      typeMissions.forEach(type=> {
-        // console.log("all missions types", typeMissions)
+      allexpertise.forEach(expertise=> {
+        // console.log("all missions types", expertise)
         // console.log("req.query.expertise_required",req.query.expertise_required)
-        if (req.query.expertise_required === type.name) {
-          //type.selected = true;
+        if (req.query.expertise_required === expertise.name) {
+          //expertise.selected = true;
         }
       })
       res.json(allTheMissions);

@@ -10,21 +10,21 @@ function Search (props) {
         <form className="searchform">
         
         <p>
-         <input type="text" name="search" placeholder="Saisir le mot clé" value={props.query} onChange={(e) => props.onChange(e)}/>
+         <input type="text" name="searchfield" placeholder="Saisir le mot clé" value={props.searchfield} onChange={(e) => props.onChange(e)}/>
         </p>
 
-          {/* <select name="availability_frequency" value={props.availability_frequency} onChange={(e) => props.updateQuery(e.target.value)}> 
+          <select name="availability_frequency" value={props.availability_frequency} onChange={(e) => props.onChange(e)}> 
           <option value=""> Sélectionner le rythme</option>
           <option value="Régulier"> Régulier</option>
           <option value="Ponctuellement"> Ponctuellement</option>
           <option value="Temps plein"> Temps plein</option>
           </select> 
 
-          <input type="date" name="start_date" value={props.start_date} onChange={(e) => props.updateQuery(e.target.value)} placeholder="date de début"/>
+          <input type="date" name="start_date" value={props.start_date} onChange={(e) => props.onChange(e)} placeholder="date de début"/>
 
-          <input type="date" name="end_date" value={props.end_date} onChange={(e) => props.updateQuery(e.target.value)} placeholder="date de fin"/>
+          <input type="date" name="end_date" value={props.end_date} onChange={(e) => props.onChange(e)} placeholder="date de fin"/>
           
-          <input type="text" name="location" value={props.location} onChange={(e) => props.updateQuery(e.target.value)} placeholder="lieu"/> */}
+          <input type="text" name="location" value={props.location} onChange={(e) => props.onChange(e)} placeholder="lieu"/>
 
           {/* <button>Rechercher</button> */}
         </form>
