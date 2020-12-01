@@ -20,7 +20,7 @@ const missionSchema = new Schema(
             'Etudes de droit comparé',
             'Formation',
          ],
-         required: [true, "L'experise' est requise"],
+         required: [true, "L'expertise' est requise"],
       },
       requester_id: { type: Schema.Types.ObjectId, ref: 'User' },
       location: {

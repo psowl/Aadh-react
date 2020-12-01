@@ -16,6 +16,9 @@ import MonEspace from './components/Dashboards/MonEspace';
 class App extends React.Component {
    state = { loggedInUser: null };
 
+
+
+
    updateLoggedInUser = (newUser) => {
       this.setState({
          loggedInUser: newUser,

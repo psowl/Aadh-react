@@ -21,7 +21,7 @@ class Aconfirmer extends React.Component {
                         <p>Liste des candidats</p>
                         <ul>
                            {el.candidates.map((candidate, index) => (
-                              <li key={index}>{candidate}</li>
+                              <li key={index}>{candidate.username}</li>
                            ))}
                         </ul>
                      </li>

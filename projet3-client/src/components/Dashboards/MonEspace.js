@@ -30,7 +30,7 @@ class MonEspace extends React.Component {
          .get(`http://localhost:5000/missions/user/${params.id}`)
          .then((missionsFromDb) => {
             this.setState({ missions: missionsFromDb.data });
-            console.log('mission from MonEspace', this.state.missions);
+            // console.log('mission from MonEspace', this.state.missions);
          })
          .catch((err) => console.log(err));
    };
@@ -54,7 +54,7 @@ class MonEspace extends React.Component {
                   <Aconfirmer dashboard={this.state.dashboard} missions={this.state.missions} />
                )
             )}
-         
+
             {/*montrer le profil  */}
          </div>
       );
