@@ -6,7 +6,7 @@ function Entete(props) {
       <div>
          <div>
             <img src={props.user.logo} alt='logo' />
-            <h2>{props.user.email}</h2>
+            <h2>{props.user.username}</h2>
          </div>
          <FaRegEdit />
       </div>

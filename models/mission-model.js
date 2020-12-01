@@ -15,8 +15,8 @@ const missionSchema = new Schema(
       expertise_required: {
          type: String,
          enum: [
-            "Droits de l'Homme et l'enfant",
-            'Soutien des associations',
+            "Droits de l'Homme et de l'enfant",
+            'Soutien des associations et des ESS',
             'Etudes de droit comparé',
             'Formation',
          ],

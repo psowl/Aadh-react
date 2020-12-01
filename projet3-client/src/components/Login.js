@@ -1,12 +1,14 @@
 import React from 'react';
 import { login } from './auth-service';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
    state = {
       email: '',
       password: '',
-      // showUsername: false
+      errorMessage: '',
+      redirect: false,
+      user: {},
    };
 
    handleFormSubmit = (event) => {
@@ -17,12 +19,15 @@ class Login extends React.Component {
       login(email, password)
          .then((response) => {
             console.log('response login✅or❌', response);
-            this.setState({ email: '', password: '', showUsername: true });
+            this.setState({ user: response });
+            this.setState({ email: '', password: '', redirect: true });
             this.props.updateUser(response);
             // console.log(response.username)
             // this.props.history.push('/missions');  //rediriger vers une page spécifique
          })
-         .catch((error) => console.log(error));
+         .catch((error) =>
+            this.setState({ errorMessage: 'Identifiant ou mot de passe incorrect' })
+         );
    };
 
    handleChange = (event) => {
@@ -33,6 +38,11 @@ class Login extends React.Component {
    };
 
    render() {
+      //redirection vers l'espace perso du user quand il se logue
+      if (this.state.redirect) {
+         return <Redirect to={`/users/${this.state.user._id}`} />;
+      }
+
       return (
          <div>
             <form onSubmit={this.handleFormSubmit}>
@@ -56,8 +66,7 @@ class Login extends React.Component {
                </p>
                <button>Se connecter</button>
             </form>
-
-            {/* {this.state.showUsername && <p>Bonjour vous êtes connectés</p>} */}
+            {this.state.errorMessage && this.state.errorMessage}
          </div>
       );
    }
