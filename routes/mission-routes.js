@@ -117,6 +117,7 @@ missionRoutes.get('/missions/:id', (req, res, next) => {
    }
    Mission.findById(req.params.id)
       .then((response) => {
+         console.log('mission', response);
          res.status(200).json(response);
       })
       .catch((err) => {
@@ -131,10 +132,13 @@ missionRoutes.get('/missions/user/:requesterId', (req, res, next) => {
       return;
    }
    Mission.find({ requester_id: req.params.requesterId })
+      .populate('candidates')
       .then((missionsFromDb) => {
+         // console.log(missionsFromDb);
          res.status(200).json(missionsFromDb);
       })
       .catch((err) => {
+         console.log('err dans la route populate', err);
          res.json(err);
       });
 });

@@ -5,7 +5,7 @@ import Aconfirmer from './Aconfirmer';
 import service from '../auth-service.js';
 
 class MonEspace extends React.Component {
-   state = { user: [], missions: [], dashboard: false }; //single source of truth - à redescendre dans les enfants
+   state = { user: [], missions: [], dashboard: true }; //single source of truth - à redescendre dans les enfants
 
    componentDidMount() {
       this.getUser();
@@ -47,9 +47,14 @@ class MonEspace extends React.Component {
             <Entete user={this.state.user} />
             <Menu user={this.state.user} clickOnDashboard={this.showDashboard} />
             {/*montrer le dashboard  */}
-            {this.state.dashboard && (
-               <Aconfirmer dashboard={this.state.dashboard} missions={this.state.missions} />
+            {!this.state.missions ? (
+               <h2>En chargement </h2>
+            ) : (
+               this.state.dashboard && (
+                  <Aconfirmer dashboard={this.state.dashboard} missions={this.state.missions} />
+               )
             )}
+         
             {/*montrer le profil  */}
          </div>
       );

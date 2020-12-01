@@ -5,6 +5,7 @@ require('dotenv').config({
 const mongoose = require('mongoose');
 
 const User = require('../models/user-model.js');
+const Mission = require('../models/mission-model.js');
 
 const DB_NAME = 'projet-3-react';
 mongoose
@@ -603,5 +604,27 @@ const users = [
 User.create(users)
    .then((users) => {
       console.log(`${users.length} users created.`);
+   })
+   .catch((err) => console.error(err));
+
+const missions = [
+   {
+      candidates: ['5fc5119ec0d475f2ee64c39c', '5fbe368a7dc806ce6ad48218'],
+      title: 'Mission with seeds',
+      sector: 'test',
+      expertise_required: 'Soutien des associations et des ESS',
+      description: 'ee',
+      location: 'compiegne',
+      start_date: '2222-09-02T00:00:00.000Z',
+      end_date: '2222-09-02T00:00:00.000Z',
+      availability_frequency: 'Régulier',
+      requiredSkills: 'Règlement de litiges',
+      requester_id: '5fc5119ec0d475f2ee64c39c',
+   },
+];
+
+Mission.create(missions)
+   .then((missions) => {
+      console.log(`${missions.length} users created.`);
    })
    .catch((err) => console.error(err));

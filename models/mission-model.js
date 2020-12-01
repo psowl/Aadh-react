@@ -48,7 +48,7 @@ const missionSchema = new Schema(
          type: String,
          enum: ['Disponible', 'En attente de confirmation', 'Pourvue', 'Terminée'],
       },
-      candidates: { type: [Schema.Types.ObjectId], ref: 'User' },
+      candidates: [{ type: Schema.Types.ObjectId, ref: 'User' }],
       volonteerSelected: { type: Schema.Types.ObjectId, ref: 'User' },
       requiredSkills: {
          type: String,
@@ -57,7 +57,7 @@ const missionSchema = new Schema(
             'Rédaction des statuts ONG',
             'Contentieux',
             'Rédaction de contrats',
-            'Langue anglaise'
+            'Langue anglaise',
          ],
       },
    },
