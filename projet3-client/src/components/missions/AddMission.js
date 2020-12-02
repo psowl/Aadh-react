@@ -64,6 +64,8 @@ class AddMission extends React.Component {
                status: '',
                requiredSkills: '',
             });
+               //Rediriger à la page missions
+               this.props.history.push('/missions');
          })
          .catch((error) => console.log(error));
    };
