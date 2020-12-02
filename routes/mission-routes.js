@@ -82,7 +82,7 @@ missionRoutes.get('/missions', (req, res, next) => {
    }
 
    if (location) {
-      dbquery.city = { $regex: req.query.location, $options: 'i' };
+      dbquery.location = { $regex: req.query.location, $options: 'i' };
    }
 
    if (start_date) {
@@ -128,6 +128,7 @@ missionRoutes.get('/missions/:id', (req, res, next) => {
       .then((response) => {
          console.log('mission', response);
          res.status(200).json(response);
+         //redirect to the mission details?
       })
       .catch((err) => {
          res.json(err);

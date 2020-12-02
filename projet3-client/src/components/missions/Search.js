@@ -28,16 +28,26 @@ function Search (props) {
           <input type="text" name="location" value={props.location} onChange={(e) => props.onChange(e)} placeholder="lieu"/>
 
           {/* <button>Rechercher</button> */}
+
         </form>
+{/* 
+        <h1 onClick={(event) => this.props.onChange()}>
+        {this.props.expertise}
+       </h1> */}
 
 {/*filtering by clicking on below expertise*/}
         <div className="expertise_boxes">
-          <ul>
-            <li><Link to='/missions?expertise_required=Droits%20de%20l%27Homme%20et%20de%20l%27enfant'>Droits de l'Homme et de l'enfant</Link></li>
-            <li><Link to='/missions?expertise_required=Soutien%20des%20associations%20et%20des%20ESS'>Soutien des associations et des ESS</Link></li>
-            <li><Link to='/missions?expertise_required=Etudes%20de%20droit%20compar%C3%A9'>Etudes de droit comparé</Link></li>
-            <li><Link to='/missions?expertise_required=Formation'>Formation</Link></li>
-          </ul>
+          <form>
+
+          <select name="expertise_required" value={props.expertise_required} onChange={(e) => props.onChange(e)}> 
+          <option value=""> Sélectionner l'expertise</option>
+          <option value="Droits de l'Homme et de l'enfant"> Droits de l'Homme et de l'enfant</option>
+          <option value="Soutien des associations et des ESS"> Soutien des associations et des ESS</option>
+          <option value="Etudes de droit comparé"> Etudes de droit comparé</option>
+          <option value="Formation"> Formation</option>
+          </select> 
+
+          </form>
         </div>
 
     </div>

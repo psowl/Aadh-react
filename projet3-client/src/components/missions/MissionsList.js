@@ -6,6 +6,7 @@ import Search from './Search.js';
 import MissionTable from './MissionTable.js';
 
 
+
 class MissionsList extends React.Component {
 
   constructor(props){
@@ -15,9 +16,11 @@ class MissionsList extends React.Component {
       searchfield:'',
       availability_frequency:'',
       expertise_required:'',
+      //expertise_required:["Droits de l'Homme et de l'enfant","Soutien des associations et des ESS","Etudes de droit comparé","Formation"],
       start_date:'',
       end_date:'',
-      location:''
+      location:'',
+      //Droits de l'Homme et de l'enfant
     }
   }
 
@@ -75,7 +78,7 @@ class MissionsList extends React.Component {
 
     service.get(`http://localhost:5000/missions?searchfield=${encodeURIComponent(this.state.searchfield)}&availability_frequency=${encodeURIComponent(this.state.availability_frequency)}&expertise_required=${encodeURIComponent(this.state.expertise_required)}&location=${encodeURIComponent(this.state.location)}&start_date=${encodeURIComponent(this.state.start_date)}&end_date=${encodeURIComponent(this.state.end_date)}`)
       .then(responseFromApi => {
-        console.log("all missions✅or❌ froml MissionsList",responseFromApi )
+        console.log("all missions✅or❌ from MissionsList",responseFromApi )
         this.setState({
           listOfMissions: responseFromApi.data
         })
@@ -86,20 +89,36 @@ class MissionsList extends React.Component {
 
   render(){
     
-    console.log("data from MissionList", this.state.listOfMissions)
+    //console.log("data from MissionList", this.state.listOfMissions)
 
     //front filtering
       // let listOfMissions = this.state.listOfMissions
       // listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.searchfield));
 
-  
+      console.log("this.state.expertise_required",this.state.expertise_required)
     return(
       <div className="missionsList">
 
         <Search
            searchfield={this.state.searchfield} 
-           availability_frequency={this.state.availability_frequency} expertise_required= {this.state.expertise_required} start_date={this.start_date} end_date={this.end_date} location={this.location}  
+           availability_frequency={this.state.availability_frequency}  start_date={this.start_date} end_date={this.end_date} location={this.location} expertise_required= {this.state.expertise_required}
            onChange={this.handleInputChange} />
+
+{/* testing filtering by clicking expertise */}
+
+        {/* <ul>
+          {this.state.expertise_required.map((expertise, index) => (
+            <li key={index}>
+              <Search onChange={this.handleInputChange(index)} expertise={expertise} />
+            </li>
+          ))}
+        </ul> */}
+
+        {/* 
+        <h1 onClick={(event) => this.props.onChange()}>
+        {this.props.expertise}
+       </h1> */}
+
 
 
 {/* for front filtering */}
