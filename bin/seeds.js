@@ -601,15 +601,15 @@ const users = [
    },
 ];
 
-User.create(users)
-   .then((users) => {
-      console.log(`${users.length} users created.`);
-   })
-   .catch((err) => console.error(err));
+// User.create(users)
+//    .then((users) => {
+//       console.log(`${users.length} users created.`);
+//    })
+//    .catch((err) => console.error(err));
 
 const missions = [
    {
-      candidates: ['5fc5119ec0d475f2ee64c39c', '5fbe368a7dc806ce6ad48218'],
+      candidates: ['5fc7b7d7285adc31c63d4f8c', '5fc7b7d7285adc31c63d4f8b'],
       title: 'Mission with seeds',
       sector: 'test',
       expertise_required: 'Soutien des associations et des ESS',
@@ -619,7 +619,20 @@ const missions = [
       end_date: '2222-09-02T00:00:00.000Z',
       availability_frequency: 'Régulier',
       requiredSkills: 'Règlement de litiges',
-      requester_id: '5fc5119ec0d475f2ee64c39c',
+      requester_id: '5fc7bdb614731732b4c5188d',
+   },
+   {
+      candidates: ['5fc7b7d7285adc31c63d4f8d', '5fc7b7d7285adc31c63d4f8e'],
+      title: 'Mission with seeds',
+      sector: 'test',
+      expertise_required: 'Soutien des associations et des ESS',
+      description: 'ee',
+      location: 'compiegne',
+      start_date: '2222-09-02T00:00:00.000Z',
+      end_date: '2222-09-02T00:00:00.000Z',
+      availability_frequency: 'Régulier',
+      requiredSkills: 'Règlement de litiges',
+      requester_id: '5fc7bdb614731732b4c5188d',
    },
 ];
 
