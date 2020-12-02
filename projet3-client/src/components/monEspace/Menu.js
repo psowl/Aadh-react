@@ -6,7 +6,7 @@ class Menu extends React.Component {
       return (
          <div>
             <ul>
-               <li>Mon profil</li>
+               <li onClick={this.props.clickOnProfile}>Mon profil</li>
                <li onClick={this.props.clickOnDashboard}>Mon dashboard</li>
             </ul>
          </div>

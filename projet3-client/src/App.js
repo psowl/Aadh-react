@@ -11,13 +11,10 @@ import { loggedin } from './components/auth-service';
 import Footer from './components/Footer';
 import Home from './components/home/Home';
 import EditMission from './components/missions/EditMission';
-import MonEspace from './components/Dashboards/MonEspace';
+import MonEspace from './components/monEspace/MonEspace';
 
 class App extends React.Component {
    state = { loggedInUser: null };
-
-
-
 
    updateLoggedInUser = (newUser) => {
       this.setState({

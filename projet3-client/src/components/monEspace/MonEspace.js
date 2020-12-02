@@ -1,7 +1,8 @@
 import React from 'react';
 import Entete from './Entete';
 import Menu from './Menu';
-import Aconfirmer from './Aconfirmer';
+import Dashboard from './Dashboard';
+import Profile from './Profile';
 import service from '../auth-service.js';
 
 class MonEspace extends React.Component {
@@ -30,32 +31,34 @@ class MonEspace extends React.Component {
          .get(`http://localhost:5000/missions/user/${params.id}`)
          .then((missionsFromDb) => {
             this.setState({ missions: missionsFromDb.data });
-            // console.log('mission from MonEspace', this.state.missions);
          })
          .catch((err) => console.log(err));
    };
 
    //changer la page selon ce qui est cliqué sur le menu
    showDashboard = () => {
-      let dashboard = this.state.dashboard;
-      this.setState({ dashboard: !dashboard });
+      this.setState({ dashboard: true });
+   };
+
+   showProfile = () => {
+      this.setState({ dashboard: false });
    };
 
    render() {
       return (
          <div>
             <Entete user={this.state.user} />
-            <Menu user={this.state.user} clickOnDashboard={this.showDashboard} />
-            {/*montrer le dashboard  */}
-            {!this.state.missions ? (
-               <h2>En chargement </h2>
+            <Menu
+               user={this.state.user}
+               clickOnDashboard={this.showDashboard}
+               clickOnProfile={this.showProfile}
+            />
+            {/*montrer le dashboard ou le profil selon le state dashboard */}
+            {this.state.dashboard ? (
+               <Dashboard dashboard={this.state.dashboard} missions={this.state.missions} />
             ) : (
-               this.state.dashboard && (
-                  <Aconfirmer dashboard={this.state.dashboard} missions={this.state.missions} />
-               )
+               <Profile />
             )}
-
-            {/*montrer le profil  */}
          </div>
       );
    }
