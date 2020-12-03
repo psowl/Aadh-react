@@ -162,7 +162,9 @@ missionRoutes.put('/missions/:id', (req, res, next) => {
    Mission.findByIdAndUpdate(req.params.id, req.body)
       .then(() => {
          console.log('📍in update', req.params.id, req.body);
-         res.json({ message: `La mission avec l'id ${req.params.id} été mise à jour` });
+         res.json({
+            message: `La mission avec l'id ${req.params.id} été mise à jour avec ${req.body}`,
+         });
       })
       .catch((err) => {
          res.json(err);

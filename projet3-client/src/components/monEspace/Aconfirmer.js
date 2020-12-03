@@ -9,21 +9,26 @@ class Aconfirmer extends React.Component {
    //récupérer les id des candidates checked dans l'enfant
    confirmCandidate = (candidateId) => {
       console.log('candidat confirmé', candidateId);
-      this.setState({ candidateChosen: candidateId });
+      this.setState({ candidateChosenId: candidateId });
    };
 
-   //updater la propriété "candidates" de la mission avec l'id du candidata séléctionné
+   //updater la propriété "candidates" de la mission avec l'id du candidata séléctionné et le status "Pourvue"
    toConfirm = (event, missionId) => {
-      console.log('id candidat à ajouter à candidates', this.state.candidateChosen);
+      console.log('id candidat à ajouter à candidates', this.state.candidateChosenId);
       event.preventDefault();
       console.log('missionId', missionId);
 
       service
          .put(`http://localhost:5000/missions/${missionId}`, {
-            volonteerSelected: this.state.candidateChosen,
+            volonteerSelected: this.state.candidateChosenId,
+            status: 'Pourvue',
          })
          .then(() => {
-            console.log('✈️ ok');
+            console.log(
+               `mission ${missionId} updated with candidate selected id ${this.state.candidateChosenId} and status "Pourvue"`
+            );
+            //une fois que la mission est éditée, refiltrer la liste des missions dans le parent
+            this.props.filterMissions();
          })
          .catch((err) => console.log('error', err));
    };
@@ -32,23 +37,24 @@ class Aconfirmer extends React.Component {
 
    render() {
       //return en JSX: afficher le contenu seulement si missions sont arrivées dans le component
-      if (this.props.missions.length === 0) {
+      if (this.props.missionsAconfirmer.length === 0) {
+         console.log('missionsAconfirmer', this.props.missionsAconfirmer);
          return <p>En chargement</p>;
       }
 
       return (
-         <div>
-            <h3>Mission(s) à confirmer</h3>
-            <ul>
+         <div className='missions_a_confirmer'>
+            <h2>Mission(s) à confirmer</h2>
+            <ul className='list_missions'>
                {this.props.dashboard &&
-                  this.props.missions.map((el) => (
-                     <li key={el._id}>
-                        <section>
+                  this.props.missionsAconfirmer.map((el) => (
+                     <li key={el._id} className='each_mission'>
+                        <section className='entete'>
                            <h2>{el.title}</h2>
-                           <FaRegEdit />
+                           <FaRegEdit size={30} />
                         </section>
                         <p>Liste des candidats</p>
-                        <ul>
+                        <ul className='list_candidates'>
                            {el.candidates.map((candidate, index) => (
                               <li key={index}>
                                  <OneCandidate
@@ -58,7 +64,12 @@ class Aconfirmer extends React.Component {
                               </li>
                            ))}
                         </ul>
-                        <button onClick={(event) => this.toConfirm(event, el._id)}>
+                        <button
+                           className='all_buttons'
+                           onClick={(event) => {
+                              this.toConfirm(event, el._id);
+                           }}
+                        >
                            {/*attention:ici el n'est pas un paramètre, c'est une variable*/}
                            Confirmer
                         </button>

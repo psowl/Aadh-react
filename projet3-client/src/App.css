@@ -53,6 +53,19 @@ body,
       margin-top: var(--height-nav-max768);
    }
 }
+
+.all_buttons {
+   display: block;
+   margin-right: auto;
+   margin-left: auto;
+   background: var(--blue);
+   color: white;
+   border: none;
+   padding: 10px;
+   border-radius: 5px;
+   text-align: center;
+}
+
 /*
 
 ##    ##    ###    ##     ## 
@@ -508,7 +521,6 @@ footer .footer_notes p {
    text-align: center;
 }
 
-
 /*
    ###    ##       ##       ##     ## ####  ######   ######  ####  #######  ##    ##  ######  
   ## ##   ##       ##       ###   ###  ##  ##    ## ##    ##  ##  ##     ## ###   ## ##    ## 
@@ -526,7 +538,6 @@ footer .footer_notes p {
    padding-inline: 15px;
 }
 
-
 .missionsList .missionCard {
    border: 2px solid grey;
    border-radius: 10px;
@@ -535,10 +546,97 @@ footer .footer_notes p {
    padding: 20px;
    margin: 20px;
    background-color: #f8f8f9;
-   list-style:none;
+   list-style: none;
 }
 
 .missionsList .missionCard a {
    text-decoration: none;
-   color: var(--blue);;
+   color: var(--blue);
+}
+
+/*
+ #######                                    
+ #        ####  #####    ##    ####  ###### 
+ #       #      #    #  #  #  #    # #      
+ #####    ####  #    # #    # #      #####  
+ #            # #####  ###### #      #      
+ #       #    # #      #    # #    # #      
+ #######  ####  #      #    #  ####  ###### 
+                                            
+*/
+
+.mon_espace {
+   color: var(--blue);
+}
+
+.mon_espace .menu_mon_espace ul {
+   width: 15%;
+   margin-left: auto;
+}
+
+.mon_espace .menu_mon_espace ul li {
+   border: 1px solid black;
+   list-style: none;
+   background-color: var(--blue);
+   color: white;
+   margin: 5px;
+}
+
+.mon_espace .missions_a_confirmer {
+   border: 1px solid var(--grey);
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.mon_espace .missions_a_confirmer .list_missions li {
+   list-style: none;
+   width: 25%;
+}
+
+.mon_espace .missions_a_confirmer .list_missions {
+   padding: 0;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.mon_espace .missions_a_confirmer h2 {
+   text-align: center;
+   margin: 3px;
+}
+
+.mon_espace .missions_a_confirmer .entete {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.mon_espace .missions_a_confirmer input,
+.mon_espace .missions_a_confirmer label {
+   display: block;
+}
+
+.mon_espace .missions_a_confirmer .list_candidates {
+   padding: 0px;
+   margin-bottom: 15px;
+}
+
+.mon_espace .missions_a_confirmer .list_candidates li {
+   width: auto;
+}
+
+.mon_espace .missions_a_confirmer .each_candidate {
+   display: flex;
+   align-items: center;
+}
+
+.mon_espace .missions_a_confirmer .each_mission {
+   border: 1px solid var(--grey);
+   margin: 10px;
+   padding: 10px;
+}
+
+.mon_espace .missions_a_confirmer label {
+   width: 40%;
 }

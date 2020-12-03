@@ -17,16 +17,14 @@ class OneCandidate extends React.Component {
 
    render() {
       return (
-         <div>
-            <label>
-               {this.props.candidat.username}
-               <input
-                  type='checkbox'
-                  id={this.props.candidat._id} //pour utiliser l'id du candidat dans la DB
-                  onChange={this.toggleSelection}
-                  defaultChecked={this.state.checked}
-               />
-            </label>
+         <div className='each_candidate'>
+            <label>{this.props.candidat.username}</label>
+            <input
+               type='checkbox'
+               id={this.props.candidat._id} //pour utiliser l'id du candidat dans la DB
+               onChange={this.toggleSelection}
+               defaultChecked={this.state.checked}
+            />
          </div>
       );
    }
