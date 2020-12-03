@@ -55,12 +55,16 @@ missionRoutes.get('/missions', (req, res, next) => {
    const {
       searchfield,
       availability_frequency,
-      expertise_required,
+      expertise_required1,
+      expertise_required2,
+      expertise_required3,
+      expertise_required4,
       location,
       start_date,
       end_date,
    } = req.query;
    console.log('req.query🎒: ', req.query);
+
 
    let dbquery = {};
 
@@ -77,10 +81,18 @@ missionRoutes.get('/missions', (req, res, next) => {
       dbquery.availability_frequency = req.query.availability_frequency;
    }
 
-   if (expertise_required) {
-      dbquery.expertise_required = req.query.expertise_required;
+   if (expertise_required1) {
+      dbquery.expertise_required1 = req.query.expertise_required1;
    }
-
+   if (expertise_required2) {
+    dbquery.expertise_required2 = req.query.expertise_required2;
+   }
+   if (expertise_required3) {
+    dbquery.expertise_required3 = req.query.expertise_required3;
+   }
+   if (expertise_required4) {
+    dbquery.expertise_required4 = req.query.expertise_required4;
+   }
    if (location) {
       dbquery.location = { $regex: req.query.location, $options: 'i' };
    }
@@ -96,21 +108,23 @@ missionRoutes.get('/missions', (req, res, next) => {
    Mission.find(dbquery)
       .sort({ createdAt: -1 })
       .then((allTheMissions) => {
+        console.log("expertise_required1", expertise_required1)
+        console.log('dbquery🎒: ', dbquery);
          // console.log("allTheMissions🎇", allTheMissions)
-         const allexpertise = [
-            { name: "Droits de l'Homme et de l'enfant" },
-            { name: 'Soutien des associations et des ESS' },
-            { name: 'Etudes de droit comparé' },
-            { name: 'Formation' },
-         ];
-         let selected;
-         allexpertise.forEach((expertise) => {
-            // console.log("all missions types", expertise)
-            // console.log("req.query.expertise_required",req.query.expertise_required)
-            if (req.query.expertise_required === expertise.name) {
-               //expertise.selected = true;
-            }
-         });
+        //  const allexpertise = [
+        //     { name: "Droits de l'Homme et de l'enfant" },
+        //     { name: 'Soutien des associations et des ESS' },
+        //     { name: 'Etudes de droit comparé' },
+        //     { name: 'Formation' },
+        //  ];
+        //  let selected;
+        //  allexpertise.forEach((expertise) => {
+        //     // console.log("all missions types", expertise)
+        //     // console.log("req.query.expertise_required",req.query.expertise_required)
+        //     if (req.query.expertise_required === expertise.name) {
+        //        //expertise.selected = true;
+        //     }
+        //  });
          res.json(allTheMissions);
       })
       .catch((err) => {

@@ -30,13 +30,26 @@ function Search (props) {
           {/* <button>Rechercher</button> */}
 
         </form>
-{/* 
-        <h1 onClick={(event) => this.props.onChange()}>
-        {this.props.expertise}
-       </h1> */}
+
+        <h2 onClick={(event) => props.onClick(event, "expertise_required1") }>
+        Droits de l'Homme et de l'enfant
+       </h2>
+
+
+       <h2 onClick={(event) => props.onClick(event, "expertise_required2") }>
+        Soutien des associations et des ESS
+       </h2>
+
+       <h2 onClick={(event) => props.onClick(event, "expertise_required3") }>
+        Etudes de droit comparé
+       </h2>
+       
+       <h2 onClick={(event) => props.onClick(event, "expertise_required4") }>
+        Formation
+       </h2>
 
 {/*filtering by clicking on below expertise*/}
-        <div className="expertise_boxes">
+        {/* <div className="expertise_boxes">
           <form>
 
           <select name="expertise_required" value={props.expertise_required} onChange={(e) => props.onChange(e)}> 
@@ -48,7 +61,7 @@ function Search (props) {
           </select> 
 
           </form>
-        </div>
+        </div> */}
 
     </div>
     )

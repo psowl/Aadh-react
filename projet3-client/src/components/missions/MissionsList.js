@@ -15,21 +15,31 @@ class MissionsList extends React.Component {
       listOfMissions: [],
       searchfield:'',
       availability_frequency:'',
-      expertise_required:'',
-      //expertise_required:["Droits de l'Homme et de l'enfant","Soutien des associations et des ESS","Etudes de droit comparé","Formation"],
+      //expertise_required:'',
+      expertise_required1:false, //"Droits de l'Homme et de l'enfant"
+      expertise_required2:false, //"Soutien des associations et des ESS"
+      expertise_required3:false, //"Etudes de droit comparé"
+      expertise_required4:false, //"Formation"
       start_date:'',
       end_date:'',
       location:'',
-      //Droits de l'Homme et de l'enfant
+      
     }
   }
-
-
+ 
     handleInputChange = (event) => {
-    console.log("event.target.value ="+ event.target.value)
+ 
+    let value;
+    if(event.target.localName === "h2") {
+      value = event.target.innerHTML
+    } else {
+      value = event.target.value
+    }
       //const type = event.target.type
-      let value = event.target.value
+      // let value = event.target.innerHTML
       const name = event.target.name
+
+      console.log("event.target.value ="+ event.target.localName)
 
     this.setState({
       [name]: value
@@ -40,6 +50,20 @@ class MissionsList extends React.Component {
       //getAllMissions if backend filtering to uncomment below
       this.getAllMissions()}
     )
+  }
+
+  onClick =(event, name) => {
+    console.log("name", name)
+
+  this.setState({
+    [name]: !this.state[name] //we want to get in the value of the property of the name
+  }, 
+  ()=>{
+    //getAllMissions if backend filtering to uncomment below
+    this.getAllMissions()
+    console.log("this.state", this.state[name])
+  }
+  )
   }
 
   // handleInputChange = (event) => {
@@ -76,7 +100,9 @@ class MissionsList extends React.Component {
 
   getAllMissions = () =>{
 
-    service.get(`http://localhost:5000/missions?searchfield=${encodeURIComponent(this.state.searchfield)}&availability_frequency=${encodeURIComponent(this.state.availability_frequency)}&expertise_required=${encodeURIComponent(this.state.expertise_required)}&location=${encodeURIComponent(this.state.location)}&start_date=${encodeURIComponent(this.state.start_date)}&end_date=${encodeURIComponent(this.state.end_date)}`)
+    // service.get(`http://localhost:5000/missions?searchfield=${encodeURIComponent(this.state.searchfield)}&availability_frequency=${encodeURIComponent(this.state.availability_frequency)}&expertise_required=${encodeURIComponent(this.state.expertise_required)}&location=${encodeURIComponent(this.state.location)}&start_date=${encodeURIComponent(this.state.start_date)}&end_date=${encodeURIComponent(this.state.end_date)}`)
+
+    service.get(`http://localhost:5000/missions?searchfield=${encodeURIComponent(this.state.searchfield)}&availability_frequency=${encodeURIComponent(this.state.availability_frequency)}&expertise_required1=${(this.state.expertise_required1)}&expertise_required2=${(this.state.expertise_required2)}&expertise_required3=${(this.state.expertise_required3)}&expertise_required4=${(this.state.expertise_required4)}&location=${encodeURIComponent(this.state.location)}&start_date=${encodeURIComponent(this.state.start_date)}&end_date=${encodeURIComponent(this.state.end_date)}`)
       .then(responseFromApi => {
         console.log("all missions✅or❌ from MissionsList",responseFromApi )
         this.setState({
@@ -95,21 +121,23 @@ class MissionsList extends React.Component {
       // let listOfMissions = this.state.listOfMissions
       // listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.searchfield));
 
-      console.log("this.state.expertise_required",this.state.expertise_required)
+
     return(
       <div className="missionsList">
 
         <Search
            searchfield={this.state.searchfield} 
-           availability_frequency={this.state.availability_frequency}  start_date={this.start_date} end_date={this.end_date} location={this.location} expertise_required= {this.state.expertise_required}
-           onChange={this.handleInputChange} />
+           availability_frequency={this.state.availability_frequency}  start_date={this.start_date} end_date={this.end_date} location={this.location} expertise_required1= {this.state.expertise_required1} expertise_required2= {this.state.expertise_required2} expertise_required3= {this.state.expertise_required3} expertise_required4= {this.state.expertise_required4}
+           onClick={this.onClick} 
+           onChange={this.handleInputChange} /> 
 
 {/* testing filtering by clicking expertise */}
+
 
         {/* <ul>
           {this.state.expertise_required.map((expertise, index) => (
             <li key={index}>
-              <Search onChange={this.handleInputChange(index)} expertise={expertise} />
+              <Search onChange={this.handleInputChange} expertise={expertise} />
             </li>
           ))}
         </ul> */}
@@ -118,8 +146,6 @@ class MissionsList extends React.Component {
         <h1 onClick={(event) => this.props.onChange()}>
         {this.props.expertise}
        </h1> */}
-
-
 
 {/* for front filtering */}
         {/* <MissionTable missions={listOfMissions} /> */}
