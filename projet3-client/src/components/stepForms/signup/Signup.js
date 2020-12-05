@@ -5,6 +5,7 @@ import StepTwoSolliciteur from './StepTwoSolliciteur';
 
 import StepThree from './StepThree';
 import StepFinal from './StepFinal';
+import {Link} from 'react-router-dom'
 
 import { signup } from '../../auth-service';
 
@@ -91,48 +92,54 @@ class MainSignup extends React.Component {
 
    render() {
       return (
-         <div className='mainSinup'>
-            {this.state.step === 1 && (
-               <StepOne
-                  liftState={this.stockInputs}
-                  userType={this.state.userType}
-                  password={this.state.password}
-                  email={this.state.email}
-               />
-            )}
-            {this.state.step === 2 &&
-               (this.state.userType === 'bénévole' ? (
-                  <StepTwo
+         <div className='mainSinup logSignbackground'>
+            <div className="logSignScreenPopup">
+                  
+               <Link id="buttonMonEspace" to="/login">MON ESPACE</Link>
+               <Link id="buttonInscrire" to="/signup">S'INSCRIRE</Link>
+
+               {this.state.step === 1 && (
+                  <StepOne
                      liftState={this.stockInputs}
-                     username={this.state.username}
-                     location={this.state.location}
-                     expertise={this.state.expertise}
-                     availability_start_date={this.state.availability_start_date}
-                     availability_end_date={this.state.availability_end_date}
-                     availability_frequency={this.state.availability_frequency}
-                     cause={this.state.cause}
-                     errorMessageSignup={this.state.errorMessage}
+                     userType={this.state.userType}
+                     password={this.state.password}
+                     email={this.state.email}
                   />
-               ) : (
-                  <StepTwoSolliciteur
-                     liftState={this.stockInputs}
-                     username={this.state.username}
-                     location={this.state.location}
-                     expertise={this.state.expertise}
-                     availability_start_date={this.state.availability_start_date}
-                     availability_end_date={this.state.availability_end_date}
-                     availability_frequency={this.state.availability_frequency}
-                     cause={this.state.cause}
-                  />
-               ))}
-            {this.state.step === 3 && (
-               <StepThree liftState={this.stockInputs} description={this.state.description} />
-            )}
-            {this.state.step === 4 && (
-               <StepFinal liftState={this.stockInputs} finishSignup={this.handleFormSubmit} />
-            )}
-            {this.state.errorMessage && <p>{this.state.errorMessage}</p>}
-            {this.state.successMessage && <p>{this.state.successMessage}</p>}
+               )}
+               {this.state.step === 2 &&
+                  (this.state.userType === 'bénévole' ? (
+                     <StepTwo
+                        liftState={this.stockInputs}
+                        username={this.state.username}
+                        location={this.state.location}
+                        expertise={this.state.expertise}
+                        availability_start_date={this.state.availability_start_date}
+                        availability_end_date={this.state.availability_end_date}
+                        availability_frequency={this.state.availability_frequency}
+                        cause={this.state.cause}
+                        errorMessageSignup={this.state.errorMessage}
+                     />
+                  ) : (
+                     <StepTwoSolliciteur
+                        liftState={this.stockInputs}
+                        username={this.state.username}
+                        location={this.state.location}
+                        expertise={this.state.expertise}
+                        availability_start_date={this.state.availability_start_date}
+                        availability_end_date={this.state.availability_end_date}
+                        availability_frequency={this.state.availability_frequency}
+                        cause={this.state.cause}
+                     />
+                  ))}
+               {this.state.step === 3 && (
+                  <StepThree liftState={this.stockInputs} description={this.state.description} />
+               )}
+               {this.state.step === 4 && (
+                  <StepFinal liftState={this.stockInputs} finishSignup={this.handleFormSubmit} signupstates={this.state}/>
+               )}
+               {this.state.errorMessage && <p>{this.state.errorMessage}</p>}
+               {this.state.successMessage && <p>{this.state.successMessage}</p>}
+            </div>
          </div>
       );
    }

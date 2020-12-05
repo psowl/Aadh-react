@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import service from '../auth-service';
 
 class AddMission extends React.Component {
@@ -64,6 +63,8 @@ class AddMission extends React.Component {
                status: '',
                requiredSkills: '',
             });
+               //Rediriger à la page missions
+               this.props.history.push('/missions/:id');
          })
          .catch((error) => console.log(error));
    };
@@ -75,9 +76,10 @@ class AddMission extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className="missionform parentForm">
+            
+            <form className="formStyle" onSubmit={this.handleFormSubmit}>
             <h1>Publier une mission</h1>
-            <form onSubmit={this.handleFormSubmit}>
                <p>
                   <label>Titre/objet de la mission :</label>
                   <input
@@ -89,7 +91,7 @@ class AddMission extends React.Component {
                </p>
 
                <p>
-                  <label>Secteur</label>
+                  <label>Secteur :</label>
                   <input
                      type='text'
                      name='sector'

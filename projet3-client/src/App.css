@@ -12,7 +12,7 @@
    --height-nav-min1024: 110px;
    --height-nav-max768: 60px;
    --grey: rgba(184, 177, 177, 0.29);
-   --background-image: url('https://images.unsplash.com/photo-1605102363399-cedc38b64326?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1M3xxUFlzRHp2Sk9ZY3x8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+   --background-image: url('https://images.unsplash.com/photo-1519285257509-80caa15dc32d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
 }
 
 body,
@@ -727,4 +727,239 @@ footer .footer_notes p {
    width: 40%;
    color: var(--blue);
    text-decoration: none;
+}
+
+/*
+##        #######   ######   #### ##    ##  ######  ####  ######   ##    ## ##     ## ########  
+##       ##     ## ##    ##   ##  ###   ## ##    ##  ##  ##    ##  ###   ## ##     ## ##     ## 
+##       ##     ## ##         ##  ####  ## ##        ##  ##        ####  ## ##     ## ##     ## 
+##       ##     ## ##   ####  ##  ## ## ##  ######   ##  ##   #### ## ## ## ##     ## ########  
+##       ##     ## ##    ##   ##  ##  ####       ##  ##  ##    ##  ##  #### ##     ## ##        
+##       ##     ## ##    ##   ##  ##   ### ##    ##  ##  ##    ##  ##   ### ##     ## ##        
+########  #######   ######   #### ##    ##  ######  ####  ######   ##    ##  #######  ##        
+*/
+
+/* for overlay css see login js
+#cover{
+   position:fixed;
+   top:0;
+   left:0;
+   background:rgba(0,0,0,0.6);
+   z-index:5;
+   width:100%;
+   height:100%;
+   display:none;
+}
+#loginScreen
+{
+   height:380px;
+   width:340px;
+   margin:0 auto;
+   position:relative;
+   z-index:10;
+   display:none;
+
+   border:5px solid #cccccc;
+   border-radius:10px;
+}
+
+#loginScreen:target, #loginScreen:target + #cover{
+   display:block;
+   opacity:2;
+}
+.cancel
+{
+   display:block;
+   position:absolute;
+   top:3px;
+   right:2px;
+   background:rgb(245,245,245);
+   color:black;
+   height:30px;
+   width:35px;
+   font-size:30px;
+   text-decoration:none;
+   text-align:center;
+   font-weight:bold;
+} 
+*/
+
+.logSignbackground {
+   height: 700px;
+   background-color: lightgrey;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.logSignScreenPopup {
+   background-color: var(--blue);
+   text-align: center;
+   padding: 80px;
+   width: 300px;
+}
+
+.logSignScreenPopup #buttonMonEspace,
+#buttonInscrire {
+   margin-left: 20px;
+   margin-right: 20px;
+   color: white;
+   font-weight: bold;
+   text-decoration: none;
+   font-size: 15px;
+   margin-bottom: 10px;
+}
+
+.loginScreen #buttonMonEspace {
+   border-bottom: 1px solid white;
+}
+
+.logSignScreenPopup form input,
+.step_forms input,
+select {
+   width: 220px;
+   height: 20px;
+   font-size: 15px;
+   margin: 20px;
+}
+
+.step_forms textarea {
+   margin-top: 20px;
+   resize: none;
+   height: 100px;
+   width: 220px;
+}
+
+.step_forms select {
+   height: 26px;
+   width: 226px;
+}
+
+.logSignScreenPopup button {
+   color: var(--blue);
+   background-color: white;
+   border: none;
+   font-weight: bold;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 10px;
+}
+
+.mainSinup #buttonInscrire {
+   border-bottom: 1px solid white;
+}
+
+.errorMessageOndark,
+#h1Signup {
+   color: white;
+}
+
+/*
+########  #######  ########  ##     ##  ######  
+##       ##     ## ##     ## ###   ### ##    ## 
+##       ##     ## ##     ## #### #### ##       
+######   ##     ## ########  ## ### ##  ######  
+##       ##     ## ##   ##   ##     ##       ## 
+##       ##     ## ##    ##  ##     ## ##    ## 
+##        #######  ##     ## ##     ##  ######  
+*/
+
+.parentForm {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.formStyle {
+   background-color: #f8f8f9;
+   /* text-align: center; */
+   padding: 20px;
+}
+
+.formStyle h1 {
+   text-align: center;
+}
+
+.formStyle input,
+select {
+   width: 320px;
+   height: 20px;
+   font-size: 15px;
+   margin: 0;
+}
+
+.formStyle label {
+   display: inline-block;
+   width: 200px;
+}
+
+.formStyle textarea {
+   margin-top: 20px;
+   resize: none;
+   height: 60px;
+   width: 320px;
+}
+
+.formStyle select {
+   height: 26px;
+   width: 226px;
+}
+
+.formStyle button {
+   color: white;
+   background-color: grey;
+   border: none;
+   font-weight: bold;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 25px auto;
+   display: block;
+}
+
+.deleteButton {
+   color: white;
+   background-color: black;
+   border: none;
+   font-weight: bold;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 25px auto;
+   display: block;
+}
+/*
+##     ## ##    ## ########    ##     ## ####  ######   ######  ####  #######  ##    ## 
+##     ## ###   ## ##          ###   ###  ##  ##    ## ##    ##  ##  ##     ## ###   ## 
+##     ## ####  ## ##          #### ####  ##  ##       ##        ##  ##     ## ####  ## 
+##     ## ## ## ## ######      ## ### ##  ##   ######   ######   ##  ##     ## ## ## ## 
+##     ## ##  #### ##          ##     ##  ##        ##       ##  ##  ##     ## ##  #### 
+##     ## ##   ### ##          ##     ##  ##  ##    ## ##    ##  ##  ##     ## ##   ### 
+ #######  ##    ## ########    ##     ## ####  ######   ######  ####  #######  ##    ## 
+*/
+
+/* .pageMission {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+} */
+
+.detailsMission {
+   background-color: #f8f8f9;
+   padding: 20px;
+   width: 500px;
+   margin: 25px auto;
+   text-align: left;
+}
+
+.pageMission button,
+.redirect_link {
+   display: block;
+   margin: 25px auto;
+   text-align: center;
 }
