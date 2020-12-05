@@ -1,6 +1,9 @@
 import React from 'react';
 import { login } from './auth-service';
 import { Link, Redirect } from 'react-router-dom';
+import { IoLogIn } from "react-icons/fa";
+import { CgCloseR } from "react-icons/fa";
+
 
 class Login extends React.Component {
    state = {
@@ -44,29 +47,49 @@ class Login extends React.Component {
       }
 
       return (
-         <div>
-            <form onSubmit={this.handleFormSubmit}>
-               <p>
-                  <input
-                     type='text'
-                     name='email'
-                     value={this.state.email}
-                     onChange={this.handleChange}
-                     placeholder='email'
-                  ></input>
-               </p>
-               <p>
-                  <input
-                     type='password'
-                     name='password'
-                     value={this.state.password}
-                     onChange={this.handleChange}
-                     placeholder='mot de passe'
-                  ></input>
-               </p>
-               <button>Se connecter</button>
-            </form>
-            {this.state.errorMessage && this.state.errorMessage}
+         <div className="loginScreen logSignbackground">
+            <div className="logSignScreenPopup">
+            {/* <CgCloseR/> */}
+            <Link id="buttonMonEspace" to="/login">MON ESPACE</Link>
+            <Link id="buttonInscrire" to="/signup">S'INSCRIRE</Link>
+               <form onSubmit={this.handleFormSubmit}>
+                  <div>
+                     <input
+                        type='text'
+                        name='email'
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                        placeholder='email'
+                     ></input>
+                  </div>
+                  <div>
+                     <input
+                        type='password'
+                        name='password'
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        placeholder='mot de passe'
+                     ></input>
+                  </div>
+                  {/* <IoLogIn ></IoLogIn> */}
+                  <button>Se connecter</button>
+               </form>
+               <div className="errorMessageOndark">
+               {this.state.errorMessage && this.state.errorMessage}
+               </div>
+
+   {/* for css overlay */}
+   {/* 
+
+               <div align="center">
+               <a href="#loginScreen" >Click here to Log In</a>
+               </div>
+               <div id="loginScreen">
+               <Link to="/" className="cancel">×</Link>
+               </div>
+               <div id="cover" >
+               </div> */}
+            </div>
          </div>
       );
    }

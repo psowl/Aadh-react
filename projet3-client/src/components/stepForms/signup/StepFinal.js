@@ -16,7 +16,7 @@ class StepFinal extends React.Component {
       return (
          <div>
             <div>
-               <h1>Finaliser mon inscription </h1>
+               <h1 id="h1Signup">Finaliser mon inscription </h1>
             </div>
             <button onClick={this.goBack}>Précédent</button>
             <button onClick={this.toContinue}>Finaliser mon inscription </button>

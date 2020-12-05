@@ -77,9 +77,10 @@ class AddMission extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className="missionform parentForm">
+            
+            <form className="formStyle" onSubmit={this.handleFormSubmit}>
             <h1>Publier une mission</h1>
-            <form onSubmit={this.handleFormSubmit}>
                <p>
                   <label>Titre/objet de la mission :</label>
                   <input
@@ -91,7 +92,7 @@ class AddMission extends React.Component {
                </p>
 
                <p>
-                  <label>Secteur</label>
+                  <label>Secteur :</label>
                   <input
                      type='text'
                      name='sector'

@@ -63,10 +63,10 @@ class EditMission extends React.Component {
 
    render() {
       return (
-         <div>
-            <hr />
-            <h3>Editer la mission</h3>
-            <form onSubmit={this.handleFormSubmit}>
+         <div className= " editMissionForm parentForm">
+            
+            <form className="formStyle" onSubmit={this.handleFormSubmit}>
+            <h1>Editer la mission</h1>
                <p>
                   <label>Secteur</label>
                   <input
