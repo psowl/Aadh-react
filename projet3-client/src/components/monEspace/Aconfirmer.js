@@ -2,6 +2,7 @@ import React from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import OneCandidate from './OneCandidate';
 import service from '../auth-service';
+import { Link } from 'react-router-dom';
 
 class Aconfirmer extends React.Component {
    state = { candidateChosen: '' };
@@ -50,10 +51,14 @@ class Aconfirmer extends React.Component {
                   this.props.missionsAconfirmer.map((el) => (
                      <li key={el._id} className='each_mission'>
                         <section className='entete'>
-                           <h2>{el.title}</h2>
-                           <FaRegEdit size={30} />
+                           <h2>
+                              <Link to={`/missions/${el._id}`}>{el.title}</Link>
+                           </h2>
+                           <Link to={`/missions/edit/${el._id}`}>
+                              <FaRegEdit size={25} />
+                           </Link>
                         </section>
-                        <p>Liste des candidats</p>
+                        <p className='no_link'>Liste des candidats</p>
                         <ul className='list_candidates'>
                            {el.candidates.map((candidate, index) => (
                               <li key={index}>

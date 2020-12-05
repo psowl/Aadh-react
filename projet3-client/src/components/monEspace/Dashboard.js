@@ -15,7 +15,11 @@ class Dashboard extends React.Component {
                missionsAconfirmer={this.props.missionsAconfirmer}
                filterMissions={this.props.getMissions}
             />
-            <SuiviMissions />
+            <SuiviMissions
+               dashboard={this.props.dashboard}
+               otherMissions={this.props.otherMissions}
+               filterMissions={this.props.getMissions}
+            />
          </div>
       );
    }

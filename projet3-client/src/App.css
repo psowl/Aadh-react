@@ -12,6 +12,7 @@
    --height-nav-min1024: 110px;
    --height-nav-max768: 60px;
    --grey: rgba(184, 177, 177, 0.29);
+   --background-image: url('https://images.unsplash.com/photo-1605102363399-cedc38b64326?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1M3xxUFlzRHp2Sk9ZY3x8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
 }
 
 body,
@@ -66,6 +67,9 @@ body,
    text-align: center;
 }
 
+.no_link {
+   color: black;
+}
 /*
 
 ##    ##    ###    ##     ## 
@@ -86,6 +90,7 @@ body,
    padding-top: 10px;
    background: white;
    z-index: 1;
+   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 .nav .user_icon {
@@ -567,6 +572,37 @@ footer .footer_notes p {
 
 .mon_espace {
    color: var(--blue);
+   /* background-image: var(--background-image); */
+   background-size: 100% 25%, 100%;
+   background-repeat: no-repeat;
+   background-image: var(--background-image), linear-gradient(#7a85e4 5%, #9294a5 30%, #e7e8f0);
+   padding: 20px;
+}
+
+.mon_espace img {
+   width: 15%;
+}
+
+.mon_espace_top {
+   display: flex;
+   position: relative;
+}
+
+.mon_espace_top h2 {
+   margin-bottom: 0;
+   margin-top: 0;
+}
+
+.mon_espace_top > div {
+   text-align: center;
+   width: 100%;
+   margin-top: 150px;
+}
+
+.mon_espace_top svg {
+   right: 0;
+   position: absolute;
+   bottom: 0;
 }
 
 .mon_espace .menu_mon_espace ul {
@@ -582,22 +618,27 @@ footer .footer_notes p {
    margin: 5px;
 }
 
-.mon_espace .missions_a_confirmer {
-   border: 1px solid var(--grey);
-   margin-left: auto;
-   margin-right: auto;
+.mon_espace .missions_a_confirmer .list_missions li,
+.mon_espace .otherMissions .list_missions li {
+   list-style: none;
 }
 
 .mon_espace .missions_a_confirmer .list_missions li {
-   list-style: none;
    width: 25%;
 }
 
-.mon_espace .missions_a_confirmer .list_missions {
+.mon_espace .otherMissions .list_missions li {
+   width: 40%;
+}
+
+.mon_espace .missions_a_confirmer .list_missions,
+.mon_espace .otherMissions .list_missions {
    padding: 0;
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .mon_espace .missions_a_confirmer h2 {
@@ -605,11 +646,23 @@ footer .footer_notes p {
    margin: 3px;
 }
 
-.mon_espace .missions_a_confirmer .entete {
+.mon_espace .missions_a_confirmer .entete,
+.mon_espace .otherMissions .entete {
    display: flex;
    flex-direction: row;
    align-items: center;
    justify-content: space-between;
+}
+
+.mon_espace .otherMissions .entete > div p,
+.mon_espace .otherMissions .entete > div h2 {
+   margin: 0;
+}
+
+.mon_espace .missions_a_confirmer .entete a,
+.mon_espace .otherMissions .entete a {
+   color: var(--blue);
+   text-decoration: none;
 }
 
 .mon_espace .missions_a_confirmer input,
@@ -620,23 +673,58 @@ footer .footer_notes p {
 .mon_espace .missions_a_confirmer .list_candidates {
    padding: 0px;
    margin-bottom: 15px;
+   max-height: 200px;
+   overflow: scroll;
+   flex: 1;
 }
 
 .mon_espace .missions_a_confirmer .list_candidates li {
    width: auto;
 }
 
-.mon_espace .missions_a_confirmer .each_candidate {
+.mon_espace .missions_a_confirmer .each_candidate,
+.mon_espace .otherMissions .each_candidate {
    display: flex;
    align-items: center;
 }
 
-.mon_espace .missions_a_confirmer .each_mission {
+.mon_espace .otherMissions .selected_candidate {
+   display: flex;
+   justify-content: space-between;
+}
+
+.mon_espace .otherMissions .each_candidate p,
+.mon_espace .otherMissions .selected_candidate a {
+   margin: 0;
+   margin-left: 10px;
+   color: var(--blue);
+   text-decoration: none;
+}
+
+.mon_espace .otherMissions .status {
+   background: green;
+   display: inline;
+   padding: 5px;
+   border-radius: 5px;
+   color: white;
+}
+
+.mon_espace .missions_a_confirmer .each_mission,
+.mon_espace .otherMissions .each_mission {
    border: 1px solid var(--grey);
    margin: 10px;
    padding: 10px;
+   display: flex;
+   flex-direction: column;
 }
 
 .mon_espace .missions_a_confirmer label {
    width: 40%;
+}
+
+.mon_espace .missions_a_confirmer label a {
+   /*for Link*/
+   width: 40%;
+   color: var(--blue);
+   text-decoration: none;
 }

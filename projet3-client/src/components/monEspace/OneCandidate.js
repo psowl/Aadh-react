@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class OneCandidate extends React.Component {
    state = { checked: false };
@@ -18,7 +19,9 @@ class OneCandidate extends React.Component {
    render() {
       return (
          <div className='each_candidate'>
-            <label>{this.props.candidat.username}</label>
+            <label>
+               <Link to={`/users/${this.props.candidat._id}`}>{this.props.candidat.username}</Link>
+            </label>
             <input
                type='checkbox'
                id={this.props.candidat._id} //pour utiliser l'id du candidat dans la DB

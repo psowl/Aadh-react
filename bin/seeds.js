@@ -599,6 +599,15 @@ const users = [
       logo:
          'http://www.portail-humanitaire.org/wp-content/sabai/File/files/l_af8081ba0f2ca4857c1a7231eb62b5e8.png',
    },
+   {
+      email: 'sarahdamag@gmail.com',
+      username: 'Sarah',
+      password: 'sarahdamag@gmail.com',
+      userType: 'solliciteur',
+      location: 'Paris',
+      description: 'ONG',
+      logo: 'https://www.neobled.com/wp-content/uploads/2017/03/logo_ong_amnesty.jpg',
+   },
 ];
 
 // User.create(users)

@@ -6,7 +6,7 @@ import Profile from './Profile';
 import service from '../auth-service.js';
 
 class MonEspace extends React.Component {
-   state = { user: [], missions: [], dashboard: true, missionsAconfirmer: [] }; //single source of truth - à redescendre dans les enfants
+   state = { user: [], missions: [], dashboard: true, missionsAconfirmer: [], otherMissions: [] }; //single source of truth - à redescendre dans les enfants
 
    componentDidMount() {
       this.getUser();
@@ -33,30 +33,22 @@ class MonEspace extends React.Component {
          .then((missionsFromDb) => {
             this.setState({ missions: missionsFromDb.data }, () => {
                console.log('state.missions from MonEspace', this.state.missions);
-               //pour chaque mission portant le requestID ne retourner que celles qui on un status "en attente de confirmation"
+               //parmis ces missions portant le requestID ne retourner que celles qui on un status "en attente de confirmation"
                let filteredMissions = this.state.missions.filter((el) => {
                   return el.status === 'En attente de confirmation';
                });
                console.log('filteredMissions', filteredMissions);
                this.setState({ missionsAconfirmer: filteredMissions });
-               console.log('this.state.missions', this.state.missions);
+               //parmis ces missions portant le requestID retourner toutes sauf celle qui on un status "en attente de confirmation"
+               let otherMissions = this.state.missions.filter((el) => {
+                  return el.status !== 'En attente de confirmation';
+               });
+               console.log('otherMissions', otherMissions);
+               this.setState({ otherMissions: otherMissions });
             });
          })
          .catch((err) => console.log(err));
    };
-
-   //filtrer les missions sur leurs status pour les envoyer en props de Aconfirmer
-   // filterMissions = () => {
-   //    console.log('this.state.missions', this.state.missions);
-   //    let filteredMissions;
-   //    //pour chaque mission portant le requestID ne retourner que celles qui on un status "en attente de confirmation"
-   //    filteredMissions = this.state.missions.filter((el) => {
-   //       return el.status === 'En attente de confirmation';
-   //    });
-   //    console.log('filteredMissions', filteredMissions);
-   //    this.setState({ missionsAconfirmer: filteredMissions });
-   //    console.log('this.state.missions', this.state.missions);
-   // };
 
    //changer la page selon ce qui est cliqué sur le menu
    showDashboard = () => {
@@ -85,6 +77,7 @@ class MonEspace extends React.Component {
                   missions={this.state.missions}
                   missionsAconfirmer={this.state.missionsAconfirmer}
                   getMissions={this.getMissions}
+                  otherMissions={this.state.otherMissions}
                />
             ) : (
                <Profile />

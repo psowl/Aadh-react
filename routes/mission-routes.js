@@ -142,6 +142,7 @@ missionRoutes.get('/missions/user/:requesterId', (req, res, next) => {
    }
    Mission.find({ requester_id: req.params.requesterId })
       .populate('candidates')
+      .populate('volonteerSelected')
       .then((missionsFromDb) => {
          // console.log(missionsFromDb);
          res.status(200).json(missionsFromDb);
