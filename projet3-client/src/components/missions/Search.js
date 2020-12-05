@@ -1,55 +1,77 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Search (props) {
-
-    return (
+function Search(props) {
+  return (
     <div className="search">
-
-            
       {/* search bar & filters */}
-        <form className="searchform">
-        
+      <form className="searchform">
         <p>
-         <input type="text" name="searchfield" placeholder="Saisir le mot clé" value={props.searchfield} onChange={(e) => props.onChange(e)}/>
+          <input
+            type="text"
+            name="searchfield"
+            placeholder="Saisir le mot clé"
+            value={props.searchfield}
+            onChange={(e) => props.onChange(e)}
+          />
         </p>
 
-          <select name="availability_frequency" value={props.availability_frequency} onChange={(e) => props.onChange(e)}> 
+        <select
+          name="availability_frequency"
+          value={props.availability_frequency}
+          onChange={(e) => props.onChange(e)}
+        >
           <option value=""> Sélectionner le rythme</option>
           <option value="Régulier"> Régulier</option>
           <option value="Ponctuellement"> Ponctuellement</option>
           <option value="Temps plein"> Temps plein</option>
-          </select> 
+        </select>
 
-          <input type="date" name="start_date" value={props.start_date} onChange={(e) => props.onChange(e)} placeholder="date de début"/>
+        <input
+          type="date"
+          name="start_date"
+          value={props.start_date}
+          onChange={(e) => props.onChange(e)}
+          placeholder="date de début"
+        />
 
-          <input type="date" name="end_date" value={props.end_date} onChange={(e) => props.onChange(e)} placeholder="date de fin"/>
-          
-          <input type="text" name="location" value={props.location} onChange={(e) => props.onChange(e)} placeholder="lieu"/>
+        <input
+          type="date"
+          name="end_date"
+          value={props.end_date}
+          onChange={(e) => props.onChange(e)}
+          placeholder="date de fin"
+        />
 
-          {/* <button>Rechercher</button> */}
+        <input
+          type="text"
+          name="location"
+          value={props.location}
+          onChange={(e) => props.onChange(e)}
+          placeholder="lieu"
+        />
 
-        </form>
+        {/* <button>Rechercher</button> */}
+      </form>
 
-        <h2 onClick={(event) => props.onClick(event, "expertise_required1") }>
+      <h2 onClick={(event) => props.onClick(event, "expertise_required1")}>
         Droits de l'Homme et de l'enfant
-       </h2>
+      </h2>
 
-
-       <h2 onClick={(event) => props.onClick(event, "expertise_required2") }>
+      <h2 onClick={(event) => props.onClick(event, "expertise_required2")}>
         Soutien des associations et des ESS
-       </h2>
+      </h2>
 
-       <h2 onClick={(event) => props.onClick(event, "expertise_required3") }>
+      <h2 onClick={(event) => props.onClick(event, "expertise_required3")}>
         Etudes de droit comparé
-       </h2>
-       
-       <h2 onClick={(event) => props.onClick(event, "expertise_required4") }>
-        Formation
-       </h2>
+      </h2>
 
-{/*filtering by clicking on below expertise*/}
-        {/* <div className="expertise_boxes">
+      <h2 onClick={(event) => props.onClick(event, "expertise_required4")}>
+        Formation
+      </h2>
+
+      {/*filtering by clicking on below expertise*/}
+      {/* <div className="expertise_boxes">
           <form>
 
           <select name="expertise_required" value={props.expertise_required} onChange={(e) => props.onChange(e)}> 
@@ -62,10 +84,8 @@ function Search (props) {
 
           </form>
         </div> */}
-
     </div>
-    )
-  
+  );
 }
 
 // Filter by expertise
@@ -76,6 +96,5 @@ function Search (props) {
 //         <div> Etudes de droit comparé</div>
 //         <div> Formation</div>
 //       </div>
-     
 
 export default Search;

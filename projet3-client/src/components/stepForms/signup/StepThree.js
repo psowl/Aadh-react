@@ -37,6 +37,7 @@ class StepThree extends React.Component {
                      name='description'
                      value={this.state.description}
                      onChange={this.handleChange}
+                     placeholder="Décrivez-vous ou votre organisation en quelques mots"
                      autoFocus
                   ></textarea>
                </div>

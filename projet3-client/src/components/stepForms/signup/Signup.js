@@ -135,7 +135,7 @@ class MainSignup extends React.Component {
                   <StepThree liftState={this.stockInputs} description={this.state.description} />
                )}
                {this.state.step === 4 && (
-                  <StepFinal liftState={this.stockInputs} finishSignup={this.handleFormSubmit} />
+                  <StepFinal liftState={this.stockInputs} finishSignup={this.handleFormSubmit} signupstates={this.state}/>
                )}
                {this.state.errorMessage && <p>{this.state.errorMessage}</p>}
                {this.state.successMessage && <p>{this.state.successMessage}</p>}

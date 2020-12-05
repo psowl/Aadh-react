@@ -1,8 +1,8 @@
 import React from 'react';
 import { login } from './auth-service';
 import { Link, Redirect } from 'react-router-dom';
-import { IoLogIn } from "react-icons/fa";
-import { CgCloseR } from "react-icons/fa";
+import { RiLoginBoxFill } from "react-icons/ri";
+import { CgCloseR } from "react-icons/cg";
 
 
 class Login extends React.Component {
@@ -49,7 +49,7 @@ class Login extends React.Component {
       return (
          <div className="loginScreen logSignbackground">
             <div className="logSignScreenPopup">
-            {/* <CgCloseR/> */}
+            <CgCloseR/>
             <Link id="buttonMonEspace" to="/login">MON ESPACE</Link>
             <Link id="buttonInscrire" to="/signup">S'INSCRIRE</Link>
                <form onSubmit={this.handleFormSubmit}>
@@ -71,7 +71,7 @@ class Login extends React.Component {
                         placeholder='mot de passe'
                      ></input>
                   </div>
-                  {/* <IoLogIn ></IoLogIn> */}
+                  <RiLoginBoxFill/>
                   <button>Se connecter</button>
                </form>
                <div className="errorMessageOndark">
