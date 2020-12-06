@@ -38,7 +38,7 @@ class StepTwoSolliciteur extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className="step_forms">
             <div>
                <div>
                   <input
@@ -78,7 +78,7 @@ class StepTwoSolliciteur extends React.Component {
             </div>
             <button onClick={this.goBack}>Précédent</button>
             <button onClick={this.sendToBack}>Continuer</button>{' '}
-            <div>{this.state.errorMessage}</div>
+            <div className="errorMessageOndark">{this.state.errorMessage}</div>
          </div>
       );
    }

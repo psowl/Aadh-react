@@ -47,6 +47,7 @@ const missionSchema = new Schema(
       status: {
          type: String,
          enum: ['Disponible', 'En attente de confirmation', 'Pourvue', 'Terminée'],
+         default: 'Disponible',
       },
       candidates: [{ type: Schema.Types.ObjectId, ref: 'User' }],
       volonteerSelected: { type: Schema.Types.ObjectId, ref: 'User' },

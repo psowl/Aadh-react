@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
          return <p>En chargement</p>;
       }
       return (
-         <div>
+         <div className='dashboard_missions'>
             <Aconfirmer
                dashboard={this.props.dashboard}
                missionsAconfirmer={this.props.missionsAconfirmer}

@@ -11,15 +11,15 @@
    --blue: #16286a;
    --height-nav-min1024: 110px;
    --height-nav-max768: 60px;
-   --grey: rgba(184, 177, 177, 0.29);
-   --background-image: url('https://images.unsplash.com/photo-1605102363399-cedc38b64326?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1M3xxUFlzRHp2Sk9ZY3x8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+   --grey: rgba(184, 177, 177, 0.15);
+   --background-image: url('https://image.freepik.com/vecteurs-libre/equipe-dans-reseaux-sociaux-travaillant-illustration-vectorielle_1010-670.jpg');
 }
 
 body,
 .nav button {
    box-sizing: border-box;
    font-family: 'Palanquin', sans-serif;
-   font-size: 15px;
+   font-size: 12px;
 }
 
 @media (max-width: 768px) {
@@ -37,13 +37,18 @@ body,
    display: flex;
    flex-direction: column;
    min-height: 100vh;
+   font-size: 12px;
+}
+
+h2 {
+   font-size: 18px;
 }
 
 .content {
    margin-top: var(--height-nav-min1024);
    flex: 1;
-   margin-right: 20px;
-   margin-left: 20px;
+   margin-right: 60px;
+   margin-left: 60px;
 }
 
 @media (max-width: 768px) {
@@ -65,10 +70,38 @@ body,
    padding: 10px;
    border-radius: 5px;
    text-align: center;
+   font-size: 12px;
+   cursor: pointer;
+}
+
+.all_buttons:hover {
+   background: white;
+   color: var(--blue);
+   border: 1px solid var(--blue);
 }
 
 .no_link {
    color: black;
+}
+
+.enChargement {
+   font-size: 40px;
+   text-align: center;
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   width: 80%;
+   margin: auto;
+   align-items: center;
+   margin: 10px;
+}
+
+input::placeholder {
+   color: var(--blue);
+}
+   
+input:focus {
+   border: 1px solid var(--blue);
 }
 /*
 
@@ -126,6 +159,10 @@ body,
    padding-left: 5px;
 }
 
+.nav .user_links button {
+   cursor: pointer;
+}
+
 .nav .user_links a {
    color: white;
    text-decoration: none;
@@ -150,6 +187,10 @@ body,
 .nav .nav-menu-desktop li {
    list-style: none;
    color: var(--blue);
+}
+
+.nav .nav-menu-desktop li:hover {
+   border-bottom: 1px solid var(--blue);
 }
 
 .nav .burger_menu {
@@ -572,31 +613,33 @@ footer .footer_notes p {
 
 .mon_espace {
    color: var(--blue);
-   /* background-image: var(--background-image); */
-   background-size: 100% 25%, 100%;
-   background-repeat: no-repeat;
-   background-image: var(--background-image), linear-gradient(#7a85e4 5%, #9294a5 30%, #e7e8f0);
-   padding: 20px;
 }
 
 .mon_espace img {
    width: 15%;
+   box-shadow: 4px 4px #0006;
 }
 
 .mon_espace_top {
    display: flex;
    position: relative;
+   padding: 20px;
+   background-image: var(--background-image);
+   background-size: 66%;
+   background-position: center;
 }
 
 .mon_espace_top h2 {
    margin-bottom: 0;
    margin-top: 0;
+   text-shadow: 1px 1px #f8f8f9;
+   font-size: 25px;
 }
 
 .mon_espace_top > div {
    text-align: center;
    width: 100%;
-   margin-top: 150px;
+   margin-top: 70px;
 }
 
 .mon_espace_top svg {
@@ -607,7 +650,9 @@ footer .footer_notes p {
 
 .mon_espace .menu_mon_espace ul {
    width: 15%;
-   margin-left: auto;
+   position: absolute;
+   right: 70px;
+   top: 380px;
 }
 
 .mon_espace .menu_mon_espace ul li {
@@ -616,6 +661,14 @@ footer .footer_notes p {
    background-color: var(--blue);
    color: white;
    margin: 5px;
+}
+
+.mon_espace .menu_mon_espace ul li:hover {
+   text-decoration: underline;
+}
+
+.dashboard_missions {
+   background: linear-gradient(#070d428a 26%, #999cb56e 67%, white);
 }
 
 .mon_espace .missions_a_confirmer .list_missions li,
@@ -644,6 +697,7 @@ footer .footer_notes p {
 .mon_espace .missions_a_confirmer h2 {
    text-align: center;
    margin: 3px;
+   padding-top: 20px;
 }
 
 .mon_espace .missions_a_confirmer .entete,
@@ -652,6 +706,7 @@ footer .footer_notes p {
    flex-direction: row;
    align-items: center;
    justify-content: space-between;
+   background-size: cover;
 }
 
 .mon_espace .otherMissions .entete > div p,
@@ -663,6 +718,13 @@ footer .footer_notes p {
 .mon_espace .otherMissions .entete a {
    color: var(--blue);
    text-decoration: none;
+   align-self: flex-start;
+   margin-right: 3px;
+}
+
+.mon_espace .missions_a_confirmer .entete a {
+   color: white;
+   align-self: flex-start;
 }
 
 .mon_espace .missions_a_confirmer input,
@@ -688,6 +750,17 @@ footer .footer_notes p {
    align-items: center;
 }
 
+.mon_espace .otherMissions {
+   background: var(--grey);
+   margin: 30px 50px;
+   border-radius: 5px;
+   padding: 10px 0px;
+}
+
+.mon_espace .otherMissions .each_candidate img {
+   border-radius: 30px;
+}
+
 .mon_espace .otherMissions .selected_candidate {
    display: flex;
    justify-content: space-between;
@@ -701,8 +774,7 @@ footer .footer_notes p {
    text-decoration: none;
 }
 
-.mon_espace .otherMissions .status {
-   background: green;
+.mon_espace .otherMissions .selected_candidate .status {
    display: inline;
    padding: 5px;
    border-radius: 5px;
@@ -711,11 +783,18 @@ footer .footer_notes p {
 
 .mon_espace .missions_a_confirmer .each_mission,
 .mon_espace .otherMissions .each_mission {
-   border: 1px solid var(--grey);
+   background: rgb(245 245 245 / 69%);
    margin: 10px;
    padding: 10px;
    display: flex;
    flex-direction: column;
+   box-shadow: 5px 5px 5px 5px rgb(91 87 109 / 41%);
+   border-radius: 5px;
+}
+
+.mon_espace .missions_a_confirmer .each_mission p,
+.mon_espace .otherMissions .each_mission p {
+   color: rgb(91, 87, 109);
 }
 
 .mon_espace .missions_a_confirmer label {
@@ -727,4 +806,292 @@ footer .footer_notes p {
    width: 40%;
    color: var(--blue);
    text-decoration: none;
+}
+
+.mon_espace .dashboardSearch {
+   display: flex;
+   justify-content: space-around;
+}
+
+.mon_espace .dashboardSearch li h2 {
+   font-size: 13px;
+}
+
+.mon_espace .dashboardSearch ul {
+   list-style: none;
+   display: flex;
+}
+
+.mon_espace .dashboardSearch ul li {
+   padding: 0px 15px;
+   text-align: center;
+   border-radius: 5px;
+   margin: 0px 10px;
+}
+
+.mon_espace .dashboardSearch ul li:hover {
+   cursor: pointer;
+}
+
+.mon_espace .dashboardSearch li:nth-child(1) {
+   background: green;
+}
+
+.mon_espace .dashboardSearch li:nth-child(2) {
+   background: white;
+}
+
+.mon_espace .dashboardSearch li:nth-child(3) {
+   background: grey;
+}
+
+.mon_espace .dashboardSearch input {
+   width: 300px;
+   align-self: stretch;
+   margin: 12px 0px;
+   border-radius: 5px;
+   background: white;
+   color: var(--blue);
+}
+
+.mon_espace .dashboardSearch input::placeholder {
+   color: var(--blue);
+}
+
+.mon_espace .dashboardSearch input:focus {
+   border: 1px solid var(--blue);
+}
+/*
+##        #######   ######   #### ##    ##  ######  ####  ######   ##    ## ##     ## ########  
+##       ##     ## ##    ##   ##  ###   ## ##    ##  ##  ##    ##  ###   ## ##     ## ##     ## 
+##       ##     ## ##         ##  ####  ## ##        ##  ##        ####  ## ##     ## ##     ## 
+##       ##     ## ##   ####  ##  ## ## ##  ######   ##  ##   #### ## ## ## ##     ## ########  
+##       ##     ## ##    ##   ##  ##  ####       ##  ##  ##    ##  ##  #### ##     ## ##        
+##       ##     ## ##    ##   ##  ##   ### ##    ##  ##  ##    ##  ##   ### ##     ## ##        
+########  #######   ######   #### ##    ##  ######  ####  ######   ##    ##  #######  ##        
+*/
+
+/* for overlay css see login js
+#cover{
+   position:fixed;
+   top:0;
+   left:0;
+   background:rgba(0,0,0,0.6);
+   z-index:5;
+   width:100%;
+   height:100%;
+   display:none;
+}
+#loginScreen
+{
+   height:380px;
+   width:340px;
+   margin:0 auto;
+   position:relative;
+   z-index:10;
+   display:none;
+
+   border:5px solid #cccccc;
+   border-radius:10px;
+}
+
+#loginScreen:target, #loginScreen:target + #cover{
+   display:block;
+   opacity:2;
+}
+.cancel
+{
+   display:block;
+   position:absolute;
+   top:3px;
+   right:2px;
+   background:rgb(245,245,245);
+   color:black;
+   height:30px;
+   width:35px;
+   font-size:30px;
+   text-decoration:none;
+   text-align:center;
+   font-weight:bold;
+} 
+*/
+
+.logSignbackground {
+   height: 700px;
+   background-color: lightgrey;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.logSignScreenPopup {
+   background-color: var(--blue);
+   text-align: center;
+   padding: 80px;
+   width: 300px;
+}
+
+.logSignScreenPopup #buttonMonEspace,
+#buttonInscrire {
+   margin-left: 20px;
+   margin-right: 20px;
+   color: white;
+   font-weight: bold;
+   text-decoration: none;
+   font-size: 15px;
+   margin-bottom: 10px;
+}
+
+.loginScreen #buttonMonEspace {
+   border-bottom: 1px solid white;
+}
+
+.logSignScreenPopup form input,
+.step_forms input,
+select {
+   width: 220px;
+   height: 20px;
+   font-size: 15px;
+   margin: 20px;
+}
+
+.step_forms textarea {
+   margin-top: 20px;
+   resize: none;
+   height: 100px;
+   width: 220px;
+}
+
+.step_forms select {
+   height: 26px;
+   width: 226px;
+}
+
+.logSignScreenPopup button {
+   color: var(--blue);
+   background-color: white;
+   border: none;
+   font-weight: bold;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 10px;
+}
+
+.mainSinup #buttonInscrire {
+   border-bottom: 1px solid white;
+}
+
+.errorMessageOndark,
+#h1Signup {
+   color: white;
+}
+
+/*
+########  #######  ########  ##     ##  ######  
+##       ##     ## ##     ## ###   ### ##    ## 
+##       ##     ## ##     ## #### #### ##       
+######   ##     ## ########  ## ### ##  ######  
+##       ##     ## ##   ##   ##     ##       ## 
+##       ##     ## ##    ##  ##     ## ##    ## 
+##        #######  ##     ## ##     ##  ######  
+*/
+
+.parentForm {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.formStyle {
+   background-color: #f8f8f9;
+   /* text-align: center; */
+   padding: 20px;
+}
+
+.formStyle h1 {
+   text-align: center;
+}
+
+.formStyle input,
+select {
+   width: 320px;
+   height: 20px;
+   font-size: 15px;
+   margin: 0;
+}
+
+.formStyle label {
+   display: inline-block;
+   width: 200px;
+}
+
+.formStyle textarea {
+   margin-top: 20px;
+   resize: none;
+   height: 60px;
+   width: 320px;
+}
+
+.formStyle select {
+   height: 26px;
+   width: 226px;
+}
+
+.formStyle button {
+   color: white;
+   background-color: grey;
+   border: none;
+   font-weight: bold;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 25px auto;
+   display: block;
+}
+
+.deleteButton {
+   color: white;
+   background-color: black;
+   border: none;
+   font-weight: bold;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 25px auto;
+   display: block;
+}
+/*
+##     ## ##    ## ########    ##     ## ####  ######   ######  ####  #######  ##    ## 
+##     ## ###   ## ##          ###   ###  ##  ##    ## ##    ##  ##  ##     ## ###   ## 
+##     ## ####  ## ##          #### ####  ##  ##       ##        ##  ##     ## ####  ## 
+##     ## ## ## ## ######      ## ### ##  ##   ######   ######   ##  ##     ## ## ## ## 
+##     ## ##  #### ##          ##     ##  ##        ##       ##  ##  ##     ## ##  #### 
+##     ## ##   ### ##          ##     ##  ##  ##    ## ##    ##  ##  ##     ## ##   ### 
+ #######  ##    ## ########    ##     ## ####  ######   ######  ####  #######  ##    ## 
+*/
+
+/* .pageMission {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+} */
+
+.detailsMission {
+   background-color: #f8f8f9;
+   padding: 20px;
+   width: 500px;
+   margin: 25px auto;
+   text-align: left;
+}
+
+.pageMission button,
+.redirect_link {
+   display: block;
+   margin: 25px auto;
+   text-align: center;
 }

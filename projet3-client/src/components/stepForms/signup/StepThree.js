@@ -30,20 +30,21 @@ class StepThree extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className="step_forms">
             <div>
                <div>
                   <textarea
                      name='description'
                      value={this.state.description}
                      onChange={this.handleChange}
+                     placeholder="Décrivez-vous ou votre organisation en quelques mots"
                      autoFocus
                   ></textarea>
                </div>
             </div>
             <button onClick={this.goBack}>Précédent</button>
             <button onClick={this.sendToBack}>Continuer</button>{' '}
-            <div>{this.state.errorMessage}</div>
+            <div className="errorMessageOndark">{this.state.errorMessage}</div>
          </div>
       );
    }

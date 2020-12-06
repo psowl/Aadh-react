@@ -4,6 +4,7 @@ import Menu from './Menu';
 import Dashboard from './Dashboard';
 import Profile from './Profile';
 import service from '../auth-service.js';
+import { VscLoading } from 'react-icons/vsc';
 
 class MonEspace extends React.Component {
    state = { user: [], missions: [], dashboard: true, missionsAconfirmer: [], otherMissions: [] }; //single source of truth - à redescendre dans les enfants
@@ -60,8 +61,22 @@ class MonEspace extends React.Component {
    };
 
    render() {
+      //return en JSX: afficher le contenu seulement si missions sont arrivées dans le component
+      if (this.state.missions.length === 0) {
+         return (
+            <div className='enChargement'>
+               En chargement
+               <VscLoading />
+            </div>
+         );
+      }
+
       return (
          <div className='mon_espace'>
+            <div className='enChargement'>
+               En chargement
+               <VscLoading />
+            </div>{' '}
             <section>
                <Entete className='entete' user={this.state.user} />
                <Menu

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import service from '../auth-service';
 
 class EditMission extends React.Component {
@@ -16,7 +15,7 @@ class EditMission extends React.Component {
       status: this.props.theMission.status,
       requiredSkills: this.props.theMission.requiredSkills,
    };
-
+   
    handleFormSubmit = (event) => {
       const {
          title,
@@ -63,10 +62,10 @@ class EditMission extends React.Component {
 
    render() {
       return (
-         <div>
-            <hr />
-            <h3>Editer la mission</h3>
-            <form onSubmit={this.handleFormSubmit}>
+         <div className= " editMissionForm parentForm">
+            
+            <form className="formStyle" onSubmit={this.handleFormSubmit}>
+            <h1>Editer la mission</h1>
                <p>
                   <label>Secteur</label>
                   <input

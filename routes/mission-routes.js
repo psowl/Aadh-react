@@ -32,30 +32,19 @@ missionRoutes.post('/missions', (req, res, next) => {
          res.json(response);
       })
       .catch((err) => {
-         res.json(err);
+         res.status(500).json(err);
       });
 });
-
-//display all missions
-
-// missionRoutes.get('/missions', (req, res, next) => {
-
-//   Mission.find().sort({createdAt:-1})
-//     .then(allTheMissions => {
-//       console.log("allTheMissions🎇", allTheMissions)
-//       res.json(allTheMissions);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     })
-// });
 
 // Displaying missions & Filtering from backend
 missionRoutes.get('/missions', (req, res, next) => {
    const {
       searchfield,
       availability_frequency,
-      expertise_required,
+      expertise_required1,
+      expertise_required2,
+      expertise_required3,
+      expertise_required4,
       location,
       start_date,
       end_date,
@@ -63,8 +52,6 @@ missionRoutes.get('/missions', (req, res, next) => {
    console.log('req.query🎒: ', req.query);
 
    let dbquery = {};
-
-   //ne filtre pas une lettre saisie, affiche les résultats avec 1 lettre de retard ?
 
    if (searchfield) {
       dbquery.title = { $regex: req.query.searchfield, $options: 'i' };
@@ -77,44 +64,46 @@ missionRoutes.get('/missions', (req, res, next) => {
       dbquery.availability_frequency = req.query.availability_frequency;
    }
 
-   if (expertise_required) {
-      dbquery.expertise_required = req.query.expertise_required;
+   if (expertise_required1 === 'true') {
+      //dbquery.expertise_required1 = true; //  boolean
+      dbquery.expertise_required = "Droits de l'Homme et de l'enfant";
+   }
+
+   if (expertise_required2 === 'true') {
+      dbquery.expertise_required = 'Soutien des associations et des ESS';
+   }
+
+   if (expertise_required3 === 'true') {
+      dbquery.expertise_required = 'Etudes de droit comparé';
+   }
+
+   if (expertise_required4 === 'true') {
+      dbquery.expertise_required = 'Formation';
    }
 
    if (location) {
-      dbquery.city = { $regex: req.query.location, $options: 'i' };
+      dbquery.location = { $regex: req.query.location, $options: 'i' };
    }
-
+   //use lgt
    if (start_date) {
-      dbquery.start_date = req.query.start_date;
+      dbquery.start_date = { $gte: new Date(req.query.start_date) };
    }
 
    if (end_date) {
-      dbquery.end_date = req.query.end_date;
+      dbquery.end_date = { $lte: new Date(req.query.end_date) };
    }
+
+   // console.log('dbquery🔢: ', dbquery);
 
    Mission.find(dbquery)
       .sort({ createdAt: -1 })
       .then((allTheMissions) => {
-         // console.log("allTheMissions🎇", allTheMissions)
-         const allexpertise = [
-            { name: "Droits de l'Homme et de l'enfant" },
-            { name: 'Soutien des associations et des ESS' },
-            { name: 'Etudes de droit comparé' },
-            { name: 'Formation' },
-         ];
-         let selected;
-         allexpertise.forEach((expertise) => {
-            // console.log("all missions types", expertise)
-            // console.log("req.query.expertise_required",req.query.expertise_required)
-            if (req.query.expertise_required === expertise.name) {
-               //expertise.selected = true;
-            }
-         });
          res.json(allTheMissions);
+         // console.log('allTheMissions', allTheMissions);
       })
       .catch((err) => {
-         res.json(err);
+         console.log('error', err);
+         res.status(500).json(err);
       });
 });
 
@@ -128,6 +117,7 @@ missionRoutes.get('/missions/:id', (req, res, next) => {
       .then((response) => {
          console.log('mission', response);
          res.status(200).json(response);
+         //redirect to the mission details?
       })
       .catch((err) => {
          res.json(err);
@@ -181,7 +171,9 @@ missionRoutes.delete('/missions/:id', (req, res, next) => {
 
    Mission.findByIdAndRemove(req.params.id)
       .then(() => {
-         res.json({ message: `La mission avec l'id ${req.params.id} a été supprimée.` });
+         res.json({
+            message: `La mission avec l'id ${req.params.id} a été supprimée.`,
+         });
       })
       .catch((err) => {
          res.json(err);
