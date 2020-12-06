@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function Search(props) {
   return (
-    <div className="search">
+    <div className="searchContainer">
       {/* search bar & filters */}
-      <form className="searchform">
+      <form className="searchform formStyle">
         <p>
           <input
             type="text"
@@ -15,7 +14,7 @@ function Search(props) {
             onChange={(e) => props.onChange(e)}
           />
         </p>
-
+        <h2>Recherche par critère</h2>
         <select
           name="availability_frequency"
           value={props.availability_frequency}
@@ -53,48 +52,26 @@ function Search(props) {
 
         {/* <button>Rechercher</button> */}
       </form>
+      <h2>Filtrer par expertise recherchée</h2>
+      <ul className="filterExpertise">
+        <li onClick={(event) => props.onClick(event, "expertise_required1")}>
+          <h3>Droits de l'Homme et de l'enfant</h3>
+        </li>
 
-      <h2 onClick={(event) => props.onClick(event, "expertise_required1")}>
-        Droits de l'Homme et de l'enfant
-      </h2>
+        <li onClick={(event) => props.onClick(event, "expertise_required2")}>
+          <h3>Soutien des associations et des ESS</h3>
+        </li>
 
-      <h2 onClick={(event) => props.onClick(event, "expertise_required2")}>
-        Soutien des associations et des ESS
-      </h2>
+        <li onClick={(event) => props.onClick(event, "expertise_required3")}>
+          <h3>Etudes de droit comparé</h3>
+        </li>
 
-      <h2 onClick={(event) => props.onClick(event, "expertise_required3")}>
-        Etudes de droit comparé
-      </h2>
-
-      <h2 onClick={(event) => props.onClick(event, "expertise_required4")}>
-        Formation
-      </h2>
-
-      {/*filtering by clicking on below expertise*/}
-      {/* <div className="expertise_boxes">
-          <form>
-
-          <select name="expertise_required" value={props.expertise_required} onChange={(e) => props.onChange(e)}> 
-          <option value=""> Sélectionner l'expertise</option>
-          <option value="Droits de l'Homme et de l'enfant"> Droits de l'Homme et de l'enfant</option>
-          <option value="Soutien des associations et des ESS"> Soutien des associations et des ESS</option>
-          <option value="Etudes de droit comparé"> Etudes de droit comparé</option>
-          <option value="Formation"> Formation</option>
-          </select> 
-
-          </form>
-        </div> */}
+        <li onClick={(event) => props.onClick(event, "expertise_required4")}>
+          <h3>Formation</h3>
+        </li>
+      </ul>
     </div>
   );
 }
-
-// Filter by expertise
-
-//       <div>
-//         <div> Droits de l'Homme et de l'enfant</div>
-//         <div> Soutien des associations et ESS</div>
-//         <div> Etudes de droit comparé</div>
-//         <div> Formation</div>
-//       </div>
 
 export default Search;

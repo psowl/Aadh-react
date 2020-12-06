@@ -6,18 +6,25 @@ function MissionTable(props) {
   // console.log("props.missions from MissionTable", props.missions);
   // console.log("props.missions un seul", props.missions[0]);
 
+  const displaySingular = () => {
+    if (props.missions.length >= 2) {
+      return props.missions.length + " missions disponibles";
+    } else {
+      return props.missions.length + " mission disponible";
+    }
+  };
+
   return (
     <div className="MissionTable">
       <div>
-        <h1>Liste des missions </h1>
-        <h3>{props.missions.length} résultats</h3>
+        <h2>{displaySingular()}</h2>
         <ul className="cardContainer">
           {props.missions.map((mission) => (
-           <li key={mission._id}  className="missionCard">
+            <li key={mission._id} className="missionCard">
               <MissionCard mission={mission} />
               <Link to={`/missions/${mission._id}`}>
-                  <h3>Voir les détails</h3> 
-            </Link> 
+                <h3>Voir les détails</h3>
+              </Link>
             </li>
           ))}
         </ul>
