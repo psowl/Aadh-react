@@ -26,33 +26,43 @@ function Search(props) {
           <option value="Temps plein"> Temps plein</option>
         </select>
 
-        <input
-          type="date"
-          name="start_date"
-          value={props.start_date}
-          onChange={(e) => props.onChange(e)}
-          placeholder="date de début"
-        />
+        <label className="DateInputLabel">
+          Date de début :
+          <input
+            className="DateInput"
+            type="date"
+            name="start_date"
+            value={props.start_date}
+            onChange={(e) => props.onChange(e)}
+            placeholder="date de début"
+          />
+        </label>
+
+        <label className="DateInputLabel">
+          Date de fin :
+          <input
+            className="DateInput"
+            type="date"
+            name="end_date"
+            value={props.end_date}
+            onChange={(e) => props.onChange(e)}
+            placeholder="date de fin"
+          />
+        </label>
 
         <input
-          type="date"
-          name="end_date"
-          value={props.end_date}
-          onChange={(e) => props.onChange(e)}
-          placeholder="date de fin"
-        />
-
-        <input
+          className="locationInput"
           type="text"
           name="location"
           value={props.location}
           onChange={(e) => props.onChange(e)}
-          placeholder="lieu"
+          placeholder="Lieu"
         />
 
         {/* <button>Rechercher</button> */}
       </form>
       <h2>Filtrer par expertise recherchée</h2>
+
       <ul className="filterExpertise">
         <li onClick={(event) => props.onClick(event, "expertise_required1")}>
           <h3>Droits de l'Homme et de l'enfant</h3>
