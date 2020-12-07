@@ -15,7 +15,7 @@ class DashboardSearch extends React.Component {
                   <h2>Terminée</h2>
                </li>
             </ul>
-            <input placeholder='Saisir le mot clé'></input>
+            <input placeholder='Rechercher une mission'></input>
          </div>
       );
    }

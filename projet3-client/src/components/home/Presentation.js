@@ -3,6 +3,7 @@ import Historique from './Historique';
 import Mission from './Mission';
 import Organisation from './Organisation';
 import Financement from './Financement';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Presentation extends React.Component {
    state = { section: 'historique' };
@@ -61,11 +62,44 @@ class Presentation extends React.Component {
                   </li>
                </ul>
             </nav>
+
             <div className='section_content'>
-               <div>{this.state.section === 'historique' && <Historique />}</div>
-               <div>{this.state.section === 'mission' && <Mission />}</div>
-               <div>{this.state.section === 'organisation' && <Organisation />}</div>
-               <div>{this.state.section === 'financement' && <Financement />}</div>
+               <ReactCSSTransitionGroup
+                  transitionName='fade'
+                  transitionAppear={true}
+                  transitionAppearTimeout={500}
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={10}
+               >
+                  {this.state.section === 'historique' && <Historique />}
+               </ReactCSSTransitionGroup>
+               <ReactCSSTransitionGroup
+                  transitionName='fade'
+                  transitionAppear={true}
+                  transitionAppearTimeout={500}
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={10}
+               >
+                  {this.state.section === 'mission' && <Mission />}
+               </ReactCSSTransitionGroup>
+               <ReactCSSTransitionGroup
+                  transitionName='fade'
+                  transitionAppear={true}
+                  transitionAppearTimeout={500}
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={100}
+               >
+                  {this.state.section === 'organisation' && <Organisation />}
+               </ReactCSSTransitionGroup>
+               <ReactCSSTransitionGroup
+                  transitionName='fade'
+                  transitionAppear={true}
+                  transitionAppearTimeout={500}
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={10}
+               >
+                  {this.state.section === 'financement' && <Financement />}
+               </ReactCSSTransitionGroup>
             </div>
          </div>
       );

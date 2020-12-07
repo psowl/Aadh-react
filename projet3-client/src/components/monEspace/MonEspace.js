@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import Profile from './Profile';
 import service from '../auth-service.js';
 import { VscLoading } from 'react-icons/vsc';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class MonEspace extends React.Component {
    state = { user: [], missions: [], dashboard: true, missionsAconfirmer: [], otherMissions: [] }; //single source of truth - à redescendre dans les enfants
@@ -64,19 +65,25 @@ class MonEspace extends React.Component {
       //return en JSX: afficher le contenu seulement si missions sont arrivées dans le component
       if (this.state.missions.length === 0) {
          return (
-            <div className='enChargement'>
-               En chargement
-               <VscLoading />
-            </div>
+            <ReactCSSTransitionGroup
+               transitionName='fade'
+               transitionAppear={true}
+               transitionAppearTimeout={500}
+               transitionEnterTimeout={500}
+               transitionLeaveTimeout={10}
+            >
+               {
+                  <div className='enChargement'>
+                     En chargement
+                     <VscLoading />
+                  </div>
+               }
+            </ReactCSSTransitionGroup>
          );
       }
 
       return (
          <div className='mon_espace'>
-            <div className='enChargement'>
-               En chargement
-               <VscLoading />
-            </div>{' '}
             <section>
                <Entete className='entete' user={this.state.user} />
                <Menu

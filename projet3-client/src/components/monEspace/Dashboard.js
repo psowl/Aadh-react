@@ -4,10 +4,6 @@ import SuiviMissions from './SuiviMissions';
 
 class Dashboard extends React.Component {
    render() {
-      if (this.props.missionsAconfirmer.length === 0) {
-         console.log('this.props.missionsAconfirmer', this.props.missionsAconfirmer);
-         return <p>En chargement</p>;
-      }
       return (
          <div className='dashboard_missions'>
             <Aconfirmer

@@ -60,6 +60,12 @@ h2 {
    }
 }
 
+@media (max-width: 425px) {
+   .content {
+      margin: 0px;
+   }
+}
+
 .all_buttons {
    display: block;
    margin-right: auto;
@@ -99,7 +105,7 @@ h2 {
 input::placeholder {
    color: var(--blue);
 }
-   
+
 input:focus {
    border: 1px solid var(--blue);
 }
@@ -368,6 +374,16 @@ footer .footer_notes p {
 ##     ##  #######  ##     ## ######## 
 */
 
+.home {
+   margin: 20px;
+}
+
+@media (max-width: 425px) {
+   .home {
+      margin-top: var(--height-nav-max768);
+   }
+}
+
 .background_video {
    background: black;
    margin: 10px auto;
@@ -463,6 +479,23 @@ footer .footer_notes p {
    text-align: center;
 }
 
+.home .section_content {
+   background: linear-gradient(45deg, #f8f8f9, transparent);
+   border-radius: 5px;
+}
+
+.home .section_content div {
+   display: flex;
+   margin-top: 20px;
+}
+
+.home .section_content div img {
+   height: 200px;
+   align-self: center;
+   margin-right: 20px;
+   border-radius: 60px;
+}
+
 @media (max-width: 425px) {
    .home_top .actualites {
       display: none;
@@ -481,10 +514,21 @@ footer .footer_notes p {
       border-radius: 5px;
    }
 }
+/*animations*/
 
-.home .section_content {
-   background-color: var(--grey);
-   border-radius: 5px;
+.home .section_content .fade-enter {
+   opacity: 0.01;
+}
+.home .section_content .fade-enter.fade-enter-active {
+   opacity: 1;
+   transition: opacity 1000ms ease-in;
+}
+.home .section_content .fade-leave {
+   opacity: 1;
+}
+.home .section_content .fade-leave.fade-leave-active {
+   opacity: 0.01;
+   transition: opacity 100ms ease-in;
 }
 
 .home .presentation ul {
@@ -512,6 +556,20 @@ footer .footer_notes p {
 
    .home .presentation ul li {
       width: au;
+   }
+
+   .section_content span div {
+      flex-direction: column;
+   }
+
+   .home .section_content div img {
+      margin-right: 0;
+   }
+}
+
+@media (max-width: 768px) {
+   .section_content span {
+      /* flex-direction: column; */
    }
 }
 
@@ -620,6 +678,15 @@ footer .footer_notes p {
    box-shadow: 4px 4px #0006;
 }
 
+@media (max-width: 425px) {
+   .mon_espace {
+      margin-top: var(--height-nav-min768);
+   }
+   .mon_espace img {
+      width: 30%;
+   }
+}
+
 .mon_espace_top {
    display: flex;
    position: relative;
@@ -667,17 +734,36 @@ footer .footer_notes p {
    text-decoration: underline;
 }
 
+@media (max-width: 425px) {
+   .mon_espace .menu_mon_espace ul {
+      position: fixed;
+      bottom: 0px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      right: auto;
+      background: white;
+      top: 89%;
+      margin: 0;
+      padding: 10px 0px;
+   }
+}
+
 .dashboard_missions {
    background: linear-gradient(#070d428a 26%, #999cb56e 67%, white);
 }
 
-.mon_espace .missions_a_confirmer .list_missions li,
-.mon_espace .otherMissions .list_missions li {
+.mon_espace .missions_a_confirmer .list_missions li {
    list-style: none;
+   width: 25%;
 }
 
-.mon_espace .missions_a_confirmer .list_missions li {
-   width: 25%;
+.mon_espace .missions_a_confirmer .list_missions span {
+   display: flex;
+   width: 100%;
+   justify-content: center;
+   flex-wrap: wrap;
 }
 
 .mon_espace .otherMissions .list_missions li {
@@ -750,11 +836,48 @@ footer .footer_notes p {
    align-items: center;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+   .mon_espace .menu_mon_espace ul {
+      top: 250px;
+   }
+}
+
+@media (max-width: 425px) {
+   .mon_espace .missions_a_confirmer .list_missions span {
+      flex-direction: column;
+   }
+   .mon_espace .missions_a_confirmer .list_missions li,
+   .mon_espace .otherMissions .list_missions li {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+   }
+}
+
+/*animations*/
+.mission-enter,
+.mission-enter {
+   opacity: 0;
+}
+.mission-enter .mission-enter-active,
+.mission-appear .mission-appear-active {
+   opacity: 1;
+   transition: opacity 1000ms ease-in;
+}
+.mission-leave {
+   opacity: 1;
+}
+.mission-leave .mission-leave-active {
+   opacity: 0.5;
+   transition: opacity 3000ms ease-in;
+}
+
 .mon_espace .otherMissions {
    background: var(--grey);
    margin: 30px 50px;
    border-radius: 5px;
    padding: 10px 0px;
+   border: 2px ridge #8080807a;
 }
 
 .mon_espace .otherMissions .each_candidate img {
@@ -779,11 +902,12 @@ footer .footer_notes p {
    padding: 5px;
    border-radius: 5px;
    color: white;
+   align-self: center;
 }
 
 .mon_espace .missions_a_confirmer .each_mission,
 .mon_espace .otherMissions .each_mission {
-   background: rgb(245 245 245 / 69%);
+   background: linear-gradient(45deg, #f8f8f9, transparent);
    margin: 10px;
    padding: 10px;
    display: flex;
@@ -798,7 +922,7 @@ footer .footer_notes p {
 }
 
 .mon_espace .missions_a_confirmer label {
-   width: 40%;
+   width: 60%;
 }
 
 .mon_espace .missions_a_confirmer label a {
@@ -860,6 +984,34 @@ footer .footer_notes p {
 
 .mon_espace .dashboardSearch input:focus {
    border: 1px solid var(--blue);
+}
+
+@media (max-width: 425px) {
+   .dashboardSearch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+   .dashboardSearch ul {
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+   .mon_espace .dashboardSearch ul li {
+      padding: 0px 3px;
+      margin: 2px;
+   }
+   .mon_espace .dashboardSearch ul li h2 {
+      margin: 2px 0px;
+   }
+   .mon_espace .dashboardSearch input {
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+   }
+   .mon_espace .otherMissions {
+      margin: 20px 10px;
+   }
 }
 /*
 ##        #######   ######   #### ##    ##  ######  ####  ######   ##    ## ##     ## ########  
