@@ -1,11 +1,18 @@
 import React from "react";
+import { BiSearchAlt } from "react-icons/bi";
 
 function Search(props) {
+  console.log("props.onChange", props.onChange);
+
   return (
     <div className="searchContainer">
       {/* search bar & filters */}
       <form className="searchform formStyle">
         <p>
+          <BiSearchAlt
+            className="searchIcon"
+            // onChange={(e) => props.onChange(e)}
+          />
           <input
             type="text"
             name="searchfield"

@@ -568,6 +568,20 @@ text-align: center
    color: var(--blue);
 }
 
+.searchform {
+   position:relative;
+   
+}
+
+.searchContainer .searchIcon {
+   font-size: 20px;
+   left: 320px;
+   top: 5px;
+   position: relative;
+   /* cursor: pointer; */
+   color: grey;
+}
+
 .searchContainer .DateInput {
    height: 22px;
    top: 10px;
@@ -576,15 +590,18 @@ text-align: center
 
 .searchContainer .DateInputLabel {
    color: grey;
+   
 }
 
 .searchContainer .locationInput {
    top: 10px;
    width: 150px;
    margin: 10px; 
+   
 }
 .searchContainer {
    background-color: #f8f8f9;
+   
 }
 
 .filterExpertise {
@@ -1007,6 +1024,8 @@ select {
    background-color: #f8f8f9;
    /* text-align: center; */
    padding: 20px;
+   border-left: 10px inset var(--grey);
+   border-top: 10px outset var(--blue);
 }
 
 .formStyle h1 {
@@ -1074,19 +1093,66 @@ select {
  #######  ##    ## ########    ##     ## ####  ######   ######  ####  #######  ##    ## 
 */
 
-/* .pageMission {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+.pageMission {
+   /* background-color: var(--blue); */
+}
 
-} */
+.pageMission .locationIcon{
+ font-size: 18px;
+}
 
 .detailsMission {
    background-color: #f8f8f9;
    padding: 20px;
-   width: 500px;
    margin: 25px auto;
-   text-align: left;
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.detailsMissionBlock{
+   background-color: #f8f8f9;
+   padding: 20px;
+   border-left: 10px inset var(--grey);
+   border-top: 10px outset var(--blue);
+   width: 530px;
+}
+
+
+
+.formStyle h1 {
+   text-align: center;
+}
+
+
+
+/* .detailsMission .missionHeader{
+   text-align: center;
+} */
+
+.detailsMission span{
+   color: grey;
+   font-weight: bold;
+}
+
+.pageMission .buttonHelp {
+   color: white;
+   background-color: var(--blue);
+   border: none;
+   font-weight: bold;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 25px auto;
+   display: block;
+}
+
+.editMissionForm form{
+   border-right: 10px inset var(--grey);
+   border-top: 10px outset var(--blue);
+   border-left: none;
 }
 
 .pageMission button,
@@ -1094,4 +1160,9 @@ select {
    display: block;
    margin: 25px auto;
    text-align: center;
+}
+
+.redirect_link {
+   color: white;
+   text-decoration: none;
 }
