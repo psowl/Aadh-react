@@ -11,6 +11,7 @@ import { loggedin } from './components/auth-service';
 import Footer from './components/Footer';
 import Home from './components/home/Home';
 import EditMission from './components/missions/EditMission';
+import MonEspace from './components/monEspace/MonEspace';
 
 class App extends React.Component {
    state = { loggedInUser: null };
@@ -63,7 +64,10 @@ class App extends React.Component {
                   />
                   <Route exact path='/missions' component={MissionsList} />
                   <Route exact path='/missions/new' component={AddMission} />
+                  <Route exact path='/missions/:id/edit' component={EditMission} />
                   <Route exact path='/missions/:id' component={MissionDetails} />
+                  <Route exact path='/users/:id' component={MonEspace} />
+
                   {/* <Route exact path="/missions/:id/edit" render={()=> <EditMission loggedInUser={this.state.loggedInUser}/>}/> */}
                </Switch>
             </div>

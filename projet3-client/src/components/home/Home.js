@@ -22,9 +22,9 @@ class Home extends React.Component {
             <div className='home_top'>
                <section className='actions'>
                   <div>
-                     <h3>L’ALLIANCE DES AVOCATS POUR LES DROITS DE L’HOMME</h3>
+                     <h2>L’ALLIANCE DES AVOCATS POUR LES DROITS DE L’HOMME</h2>
                      <p>
-                        Fondée en 2009, l’aadh coordonne un soutien juridique neutre, gratuit et
+                        Fondée en 2009, l’A.A.D.H coordonne un soutien juridique neutre, gratuit et
                         confidentiel auprès des organismes, associations et institutions dédiés à la
                         protection des droits humains et de l’environnement. plus de 26’000 avocats
                         bénévoles mettent leurs compétences à la disposition de l’aadh sous la forme
@@ -32,7 +32,7 @@ class Home extends React.Component {
                         juridiques rencontrées par ces organisations.
                      </p>
                      <p>
-                        L’a.a.d.h est sollicitée par les organisations dans 4 situations majeures :
+                        L’A.A.D.H est sollicitée par les organisations dans 4 situations majeures :
                      </p>
                   </div>
                   <ul className='actions_list'>
@@ -59,16 +59,16 @@ class Home extends React.Component {
                   </ul>
                </section>
                <section className='actualites'>
-                  <h3>ACTUALITES</h3>
+                  <h2>ACTUALITES</h2>
                </section>
             </div>
             <div className='presentation'>
                {/*1 component Nav + 4 components : */}
                <Presentation />
             </div>
-            <div className="partenariat">
+            <div className='partenariat'>
                <h3>PARTENAIRES ASSOCIATIFS</h3>
-               <div className="logos_partenaires">
+               <div className='logos_partenaires'>
                   <img
                      src='https://namati.org/wp-content/uploads/2019/04/logo-ong-avet-768x768.jpg'
                      alt=''
@@ -86,10 +86,7 @@ class Home extends React.Component {
                      src='https://www.ongconseil.com/php/wp-content/uploads/2013/06/logo_MdM_nouveau-300x300.jpg'
                      alt=''
                   />
-                  <img
-                     src='https://lh3.googleusercontent.com/proxy/2CZ5TsCMGzTuFSEeKHEkwHD3DF4KRc0JzxzOuxg0MDnMJQHHz31a3XGQsP6XB_HXxahdOksfjOUwO7qddO1rZlChJcRn4dR81DZPkKOmgcUjXJTv1ebZM3VuYoy5YZCniKgTnz5sem0it9aeaxgBxZG56ZXhY4X3wi7plMU'
-                     alt=''
-                  />
+                  <img src='https://logonews.fr/wp-content/uploads/2018/01/HI-APRES.png' alt='' />
                   <img
                      src='https://www.helloasso.com/assets/img/logos/ong%20la%20pioche-ce7f120103834643b00260366927722c.png?bb=0x0x200x200&sb=200x200'
                      alt=''

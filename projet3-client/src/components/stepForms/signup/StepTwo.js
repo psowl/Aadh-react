@@ -58,8 +58,8 @@ class StepTwo extends React.Component {
 
    render() {
       return (
-         <div>
-            <div>
+         <div className="step_forms" >
+            <div >
                <div>
                   <input
                      className='u-full-width required'
@@ -91,6 +91,7 @@ class StepTwo extends React.Component {
                         name='expertise'
                         value={this.state.expertise}
                         onChange={this.handleChange}
+                        //multiple={true} à faire
                      >
                         <option value=''> Sélectionner votre expertise</option>
                         <option value="Droits de l'Homme et de l'enfant">
@@ -133,6 +134,7 @@ class StepTwo extends React.Component {
                         value={this.state.availability_frequency}
                         placeholder='Rythme'
                         onChange={this.handleChange}
+                        //multiple={true} à faire
                      >
                         <option value=''> Sélectionner le ryhtme</option>
                         <option value='Régulier'> Régulier</option>
@@ -144,7 +146,7 @@ class StepTwo extends React.Component {
             </div>
             <button onClick={this.goBack}>Précédent</button>
             <button onClick={this.sendToBack}>Continuer</button>{' '}
-            <div>{this.state.errorMessage}</div>
+            <div className="errorMessageOndark">{this.state.errorMessage}</div>
          </div>
       );
    }

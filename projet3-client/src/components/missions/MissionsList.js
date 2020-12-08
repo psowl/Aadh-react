@@ -1,154 +1,149 @@
 // import { response } from 'express';
-import React from 'react';
+import React from "react";
+import queryString from "query-string";
 // import axios from 'axios';
-import { Link } from 'react-router-dom';
-import service from '../auth-service'
-
-import AddMission from './AddMission';
-import EditMission from './EditMission';
-import Search from './Search.js';
-import MissionTable from './MissionTable.js';
+import service from "../auth-service";
+import Search from "./Search.js";
+import MissionTable from "./MissionTable.js";
 
 class MissionsList extends React.Component {
-  state = { 
-    listOfMissions: [],
-    query:'',
+  constructor(props) {
+    super(props);
+    this.state = {
+      listOfMissions: [],
+      searchfield: "",
+      availability_frequency: "",
+      //expertise_required: "",
+      expertise_required1: false, //"Droits de l'Homme et de l'enfant"
+      expertise_required2: false, //"Soutien des associations et des ESS"
+      expertise_required3: false, //"Etudes de droit comparé"
+      expertise_required4: false, //"Formation"
+      start_date: "",
+      end_date: "",
+      location: "",
+    };
   }
 
-  updateQuery = (newValue) => {
-    this.setState({query: newValue});
-  }
+  handleInputChange = (event) => {
+    let value = event.target.value;
+    const name = event.target.name;
 
-  //   search:"",
-  //   availability_frequency:"",
-  //   sector:"",
-  //   expertise_required:"",
-  //   location:""
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => {
+        console.log("this.state", this.state);
+        //getAllMissions if backend filtering to uncomment below
+        this.getAllMissions();
+      }
+    );
+  };
 
-  // handleFormSubmit = (event) => {
-  //   event.preventDefault();
-  //   const {
-  //     search,
-  //     availability_frequency,
-  //     sector,
-  //     expertise_required,
-  //     location
-  //   }=this.state;
+  onClick = (event, name) => {
+    console.log("name", name);
 
-  //   service.post("/missions", { 
-  //     search,
-  //     availability_frequency,
-  //     sector,
-  //     expertise_required,
-  //     location
-  //   })
-  //     .then( () => {
+    this.setState(
+      {
+        [name]: !this.state[name], //we want to get in the value of the property of the name
+      },
+      () => {
+        //getAllMissions if backend filtering to uncomment below
+        this.getAllMissions();
+        console.log("this.state", this.state[name]);
+      }
+    );
+  };
 
-  //       this.setState({
-  //         title: "",
-  //         sector: "",
-  //         expertise_required: "",
-  //         description: "",
-  //         peopleRequired: "",
-  //         location:"", 
-  //         start_date: "",
-  //         end_date: "",
-  //         availability_frequency: "",
-  //         status: "",
-  //         requiredSkills: ""
-  //       });
-
-        
-  //     })
-  //     .catch( error => console.log(error) )
-  // }
-
-  // handleChange = (event) => {  
-  //   const {name, value} = event.target;
-  //   this.setState({[name]: value});
+  //instead of recalling getAllMissions in the setState above, check both states then display:
+  // componentDidUpdate(prevProps, prevState){
+  //   console.log('just re-rendered', prevProps, prevState)
+  //   if (this.state.searchfield != prevState.searchfield) {
+  //     console.log('searchfield changed', prevState.searchfield, this.state.searchfield)
+  //     this.getAllMissions()
+  //   }
   // }
 
   componentDidMount() {
     this.getAllMissions();
   }
 
-  getAllMissions = () =>{
-    service.get(`http://localhost:5000/missions`)
-      .then(responseFromApi => {
-        console.log("all missions✅or❌",responseFromApi )
+  getAllMissions = () => {
+    console.log("this.state.end_date", "/" + this.state.start_date + "/");
+    console.log(
+      "encodURI",
+      "/" + encodeURIComponent(this.state.start_date) + "/"
+    );
+
+    //utilisation du package queryString
+    let qs = queryString.stringify({
+      searchfield: this.state.searchfield,
+      availability_frequency: this.state.availability_frequency,
+      location: this.state.location,
+      start_date: this.state.start_date,
+      end_date: this.state.end_date,
+      expertise_required1: this.state.expertise_required1,
+      expertise_required2: this.state.expertise_required2,
+      expertise_required3: this.state.expertise_required3,
+      expertise_required4: this.state.expertise_required4,
+    });
+
+    const url = `http://localhost:5000/missions?${qs}`;
+    console.log("URL", url);
+    service
+      .get(url)
+      .then((responseFromApi) => {
+        console.log("all missions✅or❌ from MissionsList", responseFromApi);
         this.setState({
-          listOfMissions: responseFromApi.data
-        })
+          listOfMissions: responseFromApi.data,
+        });
       })
-      .catch(err => console.log('Error while fetching missions', err))
-  }
+      .catch((err) => console.log("Error while fetching missions", err));
+  };
 
-  render(){
-    console.log("data from MissionList", this.state.listOfMissions)
-    // const missions = this.props.missions.filter(mission => {
-    //   console.log("missions", missions)
-    //   const matchTitle = mission.title.includes(this.state.query);
-    //   return matchTitle 
-    // })
-    
-    return(
+  
+  render() {
+    //console.log("data from MissionList", this.state.listOfMissions)
+
+    //front filtering
+    // let listOfMissions = this.state.listOfMissions
+    // listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.searchfield));
+
+    return (
       <div className="missionsList">
-      
+        <Search
+          searchfield={this.state.searchfield}
+          availability_frequency={this.state.availability_frequency}
+          start_date={this.state.start_date}
+          end_date={this.state.end_date}
+          location={this.state.location}
+          expertise_required1={this.state.expertise_required1}
+          onChange={this.handleInputChange}
+          onClick={this.onClick}
+        />
 
-      {/* 
-      //search bar & filters
-        <form className="searchform">
-        <p>
-         <input type="text" name="search" placeholder="Saisir le mot clé" value={this.state.search} onChange={ e => this.handleChange(e)}/>
-        </p>
-          <select name="availability_frequency" value={this.state.availability_frequency} onChange={this.handleChange}> 
-          <option value=""> Sélectionner le rythme</option>
-          <option value="Régulier"> Régulier</option>
-          <option value="Ponctuellement"> Ponctuellement</option>
-          <option value="Temps plein"> Temps plein</option>
-          </select> 
+        {/* testing filtering by clicking expertise */}
 
-          <input type="text" name="sector" value={this.state.sector} onChange={ e => this.handleChange(e)} placeholder="secteur"/>
+        {/* <ul>
+          {this.state.expertise_required.map((expertise, index) => (
+            <li key={index}>
+              <Search onChange={this.handleInputChange} expertise={expertise} />
+            </li>
+          ))}
+        </ul> */}
 
-          <input type="date" name="start_date" value={this.state.start_date} onChange={this.handleChange} placeholder="date de début"/>
+        {/* 
+        <h1 onClick={(event) => this.props.onChange()}>
+        {this.props.expertise}
+       </h1> */}
 
-          <input type="date" name="end_date" value={this.state.end_date} onChange={this.handleChange} placeholder="date de fin"/>
-          
-          <input type="text" name="location" value={this.state.location} onChange={ e => this.handleChange(e)} placeholder="lieu"/>
+        {/* for front filtering */}
+        {/* <MissionTable missions={listOfMissions} /> */}
 
-          <button>Rechercher</button>
-        </form> */}
-
-
-        {/* <SearchBar
-           query={this.state.query} updateQuery={this.updateQuery}/> */}
-        
+        {/* for back filtering  */}
         <MissionTable missions={this.state.listOfMissions} />
-{/* 
-        <div>
-        <h1>Liste des missions</h1>
-        <ul className="cardContainer">
-          { this.state.listOfMissions.map( mission => {
-            return (
-
-              <li key={mission._id} className="missionCard">
-              <p>{mission.status}</p> 
-              <h3>{mission.expertise_required}</h3> 
-              <h2>{mission.title}</h2> 
-                <Link to={`/missions/${mission._id}`}>
-                  <h3>Voir les détails</h3> 
-                </Link> 
-            
-
-              </li>
-              
-            )})
-          }
-          </ul>
-        </div> */}
-
       </div>
-    )
+    );
   }
 }
 

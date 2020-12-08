@@ -1,43 +1,32 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-
-const MissionCard=(props) => {
-  const test = props.mission
-  console.log("from mission card test", test)
+const MissionCard = (props) => {
+  // const test = props.mission
+  // console.log("from mission card test", test)
   const {
     title,
-    sector,
+    //sector,
     expertise_required,
-    description,
-    peopleRequired,
-    location,
-    start_date,
-    end_date,
-    availability_frequency,
+    // description,
+    // location,
+    // start_date,
+    // end_date,
+    // availability_frequency,
     status,
-    requiredSkills
+    // requiredSkills
   } = props.mission;
 
-  console.log("title",title)
-  console.log("props.mission from Mission Card🤚",props.mission)
+  // console.log("title",title)
+  // console.log("props.mission from Mission Card🤚",props.mission)
 
   return (
-    
     <div className="MissionCard">
-    
-        <h1>{title}</h1>
-        <p>{sector}</p>
-        <p>{expertise_required}</p>
-        <p>{description}</p>
-        <p>{peopleRequired}</p>
-        <p>{location}</p>
-        <p>{start_date}</p>
-        <p>{end_date}</p>
-        <p>{availability_frequency}</p>
-        <p>{status}</p>
-        <p>{requiredSkills}</p>
+      <p>{status}</p>
+      <h3>{expertise_required}</h3>
+      <h2>{title}</h2>
     </div>
   );
-}
+};
 
 export default MissionCard;

@@ -5,6 +5,7 @@ require('dotenv').config({
 const mongoose = require('mongoose');
 
 const User = require('../models/user-model.js');
+const Mission = require('../models/mission-model.js');
 
 const DB_NAME = 'projet-3-react';
 mongoose
@@ -598,10 +599,54 @@ const users = [
       logo:
          'http://www.portail-humanitaire.org/wp-content/sabai/File/files/l_af8081ba0f2ca4857c1a7231eb62b5e8.png',
    },
+   {
+      email: 'sarahdamag@gmail.com',
+      username: 'Sarah',
+      password: 'sarahdamag@gmail.com',
+      userType: 'solliciteur',
+      location: 'Paris',
+      description: 'ONG',
+      logo: 'https://www.neobled.com/wp-content/uploads/2017/03/logo_ong_amnesty.jpg',
+   },
 ];
 
-User.create(users)
-   .then((users) => {
-      console.log(`${users.length} users created.`);
+// User.create(users)
+//    .then((users) => {
+//       console.log(`${users.length} users created.`);
+//    })
+//    .catch((err) => console.error(err));
+
+const missions = [
+   {
+      candidates: ['5fc7b7d7285adc31c63d4f8c', '5fc7b7d7285adc31c63d4f8b'],
+      title: 'Mission with seeds',
+      sector: 'test',
+      expertise_required: 'Soutien des associations et des ESS',
+      description: 'ee',
+      location: 'compiegne',
+      start_date: '2222-09-02T00:00:00.000Z',
+      end_date: '2222-09-02T00:00:00.000Z',
+      availability_frequency: 'Régulier',
+      requiredSkills: 'Règlement de litiges',
+      requester_id: '5fc7bdb614731732b4c5188d',
+   },
+   {
+      candidates: ['5fc7b7d7285adc31c63d4f8d', '5fc7b7d7285adc31c63d4f8e'],
+      title: 'Mission with seeds',
+      sector: 'test',
+      expertise_required: 'Soutien des associations et des ESS',
+      description: 'ee',
+      location: 'compiegne',
+      start_date: '2222-09-02T00:00:00.000Z',
+      end_date: '2222-09-02T00:00:00.000Z',
+      availability_frequency: 'Régulier',
+      requiredSkills: 'Règlement de litiges',
+      requester_id: '5fc7bdb614731732b4c5188d',
+   },
+];
+
+Mission.create(missions)
+   .then((missions) => {
+      console.log(`${missions.length} users created.`);
    })
    .catch((err) => console.error(err));

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import service from '../auth-service';
 
 class EditMission extends React.Component {
@@ -8,7 +7,6 @@ class EditMission extends React.Component {
       sector: this.props.theMission.sector,
       expertise_required: this.props.theMission.expertise_required,
       description: this.props.theMission.description,
-      peopleRequired: this.props.theMission.peopleRequired,
       location: this.props.theMission.location,
       start_date: this.props.theMission.start_date,
       end_date: this.props.theMission.end_date,
@@ -16,14 +14,13 @@ class EditMission extends React.Component {
       status: this.props.theMission.status,
       requiredSkills: this.props.theMission.requiredSkills,
    };
-
+   
    handleFormSubmit = (event) => {
       const {
          title,
          sector,
          expertise_required,
          description,
-         peopleRequired,
          location,
          start_date,
          end_date,
@@ -40,7 +37,6 @@ class EditMission extends React.Component {
             sector,
             expertise_required,
             description,
-            peopleRequired,
             location,
             start_date,
             end_date,
@@ -63,10 +59,10 @@ class EditMission extends React.Component {
 
    render() {
       return (
-         <div>
-            <hr />
-            <h3>Editer la mission</h3>
-            <form onSubmit={this.handleFormSubmit}>
+         <div className= " editMissionForm parentForm">
+            
+            <form className="formStyle" onSubmit={this.handleFormSubmit}>
+            <h1>Editer la mission</h1>
                <p>
                   <label>Secteur</label>
                   <input

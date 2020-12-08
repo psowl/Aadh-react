@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { TiThMenuOutline } from 'react-icons/ti';
 import BurgerMenu from './BurgerMenu.js';
@@ -26,35 +26,60 @@ class Nav extends React.Component {
    render() {
       return (
          <div className='nav'>
-            <Link className='link' to='/'>
+            <NavLink className='link' to='/'>
                <img src='../images/logo_aadh.png' alt='logo_aadh' />
-            </Link>
+            </NavLink>
             <div className='nav-row'>
                <ul className='nav-row nav-menu-desktop'>
                   <li>
-                     <Link className='link' to='/missions'>
+                     <NavLink
+                        exact={true}
+                        className='link'
+                        activeClassName='activeNavLink'
+                        to='/missions'
+                     >
                         Toutes les missions
-                     </Link>
+                     </NavLink>
                   </li>
                   <li>
-                     <Link className='link' to='/missions/new'>
+                     <NavLink
+                        exact={true}
+                        className='link'
+                        activeClassName='activeNavLink'
+                        to='/missions/new'
+                     >
                         Publier une mission
-                     </Link>
+                     </NavLink>
                   </li>
                   <li>
-                     <Link className='link' to='/'>
+                     <Link
+                        exact={true}
+                        className='link'
+                        activeClassName='activeNavLink'
+                        to='/actualites'
+                     >
                         Actualités
                      </Link>
                   </li>
                   <li>
-                     <Link className='link' to='/'>
+                     <NavLink
+                        exact={true}
+                        className='link'
+                        activeClassName='activeNavLink'
+                        to='/rejoignez'
+                     >
                         Rejoignez-nous
-                     </Link>
+                     </NavLink>
                   </li>
                   <li>
-                     <Link className='link' to='/'>
+                     <NavLink
+                        exact={true}
+                        className='link'
+                        activeClassName='activeNavLink'
+                        to='/don'
+                     >
                         Faire un don
-                     </Link>
+                     </NavLink>
                   </li>
                </ul>
                <div className='user_button'>
@@ -62,7 +87,7 @@ class Nav extends React.Component {
                   <div className='user_links'>
                      {/*Affichage conditionnel: on récupère le user logué depuis le parent, si user logué alors "se déconnecter" s'affiche, sinon "s'inscrire" s'affiche */}
                      {this.props.loggedInUser ? (
-                        <Link to={'/'}>Mon espace</Link>
+                        <Link to={`/users/${this.props.loggedInUser._id}`}>Mon espace</Link>
                      ) : (
                         <Link to={'/login'}>Me connecter</Link>
                      )}
