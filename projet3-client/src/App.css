@@ -523,7 +523,37 @@ footer .footer_notes p {
    border-radius: 60px;
 }
 
-@media (max-width: 425px) {
+.home .section_content .organisation div {
+   display: flex;
+   flex-direction: column;
+}
+
+.home .section_content .organisation div ul {
+   display: flex;
+   flex-direction: column;
+   width: 33%;
+   height: 165px;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+@media (max-width: 768px) {
+   .home .section_content .organisation div ul {
+      width: auto;
+      height: auto;
+   }
+}
+
+.home .section_content .organisation div p {
+   margin: 5px;
+   text-align: center;
+}
+
+.home .section_content .organisation h4 {
+   text-align: center;
+}
+
+@media (max-width: 768px) {
    .home_top .actualites {
       display: none;
       width: 0px;
@@ -577,7 +607,7 @@ footer .footer_notes p {
    margin-bottom: 0;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
    .home .presentation ul {
       flex-direction: column;
    }

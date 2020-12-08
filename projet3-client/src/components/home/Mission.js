@@ -8,7 +8,7 @@ const Mission = () => {
             alt='target'
          />
          <p>
-            « L’AADH coordonne la fourniture de services juridiques gratuits et confidentiels auprès
+            L’AADH coordonne la fourniture de services juridiques gratuits et confidentiels auprès
             des ONG, associations et institutions dédiées à la protection des droits humains,
             quelles que soient leurs dimensions nationales ou internationales (pourvu qu’elles aient
             été agrées préalablement par le conseil d’administration), et des victimes de violations
