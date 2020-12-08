@@ -1,24 +1,19 @@
 import React from 'react';
+import { FiRefreshCcw } from 'react-icons/fi';
 
-class DashboardSearch extends React.Component {
-   render() {
-      return (
-         <div className='dashboardSearch'>
-            <ul>
-               <li>
-                  <h2>Pourvue</h2>
-               </li>
-               <li>
-                  <h2>Disponible</h2>
-               </li>
-               <li>
-                  <h2>Terminée</h2>
-               </li>
-            </ul>
-            <input placeholder='Rechercher une mission'></input>
-         </div>
-      );
-   }
-}
+const DashboardSearch = (props) => {
+   return (
+      <div className='dashboardSearch'>
+         <input
+            type='text'
+            name='searchfield'
+            value={props.searchfield}
+            onChange={(e) => props.onChange(e)}
+            placeholder='Rechercher une mission'
+         ></input>
+         <FiRefreshCcw onClick={props.getMissions} />
+      </div>
+   );
+};
 
 export default DashboardSearch;

@@ -1,4 +1,5 @@
 import React from 'react';
+import queryString from 'query-string';
 import Entete from './Entete';
 import Menu from './Menu';
 import Dashboard from './Dashboard';
@@ -13,7 +14,6 @@ class MonEspace extends React.Component {
    componentDidMount() {
       this.getUser();
       this.getMissions();
-      // this.filterMissions();
    }
 
    //utiliser la route pour afficher le user logué
@@ -27,29 +27,41 @@ class MonEspace extends React.Component {
          .catch((err) => console.log('err in getUser', err.response.data.message));
    };
 
-   // aller chercher en base les missions avec le requester_id du solliciteur
+   // aller chercher en base les missions avec le requester_id du solliciteur (front filter)
    getMissions = () => {
       const { params } = this.props.match;
       service
          .get(`http://localhost:5000/missions/user/${params.id}`)
          .then((missionsFromDb) => {
             this.setState({ missions: missionsFromDb.data }, () => {
-               console.log('state.missions from MonEspace', this.state.missions);
                //parmis ces missions portant le requestID ne retourner que celles qui on un status "en attente de confirmation"
                let filteredMissions = this.state.missions.filter((el) => {
                   return el.status === 'En attente de confirmation';
                });
-               console.log('filteredMissions', filteredMissions);
                this.setState({ missionsAconfirmer: filteredMissions });
                //parmis ces missions portant le requestID retourner toutes sauf celle qui on un status "en attente de confirmation"
                let otherMissions = this.state.missions.filter((el) => {
                   return el.status !== 'En attente de confirmation';
                });
-               console.log('otherMissions', otherMissions);
                this.setState({ otherMissions: otherMissions });
             });
          })
          .catch((err) => console.log(err));
+   };
+
+   //filtrer les missions de SuiviMissions selon DashboardSearch (back filter)
+   filterMissions = (query) => {
+      //utilisation du package queryString
+      let qs = queryString.stringify(query);
+      const url = `http://localhost:5000/missions?${qs}`;
+      service
+         .get(url)
+         .then((responseFromApi) => {
+            this.setState({
+               otherMissions: responseFromApi.data,
+            });
+         })
+         .catch((err) => console.log('Error while fetching missions', err));
    };
 
    //changer la page selon ce qui est cliqué sur le menu
@@ -68,14 +80,14 @@ class MonEspace extends React.Component {
             <ReactCSSTransitionGroup
                transitionName='fade'
                transitionAppear={true}
-               transitionAppearTimeout={500}
-               transitionEnterTimeout={500}
-               transitionLeaveTimeout={10}
+               transitionAppearTimeout={1000}
+               transitionEnterTimeout={1000}
+               transitionLeaveTimeout={1000}
             >
                {
                   <div className='enChargement'>
                      En chargement
-                     <VscLoading />
+                     <VscLoading size={120} color='#9E04CA' />
                   </div>
                }
             </ReactCSSTransitionGroup>
@@ -100,6 +112,7 @@ class MonEspace extends React.Component {
                   missionsAconfirmer={this.state.missionsAconfirmer}
                   getMissions={this.getMissions}
                   otherMissions={this.state.otherMissions}
+                  filterMissions={this.filterMissions}
                />
             ) : (
                <Profile />

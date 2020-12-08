@@ -30,7 +30,7 @@ class Aconfirmer extends React.Component {
                `mission ${missionId} updated with candidate selected id ${this.state.candidateChosenId} and status "Pourvue"`
             );
             //une fois que la mission est éditée, refiltrer la liste des missions dans le parent
-            this.props.filterMissions();
+            this.props.getMissions();
          })
          .catch((err) => console.log('error', err));
    };
@@ -65,9 +65,9 @@ class Aconfirmer extends React.Component {
                   className='entete'
                   style={this.changeBackgroundImage(el.expertise_required)}
                >
-                  <h2>
+                  <h3>
                      <Link to={`/missions/${el._id}`}>{el.title}</Link>
-                  </h2>
+                  </h3>
                   <Link to={`/missions/edit/${el._id}`}>
                      <FaRegEdit size={25} />
                   </Link>
@@ -104,7 +104,7 @@ class Aconfirmer extends React.Component {
                   transitionAppear={true}
                   transitionAppearTimeout={1000}
                   transitionEnterTimeout={1000}
-                  transitionLeaveTimeout={2000}
+                  transitionLeaveTimeout={3000}
                >
                   {items}
                </ReactCSSTransitionGroup>

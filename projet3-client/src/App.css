@@ -12,7 +12,8 @@
    --height-nav-min1024: 110px;
    --height-nav-max768: 60px;
    --grey: rgba(184, 177, 177, 0.15);
-   --background-image: url('https://image.freepik.com/vecteurs-libre/equipe-dans-reseaux-sociaux-travaillant-illustration-vectorielle_1010-670.jpg');
+   --linear: linear-gradient(45deg, #f8f8f9, transparent);
+   --background-image: url('https://images.unsplash.com/photo-1505816014357-96b5ff457e9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1782&q=80');
 }
 
 body,
@@ -42,6 +43,10 @@ body,
 
 h2 {
    font-size: 18px;
+}
+
+h3 {
+   margin: 10px 2px;
 }
 
 .content {
@@ -99,7 +104,17 @@ h2 {
    width: 80%;
    margin: auto;
    align-items: center;
-   margin: 10px;
+   height: 50vh;
+   right: 100px;
+   left: 100px;
+   border-radius: 100px;
+}
+
+@media (max-width: 425px) {
+   .enChargement {
+      margin-top: var(--height-nav-max768);
+      width: auto;
+   }
 }
 
 input::placeholder {
@@ -290,9 +305,15 @@ input:focus {
       font-size: 9px;
       line-height: 16px;
    }
-
    .nav .nav-row .user_button {
       padding: 5px;
+   }
+   .nav {
+      width: 100%;
+      left: 0;
+      right: 0;
+      padding-right: 2px;
+      padding-left: 2px;
    }
 }
 
@@ -362,6 +383,12 @@ footer .footer_links a {
 footer .footer_notes h2,
 footer .footer_notes p {
    text-align: center;
+}
+
+@media (max-width: 425px) {
+   footer .bottom_footer {
+      margin-bottom: 70px;
+   }
 }
 
 /*
@@ -515,20 +542,21 @@ footer .footer_notes p {
    }
 }
 /*animations*/
-
-.home .section_content .fade-enter {
+.fade-enter,
+.face-appear {
    opacity: 0.01;
 }
-.home .section_content .fade-enter.fade-enter-active {
+.fade-enter.fade-enter-active,
+.fade-appear.fade-enter-appear {
    opacity: 1;
    transition: opacity 1000ms ease-in;
 }
-.home .section_content .fade-leave {
+.fade-leave {
    opacity: 1;
 }
-.home .section_content .fade-leave.fade-leave-active {
+.fade-leave.fade-leave-active {
    opacity: 0.01;
-   transition: opacity 100ms ease-in;
+   transition: opacity 10ms ease-in;
 }
 
 .home .presentation ul {
@@ -692,7 +720,7 @@ footer .footer_notes p {
    position: relative;
    padding: 20px;
    background-image: var(--background-image);
-   background-size: 66%;
+   background-size: 40%;
    background-position: center;
 }
 
@@ -739,14 +767,17 @@ footer .footer_notes p {
       position: fixed;
       bottom: 0px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       width: 100%;
       right: auto;
       background: white;
-      top: 89%;
+      top: 90%;
       margin: 0;
-      padding: 10px 0px;
+      padding: 0;
+   }
+   .mon_espace .menu_mon_espace ul li {
+      width: 100%;
    }
 }
 
@@ -782,8 +813,9 @@ footer .footer_notes p {
 
 .mon_espace .missions_a_confirmer h2 {
    text-align: center;
-   margin: 3px;
+   margin: 0px;
    padding-top: 20px;
+   font-size: 23px;
 }
 
 .mon_espace .missions_a_confirmer .entete,
@@ -797,6 +829,10 @@ footer .footer_notes p {
 
 .mon_espace .otherMissions .entete > div p,
 .mon_espace .otherMissions .entete > div h2 {
+   margin: 0;
+}
+
+.mon_espace .otherMissions .entete h3 {
    margin: 0;
 }
 
@@ -856,20 +892,20 @@ footer .footer_notes p {
 
 /*animations*/
 .mission-enter,
-.mission-enter {
+.mission-appear {
    opacity: 0;
 }
 .mission-enter .mission-enter-active,
 .mission-appear .mission-appear-active {
    opacity: 1;
-   transition: opacity 1000ms ease-in;
+   transition: opacity 10000ms ease-in;
 }
 .mission-leave {
    opacity: 1;
 }
 .mission-leave .mission-leave-active {
    opacity: 0.5;
-   transition: opacity 3000ms ease-in;
+   transition: opacity 10000ms ease-in;
 }
 
 .mon_espace .otherMissions {
@@ -887,6 +923,7 @@ footer .footer_notes p {
 .mon_espace .otherMissions .selected_candidate {
    display: flex;
    justify-content: space-between;
+   margin-top: 5px;
 }
 
 .mon_espace .otherMissions .each_candidate p,
@@ -934,7 +971,18 @@ footer .footer_notes p {
 
 .mon_espace .dashboardSearch {
    display: flex;
-   justify-content: space-around;
+   align-items: center;
+   justify-content: center;
+   font-size: 30px;
+   margin-top: 5px;
+}
+
+.mon_espace .dashboardSearch svg {
+   margin-left: 20px;
+}
+
+.mon_espace .dashboardSearch svg:hover {
+   cursor: pointer;
 }
 
 .mon_espace .dashboardSearch li h2 {
@@ -972,10 +1020,10 @@ footer .footer_notes p {
 .mon_espace .dashboardSearch input {
    width: 300px;
    align-self: stretch;
-   margin: 12px 0px;
    border-radius: 5px;
    background: white;
    color: var(--blue);
+   text-align: center;
 }
 
 .mon_espace .dashboardSearch input::placeholder {
@@ -1008,6 +1056,10 @@ footer .footer_notes p {
       width: 90%;
       margin-right: auto;
       margin-left: auto;
+   }
+   .mon_espace .dashboardSearch svg {
+      margin-left: 0;
+      margin-top: 10px;
    }
    .mon_espace .otherMissions {
       margin: 20px 10px;

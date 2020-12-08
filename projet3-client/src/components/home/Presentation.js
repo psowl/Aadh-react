@@ -67,8 +67,8 @@ class Presentation extends React.Component {
                <ReactCSSTransitionGroup
                   transitionName='fade'
                   transitionAppear={true}
-                  transitionAppearTimeout={500}
-                  transitionEnterTimeout={500}
+                  transitionAppearTimeout={1000}
+                  transitionEnterTimeout={1000}
                   transitionLeaveTimeout={10}
                >
                   {this.state.section === 'historique' && <Historique />}

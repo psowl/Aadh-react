@@ -4,6 +4,10 @@ import { FaRegEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 class SuiviMissions extends React.Component {
+   state = {
+      searchfield: '',
+   };
+
    formatDate = (date) => {
       date = new Date(date);
       return date.toDateString();
@@ -22,7 +26,23 @@ class SuiviMissions extends React.Component {
       return backgroundStatus;
    };
 
+   //changement dans la searchbar
+   handleChange = (event) => {
+      let value = event.target.value;
+      const name = event.target.name;
+
+      this.setState(
+         {
+            [name]: value,
+         },
+         () => {
+            this.props.filterMissions(this.state);
+         }
+      );
+   };
+
    render() {
+      //séparé du return pour mounting de l'animation?
       let items =
          this.props.dashboard &&
          this.props.otherMissions.map((el) => (
@@ -30,9 +50,9 @@ class SuiviMissions extends React.Component {
                <section>
                   <div className='entete'>
                      <div>
-                        <h2>
+                        <h3>
                            <Link to={`/missions/${el._id}`}>{el.title}</Link>
-                        </h2>
+                        </h3>
                         <p>
                            {this.formatDate(el.start_date)}
                            <em> au </em>
@@ -55,11 +75,7 @@ class SuiviMissions extends React.Component {
                         <p>pas de candidature soumise</p>
                      )}
 
-                     <p
-                        className='status'
-                        // {(el.status==="Pourvue") && backgroundStatus.background="green" }
-                        style={this.colorBackground(el.status)}
-                     >
+                     <p className='status' style={this.colorBackground(el.status)}>
                         {el.status}
                      </p>
                   </div>
@@ -68,7 +84,12 @@ class SuiviMissions extends React.Component {
          ));
       return (
          <div className='otherMissions'>
-            <DashboardSearch />
+            <DashboardSearch
+               onClick={this.handleOnClick}
+               onChange={this.handleChange}
+               searchfield={this.state.searchfield}
+               getMissions={this.props.getMissions}
+            />
             <ul className='list_missions'>{items}</ul>
          </div>
       );
