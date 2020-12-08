@@ -91,3 +91,4 @@ const missionRoutes = require('./routes/mission-routes');
 app.use('/', missionRoutes);
 
 module.exports = app;
+

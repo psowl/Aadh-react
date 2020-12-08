@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { GrLocation } from "react-icons/gr";
 import service from "../auth-service";
-import moment from "moment";
+// import moment from "moment";
 
 import EditMission from "./EditMission.js";
 
@@ -55,7 +55,8 @@ class MissionDetails extends React.Component {
   };
 
   //error message: The specified value "2020-12-25T00:00:00.000Z" does not conform to the required format, "yyyy-MM-dd"
-  // I cant to display only YYYY/MM/DD
+  // I want to display only YYYY/MM/DD
+
   // Method 1 - using npm moment:
   // const date = moment("Sep 21, 2017").format('YYYY/MM/DD');
   // console.log(date); //2017/09/21

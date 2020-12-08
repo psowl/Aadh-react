@@ -4,6 +4,15 @@ import { BiSearchAlt } from "react-icons/bi";
 function Search(props) {
   console.log("props.onChange", props.onChange);
 
+  const formatDate = (date) => {
+    let finalDate = JSON.stringify(date);
+    console.log("finalDate", finalDate);
+    const lastDate = finalDate.substring(0, 10);
+    return lastDate;
+
+    //console.log("finaldate", finalDate.split("T")[0]) // 2020/12/17
+  };
+
   return (
     <div className="searchContainer">
       {/* search bar & filters */}
@@ -39,7 +48,7 @@ function Search(props) {
             className="DateInput"
             type="date"
             name="start_date"
-            value={props.start_date}
+            value={formatDate(props.start_date)}
             onChange={(e) => props.onChange(e)}
             placeholder="date de début"
           />
@@ -51,7 +60,7 @@ function Search(props) {
             className="DateInput"
             type="date"
             name="end_date"
-            value={props.end_date}
+            value={formatDate(props.end_date)}
             onChange={(e) => props.onChange(e)}
             placeholder="date de fin"
           />
