@@ -11,15 +11,16 @@
    --blue: #16286a;
    --height-nav-min1024: 110px;
    --height-nav-max768: 60px;
-   --grey: rgba(184, 177, 177, 0.29);
-   --background-image: url('https://images.unsplash.com/photo-1519285257509-80caa15dc32d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+   --grey: rgba(184, 177, 177, 0.15);
+   --linear: linear-gradient(45deg, #f8f8f9, transparent);
+   --background-image: url('https://images.unsplash.com/photo-1505816014357-96b5ff457e9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1782&q=80');
 }
 
 body,
 .nav button {
    box-sizing: border-box;
    font-family: 'Palanquin', sans-serif;
-   font-size: 15px;
+   font-size: 12px;
 }
 
 @media (max-width: 768px) {
@@ -37,13 +38,23 @@ body,
    display: flex;
    flex-direction: column;
    min-height: 100vh;
+   font-size: 12px;
+   max-width: 1145px;
+}
+
+h2 {
+   font-size: 18px;
+}
+
+h3 {
+   margin: 10px 2px;
 }
 
 .content {
    margin-top: var(--height-nav-min1024);
    flex: 1;
-   margin-right: 20px;
-   margin-left: 20px;
+   margin-right: 60px;
+   margin-left: 60px;
 }
 
 @media (max-width: 768px) {
@@ -52,6 +63,12 @@ body,
    }
    .content {
       margin-top: var(--height-nav-max768);
+   }
+}
+
+@media (max-width: 425px) {
+   .content {
+      margin: 0px;
    }
 }
 
@@ -65,10 +82,48 @@ body,
    padding: 10px;
    border-radius: 5px;
    text-align: center;
+   font-size: 12px;
+   cursor: pointer;
+}
+
+.all_buttons:hover {
+   background: white;
+   color: var(--blue);
+   border: 1px solid var(--blue);
 }
 
 .no_link {
    color: black;
+}
+
+.enChargement {
+   font-size: 40px;
+   text-align: center;
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   width: 80%;
+   margin: auto;
+   align-items: center;
+   height: 50vh;
+   right: 100px;
+   left: 100px;
+   border-radius: 100px;
+}
+
+@media (max-width: 425px) {
+   .enChargement {
+      margin-top: var(--height-nav-max768);
+      width: auto;
+   }
+}
+
+input::placeholder {
+   color: var(--blue);
+}
+
+input:focus {
+   border: 1px solid var(--blue);
 }
 /*
 
@@ -91,6 +146,9 @@ body,
    background: white;
    z-index: 1;
    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+   max-width: 1145px;
+   margin-right: auto;
+   margin-left: auto;
 }
 
 .nav .user_icon {
@@ -126,6 +184,10 @@ body,
    padding-left: 5px;
 }
 
+.nav .user_links button {
+   cursor: pointer;
+}
+
 .nav .user_links a {
    color: white;
    text-decoration: none;
@@ -150,6 +212,10 @@ body,
 .nav .nav-menu-desktop li {
    list-style: none;
    color: var(--blue);
+}
+
+.nav .nav-menu-desktop li:hover {
+   border-bottom: 1px solid var(--blue);
 }
 
 .nav .burger_menu {
@@ -243,12 +309,21 @@ body,
       font-size: 9px;
       line-height: 16px;
    }
-
    .nav .nav-row .user_button {
       padding: 5px;
    }
+   .nav {
+      width: 100%;
+      left: 0;
+      right: 0;
+      padding-right: 2px;
+      padding-left: 2px;
+   }
 }
 
+.activeNavLink {
+   border-bottom: 1px solid var(--blue);
+}
 /*
 ########  #######   #######  ######## ######## ########  
 ##       ##     ## ##     ##    ##    ##       ##     ## 
@@ -317,6 +392,12 @@ footer .footer_notes p {
    text-align: center;
 }
 
+@media (max-width: 425px) {
+   footer .bottom_footer {
+      margin-bottom: 70px;
+   }
+}
+
 /*
 ##     ##  #######  ##     ## ######## 
 ##     ## ##     ## ###   ### ##       
@@ -326,6 +407,16 @@ footer .footer_notes p {
 ##     ## ##     ## ##     ## ##       
 ##     ##  #######  ##     ## ######## 
 */
+
+.home {
+   margin: 20px;
+}
+
+@media (max-width: 425px) {
+   .home {
+      margin-top: var(--height-nav-max768);
+   }
+}
 
 .background_video {
    background: black;
@@ -422,7 +513,54 @@ footer .footer_notes p {
    text-align: center;
 }
 
-@media (max-width: 425px) {
+.home .section_content {
+   background: linear-gradient(45deg, #f8f8f9, transparent);
+   border-radius: 5px;
+}
+
+.home .section_content div {
+   display: flex;
+   margin-top: 20px;
+}
+
+.home .section_content div img {
+   height: 200px;
+   align-self: center;
+   margin-right: 20px;
+   border-radius: 60px;
+}
+
+.home .section_content .organisation div {
+   display: flex;
+   flex-direction: column;
+}
+
+.home .section_content .organisation div ul {
+   display: flex;
+   flex-direction: column;
+   width: 33%;
+   height: 165px;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+@media (max-width: 768px) {
+   .home .section_content .organisation div ul {
+      width: auto;
+      height: auto;
+   }
+}
+
+.home .section_content .organisation div p {
+   margin: 5px;
+   text-align: center;
+}
+
+.home .section_content .organisation h4 {
+   text-align: center;
+}
+
+@media (max-width: 768px) {
    .home_top .actualites {
       display: none;
       width: 0px;
@@ -440,10 +578,22 @@ footer .footer_notes p {
       border-radius: 5px;
    }
 }
-
-.home .section_content {
-   background-color: var(--grey);
-   border-radius: 5px;
+/*animations*/
+.fade-enter,
+.face-appear {
+   opacity: 0.01;
+}
+.fade-enter.fade-enter-active,
+.fade-appear.fade-enter-appear {
+   opacity: 1;
+   transition: opacity 1000ms ease-in;
+}
+.fade-leave {
+   opacity: 1;
+}
+.fade-leave.fade-leave-active {
+   opacity: 0.01;
+   transition: opacity 10ms ease-in;
 }
 
 .home .presentation ul {
@@ -464,13 +614,27 @@ footer .footer_notes p {
    margin-bottom: 0;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
    .home .presentation ul {
       flex-direction: column;
    }
 
    .home .presentation ul li {
       width: au;
+   }
+
+   .section_content span div {
+      flex-direction: column;
+   }
+
+   .home .section_content div img {
+      margin-right: 0;
+   }
+}
+
+@media (max-width: 768px) {
+   .section_content span {
+      /* flex-direction: column; */
    }
 }
 
@@ -690,31 +854,42 @@ text-align: center
 
 .mon_espace {
    color: var(--blue);
-   /* background-image: var(--background-image); */
-   background-size: 100% 25%, 100%;
-   background-repeat: no-repeat;
-   background-image: var(--background-image), linear-gradient(#7a85e4 5%, #9294a5 30%, #e7e8f0);
-   padding: 20px;
 }
 
 .mon_espace img {
    width: 15%;
+   box-shadow: 4px 4px #0006;
+}
+
+@media (max-width: 425px) {
+   .mon_espace {
+      margin-top: var(--height-nav-min768);
+   }
+   .mon_espace img {
+      width: 30%;
+   }
 }
 
 .mon_espace_top {
    display: flex;
    position: relative;
+   padding: 20px;
+   background-image: var(--background-image);
+   background-size: 40%;
+   background-position: center;
 }
 
 .mon_espace_top h2 {
    margin-bottom: 0;
    margin-top: 0;
+   text-shadow: 1px 1px #f8f8f9;
+   font-size: 25px;
 }
 
 .mon_espace_top > div {
    text-align: center;
    width: 100%;
-   margin-top: 150px;
+   margin-top: 70px;
 }
 
 .mon_espace_top svg {
@@ -725,7 +900,9 @@ text-align: center
 
 .mon_espace .menu_mon_espace ul {
    width: 15%;
-   margin-left: auto;
+   position: absolute;
+   right: 70px;
+   top: 380px;
 }
 
 .mon_espace .menu_mon_espace ul li {
@@ -736,13 +913,43 @@ text-align: center
    margin: 5px;
 }
 
-.mon_espace .missions_a_confirmer .list_missions li,
-.mon_espace .otherMissions .list_missions li {
-   list-style: none;
+.mon_espace .menu_mon_espace ul li:hover {
+   text-decoration: underline;
+}
+
+@media (max-width: 425px) {
+   .mon_espace .menu_mon_espace ul {
+      position: fixed;
+      bottom: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      right: auto;
+      background: white;
+      top: 90%;
+      margin: 0;
+      padding: 0;
+   }
+   .mon_espace .menu_mon_espace ul li {
+      width: 100%;
+   }
+}
+
+.dashboard_missions {
+   background: linear-gradient(#070d428a 26%, #999cb56e 67%, white);
 }
 
 .mon_espace .missions_a_confirmer .list_missions li {
+   list-style: none;
    width: 25%;
+}
+
+.mon_espace .missions_a_confirmer .list_missions span {
+   display: flex;
+   width: 100%;
+   justify-content: center;
+   flex-wrap: wrap;
 }
 
 .mon_espace .otherMissions .list_missions li {
@@ -761,7 +968,9 @@ text-align: center
 
 .mon_espace .missions_a_confirmer h2 {
    text-align: center;
-   margin: 3px;
+   margin: 0px;
+   padding-top: 20px;
+   font-size: 23px;
 }
 
 .mon_espace .missions_a_confirmer .entete,
@@ -770,6 +979,7 @@ text-align: center
    flex-direction: row;
    align-items: center;
    justify-content: space-between;
+   background-size: cover;
 }
 
 .mon_espace .otherMissions .entete > div p,
@@ -777,10 +987,21 @@ text-align: center
    margin: 0;
 }
 
+.mon_espace .otherMissions .entete h3 {
+   margin: 0;
+}
+
 .mon_espace .missions_a_confirmer .entete a,
 .mon_espace .otherMissions .entete a {
    color: var(--blue);
    text-decoration: none;
+   align-self: flex-start;
+   margin-right: 3px;
+}
+
+.mon_espace .missions_a_confirmer .entete a {
+   color: white;
+   align-self: flex-start;
 }
 
 .mon_espace .missions_a_confirmer input,
@@ -806,9 +1027,58 @@ text-align: center
    align-items: center;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+   .mon_espace .menu_mon_espace ul {
+      top: 250px;
+   }
+}
+
+@media (max-width: 425px) {
+   .mon_espace .missions_a_confirmer .list_missions span {
+      flex-direction: column;
+   }
+   .mon_espace .missions_a_confirmer .list_missions li,
+   .mon_espace .otherMissions .list_missions li {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+   }
+}
+
+/*animations*/
+.mission-enter,
+.mission-appear {
+   opacity: 0;
+}
+.mission-enter .mission-enter-active,
+.mission-appear .mission-appear-active {
+   opacity: 1;
+   transition: opacity 10000ms ease-in;
+}
+.mission-leave {
+   opacity: 1;
+}
+.mission-leave .mission-leave-active {
+   opacity: 0.5;
+   transition: opacity 10000ms ease-in;
+}
+
+.mon_espace .otherMissions {
+   background: var(--grey);
+   margin: 30px 50px;
+   border-radius: 5px;
+   padding: 10px 0px;
+   border: 2px ridge #8080807a;
+}
+
+.mon_espace .otherMissions .each_candidate img {
+   border-radius: 30px;
+}
+
 .mon_espace .otherMissions .selected_candidate {
    display: flex;
    justify-content: space-between;
+   margin-top: 5px;
 }
 
 .mon_espace .otherMissions .each_candidate p,
@@ -819,25 +1089,32 @@ text-align: center
    text-decoration: none;
 }
 
-.mon_espace .otherMissions .status {
-   background: green;
+.mon_espace .otherMissions .selected_candidate .status {
    display: inline;
    padding: 5px;
    border-radius: 5px;
    color: white;
+   align-self: center;
 }
 
 .mon_espace .missions_a_confirmer .each_mission,
 .mon_espace .otherMissions .each_mission {
-   border: 1px solid var(--grey);
+   background: linear-gradient(45deg, #f8f8f9, transparent);
    margin: 10px;
    padding: 10px;
    display: flex;
    flex-direction: column;
+   box-shadow: 5px 5px 5px 5px rgb(91 87 109 / 41%);
+   border-radius: 5px;
+}
+
+.mon_espace .missions_a_confirmer .each_mission p,
+.mon_espace .otherMissions .each_mission p {
+   color: rgb(91, 87, 109);
 }
 
 .mon_espace .missions_a_confirmer label {
-   width: 40%;
+   width: 60%;
 }
 
 .mon_espace .missions_a_confirmer label a {
@@ -847,6 +1124,102 @@ text-align: center
    text-decoration: none;
 }
 
+.mon_espace .dashboardSearch {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 30px;
+   margin-top: 5px;
+}
+
+.mon_espace .dashboardSearch svg {
+   margin-left: 20px;
+}
+
+.mon_espace .dashboardSearch svg:hover {
+   cursor: pointer;
+}
+
+.mon_espace .dashboardSearch li h2 {
+   font-size: 13px;
+}
+
+.mon_espace .dashboardSearch ul {
+   list-style: none;
+   display: flex;
+}
+
+.mon_espace .dashboardSearch ul li {
+   padding: 0px 15px;
+   text-align: center;
+   border-radius: 5px;
+   margin: 0px 10px;
+}
+
+.mon_espace .dashboardSearch ul li:hover {
+   cursor: pointer;
+}
+
+.mon_espace .dashboardSearch li:nth-child(1) {
+   background: green;
+}
+
+.mon_espace .dashboardSearch li:nth-child(2) {
+   background: white;
+}
+
+.mon_espace .dashboardSearch li:nth-child(3) {
+   background: grey;
+}
+
+.mon_espace .dashboardSearch input {
+   width: 300px;
+   align-self: stretch;
+   border-radius: 5px;
+   background: white;
+   color: var(--blue);
+   text-align: center;
+}
+
+.mon_espace .dashboardSearch input::placeholder {
+   color: var(--blue);
+}
+
+.mon_espace .dashboardSearch input:focus {
+   border: 1px solid var(--blue);
+}
+
+@media (max-width: 425px) {
+   .dashboardSearch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+   .dashboardSearch ul {
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+   .mon_espace .dashboardSearch ul li {
+      padding: 0px 3px;
+      margin: 2px;
+   }
+   .mon_espace .dashboardSearch ul li h2 {
+      margin: 2px 0px;
+   }
+   .mon_espace .dashboardSearch input {
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+   }
+   .mon_espace .dashboardSearch svg {
+      margin-left: 0;
+      margin-top: 10px;
+   }
+   .mon_espace .otherMissions {
+      margin: 20px 10px;
+   }
+}
 /*
 ##        #######   ######   #### ##    ##  ######  ####  ######   ##    ## ##     ## ########  
 ##       ##     ## ##    ##   ##  ###   ## ##    ##  ##  ##    ##  ###   ## ##     ## ##     ## 

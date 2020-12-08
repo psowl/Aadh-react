@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaRegEdit } from 'react-icons/fa';
 
 function Entete(props) {
    return (
@@ -8,7 +7,6 @@ function Entete(props) {
             <img src={props.user.logo} alt='logo' />
             <h2>{props.user.username}</h2>
          </div>
-         <FaRegEdit size={25} />
       </div>
    );
 }

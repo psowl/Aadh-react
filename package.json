@@ -6,7 +6,7 @@
       "start": "node ./bin/www",
       "dev": "DEBUG=projet-3-react:* nodemon --ignore projet3-client ./bin/www",
       "inspect": "nodemon --inspect --ignore projet3-client ./bin/www",
-      "dev-windows": "nodemon ./bin/www",
+      "dev-windows": "nodemon ./bin/www", 
       "build": "cd projet3-client && npm install && npm run build"
    },
    "dependencies": {

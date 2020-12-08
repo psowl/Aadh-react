@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class Menu extends React.Component {
    render() {
@@ -9,7 +8,10 @@ class Menu extends React.Component {
                <li className='all_buttons' onClick={this.props.clickOnProfile}>
                   Mon profil
                </li>
-               <li className='all_buttons' onClick={this.props.clickOnDashboard}>
+               <li
+                  className='all_buttons'
+                  onClick={this.props.clickOnDashboard}
+               >
                   Mon dashboard
                </li>
             </ul>
