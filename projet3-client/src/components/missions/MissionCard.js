@@ -1,7 +1,7 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const MissionCard=(props) => {
+const MissionCard = (props) => {
   // const test = props.mission
   // console.log("from mission card test", test)
   const {
@@ -9,7 +9,6 @@ const MissionCard=(props) => {
     //sector,
     expertise_required,
     // description,
-    // peopleRequired,
     // location,
     // start_date,
     // end_date,
@@ -22,14 +21,12 @@ const MissionCard=(props) => {
   // console.log("props.mission from Mission Card🤚",props.mission)
 
   return (
-    
     <div className="MissionCard">
-        <p>{status}</p>
-        <h3>{expertise_required}</h3>
-        <h2>{title}</h2>
-
+      <p>{status}</p>
+      <h3>{expertise_required}</h3>
+      <h2>{title}</h2>
     </div>
   );
-}
+};
 
 export default MissionCard;

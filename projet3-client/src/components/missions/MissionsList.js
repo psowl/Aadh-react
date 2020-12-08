@@ -101,6 +101,7 @@ class MissionsList extends React.Component {
       .catch((err) => console.log("Error while fetching missions", err));
   };
 
+  
   render() {
     //console.log("data from MissionList", this.state.listOfMissions)
 

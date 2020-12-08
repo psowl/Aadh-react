@@ -699,6 +699,11 @@ footer .footer_notes p {
 ##     ## ##       ##       ##     ##  ##  ##    ## ##    ##  ##  ##     ## ##   ### ##    ## 
 ##     ## ######## ######## ##     ## ####  ######   ######  ####  #######  ##    ##  ######  
 */
+
+.missionsList {
+text-align: center
+}
+
 .missionsList .cardContainer {
    display: flex;
    flex-flow: row wrap;
@@ -722,6 +727,119 @@ footer .footer_notes p {
    text-decoration: none;
    color: var(--blue);
 }
+
+.searchContainer h2 {
+   color: var(--blue);
+}
+
+.searchform {
+   position:relative;
+   
+}
+
+.searchContainer .searchIcon {
+   font-size: 20px;
+   left: 320px;
+   top: 5px;
+   position: relative;
+   /* cursor: pointer; */
+   color: grey;
+}
+
+.searchContainer .DateInput {
+   height: 22px;
+   top: 10px;
+   width: 150px;
+}
+
+.searchContainer .DateInputLabel {
+   color: grey;
+   
+}
+
+.searchContainer .locationInput {
+   top: 10px;
+   width: 150px;
+   margin: 10px; 
+   
+}
+.searchContainer {
+   background-color: #f8f8f9;
+   
+}
+
+.filterExpertise {
+   display: flex;
+   list-style: none;
+   padding: 0;
+   justify-content: center;
+   text-align: center;
+   flex-direction: row;
+}
+
+.filterExpertise li{
+   width: 20%;
+   height: 150px;
+   margin: 10px 10px 10px 0px;
+   display: flex;
+   border-radius: 30px;
+   cursor: pointer;
+}
+
+ .filterExpertise li:hover{
+   background-color:#e66c6c; 
+ }
+
+
+.filterExpertise h3 {
+   margin: auto;
+   color: var(--blue);
+   text-shadow: 1px 2px white;
+}
+
+.filterExpertise li:nth-child(1) {
+   background-image: url('https://images.unsplash.com/photo-1592966556929-08111961c071?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+   background-size: cover;
+   
+}
+
+.filterExpertise li:nth-child(1):active {
+   filter: grayscale(100%); ;
+}
+
+.filterExpertise li:nth-child(2) {
+   background-image: url('https://images.unsplash.com/photo-1579208570378-8c970854bc23?ixlib=rb-1.2.1&auto=format&fit=crop&w=1590&q=80');
+   background-size: cover;
+}
+
+.filterExpertise li:nth-child(2):active {
+   filter: grayscale(100%); ;
+}
+
+.filterExpertise li:nth-child(3) {
+   background-image: url('https://images.unsplash.com/flagged/photo-1558963675-94dc9c4a66a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=666&q=80');
+   background-size: cover;
+}
+
+.filterExpertise li:nth-child(3):active {
+   filter: grayscale(100%); ;
+}
+
+.filterExpertise li:nth-child(4) {
+   background-image: url('https://images.unsplash.com/photo-1468779036391-52341f60b55d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1821&q=80');
+   background-size: cover;
+}
+
+.filterExpertise li:nth-child(4):active {
+   filter: grayscale(100%); ;
+}
+
+.filterExpertise li a {
+   color: var(--blue);
+   text-shadow: 1px 2px white;
+   text-align: center;
+}
+
 
 /*
  #######                                    
@@ -1112,8 +1230,124 @@ footer .footer_notes p {
 ########  #######   ######   #### ##    ##  ######  ####  ######   ##    ##  #######  ##        
 */
 
-/* for overlay css see login js
-#cover{
+.logSignbackground {
+   height: 700px;
+   background-color: lightgrey;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.logSignScreenPopup {
+   background-color: var(--blue);
+   text-align: center;
+   padding: 80px;
+   width: 300px;
+   border-radius: 10px
+}
+
+.logSignScreenPopup #buttonMonEspace,
+#buttonInscrire {
+   margin-left: 20px;
+   margin-right: 20px;
+   color: white;
+   font-weight: bold;
+   text-decoration: none;
+   font-size: 15px;
+   margin-bottom: 10px;
+}
+
+.loginScreen #buttonMonEspace {
+   border-bottom: 1px solid white;
+   margin-left: -10px;
+}
+
+.mainSinup #buttonMonEspace {
+   margin-left: -10px;
+}
+
+.logSignScreenPopup form input,
+.step_forms input,
+select {
+   width: 220px;
+   height: 20px;
+   font-size: 15px;
+   margin: 20px;
+}
+
+.step_forms textarea {
+   margin-top: 20px;
+   resize: none;
+   height: 100px;
+   width: 220px;
+}
+
+.step_forms select {
+   height: 26px;
+   width: 226px;
+   margin: 20px;
+}
+
+.logSignScreenPopup button {
+   color: var(--blue);
+   background-color: white;
+   border: none;
+   font-weight: bold;
+   padding:7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 10px
+}
+
+#buttonIcon {
+   color: var(--blue);
+   background-color: white;
+   border: none;
+   font-weight: bold;
+   padding-top: 0px;
+   padding-right: 10px;
+   padding-bottom: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 10px;
+   position: relative; 
+   
+}
+
+.mainSinup #buttonInscrire {
+   border-bottom: 1px solid white;
+}
+
+.finalStep p {
+   color: white;
+}
+
+.errorMessageOndark,
+#h1Signup {
+   color: white;
+}
+
+.loginScreen .loginIcon {
+   color: black;
+   font-size: 20px;
+   top: 5px;
+   position: relative;
+}
+
+.loginScreen .mainSinup, .closeIcon {
+   color: white;
+   font-size: 20px;
+   position: relative;
+   top: -70px;
+   left: 315px;
+   cursor: pointer;
+}
+
+/* 
+ for overlay css see login js */
+/* #cover{
    position:fixed;
    top:0;
    left:0;
@@ -1139,95 +1373,9 @@ footer .footer_notes p {
 #loginScreen:target, #loginScreen:target + #cover{
    display:block;
    opacity:2;
-}
-.cancel
-{
-   display:block;
-   position:absolute;
-   top:3px;
-   right:2px;
-   background:rgb(245,245,245);
-   color:black;
-   height:30px;
-   width:35px;
-   font-size:30px;
-   text-decoration:none;
-   text-align:center;
-   font-weight:bold;
-} 
-*/
+} */
 
-.logSignbackground {
-   height: 700px;
-   background-color: lightgrey;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-.logSignScreenPopup {
-   background-color: var(--blue);
-   text-align: center;
-   padding: 80px;
-   width: 300px;
-}
-
-.logSignScreenPopup #buttonMonEspace,
-#buttonInscrire {
-   margin-left: 20px;
-   margin-right: 20px;
-   color: white;
-   font-weight: bold;
-   text-decoration: none;
-   font-size: 15px;
-   margin-bottom: 10px;
-}
-
-.loginScreen #buttonMonEspace {
-   border-bottom: 1px solid white;
-}
-
-.logSignScreenPopup form input,
-.step_forms input,
-select {
-   width: 220px;
-   height: 20px;
-   font-size: 15px;
-   margin: 20px;
-}
-
-.step_forms textarea {
-   margin-top: 20px;
-   resize: none;
-   height: 100px;
-   width: 220px;
-}
-
-.step_forms select {
-   height: 26px;
-   width: 226px;
-}
-
-.logSignScreenPopup button {
-   color: var(--blue);
-   background-color: white;
-   border: none;
-   font-weight: bold;
-   padding: 7px;
-   border-radius: 5px;
-   cursor: pointer;
-   font-size: 15px;
-   margin: 10px;
-}
-
-.mainSinup #buttonInscrire {
-   border-bottom: 1px solid white;
-}
-
-.errorMessageOndark,
-#h1Signup {
-   color: white;
-}
+ 
 
 /*
 ########  #######  ########  ##     ##  ######  
@@ -1249,6 +1397,8 @@ select {
    background-color: #f8f8f9;
    /* text-align: center; */
    padding: 20px;
+   border-left: 10px inset var(--grey);
+   border-top: 10px outset var(--blue);
 }
 
 .formStyle h1 {
@@ -1261,6 +1411,7 @@ select {
    height: 20px;
    font-size: 15px;
    margin: 0;
+   color: grey;
 }
 
 .formStyle label {
@@ -1315,19 +1466,66 @@ select {
  #######  ##    ## ########    ##     ## ####  ######   ######  ####  #######  ##    ## 
 */
 
-/* .pageMission {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+.pageMission {
+   /* background-color: var(--blue); */
+}
 
-} */
+.pageMission .locationIcon{
+ font-size: 18px;
+}
 
 .detailsMission {
    background-color: #f8f8f9;
    padding: 20px;
-   width: 500px;
    margin: 25px auto;
-   text-align: left;
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.detailsMissionBlock{
+   background-color: #f8f8f9;
+   padding: 20px;
+   border-left: 10px inset var(--grey);
+   border-top: 10px outset var(--blue);
+   width: 530px;
+}
+
+
+
+.formStyle h1 {
+   text-align: center;
+}
+
+
+
+/* .detailsMission .missionHeader{
+   text-align: center;
+} */
+
+.detailsMission span{
+   color: grey;
+   font-weight: bold;
+}
+
+.pageMission .buttonHelp {
+   color: white;
+   background-color: var(--blue);
+   border: none;
+   font-weight: bold;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   margin: 25px auto;
+   display: block;
+}
+
+.editMissionForm form{
+   border-right: 10px inset var(--grey);
+   border-top: 10px outset var(--blue);
+   border-left: none;
 }
 
 .pageMission button,
@@ -1335,4 +1533,9 @@ select {
    display: block;
    margin: 25px auto;
    text-align: center;
+}
+
+.redirect_link {
+   color: white;
+   text-decoration: none;
 }
