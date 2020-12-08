@@ -6,7 +6,7 @@ import Dashboard from './Dashboard';
 import Profile from './Profile';
 import service from '../auth-service.js';
 import { VscLoading } from 'react-icons/vsc';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; //Antoine: framerMotion> animatePresence pour retirer un élément de la page
 
 class MonEspace extends React.Component {
    state = { user: [], missions: [], dashboard: true, missionsAconfirmer: [], otherMissions: [] }; //single source of truth - à redescendre dans les enfants

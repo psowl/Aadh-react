@@ -39,6 +39,7 @@ body,
    flex-direction: column;
    min-height: 100vh;
    font-size: 12px;
+   max-width: 1145px;
 }
 
 h2 {
@@ -145,6 +146,9 @@ input:focus {
    background: white;
    z-index: 1;
    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+   max-width: 1145px;
+   margin-right: auto;
+   margin-left: auto;
 }
 
 .nav .user_icon {
