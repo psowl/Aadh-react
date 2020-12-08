@@ -3,18 +3,30 @@ import service from '../auth-service';
 
 class EditMission extends React.Component {
    state = {
-      title: this.props.theMission.title,
-      sector: this.props.theMission.sector,
-      expertise_required: this.props.theMission.expertise_required,
-      description: this.props.theMission.description,
-      location: this.props.theMission.location,
-      start_date: this.props.theMission.start_date,
-      end_date: this.props.theMission.end_date,
-      availability_frequency: this.props.theMission.availability_frequency,
-      status: this.props.theMission.status,
-      requiredSkills: this.props.theMission.requiredSkills,
+      theMission: {},
    };
-   
+
+   componentDidMount() {
+      this.getSingleMission();
+   }
+
+   //aller chercher la mission dont l'id est dans l'url
+   getSingleMission = () => {
+      const params = this.props.match.params;//passer la props dans le routing
+      console.log('params', params);
+      service
+         .get(`http://localhost:5000/missions/${params.id}`)
+         .then((responseFromApi) => {
+            const theMission = responseFromApi.data;
+            console.log('theMission', theMission);
+            this.setState({ theMission: theMission });
+         })
+         .catch((err) => {
+            console.log('Error while fetching mission', err);
+         });
+   };
+
+   //soumission des nouvelles données
    handleFormSubmit = (event) => {
       const {
          title,
@@ -27,12 +39,12 @@ class EditMission extends React.Component {
          availability_frequency,
          status,
          requiredSkills,
-      } = this.state;
+      } = this.state.theMission;
 
       event.preventDefault();
 
       service
-         .put(`http://localhost:5000/missions/${this.props.theMission._id}`, {
+         .put(`http://localhost:5000/missions/${this.state.theMission._id}`, {
             title,
             sector,
             expertise_required,
@@ -45,7 +57,7 @@ class EditMission extends React.Component {
             requiredSkills,
          })
          .then(() => {
-            this.props.getTheMission();
+            this.getTheMission();
             //Rediriger à la page missions
             this.props.history.push('/missions');
          })
@@ -59,16 +71,15 @@ class EditMission extends React.Component {
 
    render() {
       return (
-         <div className= " editMissionForm parentForm">
-            
-            <form className="formStyle" onSubmit={this.handleFormSubmit}>
-            <h1>Editer la mission</h1>
+         <div className=' editMissionForm parentForm'>
+            <form className='formStyle' onSubmit={this.handleFormSubmit}>
+               <h1>Editer la mission</h1>
                <p>
                   <label>Secteur</label>
                   <input
                      type='text'
                      name='sector'
-                     value={this.state.sector}
+                     value={this.state.theMission.sector}
                      onChange={(e) => this.handleChange(e)}
                   />
                </p>
@@ -77,7 +88,7 @@ class EditMission extends React.Component {
                   <input
                      type='text'
                      name='title'
-                     value={this.state.title}
+                     value={this.state.theMission.title}
                      onChange={(e) => this.handleChange(e)}
                   />
                </p>
@@ -86,7 +97,7 @@ class EditMission extends React.Component {
                   <input
                      type='text'
                      name='location'
-                     value={this.state.location}
+                     value={this.state.theMission.location}
                      onChange={(e) => this.handleChange(e)}
                   />
                </p>
@@ -95,7 +106,7 @@ class EditMission extends React.Component {
                   <input
                      type='date'
                      name='start_date'
-                     value={this.state.start_date}
+                     value={this.state.theMission.start_date}
                      onChange={this.handleChange}
                   ></input>
                </p>
@@ -104,7 +115,7 @@ class EditMission extends React.Component {
                   <input
                      type='date'
                      name='end_date'
-                     value={this.state.end_date}
+                     value={this.state.theMission.end_date}
                      onChange={this.handleChange}
                   ></input>
                </p>
@@ -112,7 +123,7 @@ class EditMission extends React.Component {
                   <label>Expertise attendue</label>
                   <select
                      name='expertise_required'
-                     value={this.state.expertise_required}
+                     value={this.state.theMission.expertise_required}
                      placeholder='expertise'
                      onChange={this.handleChange}
                   >
@@ -131,7 +142,7 @@ class EditMission extends React.Component {
                   <label>Rythme</label>
                   <select
                      name='availability_frequency'
-                     value={this.state.availability_frequency}
+                     value={this.state.theMission.availability_frequency}
                      placeholder='Rythme'
                      onChange={this.handleChange}
                   >
@@ -145,7 +156,7 @@ class EditMission extends React.Component {
                   <label>Description:</label>
                   <textarea
                      name='description'
-                     value={this.state.description}
+                     value={this.state.theMission.description}
                      onChange={(e) => this.handleChange(e)}
                   />
                </p>
@@ -154,7 +165,7 @@ class EditMission extends React.Component {
                   <select
                      type='text'
                      name='requiredSkills'
-                     value={this.state.requiredSkills}
+                     value={this.state.theMission.requiredSkills}
                      onChange={this.handleChange}
                   >
                      <option value=''> Sélectionner ici</option>
