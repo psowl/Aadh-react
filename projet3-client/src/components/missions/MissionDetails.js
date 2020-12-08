@@ -130,21 +130,12 @@ class MissionDetails extends React.Component {
             </div>)
           } */}
 
-<<<<<<< HEAD
-            <Link className='redirect_link' to={'/missions'}>
-               Retour à la liste des missions
-            </Link>
-         </div>
-      );
-   }
-=======
         <Link className="redirect_link" to={"/missions"}>
           Retour à la liste des missions
         </Link>
       </div>
     );
   }
->>>>>>> ad3b367c0a3b83de8217a77c4cf9830cbd12d003
 }
 
 export default MissionDetails;
