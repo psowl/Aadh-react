@@ -64,7 +64,7 @@ class App extends React.Component {
                   />
                   <Route exact path='/missions' component={MissionsList} />
                   <Route exact path='/missions/new' component={AddMission} />
-                  <Route exact path='/missions/edit/:id' component={EditMission} />
+                  <Route exact path='/missions/:id/edit' component={EditMission} />
                   <Route exact path='/missions/:id' component={MissionDetails} />
                   <Route exact path='/users/:id' component={MonEspace} />
 

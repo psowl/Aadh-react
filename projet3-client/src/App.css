@@ -317,6 +317,9 @@ input:focus {
    }
 }
 
+.activeNavLink {
+   border-bottom: 1px solid var(--blue);
+}
 /*
 ########  #######   #######  ######## ######## ########  
 ##       ##     ## ##     ##    ##    ##       ##     ## 

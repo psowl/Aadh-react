@@ -68,7 +68,7 @@ class Aconfirmer extends React.Component {
                   <h3>
                      <Link to={`/missions/${el._id}`}>{el.title}</Link>
                   </h3>
-                  <Link to={`/missions/edit/${el._id}`}>
+                  <Link to={`/missions/${el._id}/edit`}>
                      <FaRegEdit size={25} />
                   </Link>
                </section>

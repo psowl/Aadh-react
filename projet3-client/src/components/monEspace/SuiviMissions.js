@@ -59,7 +59,7 @@ class SuiviMissions extends React.Component {
                            {this.formatDate(el.end_date)}
                         </p>
                      </div>
-                     <Link to={`/missions/edit/${el._id}`}>
+                     <Link to={`/missions/${el._id}/edit`}>
                         <FaRegEdit size={25} />
                      </Link>{' '}
                   </div>
