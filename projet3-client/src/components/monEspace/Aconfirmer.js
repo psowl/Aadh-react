@@ -21,7 +21,7 @@ class Aconfirmer extends React.Component {
       console.log('missionId', missionId);
 
       service
-         .put(`http://localhost:5000/missions/${missionId}`, {
+         .put(`/missions/${missionId}`, {
             volonteerSelected: this.state.candidateChosenId,
             status: 'Pourvue',
          })

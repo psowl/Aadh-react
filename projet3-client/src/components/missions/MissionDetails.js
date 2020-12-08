@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { GrLocation } from "react-icons/gr";
 import service from "../auth-service";
-import moment from "moment";
+//import moment from "moment";
 
 import EditMission from "./EditMission.js";
 
@@ -17,7 +17,7 @@ class MissionDetails extends React.Component {
   getSingleMission = () => {
     const { params } = this.props.match;
     service
-      .get(`http://localhost:5000/missions/${params.id}`)
+      .get(`/missions/${params.id}`)
       .then((responseFromApi) => {
         const theMission = responseFromApi.data;
         this.setState(theMission);
@@ -45,7 +45,7 @@ class MissionDetails extends React.Component {
   deleteMission = () => {
     const { params } = this.props.match;
     service
-      .delete(`http://localhost:5000/missions/${params.id}`)
+      .delete(`/missions/${params.id}`)
       .then(() => {
         this.props.history.push("/missions");
       })

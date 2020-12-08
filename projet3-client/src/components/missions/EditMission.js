@@ -32,7 +32,7 @@ class EditMission extends React.Component {
       event.preventDefault();
 
       service
-         .put(`http://localhost:5000/missions/${this.props.theMission._id}`, {
+         .put(`/missions/${this.props.theMission._id}`, {
             title,
             sector,
             expertise_required,
