@@ -12,7 +12,7 @@ class EditMission extends React.Component {
 
    //aller chercher la mission dont l'id est dans l'url
    getSingleMission = () => {
-      const params = this.props.match.params;//passer la props dans le routing
+      const params = this.props.match.params; //passer la props dans le routing
       console.log('params', params);
       service
          .get(`http://localhost:5000/missions/${params.id}`)
@@ -44,7 +44,7 @@ class EditMission extends React.Component {
       event.preventDefault();
 
       service
-         .put(`http://localhost:5000/missions/${this.state.theMission._id}`, {
+         .put(`/missions/${this.props.theMission._id}`, {
             title,
             sector,
             expertise_required,

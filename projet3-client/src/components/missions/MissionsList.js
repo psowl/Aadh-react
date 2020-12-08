@@ -88,7 +88,7 @@ class MissionsList extends React.Component {
       expertise_required4: this.state.expertise_required4,
     });
 
-    const url = `http://localhost:5000/missions?${qs}`;
+    const url = `/missions?${qs}`;
     console.log("URL", url);
     service
       .get(url)
