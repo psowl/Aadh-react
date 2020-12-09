@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { GrLocation } from "react-icons/gr";
 import service from "../auth-service";
-// import moment from 'moment';
-
-import EditMission from "./EditMission.js";
 
 class MissionDetails extends React.Component {
   state = {};
@@ -20,41 +17,25 @@ class MissionDetails extends React.Component {
       .then((responseFromApi) => {
         const theMission = responseFromApi.data;
         this.setState(theMission);
+        //console.log("themission to check date from mission details", theMission)
+        console.log("this.state of MissionDetails", this.state.start_date);
       })
       .catch((err) => {
         console.log("Error while fetching mission", err);
       });
   };
 
-  renderEditForm = () => {
-    if (!this.state.title) {
-      this.getSingleMission();
-    } else {
-      return (
-        <EditMission
-          theMission={this.state}
-          getTheMission={this.getSingleMission}
-          {...this.props}
-        />
-      );
-    }
-  };
-
-  // DELETE MISSION
-  deleteMission = () => {
-    const { params } = this.props.match;
-    service
-      .delete(`/missions/${params.id}`)
-      .then(() => {
-        this.props.history.push("/missions");
-      })
-      .catch((err) => {
-        console.log("Error while deleting mission", err);
-      });
-  };
+  //instead of recalling getAllMissions in the setState above, check both states then display:
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("just re-rendered", prevProps, prevState);
+  //   if (([this.state] != [prevState])) {
+  //     console.log("state missiondetails changed", prevState, this.state);
+  //     this.getSingleMission();
+  //   }
+  // }
 
   //error message: The specified value "2020-12-25T00:00:00.000Z" does not conform to the required format, "yyyy-MM-dd"
-  // I cant to display only YYYY/MM/DD
+  // I want to display only YYYY/MM/DD
   // Method 1 - using npm moment:
   // const date = moment("Sep 21, 2017").format('YYYY/MM/DD');
   // console.log(date); //2017/09/21
@@ -69,14 +50,17 @@ class MissionDetails extends React.Component {
   // console.log(finalDate.split("T")[0]);
   //returns 2013-03-10
 
-  // formatDate = () => {
-  //   let finalDate=JSON.stringify(this.state.start_date);
-  //   console.log("finalDate",finalDate)
-  //   const lastDate=finalDate.substring(0, 10);;
-  //   //console.log("finaldate", finalDate.split("T")[0]) // 2020/12/17
-  // };
+  formatDate = (date) => {
+    let stringDate = JSON.stringify(date);
+    console.log("date", date);
+    console.log("stringDate", stringDate);
+    const lastDate = stringDate.split("T")[0];
+    console.log("lastDate", lastDate); // 2020/12/17
+    return lastDate;
+  };
 
   render() {
+    console.log("this.formatDate", this.state.start_date)
     return (
       <div className="pageMission">
         <div className="detailsMission">
@@ -99,7 +83,9 @@ class MissionDetails extends React.Component {
               {/* {this.formatDate(this.state.start_date)} */}
             </p>
             <p>
-              <span>Date de fin :</span> {this.state.end_date}
+              <span>Date de fin :</span>
+              {this.state.end_date}
+              {/* {this.formatDate(this.state.end_date)} */}
             </p>
             <p>
               <span>Rythme :</span> {this.state.availability_frequency}
@@ -113,21 +99,6 @@ class MissionDetails extends React.Component {
             <button className="buttonHelp">Proposer son aide </button>
           </div>
         </div>
-        <div>{this.renderEditForm()} </div>
-        <p>
-          <button className="deleteButton" onClick={() => this.deleteMission()}>
-            Supprimer la mission
-          </button>
-        </p>
-
-        {/* {this.props.loggedInUser && 
-            (<div>
-              <div>{this.renderEditForm()} </div>
-              <p>
-              <button onClick={() => this.deleteMission()}>Supprimer la mission</button>
-              </p>
-            </div>)
-          } */}
 
         <Link className="redirect_link" to={"/missions"}>
           Retour à la liste des missions

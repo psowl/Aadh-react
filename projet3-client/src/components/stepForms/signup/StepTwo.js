@@ -146,7 +146,7 @@ class StepTwo extends React.Component {
             </div>
             <button onClick={this.goBack}>Précédent</button>
             <button onClick={this.sendToBack}>Continuer</button>{' '}
-            <div className="errorMessageOndark">{this.state.errorMessage}</div>
+            <div className="messagesOnDark">{this.state.errorMessage}</div>
          </div>
       );
    }

@@ -83,7 +83,10 @@ class MainSignup extends React.Component {
           cause: cause,
         });
         this.props.updateUser(response);
-        this.setState({ successMessage: "Compte créé !" });
+        this.setState({
+          successMessage:
+            "Votre compte est créé, Bienvenue ! Votre espace est disponible.",
+        });
       })
       .catch((error) => {
         this.setState({ errorMessage: error.response.data.message });
@@ -151,8 +154,10 @@ class MainSignup extends React.Component {
               signupstates={this.state}
             />
           )}
-          {this.state.errorMessage && <p>{this.state.errorMessage}</p>}
-          {this.state.successMessage && <p>{this.state.successMessage}</p>}
+          <div className="signupMessagesOnDark">
+            {this.state.errorMessage && <p>{this.state.errorMessage}</p>}
+            {this.state.successMessage && <p>{this.state.successMessage}</p>}
+          </div>
         </div>
       </div>
     );

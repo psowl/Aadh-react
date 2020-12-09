@@ -121,7 +121,7 @@ class MonEspace extends React.Component {
             filterMissions={this.filterMissions}
           />
         ) : (
-          <Profile />
+          <Profile user={this.state.user} otherMissions={this.state.otherMissions}/>
         )}
       </div>
     );

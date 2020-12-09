@@ -82,7 +82,7 @@ class Login extends React.Component {
               <span>Se connecter</span>
             </button>
           </form>
-          <div className="errorMessageOndark">
+          <div className="messagesOnDark">
             {this.state.errorMessage && this.state.errorMessage}
           </div>
 

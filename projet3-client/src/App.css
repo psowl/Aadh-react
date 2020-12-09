@@ -21,6 +21,7 @@ body,
    box-sizing: border-box;
    font-family: 'Palanquin', sans-serif;
    font-size: 12px;
+
 }
 
 @media (max-width: 768px) {
@@ -419,8 +420,10 @@ footer .footer_notes p {
 }
 
 .background_video {
-   background: black;
+   /* background: black; */
    margin: 10px auto;
+   background-image: url('https://images.unsplash.com/photo-1564089969562-7b8667a4adec?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80') ;
+   background-size: 100%;
 }
 
 .parent_video {
@@ -1324,8 +1327,8 @@ select {
    color: white;
 }
 
-.errorMessageOndark,
-#h1Signup {
+.messagesOnDark,
+.TextSignup {
    color: white;
 }
 
@@ -1343,6 +1346,13 @@ select {
    top: -70px;
    left: 315px;
    cursor: pointer;
+}
+
+.signupMessagesOnDark{
+   color: white; 
+   font-weight: bold;
+   font-size: 20px;
+   text-align: center;
 }
 
 /* 
@@ -1536,6 +1546,51 @@ select {
 }
 
 .redirect_link {
-   color: white;
    text-decoration: none;
 }
+
+/*
+########  ########   #######  ######## #### ##       ######## 
+##     ## ##     ## ##     ## ##        ##  ##       ##       
+##     ## ##     ## ##     ## ##        ##  ##       ##       
+########  ########  ##     ## ######    ##  ##       ######   
+##        ##   ##   ##     ## ##        ##  ##       ##       
+##        ##    ##  ##     ## ##        ##  ##       ##       
+##        ##     ##  #######  ##       #### ######## ######## 
+*/
+
+/* .profile {
+   background:linear-gradient(#070d428a 26%, #999cb56e 67%, white);
+} */
+.infoProfile{
+   width: 70%;
+   color: black;
+}
+
+.profile .missionCard h2{
+   color: black;
+}
+
+.profile .envoyerEmail a{
+   text-decoration: none;
+   color: var(--blue);
+   float: right;
+   font-size: 15px;
+   position: relative;
+   
+}
+
+.infoProfile span{
+   color: grey;
+}
+
+.profile .listMissions {
+   text-align: center;
+}
+
+.emailIcon{
+   font-size: 40px;
+   position: relative;
+   vertical-align: middle;
+}  
+

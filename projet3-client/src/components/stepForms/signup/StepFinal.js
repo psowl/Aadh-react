@@ -39,17 +39,17 @@ class StepFinal extends React.Component {
     return (
       <div className="finalStep">
         <div>
-          <h3 id="h1Signup">Veuillez valider vos informations :</h3>
+          <h3 className="TextSignup">Veuillez valider vos informations :</h3>
 
-          <p id="h1Signup">Username : {this.props.signupstates.username}</p>
-          <p id="h1Signup">Email : {this.props.signupstates.email} </p>
-          <p id="h1Signup">Lieu : {this.props.signupstates.location} </p>
-          <p id="h1Signup">
+          <p className="TextSignup">Username : {this.props.signupstates.username}</p>
+          <p className="TextSignup">Email : {this.props.signupstates.email} </p>
+          <p className="TextSignup">Lieu : {this.props.signupstates.location} </p>
+          <p className="h1TextSignupSignup">
             Description : {<br />}
             {this.props.signupstates.description}
           </p>
 
-          <p id="h1Signup">{this.checkUserType()}</p>
+          <p className="TextSignup">{this.checkUserType()}</p>
         </div>
         <button onClick={this.goBack}>Précédent</button>
         <button onClick={this.toContinue}>Finaliser mon inscription </button>

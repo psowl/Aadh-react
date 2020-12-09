@@ -31,6 +31,7 @@ userRoutes.put('/users/:id', (req, res, next) => {
       logo,
       avaibility_start_date,
       avaibility_end_date,
+      cause, 
    } = req.body;
 
    User.findByIdAndUpdate(req.params.id, req.body, { new: true })

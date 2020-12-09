@@ -91,7 +91,7 @@ class StepOne extends React.Component {
             </div>
             {/*envoyer les inputs dans le component parent MainSignup quand on clique sur Continuer */}
             <button onClick={this.sendToBack}>Continuer</button>
-            <div className='errorMessageOndark'>{this.state.errorMessage}</div>
+            <div className='messagesOnDark'>{this.state.errorMessage}</div>
          </div>
       );
    }
