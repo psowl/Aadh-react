@@ -67,7 +67,7 @@ class Home extends React.Component {
                <Presentation />
             </div>
             <div className='partenariat'>
-               <h3>PARTENAIRES ASSOCIATIFS</h3>
+               <h2>PARTENAIRES ASSOCIATIFS</h2>
                <div className='logos_partenaires'>
                   <img
                      src='https://namati.org/wp-content/uploads/2019/04/logo-ong-avet-768x768.jpg'

@@ -52,32 +52,17 @@ class Nav extends React.Component {
                      </NavLink>
                   </li>
                   <li>
-                     <Link
+                     <NavLink
                         exact={true}
                         className='link'
                         activeClassName='activeNavLink'
                         to='/actualites'
                      >
                         Actualités
-                     </Link>
-                  </li>
-                  <li>
-                     <NavLink
-                        exact={true}
-                        className='link'
-                        activeClassName='activeNavLink'
-                        to='/rejoignez'
-                     >
-                        Rejoignez-nous
                      </NavLink>
                   </li>
-                  <li>
-                     <NavLink
-                        exact={true}
-                        className='link'
-                        activeClassName='activeNavLink'
-                        to='/don'
-                     >
+                  <li className='don'>
+                     <NavLink exact={true} className='link' to='/don'>
                         Faire un don
                      </NavLink>
                   </li>
