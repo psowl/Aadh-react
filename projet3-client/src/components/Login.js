@@ -21,9 +21,9 @@ class Login extends React.Component {
     login(email, password)
       .then((response) => {
         console.log("response login✅or❌", response);
+        this.props.updateUser(response);
         this.setState({ user: response });
         this.setState({ email: "", password: "", redirect: true });
-        this.props.updateUser(response);
         // console.log(response.username)
         // this.props.history.push('/missions');  //rediriger vers une page spécifique
       })

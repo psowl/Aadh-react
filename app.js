@@ -11,6 +11,7 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const Twitter = require("twitter");
+const cors = require("cors");
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
@@ -51,6 +52,15 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
+// allow access to the API from different domains/origins
+app.use(
+  cors({
+    // this could be multiple domains/origins, but we will allow just our React app
+    credentials: true,
+    origin: ["http://localhost:3000"],
+  })
+);
+
 // ADD SESSION SETTINGS HERE:
 app.use(
   session({
@@ -61,14 +71,6 @@ app.use(
       mongooseConnection: mongoose.connection,
       ttl: 60 * 60 * 24,
     }),
-  })
-);
-
-const cors = require("cors");
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000"],
   })
 );
 
@@ -95,6 +97,8 @@ app.use("/", userRoutes);
 const missionRoutes = require("./routes/mission-routes");
 app.use("/", missionRoutes);
 
+app.use("/", require("./routes/file-upload.routes"));
+
 // Serve static files from client/build folder
 app.use(express.static(path.join(__dirname, "projet3-client/build")));
 
@@ -105,5 +109,5 @@ app.use((req, res, next) => {
   });
 });
 
-module.exports = app;
 
+module.exports = app;

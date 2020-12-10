@@ -6,7 +6,7 @@ import Dashboard from "./Dashboard";
 import Profile from "./Profile";
 import service from "../auth-service.js";
 import { VscLoading } from "react-icons/vsc";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group"; //Antoine: framerMotion> animatePresence pour retirer un élément de la page
+import { AiOutlineLock } from "react-icons/ai";
 
 class MonEspace extends React.Component {
   state = {
@@ -15,6 +15,7 @@ class MonEspace extends React.Component {
     dashboard: true,
     missionsAconfirmer: [],
     otherMissions: [],
+    validationCheck: true,
   }; //single source of truth - à redescendre dans les enfants
 
   componentDidMount() {
@@ -36,23 +37,35 @@ class MonEspace extends React.Component {
   // aller chercher en base les missions avec le requester_id du solliciteur (front filter)
   getMissions = () => {
     const { params } = this.props.match;
+    //si le user dont la fiche est demandé n'est pas logué (si dysynchro avec la fonction getUser)
+    if (!this.props.loggedInUser) {
+      this.setState({ validationCheck: false });
+      return;
+    }
     service
       .get(`/missions/user/${params.id}`)
       .then((missionsFromDb) => {
-        this.setState({ missions: missionsFromDb.data }, () => {
-          //parmis ces missions portant le requestID ne retourner que celles qui on un status "en attente de confirmation"
-          let filteredMissions = this.state.missions.filter((el) => {
-            return el.status === "En attente de confirmation";
+        //si le user est le owner
+        if (this.props.loggedInUser._id === params.id) {
+          this.setState({ validationCheck: true });
+          this.setState({ missions: missionsFromDb.data }, () => {
+            //parmis ces missions portant le requestID ne retourner que celles qui on un status "en attente de confirmation"
+            let filteredMissions = this.state.missions.filter((el) => {
+              return el.status === "En attente de confirmation";
+            });
+            this.setState({ missionsAconfirmer: filteredMissions });
+            //parmis ces missions portant le requestID retourner toutes sauf celle qui on un status "en attente de confirmation"
+            let otherMissions = this.state.missions.filter((el) => {
+              return el.status !== "En attente de confirmation";
+            });
+            this.setState({ otherMissions: otherMissions });
           });
-          this.setState({ missionsAconfirmer: filteredMissions });
-          //parmis ces missions portant le requestID retourner toutes sauf celle qui on un status "en attente de confirmation"
-          let otherMissions = this.state.missions.filter((el) => {
-            return el.status !== "En attente de confirmation";
-          });
-          this.setState({ otherMissions: otherMissions });
-        });
+        } else {
+          //si le user n'est pas le owner
+          this.setState({ validationCheck: false });
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("err in getMissions", err));
   };
 
   //filtrer les missions de SuiviMissions selon DashboardSearch (back filter)
@@ -82,22 +95,23 @@ class MonEspace extends React.Component {
   render() {
     //return en JSX: afficher le contenu seulement si missions sont arrivées dans le component
     if (this.state.missions.length === 0) {
-      return (
-        <ReactCSSTransitionGroup
-          transitionName="fade"
-          transitionAppear={true}
-          transitionAppearTimeout={1000}
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={1000}
-        >
-          {
-            <div className="enChargement">
-              En chargement
-              <VscLoading size={120} color="#9E04CA" />
-            </div>
-          }
-        </ReactCSSTransitionGroup>
-      );
+      //si user n'est pas l'owner alors retourner ce message
+      if (this.state.validationCheck === false) {
+        return (
+          <div className="enChargement">
+            Merci de vous identifier
+            <AiOutlineLock size={120} />
+          </div>
+        );
+        //si user est l'owner alors retourner ce message
+      } else {
+        return (
+          <div className="enChargement">
+            En chargement
+            <VscLoading size={120} />
+          </div>
+        );
+      }
     }
 
     return (
@@ -121,7 +135,7 @@ class MonEspace extends React.Component {
             filterMissions={this.filterMissions}
           />
         ) : (
-          <Profile user={this.state.user} otherMissions={this.state.otherMissions}/>
+          <Profile user={this.state.user} missions={this.state.missions} />
         )}
       </div>
     );

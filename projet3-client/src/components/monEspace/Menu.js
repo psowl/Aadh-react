@@ -6,13 +6,10 @@ class Menu extends React.Component {
          <div className='menu_mon_espace'>
             <ul>
                <li className='all_buttons' onClick={this.props.clickOnProfile}>
-                  Mon profil
+                  <p> Mon profil</p>
                </li>
-               <li
-                  className='all_buttons'
-                  onClick={this.props.clickOnDashboard}
-               >
-                  Mon dashboard
+               <li className='all_buttons' onClick={this.props.clickOnDashboard}>
+                  <p> Mon dashboard</p>
                </li>
             </ul>
          </div>

@@ -5,7 +5,21 @@ const service = axios.create({
   withCredentials: true,
 });
 
+const errorHandler = (err) => {
+  // console.error(err);
+  throw err;
+};
+
 export default service;
+
+function handleUpload(theFiles) {
+  // console.log('file in service: ', theFile)
+  return service
+    .post("/upload", theFiles)
+    .then((res) => res.data)
+    .catch(errorHandler);
+}
+export { handleUpload };
 
 function signup(
   username,
@@ -17,7 +31,10 @@ function signup(
   description,
   availability_start_date,
   availability_end_date,
-  availability_frequency
+  availability_frequency,
+  cause,
+  profilePic,
+  logo
 ) {
   return service
     .post("/signup", {
@@ -31,6 +48,9 @@ function signup(
       availability_start_date,
       availability_end_date,
       availability_frequency,
+      cause,
+      profilePic,
+      logo,
     })
     .then((response) => response.data);
 }

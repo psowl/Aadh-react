@@ -26,6 +26,8 @@ class MainSignup extends React.Component {
     cause: "",
     errorMessage: "",
     successMessage: "",
+    profilePic: "",
+    logo: "",
   };
 
   //methode plus simple pour steps
@@ -69,6 +71,16 @@ class MainSignup extends React.Component {
     )
       .then((response) => {
         console.log("response signup✅or❌", response);
+        // handleUpload(uploadData)
+        //   .then((response) => {
+        //     console.log("response are: ", response);
+        //     // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        //     this.setState({ profilPic: response[0], logo: response[1] });
+        //   })
+        //   .catch((err) => {
+        //     console.log("Error while uploading the files: ", err);
+        //   })
+
         this.setState({
           username: username,
           userType: userType,

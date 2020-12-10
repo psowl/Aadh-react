@@ -56,25 +56,40 @@ class App extends React.Component {
         {/*On récupère le state user logué pour l'affichage conditionnel de l'enfant */}
         <div className="content">
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact={true} path="/" component={Home} />
             <Route
-              exact
+              exact={true}
               path="/signup"
               render={() => <Signup updateUser={this.updateLoggedInUser} />}
             />
             <Route
-              exact
+              exact={true}
               path="/login"
               render={() => <Login updateUser={this.updateLoggedInUser} />}
             />
-            <Route exact path="/missions" component={MissionsList} />
-            <Route exact path="/missions/new" component={AddMission} />
-            {/* <Route exact path='/missions/:id/edit' component={EditMission} /> */}
-            <Route exact path="/missions/:id" component={MissionDetails} />
-            <Route exact path="/users/:id" component={MonEspace} />
-
+            <Route exact={true} path="/missions" component={MissionsList} />
             <Route
-              exact
+              exact={true}
+              path="/missions/new"
+              render={(props) => (
+                <AddMission {...props} loggedInUser={this.state.loggedInUser} />
+              )}
+            />
+            <Route
+              exact={true}
+              xact
+              path="/missions/:id"
+              component={MissionDetails}
+            />
+            <Route
+              exact={true}
+              path="/users/:id"
+              render={(props) => (
+                <MonEspace {...props} loggedInUser={this.state.loggedInUser} />
+              )}
+            />
+            <Route
+              exact={true}
               path="/missions/:id/edit"
               render={(props) => (
                 <EditMission

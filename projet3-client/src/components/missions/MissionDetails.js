@@ -17,8 +17,15 @@ class MissionDetails extends React.Component {
       .then((responseFromApi) => {
         const theMission = responseFromApi.data;
         this.setState(theMission);
+        this.setState({
+          start_date: this.formatDate(this.state.start_date),
+          end_date: this.formatDate(this.state.end_date),
+        });
         //console.log("themission to check date from mission details", theMission)
-        console.log("this.state of MissionDetails", this.state.start_date);
+        console.log(
+          "this.state of MissionDetails formatted",
+          this.state.start_date
+        );
       })
       .catch((err) => {
         console.log("Error while fetching mission", err);
@@ -52,15 +59,15 @@ class MissionDetails extends React.Component {
 
   formatDate = (date) => {
     let stringDate = JSON.stringify(date);
-    console.log("date", date);
-    console.log("stringDate", stringDate);
-    const lastDate = stringDate.split("T")[0];
-    console.log("lastDate", lastDate); // 2020/12/17
+    // console.log("date", date);
+    // console.log("stringDate", stringDate);
+    const lastDate = stringDate.substring(1, 10);
+    // console.log("splitlastDate", lastDate); // 2020/12/17
     return lastDate;
   };
 
   render() {
-    console.log("this.formatDate", this.state.start_date)
+    console.log("this.formatDate", this.state.start_date);
     return (
       <div className="pageMission">
         <div className="detailsMission">
@@ -78,12 +85,12 @@ class MissionDetails extends React.Component {
               <span>Secteur :</span> {this.state.sector}
             </p>
             <p>
-              <span>Date de début :</span>
+              <span>Date de début : </span>
               {this.state.start_date}
               {/* {this.formatDate(this.state.start_date)} */}
             </p>
             <p>
-              <span>Date de fin :</span>
+              <span>Date de fin : </span>
               {this.state.end_date}
               {/* {this.formatDate(this.state.end_date)} */}
             </p>

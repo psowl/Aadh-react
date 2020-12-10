@@ -3,7 +3,6 @@ import { FaRegEdit } from 'react-icons/fa';
 import OneCandidate from './OneCandidate';
 import service from '../auth-service';
 import { Link } from 'react-router-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Aconfirmer extends React.Component {
    state = { candidateChosen: '' };
@@ -57,57 +56,50 @@ class Aconfirmer extends React.Component {
    };
 
    render() {
-      let items =
-         this.props.dashboard &&
-         this.props.missionsAconfirmer.map((el) => (
-            <li key={el._id} className='each_mission'>
-               <section
-                  className='entete'
-                  style={this.changeBackgroundImage(el.expertise_required)}
-               >
-                  <h3>
-                     <Link to={`/missions/${el._id}`}>{el.title}</Link>
-                  </h3>
-                  <Link to={`/missions/${el._id}/edit`}>
-                     <FaRegEdit size={25} />
-                  </Link>
-               </section>
-               <p className='no_link'>Liste des candidats</p>
-               <ul className='list_candidates'>
-                  {el.candidates.map((candidate, index) => (
-                     <li key={index}>
-                        <OneCandidate
-                           candidat={candidate}
-                           confirmCandidate={this.confirmCandidate}
-                        />
-                     </li>
-                  ))}
-               </ul>
-               <button
-                  className='all_buttons'
-                  onClick={(event) => {
-                     this.toConfirm(event, el._id);
-                  }}
-               >
-                  {/*attention:ici el n'est pas un paramètre, c'est une variable*/}
-                  Confirmer
-               </button>
-            </li>
-         ));
       return (
          <div className='missions_a_confirmer'>
-            <h2>Mission(s) à confirmer</h2>
-            {this.props.missionsAconfirmer.length === 0 && <h2>Pas de mission à confirmer</h2>}
+            {this.props.missionsAconfirmer.length === 1 ? (
+               <h2>{this.props.missionsAconfirmer.length} mission à confirmer</h2>
+            ) : (
+               <h2>{this.props.missionsAconfirmer.length} missions à confirmer</h2>
+            )}
             <ul className='list_missions'>
-               <ReactCSSTransitionGroup
-                  transitionName='mission'
-                  transitionAppear={true}
-                  transitionAppearTimeout={1000}
-                  transitionEnterTimeout={1000}
-                  transitionLeaveTimeout={3000}
-               >
-                  {items}
-               </ReactCSSTransitionGroup>
+               {this.props.dashboard &&
+                  this.props.missionsAconfirmer.map((el) => (
+                     <li key={el._id} className='each_mission'>
+                        <section
+                           className='entete'
+                           style={this.changeBackgroundImage(el.expertise_required)}
+                        >
+                           <h3>
+                              <Link to={`/missions/${el._id}`}>{el.title}</Link>
+                           </h3>
+                           <Link to={`/missions/${el._id}/edit`}>
+                              <FaRegEdit size={25} />
+                           </Link>
+                        </section>
+                        <p className='no_link'>Liste des candidats</p>
+                        <ul className='list_candidates'>
+                           {el.candidates.map((candidate, index) => (
+                              <li key={index}>
+                                 <OneCandidate
+                                    candidat={candidate}
+                                    confirmCandidate={this.confirmCandidate}
+                                 />
+                              </li>
+                           ))}
+                        </ul>
+                        <button
+                           className='all_buttons'
+                           onClick={(event) => {
+                              this.toConfirm(event, el._id);
+                           }}
+                        >
+                           {/*attention:ici el n'est pas un paramètre, c'est une variable*/}
+                           Confirmer
+                        </button>
+                     </li>
+                  ))}
             </ul>
          </div>
       );
