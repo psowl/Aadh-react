@@ -2,35 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { GrLocation } from "react-icons/gr";
 import { MdEmail } from "react-icons/md";
+
 //import service from "../auth-service.js";
 
 class Profile extends React.Component {
   //aller chercher les missions avec id solliciteur et statut à valider
-//   state = {
-//     missions: [],
-//     missionsDisponibles: [],
-//     passedMissions: [],
-//   };
+  //   state = {
+  //     missions: [],
+  //     missionsDisponibles: [],
+  //     passedMissions: [],
+  //   };
 
-//   getMissions = () => {
-//     const { params } = this.props.match;
-//     service
-//       .get(`/missions/user/${params.id}`)
-//       .then((missionsFromDb) => {
-         
-//         this.setState({ missions: missionsFromDb.data }, () => {
-//           let filteredMissions = this.state.missions.filter((el) => {
-//             return el.status === "Disponible";
-//           });
-//           this.setState({ missionsDisponibles: filteredMissions });
-//           let passedMissions = this.state.missions.filter((el) => {
-//             return el.status !== "Disponible";
-//           });
-//           this.setState({ passedMissions: passedMissions });
-//         });
-//       })
-//       .catch((err) => console.log(err));
-//   };
+  //   getMissions = () => {
+  //     const { params } = this.props.match;
+  //     service
+  //       .get(`/missions/user/${params.id}`)
+  //       .then((missionsFromDb) => {
+
+  //         this.setState({ missions: missionsFromDb.data }, () => {
+  //           let filteredMissions = this.state.missions.filter((el) => {
+  //             return el.status === "Disponible";
+  //           });
+  //           this.setState({ missionsDisponibles: filteredMissions });
+  //           let passedMissions = this.state.missions.filter((el) => {
+  //             return el.status !== "Disponible";
+  //           });
+  //           this.setState({ passedMissions: passedMissions });
+  //         });
+  //       })
+  //       .catch((err) => console.log(err));
+  //   };
 
   render() {
     //  return en JSX: afficher le contenu seulement si missions sont arrivées dans le component
@@ -38,9 +39,16 @@ class Profile extends React.Component {
       <div className="profile">
         
         <div className="envoyerEmail">
-        <a href="mailto:destinataire@gmail.com" target="_blank" rel="noopener noreferrer">Envoyer un email<MdEmail className="emailIcon" /></a>
+          <a
+            href="mailto:destinataire@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Envoyer un email
+            <MdEmail className="emailIcon" />
+          </a>
         </div>
-        
+
         <div className="infoProfile">
           <h2>
             <GrLocation className="locationIcon" /> {this.props.user.location}
@@ -69,7 +77,7 @@ class Profile extends React.Component {
               </li>
             ))}
           </ul>
-          
+
           <h2>Historique des missions passées</h2>
         </div>
       </div>
