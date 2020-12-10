@@ -1091,8 +1091,8 @@ footer .footer_notes p {
 .mon_espace .missions_a_confirmer .list_candidates {
    padding: 0px;
    margin-bottom: 15px;
-   max-height: 200px;
-   overflow: scroll;
+   max-height: 100px;
+   overflow-y: auto;
    flex: 1;
    margin: 5px;
 }
@@ -1693,4 +1693,8 @@ select {
    display: flex;
    flex-direction: column;
    background: rgb(35 35 35 / 75%);
+   width: 70%;
+   justify-content: center;
+   margin-right: auto;
+   margin-left: auto;
 }
