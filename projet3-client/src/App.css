@@ -112,7 +112,10 @@ p {
    height: 50vh;
    right: 100px;
    left: 100px;
-   border-radius: 100px;
+   color: white;
+   background-position: center;
+   opacity: 0.5;
+   background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
 }
 
 @media (max-width: 425px) {
@@ -945,6 +948,7 @@ footer .footer_notes p {
    position: relative;
    padding: 20px;
    background: linear-gradient(#070d428a 22%, #999cb56e 102%);
+   border-bottom: 1px solid white;
 }
 
 .mon_espace_top h2 {
@@ -1034,7 +1038,8 @@ footer .footer_notes p {
    margin-right: auto;
 }
 
-.mon_espace .missions_a_confirmer h2 {
+.mon_espace .missions_a_confirmer h2,
+.mon_espace .otherMissions h2 {
    text-align: center;
    margin: 0px;
    padding-top: 20px;
@@ -1142,7 +1147,6 @@ footer .footer_notes p {
    background: var(--grey);
    margin: 30px 50px;
    border-radius: 5px;
-   padding: 10px 0px;
    border: 2px ridge #8080807a;
 }
 
@@ -1205,7 +1209,7 @@ footer .footer_notes p {
    align-items: center;
    justify-content: center;
    font-size: 30px;
-   margin-top: 5px;
+   margin-top: 15px;
 }
 
 .mon_espace .dashboardSearch svg {
@@ -1622,7 +1626,9 @@ select {
 */
 
 .profile {
-   background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1466&q=80');
+   background-image: url('https://images.unsplash.com/photo-1413977808283-c0c106512928?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1332&q=80');
+   background-position: center;
+   /* background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1466&q=80'); */
    color: white;
 }
 
@@ -1634,28 +1640,26 @@ select {
    margin: 0;
 }
 
-.profile .user_details > div div {
+.profile .user_details > div {
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.profile .user_details div svg {
+.profile .user_details > a {
+   display: flex;
+   justify-content: center;
+   margin-right: auto;
+   margin-left: auto;
+}
+
+.profile .user_details svg {
    color: var(--blue);
 }
 
-.profile .user_details div svg:hover {
+.profile .user_details svg:hover {
    cursor: pointer;
    color: white;
-}
-
-.profile .user_details > div {
-   width: 20%;
-   display: flex;
-   justify-content: space-between;
-   margin-right: auto;
-   margin-left: auto;
-   align-items: center;
 }
 
 .profile ul {
@@ -1683,4 +1687,10 @@ select {
 .profile ul li h3 {
    margin-right: auto;
    margin-left: auto;
+}
+
+.profile .description {
+   display: flex;
+   flex-direction: column;
+   background: rgb(35 35 35 / 75%);
 }

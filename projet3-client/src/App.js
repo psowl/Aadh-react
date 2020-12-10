@@ -63,10 +63,21 @@ class App extends React.Component {
                      render={() => <Login updateUser={this.updateLoggedInUser} />}
                   />
                   <Route exact={true} path='/missions' component={MissionsList} />
-                  <Route exact={true} path='/missions/new' component={AddMission} />
+                  <Route
+                     exact={true}
+                     path='/missions/new'
+                     render={(props) => (
+                        <AddMission {...props} loggedInUser={this.state.loggedInUser} />
+                     )}
+                  />
                   <Route exact={true} xact path='/missions/:id' component={MissionDetails} />
-                  <Route exact={true} path='/users/:id' component={MonEspace} />
-
+                  <Route
+                     exact={true}
+                     path='/users/:id'
+                     render={(props) => (
+                        <MonEspace {...props} loggedInUser={this.state.loggedInUser} />
+                     )}
+                  />
                   <Route
                      exact={true}
                      path='/missions/:id/edit'

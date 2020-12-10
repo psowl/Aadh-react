@@ -44,6 +44,7 @@ class SuiviMissions extends React.Component {
    render() {
       return (
          <div className='otherMissions'>
+         <h2>Mes missions</h2>
             <DashboardSearch
                onClick={this.handleOnClick}
                onChange={this.handleChange}

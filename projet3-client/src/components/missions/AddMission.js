@@ -1,5 +1,6 @@
 import React from 'react';
 import service from '../auth-service';
+import { AiOutlineLock } from 'react-icons/ai';
 
 class AddMission extends React.Component {
    state = {
@@ -13,6 +14,7 @@ class AddMission extends React.Component {
       availability_frequency: '',
       status: '',
       requiredSkills: '',
+      validationCheck: true,
    };
 
    handleFormSubmit = (event) => {
@@ -59,8 +61,8 @@ class AddMission extends React.Component {
                status: '',
                requiredSkills: '',
             });
-               //Rediriger à la page missions
-               this.props.history.push('/missions/:id');
+            //Rediriger à la page missions
+            this.props.history.push('/missions/:id');
          })
          .catch((error) => console.log(error));
    };
@@ -71,11 +73,19 @@ class AddMission extends React.Component {
    };
 
    render() {
+      //dès l'affichage du formulaire (pas à la soumission) : ne pouvoir créer une mission que si on est logué
+      if (!this.props.loggedInUser) {
+         return (
+            <div className='enChargement'>
+               Merci de vous identifier
+               <AiOutlineLock size={120} />
+            </div>
+         );
+      }
       return (
-         <div className="missionform parentForm">
-            
-            <form className="formStyle" onSubmit={this.handleFormSubmit}>
-            <h1>Publier une mission</h1>
+         <div className='missionform parentForm'>
+            <form className='formStyle' onSubmit={this.handleFormSubmit}>
+               <h1>Publier une mission</h1>
                <p>
                   <label>Titre/objet de la mission :</label>
                   <input
