@@ -971,7 +971,7 @@ footer .footer_notes p {
 }
 
 .mon_espace .menu_mon_espace ul {
-   width: 15%;
+   width: 154px;
    position: absolute;
    right: 70px;
    top: 380px;
@@ -1425,8 +1425,8 @@ select {
    cursor: pointer;
 }
 
-.signupMessagesOnDark{
-   color: white; 
+.signupMessagesOnDark {
+   color: white;
    font-weight: bold;
    font-size: 20px;
    text-align: center;
@@ -1476,6 +1476,7 @@ select {
    display: flex;
    justify-content: center;
    align-items: center;
+   padding: 15px;
 }
 
 .formStyle {
@@ -1724,7 +1725,7 @@ select {
    flex-direction: column;
    justify-content: center;
    padding: 0px;
-   width: 50%;
+   width: 60%;
    margin-right: auto;
    margin-left: auto;
    background: rgb(35 35 35 / 75%);
@@ -1738,6 +1739,7 @@ select {
 
 .profile ul li p {
    width: 50%;
+   border-right: 0.5px solid white;
 }
 
 .profile ul li h3 {
@@ -1753,4 +1755,44 @@ select {
    justify-content: center;
    margin-right: auto;
    margin-left: auto;
+}
+
+@media (max-width: 425px) {
+   .profile ul li {
+      flex-direction: column;
+      border-bottom: 1px solid white;
+   }
+   .profile ul,
+   .profile .description {
+      margin: 10px 0px;
+      width: 100%;
+   }
+   .profile ul li p {
+      width: 90%;
+      border-right: none;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      padding: 0;
+   }
+}
+
+/*
+ #######                   #     #                      
+ #       #####  # #####    #     #  ####  ###### #####  
+ #       #    # #   #      #     # #      #      #    # 
+ #####   #    # #   #      #     #  ####  #####  #    # 
+ #       #    # #   #      #     #      # #      #####  
+ #       #    # #   #      #     # #    # #      #   #  
+ ####### #####  #   #       #####   ####  ###### #    #                                                         
+*/
+.editUser textarea {
+   margin-top: 20px;
+   resize: none;
+   height: 60px;
+   width: 320px;
+}
+
+.editUser {
+   background-image:url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1437914983566-976d85602771%3Fixlib%3Drb-1.2.1%26ixid%3DMXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%253D%26auto%3Dformat%26fit%3Dcrop%26w%3D1500%26q%3D80')
 }
