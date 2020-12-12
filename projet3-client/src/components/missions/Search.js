@@ -14,7 +14,7 @@ function Search(props) {
     return splitDate;
   };
 
-  console.log("formatDate(props.start_date)", formatDate(props.start_date))
+  console.log("formatDate(props.start_date)", formatDate(props.start_date));
 
   return (
     <div className="searchContainer">
@@ -82,25 +82,27 @@ function Search(props) {
 
         {/* <button>Rechercher</button> */}
       </form>
-      <h2>Filtrer par expertise recherchée</h2>
+      <div className="filterContainer">
+        <h2>Filtrer par expertise recherchée</h2>
 
-      <ul className="filterExpertise">
-        <li onClick={(event) => props.onClick(event, "expertise_required1")}>
-          <h3>Droits de l'Homme et de l'enfant</h3>
-        </li>
+        <ul className="filterExpertise">
+          <li onClick={(event) => props.onClick(event, "expertise_required1")}>
+            <h3>Droits de l'Homme et de l'enfant</h3>
+          </li>
 
-        <li onClick={(event) => props.onClick(event, "expertise_required2")}>
-          <h3>Soutien des associations et des ESS</h3>
-        </li>
+          <li onClick={(event) => props.onClick(event, "expertise_required2")}>
+            <h3>Soutien des associations et des ESS</h3>
+          </li>
 
-        <li onClick={(event) => props.onClick(event, "expertise_required3")}>
-          <h3>Etudes de droit comparé</h3>
-        </li>
+          <li onClick={(event) => props.onClick(event, "expertise_required3")}>
+            <h3>Etudes de droit comparé</h3>
+          </li>
 
-        <li onClick={(event) => props.onClick(event, "expertise_required4")}>
-          <h3>Formation</h3>
-        </li>
-      </ul>
+          <li onClick={(event) => props.onClick(event, "expertise_required4")}>
+            <h3>Formation</h3>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

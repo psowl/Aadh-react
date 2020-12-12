@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import Home from "./components/home/Home";
 import EditMission from "./components/missions/EditMission";
 import MonEspace from "./components/monEspace/MonEspace";
+import { HiArrowCircleUp } from "react-icons/hi";
 
 class App extends React.Component {
   state = { loggedInUser: null };
@@ -48,7 +49,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <ScrollToTop smooth color="#16286a" />
+        <ScrollToTop
+          smooth
+          component={<HiArrowCircleUp className="scrolltop" />}
+        />
         <Nav
           loggedInUser={this.state.loggedInUser}
           updateUser={this.updateLoggedInUser}
@@ -77,7 +81,6 @@ class App extends React.Component {
             />
             <Route
               exact={true}
-              xact
               path="/missions/:id"
               component={MissionDetails}
             />

@@ -413,6 +413,10 @@ footer .footer_notes p {
       margin-bottom: 70px;
    }
 }
+.scrolltop{
+   font-size: 30px;
+   color:#16286a; 
+}
 
 /*
 ##     ##  #######  ##     ## ######## 
@@ -425,6 +429,7 @@ footer .footer_notes p {
 */
 
 .home {
+   /* background: linear-gradient(#ffffff 0%, #9198e0 50%, #ffffff 90%); */
 }
 
 @media (max-width: 425px) {
@@ -781,6 +786,12 @@ footer .footer_notes p {
 
 .missionsList {
    text-align: center;
+   
+}
+.missionTable {
+   background: linear-gradient(#ffffff 0%, #9198e5 50%, #ffffff 90%);
+   padding-bottom:40px;
+   margin-top: -20px;
 }
 
 .missionsList .cardContainer {
@@ -800,7 +811,23 @@ footer .footer_notes p {
    margin: 20px;
    background-color: #f8f8f9;
    list-style: none;
+   border: 0;
+   box-shadow:10px 10px 15px 4px rgba(22, 40, 106,0.8);
 }
+
+
+.missionCardSingle .missionCardImage img {
+   width: 80px;
+} 
+
+.missionCardSingle .missionCardImage {
+   background-color: white;
+   margin-top: -20px;
+   margin-left: -20px;
+   margin-right: -20px;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+} 
 
 .missionsList .missionCard a {
    text-decoration: none;
@@ -811,9 +838,14 @@ footer .footer_notes p {
    color: var(--blue);
 }
 
+.searchContainer{
+   background-color: white;
+}
+
 .searchform  {
    position: relative;
 }
+
 
 .searchContainer .searchIcon {
    font-size: 20px;
@@ -825,22 +857,33 @@ footer .footer_notes p {
 }
 
 .searchContainer .DateInput {
-   height: 22px;
+   height: 24px;
    top: 10px;
    width: 150px;
+   border-radius:5px;
 }
 
 .searchContainer .DateInputLabel {
    color: grey;
+   border-radius:5px;
 }
 
 .searchContainer .locationInput {
    top: 10px;
    width: 150px;
    margin: 10px;
+   border-radius:5px;
 }
-.searchContainer {
-   background-color: #f8f8f9;
+
+.searchContainer .searchform {
+   background-color:white;
+   
+}
+
+.missionsList .filterContainer{
+ border-left: 10px inset var(--grey);
+ margin-top: -18px;
+ padding-bottom:20px;
 }
 
 .filterExpertise {
@@ -859,6 +902,7 @@ footer .footer_notes p {
    display: flex;
    border-radius: 30px;
    cursor: pointer;
+   box-shadow: 5px 5px 2px 1px rgba(22,40,106);
 }
 
 .filterExpertise li:hover {
@@ -1311,11 +1355,12 @@ footer .footer_notes p {
 */
 
 .logSignbackground {
-   height: 700px;
+   height: 800px;
    /* background-color: lightgrey; */
    display: flex;
    justify-content: center;
    align-items: center;
+   background: url('https://images.unsplash.com/photo-1444664361762-afba083a4d77?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80')
 }
 
 .logSignScreenPopup {
@@ -1324,6 +1369,7 @@ footer .footer_notes p {
    padding: 80px;
    width: 300px;
    border-radius: 10px;
+   opacity: 0.9;
 }
 
 .logSignScreenPopup #buttonMonEspace,
@@ -1350,9 +1396,12 @@ footer .footer_notes p {
 .step_forms input,
 select {
    width: 220px;
-   height: 20px;
+   height: 24px;
    font-size: 15px;
    margin: 20px;
+   border: 0;
+   box-shadow:0 0 15px 4px rgba(255, 255, 255, 0.2);
+   border-radius:5px;
 }
 
 .step_forms textarea {
@@ -1360,12 +1409,18 @@ select {
    resize: none;
    height: 100px;
    width: 220px;
+   border: 0;
+   box-shadow:0 0 15px 4px rgba(255, 255, 255, 0.2);
+   border-radius:5px;
 }
 
 .step_forms select {
    height: 26px;
    width: 226px;
    margin: 20px;
+   border: 0;
+   box-shadow:0 0 15px 4px rgba(255, 255, 255, 0.2);
+   border-radius:5px;
 }
 
 .logSignScreenPopup button {
@@ -1472,6 +1527,7 @@ select {
 ##        #######  ##     ## ##     ##  ######  
 */
 
+
 .parentForm {
    display: flex;
    justify-content: center;
@@ -1479,7 +1535,7 @@ select {
 }
 
 .formStyle {
-   background-color: #f8f8f9;
+   background-color: rgb(255,250,250, 0.7);
    /* text-align: center; */
    padding: 20px;
    border-left: 10px inset var(--grey);
@@ -1493,10 +1549,13 @@ select {
 .formStyle input,
 select {
    width: 320px;
-   height: 20px;
+   height: 22px;
    font-size: 15px;
    margin: 0;
    color: grey;
+   border: 0;
+   box-shadow:0 0 15px 4px rgba(22, 40, 106,0.3);
+   border-radius:5px;
 }
 
 .formStyle label {
@@ -1509,6 +1568,8 @@ select {
    resize: none;
    height: 60px;
    width: 320px;
+   border: 0;
+   box-shadow:0 0 15px 4px rgba(0,0,0,0.2);
 }
 
 .formStyle select {
@@ -1541,6 +1602,15 @@ select {
    margin: 25px auto;
    display: block;
 }
+
+.addMission {
+background: url('https://images.unsplash.com/photo-1494138030114-a8cf519b022b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80') ;
+background-size: cover;
+/* background-size: 120%;
+background-repeat: no-repeat;
+background-position: bottom -100px right -300px; */
+}
+
 /*
 ##     ## ##    ## ########    ##     ## ####  ######   ######  ####  #######  ##    ## 
 ##     ## ###   ## ##          ###   ###  ##  ##    ## ##    ##  ##  ##     ## ###   ## 
@@ -1551,8 +1621,11 @@ select {
  #######  ##    ## ########    ##     ## ####  ######   ######  ####  #######  ##    ## 
 */
 
+
 .pageMission {
    /* background-color: var(--blue); */
+   background: url('https://images.unsplash.com/photo-1438867424354-a8bd98f593f9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
+   background-size: cover;
 }
 
 .pageMission .locationIcon {
@@ -1560,7 +1633,6 @@ select {
 }
 
 .detailsMission {
-   /* background-color: #f8f8f9; */
    padding: 20px;
    margin: 25px auto;
    text-align: center;
@@ -1570,7 +1642,7 @@ select {
 }
 
 .detailsMissionBlock {
-   background-color: #f8f8f9;
+   background:rgba(255, 255, 255, 0.8);
    padding: 20px;
    border-left: 10px inset var(--grey);
    border-top: 10px outset var(--blue);
@@ -1603,6 +1675,12 @@ select {
    display: block;
 }
 
+.editMissionForm {
+ background: url('https://images.unsplash.com/photo-1510602955109-0e2f29545fa8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80');
+ background-size: cover;
+
+}
+
 .editMissionForm form {
    border-right: 10px inset var(--grey);
    border-top: 10px outset var(--blue);
@@ -1616,11 +1694,17 @@ select {
    text-align: center;
    color: white;
    font-weight: bold;
+   font-size: 15px;
 }
 
 .redirect_link {
    text-decoration: none;
 }
+
+.redirect_link:hover {
+   color: black;
+}
+
 
 /*
 ########  ########   #######  ######## #### ##       ######## 

@@ -26,7 +26,11 @@ const userSchema = new Schema(
       type: String,
       // required: [true, 'La localisation est requise'],
     },
-    profilePic: String,
+    profilePic: {
+      type: String,
+      default:
+        "https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png",
+    },
     dashboard: { type: Schema.Types.ObjectId, ref: "Mission" },
     expertise: {
       type: [String],
@@ -44,7 +48,11 @@ const userSchema = new Schema(
       type: String,
       // required: [true, 'Merci de vous décrire vous ou votre organisation en quelques mots'],
     },
-    logo: String,
+    logo: {
+      type: String,
+      default:
+        "https://cdn.superlawyers.com/image/upload/q_auto,f_auto,w_200/v20201006/resources/superlawyers/profiles/firmlogo-placeholder.png",
+    },
     availability_start_date: {
       type: Date,
       default: new Date(null), //pour solliciteur, que le user soit créé meme si les dates sont vides
