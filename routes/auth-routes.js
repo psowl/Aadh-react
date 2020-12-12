@@ -19,7 +19,11 @@ authRoutes.post('/signup', (req, res, next) => {
       availability_end_date,
       availability_frequency,
       cause,
+      profilePic,
+      logo,
    } = req.body;
+
+   console.log('req.file', req.file);
 
    console.log('🌽', req.body);
 
@@ -45,7 +49,7 @@ authRoutes.post('/signup', (req, res, next) => {
             res.status(400).json({ message: 'Email or password is not valid' });
             return;
          }
-         //validation mot de passe
+         //cryptage mot de passe
          const salt = bcrypt.genSaltSync(10);
          const hashPass = bcrypt.hashSync(password, salt);
          const aNewUser = new User({
@@ -60,6 +64,8 @@ authRoutes.post('/signup', (req, res, next) => {
             availability_end_date: new Date(availability_end_date),
             availability_frequency: availability_frequency,
             cause: cause,
+            profilePic: profilePic,
+            logo: logo,
          });
          aNewUser
             .save()
@@ -111,6 +117,7 @@ authRoutes.get('/loggedin', (req, res, next) => {
    console.log('route loggedin');
    if (req.session.currentUser) {
       res.status(200).json(req.session.currentUser);
+      console.log(req.session.currentUser);
       return;
    }
    res.status(403).json({ message: 'Unauthorized' });

@@ -4,7 +4,6 @@ import service from '../auth-service';
 class EditUser extends React.Component {
    state = {
       loggedInUser: this.props.loggedInUser,
-      user: {},
    };
 
    //    componentDidMount() {
@@ -86,17 +85,11 @@ class EditUser extends React.Component {
       if (!this.props.loggedInUser) {
          return <div className='enChargement'>En chargement</div>;
       }
-      console.log(
-         'loggedInUser',
-         this.props.loggedInUser,
-         'loggedInUser.password',
-         this.props.loggedInUser.password
-      );
 
       return (
          <div className='editMissionForm parentForm editUser'>
             <form className='formStyle' onSubmit={this.handleFormSubmit}>
-               <h1>Editer le user</h1>
+               <h1>Modifier mes informations</h1>
                <p>
                   <label>Password</label>
                   <input
@@ -104,7 +97,7 @@ class EditUser extends React.Component {
                      name='password'
                      value={this.state.password}
                      onChange={this.handleChange}
-                     placeholder={this.props.loggedInUser.password}
+                     placeholder='***************'
                   ></input>
                </p>
                <p>
@@ -127,51 +120,70 @@ class EditUser extends React.Component {
                      placeholder={this.props.loggedInUser.location}
                   ></input>
                </p>
-               <p>
-                  <label>Expertise</label>
-                  <select
-                     type='text'
-                     name='expertise'
-                     value={this.state.expertise}
-                     onChange={this.handleChange}
-                  >
-                     <option value=''> Sélectionner ici</option>
-                     <option value='Règlement de litiges'> Règlement de litiges</option>
-                     <option value='Rédaction des statuts ONG'> Rédaction des statuts ONG</option>
-                     <option value='Contentieux'> Contentieux</option>
-                     <option value='Rédaction de contrats'> Rédaction de contrats</option>
-                     <option value='Langue anglaise'> Langue anglaise </option>
-                  </select>
-               </p>
+               {this.props.loggedInUser.userType === 'bénévole' && (
+                  <div>
+                     <p>
+                        <label>Expertise</label>
+                        <select
+                           type='text'
+                           name='expertise'
+                           value={this.state.expertise}
+                           onChange={this.handleChange}
+                        >
+                           <option value=''> Sélectionner ici</option>
+                           <option value='Règlement de litiges'> Règlement de litiges</option>
+                           <option value='Rédaction des statuts ONG'>
+                              Rédaction des statuts ONG
+                           </option>
+                           <option value='Contentieux'> Contentieux</option>
+                           <option value='Rédaction de contrats'> Rédaction de contrats</option>
+                           <option value='Langue anglaise'> Langue anglaise </option>
+                        </select>
+                     </p>
+                     <p>
+                        <label>Date de début de diponibilité</label>
+                        <input
+                           type='date'
+                           name='avaibility_start_date'
+                           value={this.state.avaibility_start_date}
+                           onChange={this.handleChange}
+                           placeholder={this.props.loggedInUser.avaibility_start_date}
+                        ></input>
+                     </p>
+                     <p>
+                        <label>Date de fin de diponibilité</label>
+                        <input
+                           type='date'
+                           name='avaibility_end_date'
+                           value={this.state.avaibility_end_date}
+                           onChange={this.handleChange}
+                           placeholder={this.props.loggedInUser.avaibility_end_date}
+                        ></input>
+                     </p>
+                  </div>
+               )}
+               {this.props.loggedInUser.userType === 'solliciteur' && (
+                  <div>
+                     <p>
+                        <label>Cause</label>
+                        <input
+                           type='text'
+                           name='cause'
+                           value={this.state.cause}
+                           onChange={this.handleChange}
+                           placeholder={this.props.loggedInUser.cause}
+                        ></input>
+                     </p>
+                  </div>
+               )}
                <p>
                   <label>Description</label>
-                  <input
-                     type='text'
+                  <textarea
                      name='description'
                      value={this.state.description}
                      onChange={this.handleChange}
                      placeholder={this.props.loggedInUser.description}
-                  ></input>
-               </p>
-               <p>
-                  <label>Date de début de diponibilité</label>
-                  <input
-                     type='date'
-                     name='avaibility_start_date'
-                     value={this.state.avaibility_start_date}
-                     onChange={this.handleChange}
-                     placeholder={this.props.loggedInUser.avaibility_start_date}
-                  ></input>
-               </p>
-               <p>
-                  <label>Date de fin de diponibilité</label>
-                  <input
-                     type='date'
-                     name='avaibility_end_date'
-                     value={this.state.avaibility_end_date}
-                     onChange={this.handleChange}
-                     placeholder={this.props.loggedInUser.avaibility_end_date}
-                  ></input>
+                  ></textarea>
                </p>
 
                <p>
@@ -179,7 +191,7 @@ class EditUser extends React.Component {
                </p>
                <div>
                   <button className='deleteButton' onClick={() => this.deleteMission()}>
-                     Supprimer la mission
+                     Supprimer mon compte utilisateur
                   </button>
                </div>
             </form>

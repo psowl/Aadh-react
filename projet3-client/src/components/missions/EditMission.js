@@ -3,23 +3,41 @@ import service from '../auth-service';
 
 class EditMission extends React.Component {
    state = {
-      theMission: {},
+      theMission: null, //initialiser à falsy
+      sector: '',
+      availability_frequency: '',
+      description: '',
+      end_date: '',
+      start_date: '',
+      title: '',
+      expertise_required: '',
+      location: '',
+      requiredSkills: '',
    };
 
    componentDidMount() {
       this.getSingleMission();
    }
 
-   //aller chercher la mission dont l'id est dans l'url
    getSingleMission = () => {
-      const params = this.props.match.params; //passer la props dans le routing
-      console.log('params', params);
+      const { params } = this.props.match;
       service
-         .get(`http://localhost:5000/missions/${params.id}`)
+         .get(`/missions/${params.id}`)
          .then((responseFromApi) => {
             const theMission = responseFromApi.data;
-            console.log('theMission', theMission);
+            //set state chaque clé de theMission
             this.setState({ theMission: theMission });
+            this.setState({
+               sector: theMission.sector,
+               availability_frequency: theMission.availability_frequency,
+               description: theMission.description,
+               end_date: theMission.end_date,
+               start_date: theMission.start_date,
+               title: theMission.title,
+               expertise_required: theMission.expertise_required,
+               location: theMission.location,
+               requiredSkills: theMission.requiredSkills,
+            });
          })
          .catch((err) => {
             console.log('Error while fetching mission', err);
@@ -54,7 +72,6 @@ class EditMission extends React.Component {
             end_date,
             availability_frequency,
             status,
-            requiredSkills,
          })
          .then(() => {
             this.getTheMission();
@@ -66,6 +83,7 @@ class EditMission extends React.Component {
 
    handleChange = (event) => {
       const { name, value } = event.target;
+      console.log('change from edit', name, value);
       this.setState({ [name]: value });
    };
 
@@ -83,6 +101,10 @@ class EditMission extends React.Component {
    };
 
    render() {
+      console.log('state de EditMission:', this.state);
+      if (!this.state.theMission) {
+         return <div className='enChargement'>En chargement</div>;
+      }
       return (
          <div className=' editMissionForm parentForm'>
             <form className='formStyle' onSubmit={this.handleFormSubmit}>
@@ -92,7 +114,7 @@ class EditMission extends React.Component {
                   <input
                      type='text'
                      name='sector'
-                     value={this.state.theMission.sector}
+                     value={this.state.sector}
                      onChange={(e) => this.handleChange(e)}
                   />
                </p>
@@ -101,7 +123,7 @@ class EditMission extends React.Component {
                   <input
                      type='text'
                      name='title'
-                     value={this.state.theMission.title}
+                     value={this.state.title}
                      onChange={(e) => this.handleChange(e)}
                   />
                </p>
@@ -110,7 +132,7 @@ class EditMission extends React.Component {
                   <input
                      type='text'
                      name='location'
-                     value={this.state.theMission.location}
+                     value={this.state.location}
                      onChange={(e) => this.handleChange(e)}
                   />
                </p>
@@ -119,7 +141,7 @@ class EditMission extends React.Component {
                   <input
                      type='date'
                      name='start_date'
-                     value={this.state.theMission.start_date}
+                     value={this.state.start_date}
                      onChange={this.handleChange}
                   ></input>
                </p>
@@ -128,7 +150,7 @@ class EditMission extends React.Component {
                   <input
                      type='date'
                      name='end_date'
-                     value={this.state.theMission.end_date}
+                     value={this.state.end_date}
                      onChange={this.handleChange}
                   ></input>
                </p>
@@ -136,7 +158,7 @@ class EditMission extends React.Component {
                   <label>Expertise attendue</label>
                   <select
                      name='expertise_required'
-                     value={this.state.theMission.expertise_required}
+                     value={this.state.expertise_required}
                      placeholder='expertise'
                      onChange={this.handleChange}
                   >
@@ -155,7 +177,7 @@ class EditMission extends React.Component {
                   <label>Rythme</label>
                   <select
                      name='availability_frequency'
-                     value={this.state.theMission.availability_frequency}
+                     value={this.state.availability_frequency}
                      placeholder='Rythme'
                      onChange={this.handleChange}
                   >
@@ -169,7 +191,7 @@ class EditMission extends React.Component {
                   <label>Description:</label>
                   <textarea
                      name='description'
-                     value={this.state.theMission.description}
+                     value={this.state.description}
                      onChange={(e) => this.handleChange(e)}
                   />
                </p>
@@ -178,7 +200,7 @@ class EditMission extends React.Component {
                   <select
                      type='text'
                      name='requiredSkills'
-                     value={this.state.theMission.requiredSkills}
+                     value={this.state.requiredSkills}
                      onChange={this.handleChange}
                   >
                      <option value=''> Sélectionner ici</option>
@@ -193,6 +215,7 @@ class EditMission extends React.Component {
                <p>
                   <button>Mettre à jour</button>
                </p>
+
                <div>
                   <button className='deleteButton' onClick={() => this.deleteMission()}>
                      Supprimer la mission

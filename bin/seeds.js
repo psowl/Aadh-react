@@ -608,13 +608,38 @@ const users = [
       description: 'ONG',
       logo: 'https://www.neobled.com/wp-content/uploads/2017/03/logo_ong_amnesty.jpg',
    },
+   {
+      email: 'sarahdamag@gmail.com',
+      username: 'Amnesty',
+      password: 'testtest',
+      userType: 'solliciteur',
+      location: 'Grenoble',
+      description:
+         'Créée en 1993, par des médecins et des journalistes, dans le contexte de la conférence internationale sur la population et le développement du Caire, Equilibres & Populations travaille à améliorer les conditions de vie et le statut des femmes, facteur essentiel d’un développement juste et durable.\\r\\nAdopter une démarche participative\\r\\nEquilibres & Populations adopte aussi systématiquement que possible une démarche participative dans la conduite de son action. Nous considérons en effet que cette démarche est un gage de qualité, notamment en termes d’appropriation, de responsabilisation, de durabilité, d’ancrage, d’autonomisation et de légitimité.',
+      logo: 'https://www.neobled.com/wp-content/uploads/2017/03/logo_ong_amnesty.jpg',
+      cause: 'femmes',
+   },
+   {
+      expertise: ['Etudes de droit comparé'],
+      availability_start_date: '0002-03-02T00:00:00.000Z',
+      availability_end_date: '0003-02-01T00:00:00.000Z',
+      availability_frequency: ['Ponctuellement'],
+      email: 'sarahuser@gmail.com',
+      username: 'sarahuser',
+      password: '$2a$10$RS6/brhXoaJodGu.syEpWOaITJcP/jUvIZ1JvENw8l0p2R0WvZeXe',
+      userType: 'bénévole',
+      location: 'Compiegne',
+      description: 'Je suis une jeune avocate passionnée par le droits ',
+      profilePic:
+         'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+   },
 ];
 
-// User.create(users)
-//    .then((users) => {
-//       console.log(`${users.length} users created.`);
-//    })
-//    .catch((err) => console.error(err));
+User.create(users)
+   .then((users) => {
+      console.log(`${users.length} users created.`);
+   })
+   .catch((err) => console.error(err));
 
 const missions = [
    {
@@ -645,8 +670,8 @@ const missions = [
    },
 ];
 
-Mission.create(missions)
-   .then((missions) => {
-      console.log(`${missions.length} users created.`);
-   })
-   .catch((err) => console.error(err));
+// Mission.create(missions)
+//    .then((missions) => {
+//       console.log(`${missions.length} users created.`);
+//    })
+//    .catch((err) => console.error(err));
