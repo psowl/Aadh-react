@@ -55,6 +55,8 @@ class MainSignup extends React.Component {
       availability_end_date,
       availability_frequency,
       cause,
+      profilePic,
+      logo,
     } = this.state;
     signup(
       username,
@@ -67,7 +69,9 @@ class MainSignup extends React.Component {
       availability_start_date,
       availability_end_date,
       availability_frequency,
-      cause
+      cause,
+      profilePic,
+      logo
     )
       .then((response) => {
         console.log("response signup✅or❌", response);
@@ -93,6 +97,8 @@ class MainSignup extends React.Component {
           availability_end_date: availability_end_date,
           availability_frequency: availability_frequency,
           cause: cause,
+          profilePic: profilePic,
+          logo: logo,
         });
         this.props.updateUser(response);
         this.setState({

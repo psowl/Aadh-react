@@ -5,10 +5,11 @@ import Nav from "./components/navbar/Nav";
 import { Switch, Route } from "react-router-dom";
 import Signup from "./components/stepForms/signup/Signup";
 import Login from "./components/Login";
+import EditUser from "./components/user/EditUser";
+import { loggedin } from "./components/auth-service";
 import MissionsList from "./components/missions/MissionsList";
 import MissionDetails from "./components/missions/MissionDetails";
 import AddMission from "./components/missions/AddMission";
-import { loggedin } from "./components/auth-service";
 import Footer from "./components/Footer";
 import Home from "./components/home/Home";
 import EditMission from "./components/missions/EditMission";
@@ -28,7 +29,9 @@ class App extends React.Component {
     if (this.state.loggedInUser === null) {
       loggedin()
         .then((response) => {
+          console.log("response", response);
           this.setState({ loggedInUser: response });
+          console.log("cause", this.state.loggedInUser.cause);
         })
         .catch((err) => {
           this.setState({ loggedInUser: false });
@@ -70,6 +73,13 @@ class App extends React.Component {
               exact={true}
               path="/login"
               render={() => <Login updateUser={this.updateLoggedInUser} />}
+            />
+            <Route
+              exact={true}
+              path="/users/:id/edit"
+              render={(props) => (
+                <EditUser {...props} loggedInUser={this.state.loggedInUser} /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
+              )}
             />
             <Route exact={true} path="/missions" component={MissionsList} />
             <Route

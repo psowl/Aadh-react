@@ -69,6 +69,7 @@ const userSchema = new Schema(
     status: {
       type: String,
       enum: ["Disponible", "En mission", "Bientôt disponible"],
+      default: "Disponible",
     },
   },
   {
