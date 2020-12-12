@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Presentation from './Presentation';
+import Actu from '../Actualites';
 
 class Home extends React.Component {
    render() {
@@ -60,6 +61,7 @@ class Home extends React.Component {
                </section>
                <section className='actualites'>
                   <h2>ACTUALITES</h2>
+                  <Actu />
                </section>
             </div>
             <div className='presentation'>
