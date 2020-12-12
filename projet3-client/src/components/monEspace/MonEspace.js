@@ -26,6 +26,7 @@ class MonEspace extends React.Component {
    //utiliser la route pour afficher le user logué
    getUser = () => {
       const userId = this.props.match.params.id;
+      
       service
          .get(`/users/${userId}`)
          .then((userFromApi) => {

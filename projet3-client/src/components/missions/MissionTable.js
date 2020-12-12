@@ -15,7 +15,7 @@ function MissionTable(props) {
   };
 
   return (
-    <div className="MissionTable">
+    <div className="missionTable">
       <div>
         <h2>{displaySingular()}</h2>
         <ul className="cardContainer">
