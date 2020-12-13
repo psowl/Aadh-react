@@ -70,11 +70,11 @@ class MissionsList extends React.Component {
   }
 
   getAllMissions = () => {
-    console.log("this.state.end_date", "/" + this.state.start_date + "/");
-    console.log(
-      "encodURI",
-      "/" + encodeURIComponent(this.state.start_date) + "/"
-    );
+    // console.log("this.state.end_date", "/" + this.state.start_date + "/");
+    // console.log(
+    //   "encodURI",
+    //   "/" + encodeURIComponent(this.state.start_date) + "/"
+    // );
 
     //utilisation du package queryString
     let qs = queryString.stringify({
@@ -90,7 +90,7 @@ class MissionsList extends React.Component {
     });
 
     const url = `/missions?${qs}`;
-    console.log("URL", url);
+    // console.log("URL", url);
     service
       .get(url)
       .then((responseFromApi) => {

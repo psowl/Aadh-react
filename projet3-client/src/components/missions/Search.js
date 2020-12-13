@@ -3,18 +3,14 @@ import { BiSearchAlt } from "react-icons/bi";
 //import { FaCommentsDollar } from "react-icons/fa";
 
 function Search(props) {
-  console.log("props.onChange", props.onChange);
-
-  const formatDate = (date) => {
-    let stringDate = JSON.stringify(date);
-    console.log("date", date);
-    console.log("stringDate", stringDate);
-    const splitDate = date.split("T")[0];
-    console.log("splitDate", splitDate); // 2020/12/17
-    return splitDate;
-  };
-
-  console.log("formatDate(props.start_date)", formatDate(props.start_date));
+  // const formatDate = (date) => {
+  //   let stringDate = JSON.stringify(date);
+  //   // console.log("date", date);
+  //   // console.log("stringDate", stringDate);
+  //   const lastDate = stringDate.substring(1, 10);
+  //   // console.log("splitlastDate", lastDate); // 2020/12/17
+  //   return lastDate;
+  // };
 
   return (
     <div className="searchContainer">
@@ -51,8 +47,8 @@ function Search(props) {
             className="DateInput"
             type="date"
             name="start_date"
-            // value={props.start_date}
-            value={formatDate(props.start_date)}
+            value={props.start_date}
+            // value={formatDate(props.start_date)}
             onChange={(e) => props.onChange(e)}
             placeholder="date de début"
           />
@@ -64,8 +60,8 @@ function Search(props) {
             className="DateInput"
             type="date"
             name="end_date"
-            // value={props.end_date}
-            value={formatDate(props.end_date)}
+            value={props.end_date}
+            // value={formatDate(props.end_date)}
             onChange={(e) => props.onChange(e)}
             placeholder="date de fin"
           />

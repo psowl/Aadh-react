@@ -784,6 +784,7 @@ footer .footer_notes p {
 ##     ## ######## ######## ##     ## ####  ######   ######  ####  #######  ##    ##  ######  
 */
 
+
 .missionsList {
    text-align: center;
    
@@ -893,6 +894,7 @@ footer .footer_notes p {
    justify-content: center;
    text-align: center;
    flex-direction: row;
+
 }
 
 .filterExpertise li {
@@ -903,10 +905,7 @@ footer .footer_notes p {
    border-radius: 30px;
    cursor: pointer;
    box-shadow: 5px 5px 2px 1px rgba(22,40,106);
-}
-
-.filterExpertise li:hover {
-   background-color: #e66c6c;
+   position: relative; 
 }
 
 .filterExpertise h3 {
@@ -915,10 +914,23 @@ footer .footer_notes p {
    text-shadow: 1px 2px white;
 }
 
+.filterExpertise h3:hover {
+   text-shadow: 1px 2px var(--blue);
+   color:white;
+}
+
+
 .filterExpertise li:nth-child(1) {
    background-image: url('https://images.unsplash.com/photo-1592966556929-08111961c071?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
    background-size: cover;
+   filter:saturate(2);  
 }
+
+
+/* .filterExpertise li:nth-child(1):hover {
+   background-image:none;
+   background-color: var(--blue)
+} */
 
 .filterExpertise li:nth-child(1):active {
    filter: grayscale(100%);
@@ -927,7 +939,12 @@ footer .footer_notes p {
 .filterExpertise li:nth-child(2) {
    background-image: url('https://images.unsplash.com/photo-1579208570378-8c970854bc23?ixlib=rb-1.2.1&auto=format&fit=crop&w=1590&q=80');
    background-size: cover;
+   filter:saturate(2);  
 }
+
+/* .filterExpertise li:nth-child(2):hover {
+   filter: grayscale(100%);
+} */
 
 .filterExpertise li:nth-child(2):active {
    filter: grayscale(100%);
@@ -936,8 +953,12 @@ footer .footer_notes p {
 .filterExpertise li:nth-child(3) {
    background-image: url('https://images.unsplash.com/flagged/photo-1558963675-94dc9c4a66a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=666&q=80');
    background-size: cover;
+   filter:saturate(2);  
 }
 
+/* .filterExpertise li:nth-child(3):hover {
+   filter: grayscale(100%);
+} */
 .filterExpertise li:nth-child(3):active {
    filter: grayscale(100%);
 }
@@ -945,8 +966,12 @@ footer .footer_notes p {
 .filterExpertise li:nth-child(4) {
    background-image: url('https://images.unsplash.com/photo-1468779036391-52341f60b55d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1821&q=80');
    background-size: cover;
+   filter:saturate(2);  
 }
 
+/* .filterExpertise li:nth-child(4):hover {
+   filter: grayscale(100%);
+} */
 .filterExpertise li:nth-child(4):active {
    filter: grayscale(100%);
 }
