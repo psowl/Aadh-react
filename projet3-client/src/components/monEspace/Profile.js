@@ -1,5 +1,6 @@
 import React from 'react';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { GrStatusGoodSmall } from 'react-icons/gr';
 import { FaRegEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -14,42 +15,67 @@ const Profile = (props) => {
       let missions = props.missions.map((el) => el.volonteerSelected === props.user._id);
       return missions.length;
    };
+   console.log('props.user', props.user);
+
+   const styleTextStatus = (status) => {
+      let styleText;
+      if (status === 'Disponible') {
+         styleText = { color: 'green', textShadow: '1px 1px white' };
+      } else if (status === 'En mission') {
+         styleText = { color: 'red', textShadow: '1px 1px white' };
+      } else {
+         styleText = { color: 'orange', textShadow: '1px 1px white' };
+      }
+      return styleText;
+   };
+
+   const styleIconStatus = (status) => {
+      let color;
+      if (status === 'Disponible') {
+         color = 'green';
+      } else if (status === 'En mission') {
+         color = 'red';
+      } else {
+         color = 'orange';
+      }
+      return color;
+   };
 
    return (
       <div className='profile'>
          <div className='user_details'>
-            <div>
-               <HiOutlineLocationMarker size={40} color='white' /> <p>{props.user.location}</p>
+            <div className='location'>
+               <HiOutlineLocationMarker size={40} color='white' /> <h4>{props.user.location}</h4>
             </div>
-            {props.user.userType === 'bénévole' && (
-               <div>
-                  {/* {props.user.status === "Disponible" && } */}
-                  <p>{props.user.status}</p>
-               </div>
-            )}
+            <ul className='status'>
+               <GrStatusGoodSmall size={20} color={styleIconStatus(props.user.status)} />
+               <h4 style={styleTextStatus(props.user.status)}>{props.user.status}</h4>
+            </ul>
+
             <ul className='list_non_modifiable'>
                <li>
-                  <h3>Inscription faite le </h3>
-                  <p>{formatDate(props.user.createdAt)}</p>
+                  <p>Inscription faite le </p>
+                  <h4>{formatDate(props.user.createdAt)}</h4>
                </li>
                <li>
-                  <h3>Type de compte</h3> <p>{props.user.userType}</p>
+                  <p>Type de compte</p>
+                  <h4 style={{ textTransform: 'capitalize' }}>{props.user.userType}</h4>
                </li>
                {props.user.userType === 'solliciteur' && (
                   <li>
-                     <h3>Nombre d'annonces postées depuis l'inscription</h3>
-                     <p>{props.missions.length}</p>
+                     <p>Nombre d'annonces postées</p>
+                     <h4>{props.missions.length}</h4>
                   </li>
                )}
                {props.user.userType === 'bénévole' && (
                   <li>
-                     <h3>Nombre de missions effectuées depuis l'inscription</h3>
+                     <p>Nombre de missions effectuées</p>
                      {/* filtrer les missions dont le volonteerSelected est l'id du user */}
-                     <p>{countMissions()}</p>
+                     <h4>{countMissions()}</h4>
                   </li>
                )}
                <li>
-                  <h3>Email</h3> <p>{props.user.email}</p>
+                  <p>Email</p> <h4>{props.user.email}</h4>
                </li>
             </ul>
             <Link to={`/users/${props.user._id}/edit`}>
@@ -57,36 +83,36 @@ const Profile = (props) => {
             </Link>
             <ul className='list_modifiable'>
                <li>
-                  <h3>Mot de passe</h3> <p>*************</p>
+                  <p>Mot de passe</p> <h4>*************</h4>
                </li>
                {props.user.userType === 'solliciteur' && (
                   <li>
-                     <h3>Cause défendue</h3> <p>{props.user.cause}</p>
+                     <p>Cause défendue</p> <h4>{props.user.cause}</h4>
                   </li>
                )}
                {props.user.userType === 'bénévole' && (
                   <div>
                      <li>
-                        <h3>Expertise</h3>
-                        <p>{props.user.expertise}</p>
+                        <p>Expertise</p>
+                        <h4>{props.user.expertise}</h4>
                      </li>
                      <li>
-                        <h3>Date de début de disponibilité</h3>
-                        <p>{props.user.availibility_start_date}</p>
+                        <p>Date de début de disponibilité</p>
+                        <h4>{formatDate(props.user.availability_start_date)}</h4>
                      </li>
                      <li>
-                        <h3>Date de fin de disponibilité</h3>
-                        <p>{props.user.availibility_end_date}</p>
+                        <p>Date de fin de disponibilité</p>
+                        <h4>{formatDate(props.user.availability_end_date)}</h4>
                      </li>
                      <li>
-                        <h3>Rythme de disponibilité</h3>
-                        <p>{props.user.availibility_frequency}</p>
+                        <p>Rythme de disponibilité</p>
+                        <h4>{props.user.availability_frequency}</h4>
                      </li>
                   </div>
                )}
             </ul>
             <div className='description'>
-               <h3>Description</h3> <p>{props.user.description}</p>
+               <p>Description</p> <h4>{props.user.description}</h4>
             </div>
          </div>
       </div>

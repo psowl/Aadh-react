@@ -7,7 +7,7 @@ class StepThree extends React.Component {
       step: 3,
       errorMessage: '',
       profilePic: this.props.profilePic,
-      logo: this.props.logo,
+      profilePic: this.props.profilePic,
    };
 
    handleChange = (event) => {
@@ -28,7 +28,7 @@ class StepThree extends React.Component {
       else {
          this.props.liftState('description', this.state.description);
          this.props.liftState('profilePic', this.state.profilePic);
-         this.props.liftState('logo', this.state.logo);
+         this.props.liftState('profilePic', this.state.profilePic);
          this.props.liftState('step', this.state.step + 1); //afficher le step3 du form
       }
    };
@@ -43,12 +43,12 @@ class StepThree extends React.Component {
       console.log('event ', e);
       const uploadData = new FormData();
       // imageUrl => this name has to be the same as in the model since we pass
-      
+
       // req.body to .create() method when creating a new thing in '/api/things/create' POST route
 
       // // si 2 champs images
       // uploadData.append('profilePic', e.target.files[0]);
-      // uploadData.append('logo', e.target.files[1]);
+      // uploadData.append('profilePic', e.target.files[1]);
 
       uploadData.append('imageUrl', e.target.files[0]);
 
@@ -76,7 +76,7 @@ class StepThree extends React.Component {
                      placeholder='Décrivez-vous ou votre organisation en quelques mots'
                      autoFocus
                   ></textarea>
-                  {/* affichage conditionnel image profilePic ou logo */}
+                  {/* affichage conditionnel image profilePic ou profilePic */}
                   <input
                      type='file'
                      alt=''

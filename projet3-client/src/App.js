@@ -1,122 +1,109 @@
-import React from "react";
-import "./App.css";
-import ScrollToTop from "react-scroll-to-top";
-import Nav from "./components/navbar/Nav";
-import { Switch, Route } from "react-router-dom";
-import Signup from "./components/stepForms/signup/Signup";
-import Login from "./components/Login";
-import EditUser from "./components/user/EditUser";
-import { loggedin } from "./components/auth-service";
-import MissionsList from "./components/missions/MissionsList";
-import MissionDetails from "./components/missions/MissionDetails";
-import AddMission from "./components/missions/AddMission";
-import Footer from "./components/Footer";
-import Home from "./components/home/Home";
-import EditMission from "./components/missions/EditMission";
-import MonEspace from "./components/monEspace/MonEspace";
-import { HiArrowCircleUp } from "react-icons/hi";
+import React from 'react';
+import './App.css';
+import ScrollToTop from 'react-scroll-to-top';
+import Nav from './components/navbar/Nav';
+import { Switch, Route } from 'react-router-dom';
+import Signup from './components/stepForms/signup/Signup';
+import Login from './components/Login';
+import EditUser from './components/user/EditUser';
+import { loggedin } from './components/auth-service';
+import MissionsList from './components/missions/MissionsList';
+import MissionDetails from './components/missions/MissionDetails';
+import AddMission from './components/missions/AddMission';
+import Footer from './components/Footer';
+import Home from './components/home/Home';
+import EditMission from './components/missions/EditMission';
+import MonEspace from './components/monEspace/MonEspace';
+import { HiArrowCircleUp } from 'react-icons/hi';
 
 class App extends React.Component {
-  state = { loggedInUser: null };
+   state = { loggedInUser: null };
 
-  updateLoggedInUser = (newUser) => {
-    this.setState({
-      loggedInUser: newUser,
-    });
-  };
+   updateLoggedInUser = (newUser) => {
+      this.setState({
+         loggedInUser: newUser,
+      });
+   };
 
-  fetchUser() {
-    if (this.state.loggedInUser === null) {
-      loggedin()
-        .then((response) => {
-          console.log("response", response);
-          this.setState({ loggedInUser: response });
-          console.log("cause", this.state.loggedInUser.cause);
-        })
-        .catch((err) => {
-          this.setState({ loggedInUser: false });
-        });
-    }
-  }
+   fetchUser() {
+      if (this.state.loggedInUser === null) {
+         loggedin()
+            .then((response) => {
+               console.log('response', response);
+               this.setState({ loggedInUser: response });
+               console.log('cause', this.state.loggedInUser.cause);
+            })
+            .catch((err) => {
+               this.setState({ loggedInUser: false });
+            });
+      }
+   }
 
-  componentDidMount() {
-    this.fetchUser();
-  }
+   componentDidMount() {
+      this.fetchUser();
+   }
 
-  updateLoggedInUser = (newUser) => {
-    this.setState({
-      loggedInUser: newUser,
-    });
-  };
+   updateLoggedInUser = (newUser) => {
+      this.setState({
+         loggedInUser: newUser,
+      });
+   };
 
-  render() {
-    return (
-      <div className="App">
-        <ScrollToTop
-          smooth
-          component={<HiArrowCircleUp className="scrolltop" />}
-        />
-        <Nav
-          loggedInUser={this.state.loggedInUser}
-          updateUser={this.updateLoggedInUser}
-        />
-        {/*On récupère le state user logué pour l'affichage conditionnel de l'enfant */}
-        <div className="content">
-          <Switch>
-            <Route exact={true} path="/" component={Home} />
-            <Route
-              exact={true}
-              path="/signup"
-              render={() => <Signup updateUser={this.updateLoggedInUser} />}
-            />
-            <Route
-              exact={true}
-              path="/login"
-              render={() => <Login updateUser={this.updateLoggedInUser} />}
-            />
-            <Route
-              exact={true}
-              path="/users/:id/edit"
-              render={(props) => (
-                <EditUser {...props} loggedInUser={this.state.loggedInUser} /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
-              )}
-            />
-            <Route exact={true} path="/missions" component={MissionsList} />
-            <Route
-              exact={true}
-              path="/missions/new"
-              render={(props) => (
-                <AddMission {...props} loggedInUser={this.state.loggedInUser} />
-              )}
-            />
-            <Route
-              exact={true}
-              path="/missions/:id"
-              component={MissionDetails}
-            />
-            <Route
-              exact={true}
-              path="/users/:id"
-              render={(props) => (
-                <MonEspace {...props} loggedInUser={this.state.loggedInUser} />
-              )}
-            />
-            <Route
-              exact={true}
-              path="/missions/:id/edit"
-              render={(props) => (
-                <EditMission
-                  {...props}
-                  loggedInUser={this.state.loggedInUser}
-                /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
-              )}
-            />
-          </Switch>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+   render() {
+      return (
+         <div className='App'>
+            <ScrollToTop smooth component={<HiArrowCircleUp className='scrolltop' />} />
+            <Nav loggedInUser={this.state.loggedInUser} updateUser={this.updateLoggedInUser} />
+            {/*On récupère le state user logué pour l'affichage conditionnel de l'enfant */}
+            <div className='content'>
+               <Switch>
+                  <Route exact={true} path='/' component={Home} />
+                  <Route
+                     exact={true}
+                     path='/signup'
+                     render={() => <Signup updateUser={this.updateLoggedInUser} />}
+                  />
+                  <Route
+                     exact={true}
+                     path='/login'
+                     render={() => <Login updateUser={this.updateLoggedInUser} />}
+                  />
+                  <Route
+                     exact={true}
+                     path='/users/:id/edit'
+                     render={(props) => (
+                        <EditUser {...props} loggedInUser={this.state.loggedInUser} /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
+                     )}
+                  />
+                  <Route exact={true} path='/missions' component={MissionsList} />
+                  <Route
+                     exact={true}
+                     path='/missions/new'
+                     render={(props) => (
+                        <AddMission {...props} loggedInUser={this.state.loggedInUser} />
+                     )}
+                  />
+                  <Route exact={true} path='/missions/:id' component={MissionDetails} />
+                  <Route
+                     exact={true}
+                     path='/users/:id'
+                     render={(props) => (
+                        <MonEspace {...props} loggedInUser={this.state.loggedInUser} />
+                     )}
+                  />
+                  <Route
+                     exact={true}
+                     path='/missions/:id/edit'
+                     render={(props) => (
+                        <EditMission {...props} loggedInUser={this.state.loggedInUser} /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
+                     )}
+                  />
+               </Switch>
+            </div>
+            <Footer />
+         </div>
+      );
+   }
 }
 
 export default App;

@@ -56,6 +56,7 @@ class Aconfirmer extends React.Component {
    };
 
    render() {
+      
       return (
          <div className='missions_a_confirmer'>
             {this.props.missionsAconfirmer.length === 1 ? (

@@ -2,7 +2,7 @@ import React from 'react';
 import Aconfirmer from './Aconfirmer';
 import SuiviMissions from './SuiviMissions';
 
-class Dashboard extends React.Component {
+class DashboardSolliciteur extends React.Component {
    render() {
       return (
          <div className='dashboard_missions'>
@@ -22,4 +22,4 @@ class Dashboard extends React.Component {
    }
 }
 
-export default Dashboard;
+export default DashboardSolliciteur;

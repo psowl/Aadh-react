@@ -4,25 +4,51 @@ import service from '../auth-service';
 class EditUser extends React.Component {
    state = {
       loggedInUser: this.props.loggedInUser,
+      username: '',
+      password: '',
+      location: '',
+      expertise: '',
+      profilePic: '',
+      description: '',
+      availability_start_date: '',
+      availability_end_date: '',
+      cause: '',
    };
 
-   //    componentDidMount() {
-   //       this.getUser();
-   //    }
+   componentDidMount() {
+      this.getUser();
+   }
 
-   //    getUser = () => {
-   //       const params = this.props.match.params; //passer la props dans le routing
-   //       console.log('params', params);
-   //       service
-   //          .get(`http://localhost:5000/users/${params.id}`)
-   //          .then((responseFromApi) => {
-   //             const userFromDb = responseFromApi.data;
-   //             this.setState({ user: userFromDb });
-   //          })
-   //          .catch((err) => {
-   //             console.log('Error while fetching user', err);
-   //          });
-   //    };
+   //préremplir le form: aller chercher les données en base et les mettre dans les states
+   getUser = () => {
+      const params = this.props.match.params; //passer la props dans le routing
+      console.log('params', params);
+      service
+         .get(`http://localhost:5000/users/${params.id}`)
+         .then((responseFromApi) => {
+            const userFromDb = responseFromApi.data;
+            this.setState({
+               username: userFromDb.username,
+               password: userFromDb.password,
+               location: userFromDb.location,
+               expertise: userFromDb.expertise,
+               profilePic: userFromDb.profilePic,
+               description: userFromDb.description,
+               availability_start_date: userFromDb.availability_start_date,
+               availability_end_date: userFromDb.availability_end_date,
+               cause: userFromDb.cause,
+            });
+            console.log('this.state', this.state);
+         })
+         .catch((err) => {
+            console.log('Error while fetching user', err);
+         });
+   };
+
+   formatDate = (date) => {
+      date = new Date(date);
+      return date.toDateString();
+   };
 
    //soumission des nouvelles données
    handleFormSubmit = (event) => {
@@ -31,7 +57,7 @@ class EditUser extends React.Component {
          password,
          location,
          expertise,
-         //profilePic,
+         profilePic,
          description,
          //logo,
          avaibility_start_date,
@@ -47,9 +73,9 @@ class EditUser extends React.Component {
             password,
             location,
             expertise,
-            //profilePic,
+            profilePic,
             description,
-            //logo,
+            //profilePic,
             avaibility_start_date,
             avaibility_end_date,
             cause,
@@ -97,7 +123,6 @@ class EditUser extends React.Component {
                      name='password'
                      value={this.state.password}
                      onChange={this.handleChange}
-                     placeholder='***************'
                   ></input>
                </p>
                <p>
@@ -107,7 +132,6 @@ class EditUser extends React.Component {
                      name='username'
                      value={this.state.username}
                      onChange={this.handleChange}
-                     placeholder={this.props.loggedInUser.username}
                   ></input>
                </p>
                <p>
@@ -117,7 +141,6 @@ class EditUser extends React.Component {
                      name='location'
                      value={this.state.location}
                      onChange={this.handleChange}
-                     placeholder={this.props.loggedInUser.location}
                   ></input>
                </p>
                {this.props.loggedInUser.userType === 'bénévole' && (
@@ -130,35 +153,41 @@ class EditUser extends React.Component {
                            value={this.state.expertise}
                            onChange={this.handleChange}
                         >
-                           <option value=''> Sélectionner ici</option>
-                           <option value='Règlement de litiges'> Règlement de litiges</option>
-                           <option value='Rédaction des statuts ONG'>
-                              Rédaction des statuts ONG
+                           <option value=''> Sélectionner votre expertise</option>
+                           <option value="Droits de l'Homme et de l'enfant">
+                              Droits de l'Homme et de l'enfant
                            </option>
-                           <option value='Contentieux'> Contentieux</option>
-                           <option value='Rédaction de contrats'> Rédaction de contrats</option>
-                           <option value='Langue anglaise'> Langue anglaise </option>
+                           <option value='Soutien des associations et des ESS'>
+                              Soutien des associations/ESS
+                           </option>
+                           <option value='Etudes de droit comparé'> Etudes de droit comparé</option>
+                           <option value='Formation'> Formation</option>
                         </select>
                      </p>
                      <p>
-                        <label>Date de début de diponibilité</label>
-                        <input
-                           type='date'
-                           name='avaibility_start_date'
-                           value={this.state.avaibility_start_date}
-                           onChange={this.handleChange}
-                           placeholder={this.props.loggedInUser.avaibility_start_date}
-                        ></input>
+                        <div>
+                           <label>Date de début de diponibilité</label>
+                           <input
+                              type='date'
+                              name='avaibility_start_date'
+                              value={this.state.availability_start_date}
+                              onChange={this.handleChange}
+                           ></input>
+                        </div>
+                        <em>{this.formatDate(this.state.availability_start_date)}</em>
                      </p>
                      <p>
-                        <label>Date de fin de diponibilité</label>
-                        <input
-                           type='date'
-                           name='avaibility_end_date'
-                           value={this.state.avaibility_end_date}
-                           onChange={this.handleChange}
-                           placeholder={this.props.loggedInUser.avaibility_end_date}
-                        ></input>
+                        <div>
+                           <label>Date de fin de diponibilité</label>
+                           <input
+                              type='date'
+                              name='avaibility_end_date'
+                              value={this.state.availability_end_date}
+                              onChange={this.handleChange}
+                           ></input>
+                        </div>
+
+                        <em>{this.formatDate(this.state.availability_end_date)}</em>
                      </p>
                   </div>
                )}
@@ -171,7 +200,6 @@ class EditUser extends React.Component {
                            name='cause'
                            value={this.state.cause}
                            onChange={this.handleChange}
-                           placeholder={this.props.loggedInUser.cause}
                         ></input>
                      </p>
                   </div>
@@ -182,7 +210,6 @@ class EditUser extends React.Component {
                      name='description'
                      value={this.state.description}
                      onChange={this.handleChange}
-                     placeholder={this.props.loggedInUser.description}
                   ></textarea>
                </p>
 

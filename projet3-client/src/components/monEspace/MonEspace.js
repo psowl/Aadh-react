@@ -2,7 +2,7 @@ import React from 'react';
 import queryString from 'query-string';
 import Entete from './Entete';
 import Menu from './Menu';
-import Dashboard from './Dashboard';
+import DashboardSolliciteur from './DashboardSolliciteur';
 import Profile from './Profile';
 import service from '../auth-service.js';
 import { VscLoading } from 'react-icons/vsc';
@@ -26,7 +26,7 @@ class MonEspace extends React.Component {
    //utiliser la route pour afficher le user logué
    getUser = () => {
       const userId = this.props.match.params.id;
-      
+
       service
          .get(`/users/${userId}`)
          .then((userFromApi) => {
@@ -94,6 +94,14 @@ class MonEspace extends React.Component {
    };
 
    render() {
+      if (!this.state.user) {
+         return (
+            <div className='enChargement'>
+               En chargement
+               <VscLoading size={120} />
+            </div>
+         );
+      }
       //return en JSX: afficher le contenu seulement si missions sont arrivées dans le component
       if (this.state.user.userType === 'solliciteur' && this.state.missions.length === 0) {
          //si user n'est pas l'owner alors retourner ce message
@@ -115,31 +123,42 @@ class MonEspace extends React.Component {
          }
       }
 
-      return (
-         <div className='mon_espace'>
-            <section>
-               <Entete className='entete' user={this.state.user} />
-               <Menu
-                  user={this.state.user}
-                  clickOnDashboard={this.showDashboard}
-                  clickOnProfile={this.showProfile}
-               />
-            </section>
-            {/*montrer le dashboard ou le profil selon le state dashboard */}
-            {this.state.dashboard ? (
-               <Dashboard
-                  dashboard={this.state.dashboard}
-                  missions={this.state.missions}
-                  missionsAconfirmer={this.state.missionsAconfirmer}
-                  getMissions={this.getMissions}
-                  otherMissions={this.state.otherMissions}
-                  filterMissions={this.filterMissions}
-               />
-            ) : (
-               <Profile user={this.state.user} missions={this.state.missions} />
-            )}
-         </div>
-      );
+      if (this.state.user.userType === 'bénévole' && !this.state.user){
+         return (
+            <div className='enChargement'>
+               En chargement
+               <VscLoading size={120} />
+            </div>
+         );
+      }
+      
+         return (
+            <div className='mon_espace'>
+               <section>
+                  <Entete className='entete' user={this.state.user} />
+                  <Menu
+                     user={this.state.user}
+                     clickOnDashboard={this.showDashboard}
+                     clickOnProfile={this.showProfile}
+                  />
+               </section>
+               {/*montrer le dashboard ou le profil selon le state dashboard selon userType*/}
+               {this.state.dashboard ? (
+                  this.state.user.userType === 'solliciteur' && (
+                     <DashboardSolliciteur
+                        dashboard={this.state.dashboard}
+                        missions={this.state.missions}
+                        missionsAconfirmer={this.state.missionsAconfirmer}
+                        getMissions={this.getMissions}
+                        otherMissions={this.state.otherMissions}
+                        filterMissions={this.filterMissions}
+                     />
+                  )
+               ) : (
+                  <Profile user={this.state.user} missions={this.state.missions} />
+               )}
+            </div>
+         );
    }
 }
 

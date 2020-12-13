@@ -5,7 +5,7 @@ class Actu extends React.Component {
    state = { user: '' };
 
    componentDidMount() {
-      this.findTweet();
+    //   this.findTweet();
    }
 
    findTweet = () => {
