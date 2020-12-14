@@ -21,11 +21,12 @@ class MissionDetails extends React.Component {
           start_date: this.formatDate(this.state.start_date),
           end_date: this.formatDate(this.state.end_date),
         });
+
         //console.log("themission to check date from mission details", theMission)
-        console.log(
-          "this.state of MissionDetails formatted",
-          this.state.start_date
-        );
+        // console.log(
+        //   "this.state of MissionDetails formatted",
+        //   this.state.start_date
+        // );
       })
       .catch((err) => {
         console.log("Error while fetching mission", err);
@@ -51,13 +52,15 @@ class MissionDetails extends React.Component {
   };
 
   render() {
-    console.log("this.formatDate", this.state.start_date);
+    console.log("this.state.profilePic", this.state.requester_id);
     return (
       <div className="pageMission">
         <div className="detailsMission">
           <div className="detailsMissionBlock">
-            <h1 className="missionHeader">Détails de la mission</h1>
-            <p className="missionHeader">Statut {this.state.status}</p>
+            {/* <h1 className="missionHeader">Détails de la mission</h1> */}
+            <p className="missionHeader">
+              Statut de la mission: {this.state.status}
+            </p>
             <h3 className="missionHeader">{this.state.expertise_required}</h3>
             <h2 className="missionHeader">{this.state.title}</h2>
 
@@ -87,13 +90,17 @@ class MissionDetails extends React.Component {
             <p>
               <span>Description :</span> {this.state.description}
             </p>
+
+            {/* <p>
+              <span>Mission publiée par: </span> {this.state.requester_id}
+            </p> */}
             <button className="buttonHelp">Proposer son aide </button>
+
+            <Link className="redirect_link" to={"/missions"}>
+              Retour à la liste des missions
+            </Link>
           </div>
         </div>
-
-        <Link className="redirect_link" to={"/missions"}>
-          Retour à la liste des missions
-        </Link>
       </div>
     );
   }

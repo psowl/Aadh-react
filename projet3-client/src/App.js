@@ -10,6 +10,8 @@ import { loggedin } from "./components/auth-service";
 import MissionsList from "./components/missions/MissionsList";
 import MissionDetails from "./components/missions/MissionDetails";
 import AddMission from "./components/missions/AddMission";
+import Actualites from "./components/Actualites";
+import ActuSolo from "./components/ActuSolo";
 import Footer from "./components/Footer";
 import Home from "./components/home/Home";
 import EditMission from "./components/missions/EditMission";
@@ -111,6 +113,9 @@ class App extends React.Component {
                 /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
               )}
             />
+
+            <Route exact={true} path="/actualites" component={Actualites} />
+            <Route exact={true} path="/" component={ActuSolo} />
           </Switch>
         </div>
         <Footer />

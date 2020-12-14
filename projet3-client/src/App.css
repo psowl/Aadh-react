@@ -442,10 +442,11 @@ footer .footer_notes p {
    margin: 10px auto;
    background-image: url('https://images.unsplash.com/photo-1564089969562-7b8667a4adec?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
    background-size: 100%;
+   padding: 30px;
 }
 
 .parent_video {
-   max-width: 850px;
+   max-width: 700px;
    margin: auto;
 }
 
@@ -454,6 +455,8 @@ footer .footer_notes p {
    height: 0;
    padding-bottom: 56.25%;
    overflow: hidden;
+   border: 10px outset var(--blue);
+   /* border-top: 10px inset var(--grey); */
 }
 
 .video iframe {
@@ -477,10 +480,11 @@ footer .footer_notes p {
    width: 60%;
    border-left: 10px inset var(--grey);
    border-top: 10px outset var(--blue);
-
+   background: url('https://images.unsplash.com/photo-1607499699372-7bb722dff7e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
    /* box-shadow: var(--box-shadow);
    background: var(--linear); */
    padding: 15px;
+   background-size: cover;
 }
 
 .home_top .actualites {
@@ -491,6 +495,13 @@ footer .footer_notes p {
    border-top: 10px outset var(--blue);
    padding: 15px;
 }
+.actions .actionsParagraph{
+   color: white
+}
+
+/* .actionsLayer{
+   background-color: rgba(0, 0, 0, 0.4);
+} */
 
 .actions_list {
    display: flex;
@@ -788,11 +799,14 @@ footer .footer_notes p {
 .missionsList {
    text-align: center;
    
+   
 }
 .missionTable {
-   background: linear-gradient(#ffffff 0%, #9198e5 50%, #ffffff 90%);
+   /* background: linear-gradient(#ffffff 0%, #9198e5 50%, #ffffff 90%); */
    padding-bottom:40px;
    margin-top: -20px;
+   background-image: url('https://images.unsplash.com/photo-1607499699372-7bb722dff7e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80'); 
+   color: white;
 }
 
 .missionsList .cardContainer {
@@ -811,11 +825,37 @@ footer .footer_notes p {
    padding: 20px;
    margin: 20px;
    background-color: #f8f8f9;
+   /* background-color: var(--blue); */
    list-style: none;
    border: 0;
-   box-shadow:10px 10px 15px 4px rgba(22, 40, 106,0.8);
+   box-shadow:10px 10px 15px 4px rgba(255, 255, 255, 0.3);
+   /* box-shadow:10px 10px 15px 4px rgba(22, 40, 106,0.8); */
+  /* background-image: url('https://images.unsplash.com/photo-1463438690606-f6778b8c1d10?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'); */
 }
 
+/* .missionCardSingleContent{
+   height: 200px;
+} */
+
+.missionCardSingleContent p, 
+.missionCardSingleContent h2, .missionCardSingleContent h3{
+   color: white;
+   text-shadow: 1px 2px var(--blue);
+}
+
+.missionCardSingle {
+   /* display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between; */
+   background-size: cover;
+   /* filter: grayscale(50%); */
+   /* height: 100px; */
+ 
+}
+.missionCardSingleContent{
+   background-color: rgba(0, 0, 0, 0.4);
+}
 
 .missionCardSingle .missionCardImage img {
    width: 80px;
@@ -835,8 +875,13 @@ footer .footer_notes p {
    color: var(--blue);
 }
 
+.missionsList .missionCard a:hover {
+   color:grey;
+}
+
 .searchContainer h2 {
    color: var(--blue);
+   
 }
 
 .searchContainer{
@@ -897,7 +942,38 @@ footer .footer_notes p {
 
 }
 
-.filterExpertise li {
+@media (max-width: 425px) {
+   .filterExpertise {
+      flex-direction: column;
+   }
+   .filterExpertise li {
+      margin: 10px 10px 10px 0px;
+      display: flex;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 5px 5px 2px 1px rgba(22,40,106);
+      position: relative;  
+   }
+}
+
+@media (min-width: 425px) {
+   .filterExpertise {
+      flex-direction: row;
+   }
+   .filterExpertise li {
+      width: 20%;
+      height: 150px;
+      margin: 10px 10px 10px 0px;
+      display: flex;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 5px 5px 2px 1px rgba(22,40,106);
+      position: relative;  
+   }
+}
+
+
+/* .filterExpertise li {
    width: 20%;
    height: 150px;
    margin: 10px 10px 10px 0px;
@@ -906,7 +982,7 @@ footer .footer_notes p {
    cursor: pointer;
    box-shadow: 5px 5px 2px 1px rgba(22,40,106);
    position: relative; 
-}
+} */
 
 .filterExpertise h3 {
    margin: auto;
@@ -1379,8 +1455,32 @@ footer .footer_notes p {
 ########  #######   ######   #### ##    ##  ######  ####  ######   ##    ##  #######  ##        
 */
 
-.logSignbackground {
+/* @media (max-width: 425px) {
+   .logSignScreenPopup  {
+      width: 250px;
+      padding: 30px;
+   }
+
+   .loginScreen .mainSinup,
+   .closeIcon {
+      color: white;
+      font-size: 20px;
+      position: relative;
+      top: -70px;
+      left: 315px;
+      cursor: pointer;
+   }
+
+   .logSignScreenPopup #buttonMonEspace, #buttonInscrire {
+      margin: 5px;
+   }
+} */
+.loginScreen .mainSignup{
    height: 800px;
+}
+
+.logSignbackground {
+   padding: 50px; 
    /* background-color: lightgrey; */
    display: flex;
    justify-content: center;
@@ -1391,8 +1491,8 @@ footer .footer_notes p {
 .logSignScreenPopup {
    background-color: var(--blue);
    text-align: center;
-   padding: 80px;
-   width: 300px;
+   padding: 40px;
+   width: 250px;
    border-radius: 10px;
    opacity: 0.9;
 }
@@ -1407,6 +1507,7 @@ footer .footer_notes p {
    font-size: 15px;
    margin-bottom: 10px;
 }
+
 
 .loginScreen #buttonMonEspace {
    border-bottom: 1px solid white;
@@ -1460,6 +1561,17 @@ select {
    margin: 10px;
 }
 
+
+.logSignScreenPopup button:hover, #buttonIcon:hover {
+   border: 1px solid white;
+   background-color: var(--blue);
+   color: white;
+}
+
+.loginIcon:hover{
+   color: white; 
+}
+
 #buttonIcon {
    color: var(--blue);
    background-color: white;
@@ -1475,6 +1587,7 @@ select {
    position: relative;
 }
 
+
 .mainSinup #buttonInscrire {
    border-bottom: 1px solid white;
 }
@@ -1489,7 +1602,6 @@ select {
 }
 
 .loginScreen .loginIcon {
-   color: black;
    font-size: 20px;
    top: 5px;
    position: relative;
@@ -1500,8 +1612,8 @@ select {
    color: white;
    font-size: 20px;
    position: relative;
-   top: -70px;
-   left: 315px;
+   top: -30px;
+   left: 250px;
    cursor: pointer;
 }
 
@@ -1616,6 +1728,10 @@ select {
    display: block;
 }
 
+.formStyle button:hover {
+   background-color: var(--blue);
+}
+
 .deleteButton {
    color: white;
    background-color: black;
@@ -1675,6 +1791,18 @@ background-position: bottom -100px right -300px; */
    width: 530px;
 }
 
+/* .detailsMissionBlock .imagebanner{
+   background-color: white;   
+   margin-top:-20px;
+   margin-right:-20px;
+   margin-left:-20px;
+   display: flex;
+
+}
+.detailsMissionBlock .imagebanner img{
+   width: 90px;
+} */
+
 .formStyle h1 {
    text-align: center;
 }
@@ -1701,6 +1829,12 @@ background-position: bottom -100px right -300px; */
    display: block;
 }
 
+.pageMission .buttonHelp:hover {
+   border: 1px solid var(--blue);
+   background-color: white;
+   color: var(--blue);
+}
+
 .editMissionForm {
  background: url('https://images.unsplash.com/photo-1510602955109-0e2f29545fa8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80');
  background-size: cover;
@@ -1718,7 +1852,7 @@ background-position: bottom -100px right -300px; */
    display: block;
    margin: 25px auto;
    text-align: center;
-   color: white;
+   color: var(--blue);
    font-weight: bold;
    font-size: 15px;
 }
@@ -1728,7 +1862,7 @@ background-position: bottom -100px right -300px; */
 }
 
 .redirect_link:hover {
-   color: black;
+   color: white;
 }
 
 
@@ -1909,4 +2043,74 @@ background-position: bottom -100px right -300px; */
 
 .editUser {
    background-image: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1437914983566-976d85602771%3Fixlib%3Drb-1.2.1%26ixid%3DMXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%253D%26auto%3Dformat%26fit%3Dcrop%26w%3D1500%26q%3D80');
+}
+
+/*
+  ###     ######  ######## ##     ##    ###    ##       #### ######## ########  ######  
+  ## ##   ##    ##    ##    ##     ##   ## ##   ##        ##     ##    ##       ##    ## 
+ ##   ##  ##          ##    ##     ##  ##   ##  ##        ##     ##    ##       ##       
+##     ## ##          ##    ##     ## ##     ## ##        ##     ##    ######    ######  
+######### ##          ##    ##     ## ######### ##        ##     ##    ##             ## 
+##     ## ##    ##    ##    ##     ## ##     ## ##        ##     ##    ##       ##    ## 
+##     ##  ######     ##     #######  ##     ## ######## ####    ##    ########  ######  
+*/
+
+
+.actuContainer {
+   display: flex;
+   width:300px;
+   text-align: center;
+   list-style: none;
+   position: relative; 
+   color: white;
+   padding: 0;
+}
+
+.actuCard {
+   border: 1px solid lightgrey; 
+   border-radius: 10px; 
+   height: 50%;
+   background-color: var(--blue);
+}
+
+.actuCard{
+   margin: 10px;
+   width: 300px;
+}
+
+.actuCard img {
+   width: 300px;
+   height: 150px;
+   object-fit: cover;
+   position: relative;
+
+}
+.actuCard h3 {
+   padding: 5px;
+}
+
+.actuCard a{
+  text-decoration: none; 
+  color: white;
+}
+
+.actualitesPage{
+   margin: 50px;
+}
+
+.actualitesPage .actuContainer {
+   display: flex;
+   text-align: center;
+   flex-direction: row;
+}
+
+@media (max-width: 768px) {
+
+   .actualitesPage {
+      margin: 10%;
+   }
+   .actualitesPage .actuContainer {
+      flex-direction: column;
+   }
+
 }

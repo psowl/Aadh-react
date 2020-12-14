@@ -21,7 +21,7 @@ class MissionsList extends React.Component {
       start_date: "",
       end_date: "",
       location: "",
-      logo: "",
+      profilePic: "",
     };
   }
 

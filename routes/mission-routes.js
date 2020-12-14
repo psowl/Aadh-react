@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const missionRoutes = express.Router();
 
 const Mission = require("../models/mission-model");
+const User = require("../models/user-model");
 
 //Create a mission
 missionRoutes.post("/missions", (req, res, next) => {
@@ -118,7 +119,7 @@ missionRoutes.get("/missions/:id", (req, res, next) => {
   }
   Mission.findById(req.params.id)
     .then((response) => {
-      console.log("mission", response);
+      console.log("response mission pop", response.populate("req©uester_id"));
       res.status(200).json(response);
       //redirect to the mission details?
     })
@@ -127,6 +128,28 @@ missionRoutes.get("/missions/:id", (req, res, next) => {
     });
 });
 
+// missionRoutes.get("/missions/:id", (req, res, next) => {
+//   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+//     res.status(400).json({ message: "Specified id is not valid" });
+//     return;
+//   }
+//   Mission.findById(req.params.id)
+//     .then((responsemission) => {
+//       console.log("😎 response requester id", responsemission.requester_id);
+//       const id = responsemission.requester_id;
+//       User.findById(id)
+//         .populate("requester_id")
+//         .then((userFromDB) => {
+//           res.status(200).json(responsemission);
+//           res.status(200).json(userFromDB);
+//         });
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//     })
+//     .catch(next);
+// });
+
 // GET route => to get missions view with requesterId
 missionRoutes.get("/missions/user/:requesterId", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.requesterId)) {
@@ -134,11 +157,13 @@ missionRoutes.get("/missions/user/:requesterId", (req, res, next) => {
     return;
   }
   Mission.find({ requester_id: req.params.requesterId })
+
     .populate("candidates")
     .populate("volonteerSelected")
     .then((missionsFromDb) => {
       // console.log(missionsFromDb);
       res.status(200).json(missionsFromDb);
+      console.log("req.params.requesterId ", req.params.requesterId);
     })
     .catch((err) => {
       console.log("err dans la route populate", err);
