@@ -49,6 +49,7 @@ class MissionDetails extends React.Component {
           `la mission "${missionId}" à jour avec candidat "${this.props.loggedInUser._id}" et le status "En attente de confirmation"`
         );
         this.getSingleMission();
+        this.props.history.push(`/users/${this.props.loggedInUser._id}`);
       })
       .catch((err) => console.log("error", err));
   };
@@ -73,14 +74,14 @@ class MissionDetails extends React.Component {
 
   render() {
     // console.log("this.state.profilePic", this.state.requester_id);
-    
+
     return (
       <div className="pageMission">
         <div className="detailsMission">
           <div className="detailsMissionBlock">
             {/* <h1 className="missionHeader">Détails de la mission</h1> */}
             <p className="missionHeader">
-              Statut de la mission: {this.state.status}
+              Statut de la mission : {this.state.status}
             </p>
             <h3 className="missionHeader">{this.state.expertise_required}</h3>
             <h2 className="missionHeader">{this.state.title}</h2>
@@ -113,8 +114,12 @@ class MissionDetails extends React.Component {
             </p>
 
             {/* <p>
-              <span>Mission publiée par: </span> {this.state.requester_id}
+              <span>Mission publiée par : </span>{" "}
+              <Link to={`/users/${this.state.requester_id}`}>
+                {this.state.requester_id}
+              </Link>
             </p> */}
+
             <button
               className="buttonHelp"
               onClick={(event) => {
