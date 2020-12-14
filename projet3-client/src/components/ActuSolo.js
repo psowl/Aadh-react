@@ -13,7 +13,7 @@ function ActuSolo(props) {
             src="https://comarketing-news.fr/wp-content/uploads/coronavirus-web-pandemie-1536x905.jpg"
             alt="actuImg"
           ></img>
-          <h3> Covid-19 et intervention de l’’AADH</h3>
+          <h3> Covid-19 et intervention de l’AADH</h3>
           <p>
             En cette période de crise sanitaire, l’Alliance des Avocats pour les
             Droits de l’Homme est solidaire envers toutes les associations

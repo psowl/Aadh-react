@@ -21,16 +21,36 @@ class MissionDetails extends React.Component {
           start_date: this.formatDate(this.state.start_date),
           end_date: this.formatDate(this.state.end_date),
         });
-
-        //console.log("themission to check date from mission details", theMission)
-        // console.log(
-        //   "this.state of MissionDetails formatted",
-        //   this.state.start_date
-        // );
       })
       .catch((err) => {
         console.log("Error while fetching mission", err);
       });
+  };
+
+  // //récupérer les id des candidates checked dans l'enfant
+  // confirmCandidate = (candidateId) => {
+  //   console.log("bénévole qui candidate", candidateId);
+  //   this.setState({ candidating: candidateId });
+  // };
+
+  //quand le user clique pour candidater, changer le state de candidates de mission en rajoutant son id
+  toCandidate = (event, missionId) => {
+    // console.log("l'id du bénévole candidat est:" +this.props.loggedInUser._id+ "qui est logguée en tant que "+ this.props.loggedInUser.username);
+    event.preventDefault();
+    // console.log("la missionId est ", missionId);
+
+    service
+      .put(`/missions/${missionId}`, {
+        candidates: this.props.loggedInUser._id,
+        status: "En attente de confirmation",
+      })
+      .then(() => {
+        console.log(
+          `la mission "${missionId}" à jour avec candidat "${this.props.loggedInUser._id}" et le status "En attente de confirmation"`
+        );
+        this.getSingleMission();
+      })
+      .catch((err) => console.log("error", err));
   };
 
   //instead of recalling getAllMissions in the setState above, check both states then display:
@@ -52,7 +72,8 @@ class MissionDetails extends React.Component {
   };
 
   render() {
-    console.log("this.state.profilePic", this.state.requester_id);
+    // console.log("this.state.profilePic", this.state.requester_id);
+    
     return (
       <div className="pageMission">
         <div className="detailsMission">
@@ -94,7 +115,14 @@ class MissionDetails extends React.Component {
             {/* <p>
               <span>Mission publiée par: </span> {this.state.requester_id}
             </p> */}
-            <button className="buttonHelp">Proposer son aide </button>
+            <button
+              className="buttonHelp"
+              onClick={(event) => {
+                this.toCandidate(event, this.state._id);
+              }}
+            >
+              Proposer son aide{" "}
+            </button>
 
             <Link className="redirect_link" to={"/missions"}>
               Retour à la liste des missions

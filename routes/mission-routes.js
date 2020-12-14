@@ -119,7 +119,7 @@ missionRoutes.get("/missions/:id", (req, res, next) => {
   }
   Mission.findById(req.params.id)
     .then((response) => {
-      console.log("response mission pop", response.populate("req©uester_id"));
+      console.log("response mission pop", response.populate("requester_id"));
       res.status(200).json(response);
       //redirect to the mission details?
     })

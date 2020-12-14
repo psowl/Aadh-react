@@ -42,7 +42,7 @@ class MissionsList extends React.Component {
   };
 
   onClick = (event, name) => {
-    console.log("name", name);
+    // console.log("name", name);
 
     this.setState(
       {
@@ -51,7 +51,7 @@ class MissionsList extends React.Component {
       () => {
         //getAllMissions if backend filtering to uncomment below
         this.getAllMissions();
-        console.log("this.state", this.state[name]);
+        // console.log("this.state", this.state[name]);
       }
     );
   };

@@ -2064,18 +2064,18 @@ background-position: bottom -100px right -300px; */
    position: relative; 
    color: white;
    padding: 0;
+
+  
 }
 
 .actuCard {
-   border: 1px solid lightgrey; 
+   /* border: 1px solid lightgrey;  */
    border-radius: 10px; 
    height: 50%;
    background-color: var(--blue);
-}
-
-.actuCard{
    margin: 10px;
    width: 300px;
+   box-shadow: 7px 9px 15px 4px rgb(0 0 0 / 47%);
 }
 
 .actuCard img {
