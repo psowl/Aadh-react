@@ -78,9 +78,11 @@ const Profile = (props) => {
                   <p>Email</p> <h4>{props.user.email}</h4>
                </li>
             </ul>
-            <Link to={`/users/${props.user._id}/edit`}>
-               <FaRegEdit size={40} />
-            </Link>
+            {props.loggedInUser._id === props.user._id && (
+               <Link to={`/users/${props.user._id}/edit`}>
+                  <FaRegEdit size={40} />
+               </Link>
+            )}
             <ul className='list_modifiable'>
                <li>
                   <p>Mot de passe</p> <h4>*************</h4>

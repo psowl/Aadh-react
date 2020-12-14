@@ -122,6 +122,9 @@ p {
    .enChargement {
       margin-top: var(--height-nav-max768);
       width: auto;
+      height: 100;
+      position: relative;
+      left: 0;
    }
 }
 
@@ -181,6 +184,10 @@ input:focus {
    padding: 10px;
    border-radius: 10px;
    align-items: center;
+}
+
+.nav .user_button p {
+   margin: 1px;
 }
 
 .nav .user_links {
@@ -327,6 +334,7 @@ input:focus {
 
 @media (max-width: 425px) {
    .nav .user_links a,
+   .nav .user_links p,
    .nav .user_links button {
       font-size: 9px;
       line-height: 16px;
@@ -964,12 +972,13 @@ footer .footer_notes p {
                                             
 */
 
-.mon_espace {
+.mon_espace,
+.profilePublic {
    color: var(--blue);
    background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1466&q=80');
 }
 
-.mon_espace img {
+.mon_espace_top img {
    width: 15%;
    box-shadow: 4px 4px #0006;
 }
@@ -1052,24 +1061,28 @@ footer .footer_notes p {
    min-height: 90vh;
 }
 
-.mon_espace .missions_a_confirmer .list_missions li {
+.mon_espace .missions_a_confirmer .list_missions li,
+.profilePublic .list_missions li {
    list-style: none;
    width: 25%;
 }
 
-.mon_espace .missions_a_confirmer .list_missions span {
+.mon_espace .missions_a_confirmer .list_missions span,
+.profilePublic .list_missions span {
    display: flex;
    width: 100%;
    justify-content: center;
    flex-wrap: wrap;
 }
 
-.mon_espace .otherMissions .list_missions li {
+.mon_espace .otherMissions .list_missions li,
+.profilePublic .list_missions li {
    width: 40%;
 }
 
 .mon_espace .missions_a_confirmer .list_missions,
-.mon_espace .otherMissions .list_missions {
+.mon_espace .otherMissions .list_missions,
+.profilePublic .list_missions {
    padding: 0;
    display: flex;
    flex-wrap: wrap;
@@ -1082,13 +1095,13 @@ footer .footer_notes p {
 .mon_espace .otherMissions h2 {
    text-align: center;
    margin: 0px;
-   padding-top: 20px;
    font-size: 23px;
    color: white;
 }
 
 .mon_espace .missions_a_confirmer .entete,
-.mon_espace .otherMissions .entete {
+.mon_espace .otherMissions .entete,
+.profilePublic .entete {
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -1097,30 +1110,29 @@ footer .footer_notes p {
 }
 
 .mon_espace .otherMissions .entete > div p,
-.mon_espace .otherMissions .entete > div h2 {
-   margin: 0;
-}
-
+.mon_espace .otherMissions .entete > div h2,
+.profilePublic .entete > div p,
+.profilePublic .entete > div h2,
+.profilePublic .entete > div h3,
 .mon_espace .otherMissions .entete h3 {
    margin: 0;
 }
 
 .mon_espace .missions_a_confirmer .entete a,
-.mon_espace .otherMissions .entete a {
+.mon_espace .otherMissions a,
+.profilePublic a {
    color: var(--blue);
+   text-shadow: 1px 0px white;
    text-decoration: none;
    align-self: flex-start;
    margin-right: 3px;
 }
 
 .mon_espace .missions_a_confirmer .entete a:hover,
-.mon_espace .otherMissions .entete a:hover {
+.mon_espace .otherMissions .entete a:hover,
+.profilePublic a:hover {
    color: white;
-}
-
-.mon_espace .missions_a_confirmer .entete a {
-   color: white;
-   align-self: flex-start;
+   text-shadow: none;
 }
 
 .mon_espace .missions_a_confirmer input,
@@ -1147,6 +1159,21 @@ footer .footer_notes p {
    align-items: center;
 }
 
+.mon_espace .otherMissions table {
+   width: 70%;
+   margin: 5px auto;
+}
+
+.mon_espace .otherMissions table td {
+   text-align: center;
+   font-size: 14px;
+   margin: 2px;
+}
+
+.mon_espace .otherMissions table tr {
+   background: linear-gradient(45deg, #ffffffba, #ffffffba);
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
    .mon_espace .menu_mon_espace ul {
       top: 250px;
@@ -1154,11 +1181,13 @@ footer .footer_notes p {
 }
 
 @media (max-width: 425px) {
-   .mon_espace .missions_a_confirmer .list_missions span {
+   .mon_espace .missions_a_confirmer .list_missions span,
+   .profilePublic .list_missions span {
       flex-direction: column;
    }
    .mon_espace .missions_a_confirmer .list_missions li,
-   .mon_espace .otherMissions .list_missions li {
+   .mon_espace .otherMissions .list_missions li,
+   .profilePublic .list_missions li {
       width: 70%;
       margin-left: auto;
       margin-right: auto;
@@ -1188,6 +1217,7 @@ footer .footer_notes p {
    margin: 30px 50px;
    border-radius: 5px;
    border: 2px ridge #8080807a;
+   padding: 20px;
 }
 
 .mon_espace .otherMissions .each_candidate img {
@@ -1196,12 +1226,17 @@ footer .footer_notes p {
 
 .mon_espace .otherMissions .selected_candidate {
    display: flex;
-   justify-content: space-between;
    margin-top: 5px;
+   justify-content: space-between;
+   flex: 1;
+}
+
+.mon_espace .otherMissions .entete div {
 }
 
 .mon_espace .otherMissions .each_candidate p,
-.mon_espace .otherMissions .selected_candidate a {
+.mon_espace .otherMissions .selected_candidate a,
+.mon_espace .otherMissions table a {
    margin: 0;
    margin-left: 10px;
    color: var(--blue);
@@ -1214,10 +1249,13 @@ footer .footer_notes p {
    border-radius: 5px;
    color: white;
    align-self: center;
+   text-align: center;
+   align-self: flex-end;
 }
 
 .mon_espace .missions_a_confirmer .each_mission,
-.mon_espace .otherMissions .each_mission {
+.mon_espace .otherMissions .each_mission,
+.profilePublic .each_mission {
    background: linear-gradient(45deg, #f8f8f9, transparent);
    margin: 10px;
    padding: 10px;
@@ -1225,23 +1263,57 @@ footer .footer_notes p {
    flex-direction: column;
 }
 
+.mon_espace .otherMissions .each_mission section {
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
 .mon_espace .missions_a_confirmer .each_mission p,
-.mon_espace .otherMissions .each_mission p {
+.mon_espace .otherMissions .each_mission p,
+.profilePublic .each_mission p {
    color: rgb(91, 87, 109);
 }
 
-.mon_espace .missions_a_confirmer .each_mission h3 {
+.mon_espace .missions_a_confirmer .each_mission h3,
+.profilePublic .each_mission h3 {
    text-shadow: 1px 1px 1px black;
 }
-.mon_espace .missions_a_confirmer label {
+
+.mon_espace .missions_a_confirmer .each_mission a:nth-child(2),
+.profilePublic .each_mission a:nth-child(2) {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.mon_espace .missions_a_confirmer label,
+.profilePublic label {
    width: 60%;
 }
 
-.mon_espace .missions_a_confirmer label a {
+.mon_espace .missions_a_confirmer a,
+.profilePublic a {
    /*for Link*/
    width: 40%;
    color: var(--blue);
    text-decoration: none;
+}
+
+.mon_espace .missions_a_confirmer a:hover,
+.mon_espace .otherMissions a:hover,
+.profilePublic a:hover {
+   /*for Link*/
+   color: white;
+   text-shadow: none;
+}
+
+.missions_a_confirmer .list_missions .each_mission .entete h3 a {
+   color: white;
+   text-shadow: 3px 3px var(--blue);
+}
+
+.missions_a_confirmer .list_missions .each_mission .entete h3 a:hover {
+   text-shadow: none;
 }
 
 .mon_espace .dashboardSearch {
@@ -1894,4 +1966,8 @@ background-position: bottom -100px right -300px; */
 
 .editUser {
    background-image: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1437914983566-976d85602771%3Fixlib%3Drb-1.2.1%26ixid%3DMXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%253D%26auto%3Dformat%26fit%3Dcrop%26w%3D1500%26q%3D80');
+}
+
+.profilePic_upload {
+   margin-left: 200px;
 }

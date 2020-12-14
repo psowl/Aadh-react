@@ -7,11 +7,13 @@ class DashboardSolliciteur extends React.Component {
       return (
          <div className='dashboard_missions'>
             <Aconfirmer
+               userType={this.props.userType}
                dashboard={this.props.dashboard}
                missionsAconfirmer={this.props.missionsAconfirmer}
                getMissions={this.props.getMissions}
             />
             <SuiviMissions
+               userType={this.props.userType}
                dashboard={this.props.dashboard}
                otherMissions={this.props.otherMissions}
                filterMissions={this.props.filterMissions}

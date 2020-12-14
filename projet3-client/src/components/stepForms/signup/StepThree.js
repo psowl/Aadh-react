@@ -7,7 +7,7 @@ class StepThree extends React.Component {
       step: 3,
       errorMessage: '',
       profilePic: this.props.profilePic,
-      profilePic: this.props.profilePic,
+      logo: this.props.logo,
    };
 
    handleChange = (event) => {
@@ -76,7 +76,7 @@ class StepThree extends React.Component {
                      placeholder='Décrivez-vous ou votre organisation en quelques mots'
                      autoFocus
                   ></textarea>
-                  {/* affichage conditionnel image profilePic ou profilePic */}
+                  {/* en V2: affichage conditionnel image profilePic ou logo */}
                   <input
                      type='file'
                      alt=''

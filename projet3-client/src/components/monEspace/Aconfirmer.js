@@ -55,15 +55,44 @@ class Aconfirmer extends React.Component {
       return { backgroundImage: `url(${url})` };
    };
 
+   //changer background selon le statut de la mission
+   colorBackground = (status) => {
+      let backgroundStatus = { background: 'white' };
+      if (status === 'Pourvue') {
+         backgroundStatus.background = 'green';
+      } else if (status === 'Disponible') {
+         backgroundStatus.background = 'white';
+         backgroundStatus.color = 'black';
+      } else {
+         backgroundStatus.background = 'grey';
+         backgroundStatus.color = 'white';
+      }
+      return backgroundStatus;
+   };
+
+   formatDate = (date) => {
+      date = new Date(date);
+      return date.toDateString();
+   };
+
    render() {
-      
       return (
          <div className='missions_a_confirmer'>
-            {this.props.missionsAconfirmer.length === 1 ? (
-               <h2>{this.props.missionsAconfirmer.length} mission à confirmer</h2>
-            ) : (
-               <h2>{this.props.missionsAconfirmer.length} missions à confirmer</h2>
-            )}
+            {/* pour  solliciteur*/}
+            {this.props.userType === 'solliciteur' &&
+               (this.props.missionsAconfirmer.length === 1 ? (
+                  <h2>{this.props.missionsAconfirmer.length} mission à confirmer</h2>
+               ) : (
+                  <h2>{this.props.missionsAconfirmer.length} missions à confirmer</h2>
+               ))}
+            {/* pour  bénévole*/}
+            {this.props.userType === 'bénévole' &&
+               (this.props.missionsAconfirmer.length === 1 ? (
+                  <h2>{this.props.missionsAconfirmer.length} mission à venir</h2>
+               ) : (
+                  <h2>{this.props.missionsAconfirmer.length} missions à venir</h2>
+               ))}
+
             <ul className='list_missions'>
                {this.props.dashboard &&
                   this.props.missionsAconfirmer.map((el) => (
@@ -79,26 +108,55 @@ class Aconfirmer extends React.Component {
                               <FaRegEdit size={25} />
                            </Link>
                         </section>
-                        <p className='no_link'>Liste des candidats</p>
-                        <ul className='list_candidates'>
-                           {el.candidates.map((candidate, index) => (
-                              <li key={index}>
-                                 <OneCandidate
-                                    candidat={candidate}
-                                    confirmCandidate={this.confirmCandidate}
-                                 />
-                              </li>
-                           ))}
-                        </ul>
-                        <button
-                           className='all_buttons'
-                           onClick={(event) => {
-                              this.toConfirm(event, el._id);
-                           }}
-                        >
-                           {/*attention:ici el n'est pas un paramètre, c'est une variable*/}
-                           Confirmer
-                        </button>
+                        {/* pour  solliciteur*/}
+                        {this.props.userType === 'solliciteur' && (
+                           <p className='no_link'>Liste des candidats</p>
+                        )}
+                        {/* pour  solliciteur*/}
+                        {this.props.userType === 'solliciteur' && (
+                           <ul className='list_candidates'>
+                              {el.candidates.map((candidate, index) => (
+                                 <li key={index}>
+                                    <OneCandidate
+                                       candidat={candidate}
+                                       confirmCandidate={this.confirmCandidate}
+                                    />
+                                 </li>
+                              ))}
+                           </ul>
+                        )}
+                        {/* pour  solliciteur*/}
+                        {this.props.userType === 'solliciteur' && (
+                           <button
+                              className='all_buttons'
+                              onClick={(event) => {
+                                 this.toConfirm(event, el._id);
+                              }}
+                           >
+                              {/*attention:ici el n'est pas un paramètre, c'est une variable*/}
+                              Confirmer
+                           </button>
+                        )}
+                        {/* pour  bénévole*/}
+                        {this.props.userType === 'bénévole' && (
+                           <div>
+                              {!el.requester_id.username && (
+                                 <h4>Le solliciteur a supprimé son compte</h4>
+                              )}
+                              {el.requester_id.username && (
+                                 <Link to={`/users/${el.requester_id._id}`}>
+                                    <h4>{el.requester_id.username}</h4>
+                                 </Link>
+                              )}
+                              <em>
+                                 Du {this.formatDate(el.start_date)} au{' '}
+                                 {this.formatDate(el.end_date)}
+                              </em>
+                              <p className='status' style={this.colorBackground(el.status)}>
+                                 {el.status}
+                              </p>
+                           </div>
+                        )}
                      </li>
                   ))}
             </ul>

@@ -1,9 +1,13 @@
 import React from 'react';
 import service from '../auth-service';
+import { handleUpload } from '../auth-service';
+import { AiOutlineLock } from 'react-icons/ai';
+import { VscLoading } from 'react-icons/vsc';
+import { Redirect } from 'react-router-dom';
 
 class EditUser extends React.Component {
    state = {
-      loggedInUser: this.props.loggedInUser,
+      _id: '',
       username: '',
       password: '',
       location: '',
@@ -22,12 +26,12 @@ class EditUser extends React.Component {
    //préremplir le form: aller chercher les données en base et les mettre dans les states
    getUser = () => {
       const params = this.props.match.params; //passer la props dans le routing
-      console.log('params', params);
       service
          .get(`http://localhost:5000/users/${params.id}`)
          .then((responseFromApi) => {
             const userFromDb = responseFromApi.data;
             this.setState({
+               _id: userFromDb._id,
                username: userFromDb.username,
                password: userFromDb.password,
                location: userFromDb.location,
@@ -92,6 +96,24 @@ class EditUser extends React.Component {
       this.setState({ [name]: value });
    };
 
+   //upload image
+   handleFileUpload = (e) => {
+      console.log('The file to be uploaded is: ', e.target.files[0]);
+      console.log('event ', e);
+      const uploadData = new FormData();
+      uploadData.append('imageUrl', e.target.files[0]);
+      console.log('uploadData', uploadData);
+      handleUpload(uploadData)
+         .then((response) => {
+            console.log('response is: ', response);
+            // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+            this.setState({ profilePic: response.secure_url });
+         })
+         .catch((err) => {
+            console.log('Error while uploading the file: ', err);
+         });
+   };
+
    // DELETE MISSION
    deleteUser = () => {
       const { params } = this.props.match;
@@ -107,11 +129,25 @@ class EditUser extends React.Component {
    };
 
    render() {
-      //attendre que le loggedInUser arrive du App
-      if (!this.props.loggedInUser) {
-         return <div className='enChargement'>En chargement</div>;
+      if (!this.props.loggedInUser || !this.state._id) {
+         return (
+            <div className='enChargement'>
+               En chargement
+               <VscLoading size={120} />
+            </div>
+         );
+      } //accès à la page edit profil uniquement si on est owner de la fiche
+      else if (this.state._id !== this.props.loggedInUser._id) {
+         return (
+            <div className='enChargement'>
+               Merci de vous identifier
+               <AiOutlineLock size={120} />
+            </div>
+         ); //attendre que le loggedInUser arrive du App
       }
 
+      //attendre que le loggedInUser arrive du App
+      else console.log('date', new Date(this.state.availability_end_date).toLocaleDateString());
       return (
          <div className='editMissionForm parentForm editUser'>
             <form className='formStyle' onSubmit={this.handleFormSubmit}>
@@ -150,6 +186,7 @@ class EditUser extends React.Component {
                         <select
                            type='text'
                            name='expertise'
+                           multiple={false} //à changer en V2 pour multiple selection
                            value={this.state.expertise}
                            onChange={this.handleChange}
                         >
@@ -170,7 +207,9 @@ class EditUser extends React.Component {
                            <input
                               type='date'
                               name='avaibility_start_date'
-                              value={this.state.availability_start_date}
+                              value={new Date(
+                                 this.state.availability_start_date
+                              ).toLocaleDateString()}
                               onChange={this.handleChange}
                            ></input>
                         </div>
@@ -204,6 +243,16 @@ class EditUser extends React.Component {
                      </p>
                   </div>
                )}
+               <p className='profilePic_upload'>
+                  <input
+                     type='file'
+                     alt='profilePic'
+                     name='profilePic'
+                     onChange={(e) => {
+                        this.handleFileUpload(e);
+                     }}
+                  />
+               </p>
                <p>
                   <label>Description</label>
                   <textarea
