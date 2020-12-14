@@ -113,12 +113,12 @@ class MissionDetails extends React.Component {
               <span>Description :</span> {this.state.description}
             </p>
 
-            {/* <p>
+            <p>
               <span>Mission publiée par : </span>{" "}
               <Link to={`/users/${this.state.requester_id}`}>
                 {this.state.requester_id}
               </Link>
-            </p> */}
+            </p>
 
             <button
               className="buttonHelp"
