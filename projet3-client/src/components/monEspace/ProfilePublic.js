@@ -16,17 +16,22 @@ class ProfilePublic extends React.Component {
       validationCheck: true,
    };
 
+   //une fois quand component mis dans la page
    componentDidMount = () => {
       this.getUser();
    };
 
+   //à chaque fois qu'une prop ou un state change: toujours mettre un if pour cibler le props ou le state
+      componentDidUpdate = (prevProps, prevState) => {
+         if (prevProps.match.params.id !== this.props.match.params.id) {
+            console.log("l'id vient de changer", this.props.match.params.id);
+            this.getUser();
+         }
+      };
+
    // aller chercher en base les missions avec le requester_id du solliciteur (front filter)
    getMissions = (userId) => {
-      //si le user dont la fiche est demandé n'est pas logué (si dysynchro avec la fonction getUser)
-      if (!this.props.loggedInUser) {
-         this.setState({ validationCheck: false });
-         return;
-      }
+    
       service
          .get(`/missions/user/${userId}`)
          .then((missionsFromDb) => {
@@ -56,9 +61,14 @@ class ProfilePublic extends React.Component {
       service
          .get(`/users/${userId}/public`)
          .then((userFromApi) => {
-            this.setState({ user: userFromApi.data }, () => this.getMissions(this.state.user._id));
+            console.log('ici route getMissions dans le then');
+
+            this.setState({ user: userFromApi.data }, () => {
+               console.log('ici route getMissions', this.state.user._id);
+               this.getMissions(this.state.user._id);
+            });
          })
-         .catch((err) => console.log('err in getUser', err.response.data.message));
+         .catch((err) => console.log('err in getUser', err));
    };
 
    formatDate = (date) => {
@@ -97,8 +107,8 @@ class ProfilePublic extends React.Component {
    };
 
    render() {
-      console.log('this.state', this.state);
-      console.log('this.state.missions.length', this.state.missions.length);
+    //   console.log('this.state', this.state);
+    //   console.log('this.state.missions.length', this.state.missions.length);
 
       if (!this.state.user) {
          return (
@@ -205,7 +215,7 @@ class ProfilePublic extends React.Component {
                   </div>
                </div>
             </div>
-            <div className="missions">
+            <div className='missions'>
                <h2>Missions déjà effectuées ou prévues</h2>
                {this.state.otherMissions.length > 0 && (
                   <ul className='list_missions'>

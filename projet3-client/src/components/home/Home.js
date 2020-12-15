@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Presentation from './Presentation';
-import Actu from '../Actualites';
+import ActuSolo from '../ActuSolo';
 
 class Home extends React.Component {
    render() {
@@ -22,7 +22,8 @@ class Home extends React.Component {
             </div>
             <div className='home_top'>
                <section className='actions'>
-                  <div>
+                  <div className='actionsLayer'></div>
+                  <div className='actionsParagraph'>
                      <h2>L’ALLIANCE DES AVOCATS POUR LES DROITS DE L’HOMME</h2>
                      <p>
                         Fondée en 2009, l’A.A.D.H coordonne un soutien juridique neutre, gratuit et
@@ -61,7 +62,7 @@ class Home extends React.Component {
                </section>
                <section className='actualites'>
                   <h2>ACTUALITES</h2>
-                  <Actu />
+                  <ActuSolo />
                </section>
             </div>
             <div className='presentation'>

@@ -38,7 +38,7 @@ class Aconfirmer extends React.Component {
    changeBackgroundImage = (expertise) => {
       let url = '';
       // let image = { backgroundImage: 'url'(url) };
-      console.log('expertise', expertise);
+      // console.log('expertise', expertise);
       if (expertise === "Droits de l'Homme et de l'enfant") {
          url =
             'https://images.unsplash.com/photo-1602437168121-bbf522702d9b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1814&q=80';

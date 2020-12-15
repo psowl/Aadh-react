@@ -10,6 +10,8 @@ import { loggedin } from './components/auth-service';
 import MissionsList from './components/missions/MissionsList';
 import MissionDetails from './components/missions/MissionDetails';
 import AddMission from './components/missions/AddMission';
+import Actualites from './components/Actualites';
+import ActuSolo from './components/ActuSolo';
 import Footer from './components/Footer';
 import Home from './components/home/Home';
 import EditMission from './components/missions/EditMission';
@@ -57,6 +59,8 @@ class App extends React.Component {
             <div className='content'>
                <Switch>
                   <Route exact={true} path='/' component={Home} />
+                  <Route exact={true} path='/actualites' component={Actualites} />
+                  <Route exact={true} path='/' component={ActuSolo} />
                   <Route
                      exact={true}
                      path='/signup'
@@ -82,7 +86,13 @@ class App extends React.Component {
                         <AddMission {...props} loggedInUser={this.state.loggedInUser} />
                      )}
                   />
-                  <Route exact={true} path='/missions/:id' component={MissionDetails} />
+                  <Route
+                     exact={true}
+                     path='/missions/:id'
+                     render={(props) => (
+                        <MissionDetails {...props} loggedInUser={this.state.loggedInUser} />
+                     )}
+                  />
                   <Route
                      exact={true}
                      path='/users/:id/public'

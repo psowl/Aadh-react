@@ -93,7 +93,7 @@ class MonEspace extends React.Component {
    render() {
       console.log(this.props.loggedInUser._id, this.state.user._id);
       console.log(this.props.loggedInUser._id === this.state.user._id);
-      
+
       if (!this.state.user || !this.props.loggedInUser) {
          return (
             <div className='enChargement'>
@@ -111,8 +111,8 @@ class MonEspace extends React.Component {
             </div>
          );
       }
-      
-      //this.state.user._id arrive souvent après this.props.loggedInUser._id, donc le mettre en condition dans le if pour éviter que le message appraisse quand il est undefeined 
+
+      //this.state.user._id arrive souvent après this.props.loggedInUser._id, donc le mettre en condition dans le if pour éviter que le message appraisse quand il est undefeined
       if (this.state.user._id && this.props.loggedInUser._id !== this.state.user._id) {
          return (
             <div className='enChargement'>
