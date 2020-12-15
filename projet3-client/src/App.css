@@ -125,6 +125,7 @@ p {
       height: 100;
       position: relative;
       left: 0;
+      padding: 30px;
    }
 }
 
@@ -213,6 +214,20 @@ input:focus {
    color: white;
    text-decoration: none;
    border-top: 1px solid white;
+}
+
+.nav .user_button:hover .user_links a,
+.nav .user_button:hover .user_icon {
+   color: var(--blue);
+}
+
+.nav .user_button:hover .user_links a:nth-child(2) {
+   border-top: 1px solid var(--blue);
+}
+
+.nav .user_button:hover {
+   background: white;
+   border: 1px solid var(--blue);
 }
 
 .nav .nav-menu-desktop {

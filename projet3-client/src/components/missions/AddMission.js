@@ -82,6 +82,15 @@ class AddMission extends React.Component {
         </div>
       );
     }
+//ne voir le quetionnaire que si on est solliciteur
+    if (this.props.loggedInUser.userType==="solliciteur") {
+       return (
+          <div className='enChargement'>
+             Un compte solliciteur est nécessaire pour accéder à cette page
+             <AiOutlineLock size={120} />
+          </div>
+       );
+    }
     return (
       <div className="missionform parentForm addMission">
         <form className="formStyle" onSubmit={this.handleFormSubmit}>
