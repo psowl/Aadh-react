@@ -2,8 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Presentation from './Presentation';
 import ActuSolo from '../ActuSolo';
+import service from '../auth-service';
 
 class Home extends React.Component {
+   state = { tweets: [] };
+
+   componentDidMount = () => {
+      this.getTweets();
+   };
+
+   getTweets = () => {
+      service
+         .get('/statuses/user_timeline', { screen_name: 'AllianceADH' })
+         .then((response) => {
+            console.log('twitter ok', response);
+         })
+         .catch((err) => console.log('err in twitter', err));
+   };
+
    render() {
       return (
          <div className='home'>
@@ -62,6 +78,7 @@ class Home extends React.Component {
                </section>
                <section className='actualites'>
                   <h2>ACTUALITES</h2>
+
                   <ActuSolo />
                </section>
             </div>

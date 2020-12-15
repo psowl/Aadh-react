@@ -1,10 +1,9 @@
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const twitterRoutes = express.Router();
+const express = require('express');
+const mongoose = require('mongoose');
+const twitterRoutes = express.Router();
 
-// twitterRoutes.get('twitter.com/2/users/2244994945', (req, res, next) => {
-//   console.log("in route twitter")
-//    (response) => res.json(response);
-// });
+twitterRoutes.get('/tweets', (req, res, next) => {
+   (response) => res.json({ message: 'réponse récue de twitter' });
+});
 
-// module.exports = twitterRoutes;
+module.exports = twitterRoutes;
