@@ -578,6 +578,10 @@ footer .footer_notes p {
    flex-direction: column;
 }
 
+.home .section_content .organisation .bureau {
+   flex-direction: row;
+}
+
 .home .section_content .organisation div ul {
    display: flex;
    flex-direction: column;
@@ -1222,6 +1226,7 @@ footer .footer_notes p {
 
 .mon_espace .otherMissions .each_candidate img {
    border-radius: 30px;
+   width: 40px;
 }
 
 .mon_espace .otherMissions .selected_candidate {
@@ -1308,12 +1313,13 @@ footer .footer_notes p {
 }
 
 .missions_a_confirmer .list_missions .each_mission .entete h3 a {
-   color: white;
-   text-shadow: 3px 3px var(--blue);
+   color: var(--blue);
+   background: linear-gradient(45deg, white, transparent);
 }
 
 .missions_a_confirmer .list_missions .each_mission .entete h3 a:hover {
    text-shadow: none;
+   color: white;
 }
 
 .mon_espace .dashboardSearch {
@@ -1926,6 +1932,30 @@ background-position: bottom -100px right -300px; */
    display: flex;
    justify-content: center;
    align-items: center;
+}
+
+.profile .location h2,
+.profilePublic h2 {
+   color: white;
+   text-align: center;
+}
+
+.profile .location h3,
+.profilePublic .entete h3 {
+   align-self: center;
+}
+
+.profilePublic .entete img {
+   width: 80px;
+}
+
+.profilePublic .entete .titre {
+   display: flex;
+   align-content: center;
+}
+
+.profilePublic .entete .titre img {
+   margin-right: 3px;
 }
 
 @media (max-width: 425px) {

@@ -87,7 +87,7 @@ class SuiviMissions extends React.Component {
                                           src={el.volonteerSelected.profilePic}
                                           alt='profilePic'
                                        />
-                                       <Link to={`/users/${el.volonteerSelected._id}`}>
+                                       <Link to={`/users/${el.volonteerSelected._id}/public`}>
                                           {el.volonteerSelected.username}
                                        </Link>
                                     </div>

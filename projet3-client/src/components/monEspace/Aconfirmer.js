@@ -144,7 +144,7 @@ class Aconfirmer extends React.Component {
                                  <h4>Le solliciteur a supprimé son compte</h4>
                               )}
                               {el.requester_id.username && (
-                                 <Link to={`/users/${el.requester_id._id}`}>
+                                 <Link to={`/users/${el.requester_id._id}/public`}>
                                     <h4>{el.requester_id.username}</h4>
                                  </Link>
                               )}

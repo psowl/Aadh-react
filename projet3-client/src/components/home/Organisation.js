@@ -10,7 +10,7 @@ const Organisation = () => {
          <div>
             <div>
                <h4>Le bureau</h4>
-               <ul>
+               <ul className="bureau">
                   <li>
                      <em>Président exécutif</em>
                      <p>FRANÇOIS BARRIÈRE</p>

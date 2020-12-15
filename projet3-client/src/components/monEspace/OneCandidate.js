@@ -20,7 +20,7 @@ class OneCandidate extends React.Component {
       return (
          <div className='each_candidate'>
             <label>
-               <Link to={`/users/${this.props.candidat._id}`}>{this.props.candidat.username}</Link>
+               <Link to={`/users/${this.props.candidat._id}/public`}>{this.props.candidat.username}</Link>
             </label>
             <input
                type='checkbox'

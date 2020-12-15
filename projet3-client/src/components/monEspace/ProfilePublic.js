@@ -18,32 +18,17 @@ class ProfilePublic extends React.Component {
 
    componentDidMount = () => {
       this.getUser();
-      this.getMissions();
-   };
-
-   //utiliser la route pour afficher le user de l'url
-   getUser = () => {
-      const userId = this.props.match.params.id;
-      console.log('userId', userId);
-      service
-         .get(`/users/${userId}/public`)
-         .then((userFromApi) => {
-            this.setState({ user: userFromApi.data });
-         })
-         .catch((err) => console.log('err in getUser', err.response.data.message));
    };
 
    // aller chercher en base les missions avec le requester_id du solliciteur (front filter)
-   getMissions = () => {
-      const { params } = this.props.match;
-      console.log('params', params);
+   getMissions = (userId) => {
       //si le user dont la fiche est demandé n'est pas logué (si dysynchro avec la fonction getUser)
       if (!this.props.loggedInUser) {
          this.setState({ validationCheck: false });
          return;
       }
       service
-         .get(`/missions/user/${params.id}`)
+         .get(`/missions/user/${userId}`)
          .then((missionsFromDb) => {
             console.log('missionsFromDb', missionsFromDb);
             //pour enrgistrer le fait que le  user est logué
@@ -62,6 +47,18 @@ class ProfilePublic extends React.Component {
             });
          })
          .catch((err) => console.log('err in getMissions', err));
+   };
+
+   //utiliser la route pour afficher le user de l'url
+   getUser = () => {
+      const userId = this.props.match.params.id;
+      console.log('userId', userId);
+      service
+         .get(`/users/${userId}/public`)
+         .then((userFromApi) => {
+            this.setState({ user: userFromApi.data }, () => this.getMissions(this.state.user._id));
+         })
+         .catch((err) => console.log('err in getUser', err.response.data.message));
    };
 
    formatDate = (date) => {
@@ -209,31 +206,45 @@ class ProfilePublic extends React.Component {
                </div>
             </div>
             <div>
-               <h3>Missions</h3>
-               <ul className='list_missions'>
-                  {this.state.otherMissions.map((el) => (
-                     <li key={el._id} className='each_mission'>
-                        <section>
-                           <div className='entete'>
-                              <div>
-                                 <h3>
-                                    <Link to={`/missions/${el._id}`}>{el.title}</Link>
-                                 </h3>
-                                 <em>
-                                    {this.formatDate(el.start_date)}
-                                    <em> au </em>
-                                    {this.formatDate(el.end_date)}
-                                 </em>
+               <h2>Missions déjà effectuées ou prévues</h2>
+               {this.state.otherMissions.length > 0 && (
+                  <ul className='list_missions'>
+                     {this.state.otherMissions.map((el) => (
+                        <li key={el._id} className='each_mission'>
+                           <section>
+                              <div className='entete'>
+                                 <div>
+                                    <div className='titre'>
+                                       <img src={el.requester_id.profilePic} alt='logo' />
+                                       <h3>
+                                          <Link to={`/users/${el.requester_id._id}/public`}>
+                                             {el.requester_id.username}
+                                          </Link>
+                                       </h3>
+                                    </div>
+                                    <h3>
+                                       <Link to={`/missions/${el._id}`}>{el.title}</Link>
+                                    </h3>
+                                    <em>
+                                       {this.formatDate(el.start_date)}
+                                       <em> au </em>
+                                       {this.formatDate(el.end_date)}
+                                    </em>
+                                 </div>
+                                 <Link to={`/missions/${el._id}/edit`}>
+                                    <FaRegEdit size={25} />
+                                 </Link>
                               </div>
-                              <Link to={`/missions/${el._id}/edit`}>
-                                 <FaRegEdit size={25} />
-                              </Link>
-                           </div>
-                        </section>
-                     </li>
-                  ))}
-                  ;
-               </ul>
+                           </section>
+                        </li>
+                     ))}
+                  </ul>
+               )}
+               {this.state.otherMissions.length === 0 && (
+                  <h2 style={{ fontStyle: 'italic' }}>
+                     Cet utilisateur n'a pas encore effectué de missions
+                  </h2>
+               )}
             </div>
          </div>
       );
