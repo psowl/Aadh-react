@@ -216,7 +216,7 @@ input:focus {
    border-top: 1px solid white;
 }
 
-.nav .user_button:hover .user_links a,
+/* .nav .user_button:hover .user_links a,
 .nav .user_button:hover .user_icon {
    color: var(--blue);
 }
@@ -228,7 +228,7 @@ input:focus {
 .nav .user_button:hover {
    background: white;
    border: 1px solid var(--blue);
-}
+} */
 
 .nav .nav-menu-desktop {
    margin: 0;
