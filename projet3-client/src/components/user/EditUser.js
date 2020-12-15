@@ -3,7 +3,6 @@ import service from '../auth-service';
 import { handleUpload } from '../auth-service';
 import { AiOutlineLock } from 'react-icons/ai';
 import { VscLoading } from 'react-icons/vsc';
-import { Redirect } from 'react-router-dom';
 
 class EditUser extends React.Component {
    state = {

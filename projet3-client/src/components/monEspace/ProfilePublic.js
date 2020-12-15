@@ -205,7 +205,7 @@ class ProfilePublic extends React.Component {
                   </div>
                </div>
             </div>
-            <div>
+            <div className="missions">
                <h2>Missions déjà effectuées ou prévues</h2>
                {this.state.otherMissions.length > 0 && (
                   <ul className='list_missions'>

@@ -983,13 +983,14 @@ footer .footer_notes p {
 }
 
 .mon_espace_top img {
-   width: 15%;
+   width: 115px;
    box-shadow: 4px 4px #0006;
 }
 
 @media (max-width: 425px) {
    .mon_espace {
       margin-top: var(--height-nav-min768);
+      padding: 0;
    }
    .mon_espace img {
       width: 30%;
@@ -1195,6 +1196,9 @@ footer .footer_notes p {
       width: 70%;
       margin-left: auto;
       margin-right: auto;
+   }
+   .dashboard_missions {
+      padding-bottom: 5px;
    }
 }
 
@@ -1407,6 +1411,7 @@ footer .footer_notes p {
    }
    .mon_espace .dashboardSearch input {
       width: 90%;
+      height: 30px;
       margin-right: auto;
       margin-left: auto;
    }
@@ -1416,6 +1421,7 @@ footer .footer_notes p {
    }
    .mon_espace .otherMissions {
       margin: 20px 10px;
+      padding: 0px;
    }
 }
 /*
@@ -1561,6 +1567,16 @@ select {
    text-align: center;
 }
 
+@media (max-width: 425px) {
+   .logSignScreenPopup {
+      padding: 40px;
+   }
+   .loginScreen .mainSinup,
+   .closeIcon {
+      top: -32px;
+      left: 277px;
+   }
+}
 /* 
  for overlay css see login js */
 /* #cover{
@@ -1915,6 +1931,7 @@ background-position: bottom -100px right -300px; */
 .profile .description h4 {
    margin: 2px auto;
    text-align: center;
+   padding: 2px;
 }
 
 .profile .description {
@@ -1975,6 +1992,15 @@ background-position: bottom -100px right -300px; */
       margin-left: auto;
       text-align: center;
       padding: 0;
+   }
+   .profilePublic .user_details,
+   .profilePublic .missions {
+      width: auto;
+      padding: 0px 46px;
+      margin: 0;
+   }
+   .profile .list_non_modifiable {
+      width: auto;
    }
 }
 
