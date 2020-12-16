@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MissionCard from "./MissionCard";
 
-function MissionTable(props) {
-  // console.log("props.missions from MissionTable", props.missions);
+const MissionTable = (props) => {
+  console.log("props.missions from MissionTable", props.missions);
   // console.log("props.missions un seul", props.missions[0]);
 
   const displaySingular = () => {
@@ -31,6 +31,6 @@ function MissionTable(props) {
       </div>
     </div>
   );
-}
+};
 
 export default MissionTable;

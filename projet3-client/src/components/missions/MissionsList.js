@@ -142,6 +142,7 @@ class MissionsList extends React.Component {
 
             {/* for back filtering  */}
             <MissionTable missions={this.state.listOfMissions} />
+            
          </div>
       );
    }

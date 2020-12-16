@@ -91,8 +91,8 @@ class MonEspace extends React.Component {
    };
 
    render() {
-      console.log(this.props.loggedInUser._id, this.state.user._id);
-      console.log(this.props.loggedInUser._id === this.state.user._id);
+      // console.log(this.props.loggedInUser._id, this.state.user._id);
+      // console.log(this.props.loggedInUser._id === this.state.user._id);
 
       if (!this.state.user || !this.props.loggedInUser) {
          return (
