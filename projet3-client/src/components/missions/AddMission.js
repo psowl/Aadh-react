@@ -83,7 +83,7 @@ class AddMission extends React.Component {
       );
     }
 //ne voir le quetionnaire que si on est solliciteur
-    if (this.props.loggedInUser.userType==="solliciteur") {
+    if (!this.props.loggedInUser.userType==="solliciteur") {
        return (
           <div className='enChargement'>
              Un compte solliciteur est nécessaire pour accéder à cette page

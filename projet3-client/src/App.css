@@ -836,6 +836,11 @@ footer .footer_notes p {
    color: white;
 }
 
+.missionTable .refreshMissions:hover {
+   cursor: pointer;
+   color: red;
+}
+
 .missionsList .cardContainer {
    display: flex;
    flex-flow: row wrap;
@@ -2268,7 +2273,7 @@ width: 150px;
    border-radius: 10px; 
    height: 50%;
    /* background-color: var(--blue); */
-   background: linear-gradient(#bdbdbd  0%, #16286a 50%, #bdbdbd 90%);
+   background: linear-gradient(#bdbdbd  0%, #000000 50%, #bdbdbd 90%);
    margin: 10px;
    width: 300px;
    box-shadow: 7px 9px 15px 4px rgb(0 0 0 / 47%);
