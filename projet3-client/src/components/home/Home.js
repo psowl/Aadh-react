@@ -51,7 +51,6 @@ class Home extends React.Component {
             </div>
          );
       }
-
       return (
          <div className='home'>
             <div className='background_video'>
@@ -108,7 +107,6 @@ class Home extends React.Component {
                   </ul>
                </section>
                <section className='actualites'>
-                  <h2>ACTUALITES</h2>
                   <div className='titre'>
                      <img
                         src='https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/1200px-Twitter_Bird.svg.png'
