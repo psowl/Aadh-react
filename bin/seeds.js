@@ -1016,8 +1016,8 @@ const missions = [
   },
 ];
 
-// Mission.create(missions)
-//    .then((missions) => {
-//       console.log(`${missions.length} missions created.`);
-//    })
-//    .catch((err) => console.error(err));
+Mission.create(missions)
+  .then((missions) => {
+    console.log(`${missions.length} missions created.`);
+  })
+  .catch((err) => console.error(err));
