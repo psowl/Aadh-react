@@ -26,14 +26,16 @@ class MonEspace extends React.Component {
    //utiliser la route pour afficher le user logué
    getUser = () => {
       const userId = this.props.match.params.id;
-
       service
          .get(`/users/${userId}`)
          .then((userFromApi) => {
             this.setState({ user: userFromApi.data });
             console.log('user', this.state.user);
          })
-         .catch((err) => console.log('err in getUser', err.response.data.message));
+         .catch((err) => {
+            console.log('err in getUser', err.response.data.message);
+            this.setState({ validationCheck: false });
+         });
    };
 
    // aller chercher en base les missions avec le requester_id du solliciteur (front filter)
@@ -91,8 +93,8 @@ class MonEspace extends React.Component {
    };
 
    render() {
-      console.log(this.props.loggedInUser._id, this.state.user._id);
-      console.log(this.props.loggedInUser._id === this.state.user._id);
+      // console.log(this.props.loggedInUser._id, this.state.user._id);
+      // console.log(this.props.loggedInUser._id === this.state.user._id);
 
       if (!this.state.user || !this.props.loggedInUser) {
          return (
@@ -114,6 +116,16 @@ class MonEspace extends React.Component {
 
       //this.state.user._id arrive souvent après this.props.loggedInUser._id, donc le mettre en condition dans le if pour éviter que le message appraisse quand il est undefeined
       if (this.state.user._id && this.props.loggedInUser._id !== this.state.user._id) {
+         return (
+            <div className='enChargement'>
+               Merci de vous identifier
+               <AiOutlineLock size={120} />
+            </div>
+         );
+      }
+      
+      //si un user veut accèder à la page perso d'un autre user
+      if (this.state.validationCheck === false) {
          return (
             <div className='enChargement'>
                Merci de vous identifier

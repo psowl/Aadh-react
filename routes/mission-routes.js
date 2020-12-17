@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const missionRoutes = express.Router();
 
 const Mission = require('../models/mission-model');
-const User = require('../models/user-model');
 
 //Create a mission
 missionRoutes.post('/missions', (req, res, next) => {
@@ -97,6 +96,7 @@ missionRoutes.get('/missions', (req, res, next) => {
    // console.log('dbquery🔢: ', dbquery);
 
    Mission.find(dbquery)
+   
       .sort({ createdAt: -1 })
       .then((allTheMissions) => {
          res.json(allTheMissions);
@@ -151,27 +151,6 @@ missionRoutes.get('/missions/user/:userId', (req, res, next) => {
          res.json(err);
       });
 });
-// missionRoutes.get("/missions/:id", (req, res, next) => {
-//   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//     res.status(400).json({ message: "Specified id is not valid" });
-//     return;
-//   }
-//   Mission.findById(req.params.id)
-//     .then((responsemission) => {
-//       console.log("😎 response requester id", responsemission.requester_id);
-//       const id = responsemission.requester_id;
-//       User.findById(id)
-//         .populate("requester_id")
-//         .then((userFromDB) => {
-//           res.status(200).json(responsemission);
-//           res.status(200).json(userFromDB);
-//         });
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     })
-//     .catch(next);
-// });
 
 // PUT route => to update a specific mission
 missionRoutes.put('/missions/:id', (req, res, next) => {

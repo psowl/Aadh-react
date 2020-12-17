@@ -70,16 +70,10 @@ app.use(
    })
 );
 
-//Twitter API
-const twitterApi = new Twitter({
-   consumer_key: process.env.TWITTER_CONSUMER_KEY,
-   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-   bearer_token: process.env.TWITTER_BEARER_TOKEN,
-});
-
-// 1) default value for title local
+// default value for title local
 app.locals.title = 'Welcome to project 3 in React ! You are in Sarah and Sophie project!';
 
+//1) le programme cherche une route qui correspond
 const index = require('./routes/index');
 app.use('/', index);
 
@@ -94,27 +88,30 @@ app.use('/', missionRoutes);
 
 app.use('/', require('./routes/file-upload.routes'));
 
+//Twitter API
+const twitterApi = new Twitter({
+   consumer_key: process.env.TWITTER_CONSUMER_KEY,
+   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+   bearer_token: process.env.TWITTER_BEARER_TOKEN,
+});
+
 //twitterroute
 var params = { screen_name: 'AllianceADH' };
-// twitterApi.get('statuses/user_timeline', params, function (error, tweets, response) {
-//    if (!error) {
-//       console.log(tweets);
-//    }
-// });
+app.use((req, res, next) => {
+   twitterApi
+      .get('/statuses/user_timeline', params)
+      .then((tweets) => {
+         res.status(200).json(tweets);
+      })
+      .catch((err) => {
+         res.status(400).json(err);
+      });
+});
 
-twitterApi
-   .get('statuses/user_timeline', params)
-   .then((tweets) => {
-      console.log('tweets', tweets);
-   })
-   .catch((err) => {
-      console.log('error', err);
-   });
-
-// ou 2) Serve static files from client/build folder
+//  si pas de routes, 2) Serve static files from client/build folder
 app.use(express.static(path.join(__dirname, 'projet3-client/build')));
 
-// ou 3) For any other routes: serve client/build/index.html SPA
+// sinon,  3) For any other routes: serve client/build/index.html SPA
 app.use((req, res, next) => {
    res.sendFile(`${__dirname}/projet3-client/build/index.html`, (err) => {
       if (err) next(err);

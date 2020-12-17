@@ -3,24 +3,54 @@ import { Link } from 'react-router-dom';
 import Presentation from './Presentation';
 import ActuSolo from '../ActuSolo';
 import service from '../auth-service';
+import { VscLoading } from 'react-icons/vsc';
+import { FaRetweet } from 'react-icons/fa';
 
 class Home extends React.Component {
-   state = { tweets: [] };
+   state = { tweets: [], retweets: [] };
 
    componentDidMount = () => {
       this.getTweets();
    };
 
+   formatDate = (date) => {
+      date = new Date(date);
+      return date.toDateString();
+   };
+
    getTweets = () => {
       service
          .get('/statuses/user_timeline', { screen_name: 'AllianceADH' })
-         .then((response) => {
-            console.log('twitter ok', response);
+         .then((tweetsFromApi) => {
+            console.log('twitter ok', tweetsFromApi.data);
+            this.setState(
+               {
+                  tweets: tweetsFromApi.data,
+               },
+               () => this.fetchRetweetInfo()
+            );
          })
          .catch((err) => console.log('err in twitter', err));
    };
 
+   //pour pouvoir render les info de la clés retweeted_status (qui est un objet non atteignable directement par le state tweet, car trop profond (undefined)). Je mets chaque objet retweet dans un array [{retweeted_status},{retweeted_status}]
+   fetchRetweetInfo = () => {
+      let tweets = this.state.tweets;
+      let retweets = tweets.map((tweet) => {
+         return tweet.retweeted_status;
+      });
+      this.setState({ retweets: retweets });
+   };
+
    render() {
+      if (this.state.tweets.length === 0) {
+         return (
+            <div className='enChargement'>
+               En chargement
+               <VscLoading size={120} />
+            </div>
+         );
+      }
       return (
          <div className='home'>
             <div className='background_video'>
@@ -77,9 +107,51 @@ class Home extends React.Component {
                   </ul>
                </section>
                <section className='actualites'>
-                  <h2>ACTUALITES</h2>
-
-                  <ActuSolo />
+                  <div className='titre'>
+                     <img
+                        src='https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/1200px-Twitter_Bird.svg.png'
+                        alt='twitter'
+                     />
+                     <h3>Tweets by @AllianceADH</h3>
+                  </div>
+                  <ul>
+                     {this.state.tweets.map((tweet, i) => (
+                        <li key={i}>
+                           <div>
+                              {/* si le tweet est un retweet, afficher l'image du tweeter origine, sinon afficher l'image de AADH*/}
+                              {this.state.retweets[i] ? (
+                                 <img
+                                    key={this.state.retweets[i].id}
+                                    src={this.state.retweets[i].user.profile_image_url_https}
+                                    alt='profile_image_url'
+                                 />
+                              ) : (
+                                 <img
+                                    key={this.state.tweets[i].id}
+                                    src={this.state.tweets[i].user.profile_image_url_https}
+                                    alt='profile_image_url'
+                                 />
+                              )}
+                           </div>
+                           <div>
+                              {/* si le tweet est un retweet, afficher l'image du tweeter origine, sinon afficher l'image de AADH*/}
+                              {this.state.retweets[i] && (
+                                 <div className='retweet_intro'>
+                                    <div>
+                                       <FaRetweet />
+                                       <em>AADH a retweeté</em>
+                                    </div>
+                                    <h4>{this.state.retweets[i].user.name}</h4>
+                                 </div>
+                              )}
+                              <em>{this.formatDate(tweet.created_at)}</em>
+                              <p>{tweet.text}</p>
+                              <a href={tweet.source}>Voir plus</a>
+                           </div>
+                        </li>
+                     ))}
+                  </ul>
+                  {/* <ActuSolo /> */}
                </section>
             </div>
             <div className='presentation'>
