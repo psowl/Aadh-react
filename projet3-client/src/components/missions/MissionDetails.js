@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { GrLocation } from "react-icons/gr";
 import { GrStatusGoodSmall } from "react-icons/gr";
 import service from "../auth-service";
+import { VscLoading } from "react-icons/vsc";
 
 class MissionDetails extends React.Component {
   state = {
@@ -136,7 +137,15 @@ class MissionDetails extends React.Component {
   };
 
   render() {
-    console.log("this.state.status", this.state);
+    if (!this.state.title) {
+      return (
+        <div className="enChargement">
+          En chargement
+          <VscLoading size={120} />
+        </div>
+      );
+    }
+    console.log("this.state", this.state);
     return (
       <div className="pageMission">
         <div className="detailsMission">
