@@ -114,7 +114,6 @@ authRoutes.post('/login', (req, res, next) => {
 
 //loggedin
 authRoutes.get('/loggedin', (req, res, next) => {
-   console.log('route loggedin');
    if (req.session.currentUser) {
       res.status(200).json(req.session.currentUser);
       console.log(req.session.currentUser);
