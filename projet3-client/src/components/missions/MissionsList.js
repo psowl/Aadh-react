@@ -1,10 +1,11 @@
 // import { response } from 'express';
-import React from 'react';
-import queryString from 'query-string';
+import React from "react";
+import queryString from "query-string";
 // import axios from 'axios';
-import service from '../auth-service';
-import Search from './Search.js';
-import MissionTable from './MissionTable.js';
+import service from "../auth-service";
+import Search from "./Search.js";
+import MissionTable from "./MissionTable.js";
+// import { FiRefreshCcw } from "react-icons/fi";
 
 class MissionsList extends React.Component {
   constructor(props) {
@@ -102,6 +103,18 @@ class MissionsList extends React.Component {
       .catch((err) => console.log("Error while fetching missions", err));
   };
 
+  displayAll = () => {
+    service
+      .get('/missions')
+      .then((responseFromApi) => {
+        console.log("all missions✅or❌ from MissionsList", responseFromApi);
+        this.setState({
+          listOfMissions: responseFromApi.data,
+        });
+      })
+      .catch((err) => console.log("Error while fetching missions", err));
+  };
+
   render() {
     //console.log("data from MissionList", this.state.listOfMissions)
 
@@ -121,7 +134,7 @@ class MissionsList extends React.Component {
           onChange={this.handleInputChange}
           onClick={this.onClick}
         />
-
+        {/* <FiRefreshCcw displayAll={this.displayAll} /> */}
         {/* testing filtering by clicking expertise */}
 
         {/* <ul>
@@ -132,19 +145,19 @@ class MissionsList extends React.Component {
           ))}
         </ul> */}
 
-            {/* 
+        {/* 
         <h1 onClick={(event) => this.props.onChange()}>
         {this.props.expertise}
        </h1> */}
 
-            {/* for front filtering */}
-            {/* <MissionTable missions={listOfMissions} /> */}
+        {/* for front filtering */}
+        {/* <MissionTable missions={listOfMissions} /> */}
 
-            {/* for back filtering  */}
-            <MissionTable missions={this.state.listOfMissions} />
-         </div>
-      );
-   }
+        {/* for back filtering  */}
+        <MissionTable missions={this.state.listOfMissions} displayAll={this.displayAll} />
+      </div>
+    );
+  }
 }
 
 export default MissionsList;

@@ -479,7 +479,7 @@ footer .footer_notes p {
    height: 0;
    padding-bottom: 56.25%;
    overflow: hidden;
-   border: 10px outset var(--blue);
+   /* border: 10px outset var(--blue); */
    /* border-top: 10px inset var(--grey); */
 }
 
@@ -916,6 +916,15 @@ footer .footer_notes p {
    color: white;
 }
 
+.missionTable svg {
+   margin-right: 10px;
+}
+
+.missionTable .refreshMissions:hover {
+   cursor: pointer;
+   color: red;
+}
+
 .missionsList .cardContainer {
    display: flex;
    flex-flow: row wrap;
@@ -940,6 +949,10 @@ footer .footer_notes p {
    /* background-image: url('https://images.unsplash.com/photo-1463438690606-f6778b8c1d10?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'); */
 }
 
+.missionCard h3:hover {
+   text-decoration: underline;
+} 
+
 /* .missionCardSingleContent{
    height: 200px;
 } */
@@ -951,6 +964,8 @@ footer .footer_notes p {
    text-shadow: 1px 2px var(--blue);
 }
 
+
+
 .missionCardSingle {
    /* display: flex;
    flex-direction: column;
@@ -961,7 +976,7 @@ footer .footer_notes p {
    /* height: 100px; */
 }
 .missionCardSingleContent {
-   background-color: rgba(0, 0, 0, 0.4);
+   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .missionCardSingle .missionCardImage img {
@@ -982,8 +997,9 @@ footer .footer_notes p {
    color: var(--blue);
 }
 
-.missionsList .missionCard a:hover {
-   color: grey;
+.missionsList .missionCard a {
+   text-decoration: none;
+   color: var(--blue);
 }
 
 .searchContainer h2 {
@@ -1727,6 +1743,7 @@ select {
    cursor: pointer;
    font-size: 15px;
    margin: 10px;
+   border: 1px solid white;
 }
 
 .logSignScreenPopup button:hover,
@@ -1753,6 +1770,7 @@ select {
    font-size: 15px;
    margin: 10px;
    position: relative;
+   border: 1px solid white;
 }
 
 .mainSinup #buttonInscrire {
@@ -1801,35 +1819,6 @@ select {
       left: 277px;
    }
 }
-/* 
- for overlay css see login js */
-/* #cover{
-   position:fixed;
-   top:0;
-   left:0;
-   background:rgba(0,0,0,0.6);
-   z-index:5;
-   width:100%;
-   height:100%;
-   display:none;
-}
-#loginScreen
-{
-   height:380px;
-   width:340px;
-   margin:0 auto;
-   position:relative;
-   z-index:10;
-   display:none;
-
-   border:5px solid #cccccc;
-   border-radius:10px;
-}
-
-#loginScreen:target, #loginScreen:target + #cover{
-   display:block;
-   opacity:2;
-} */
 
 /*
 ########  #######  ########  ##     ##  ######  
@@ -1962,6 +1951,36 @@ background-position: bottom -100px right -300px; */
    align-items: center;
 }
 
+.detailsMission .headerMissionSolo {
+   display: flex;
+   flex-direction: row;
+}
+
+.detailsMission p {
+   font-weight: bold;
+}
+
+.detailsMission .headerMissionSolo .name span {
+   color: var(--blue);
+}
+
+.detailsMission .headerMissionSolo .linkONG {
+   text-decoration: none;
+   color: var(--blue);
+}
+
+.detailsMission .headerMissionSolo .linkONG .name {
+   text-decoration: none;
+   color: var(--blue);
+}
+.detailsMission .headerMissionSolo .name:hover {
+   color: white;
+}
+
+.detailsMission .headerMissionSolo .headerLeft {
+   width: 150px;
+}
+
 .detailsMissionBlock {
    background: rgba(255, 255, 255, 0.8);
    padding: 20px;
@@ -2006,6 +2025,7 @@ background-position: bottom -100px right -300px; */
    font-size: 15px;
    margin: 25px auto;
    display: block;
+   border: 1px solid var(--blue);
 }
 
 .pageMission .buttonHelp:hover {
@@ -2301,7 +2321,8 @@ background-position: bottom -100px right -300px; */
    /* border: 1px solid lightgrey;  */
    border-radius: 10px;
    height: 50%;
-   background-color: var(--blue);
+   /* background-color: var(--blue); */
+   background: linear-gradient(#bdbdbd 0%, #000000 50%, #bdbdbd 90%);
    margin: 10px;
    width: 300px;
    box-shadow: 7px 9px 15px 4px rgb(0 0 0 / 47%);

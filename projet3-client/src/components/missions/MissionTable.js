@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MissionCard from "./MissionCard";
+import { FiRefreshCcw } from "react-icons/fi";
 
-function MissionTable(props) {
-  // console.log("props.missions from MissionTable", props.missions);
+const MissionTable = (props) => {
+  console.log("props.missions from MissionTable", props.missions);
   // console.log("props.missions un seul", props.missions[0]);
 
   const displaySingular = () => {
@@ -17,7 +18,10 @@ function MissionTable(props) {
   return (
     <div className="missionTable">
       <div>
-        <h2>{displaySingular()}</h2>
+        <h2>
+          {displaySingular()} <span></span><FiRefreshCcw className="refreshMissions" onClick={props.displayAll} />
+        </h2>
+
         <ul className="cardContainer">
           {props.missions.map((mission) => (
             <li key={mission._id} className="missionCard">
@@ -31,6 +35,6 @@ function MissionTable(props) {
       </div>
     </div>
   );
-}
+};
 
 export default MissionTable;
