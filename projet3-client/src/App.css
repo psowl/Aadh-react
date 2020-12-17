@@ -521,6 +521,7 @@ footer .footer_notes p {
    max-height: 750px;
    overflow: scroll;
    background: rgb(21, 32, 43);
+   border-bottom: 6px solid var(--blue);
 }
 
 .home_top .actualites h2 {
