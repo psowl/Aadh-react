@@ -26,7 +26,7 @@ class EditUser extends React.Component {
   getUser = () => {
     const params = this.props.match.params; //passer la props dans le routing
     service
-      .get(`http://localhost:5000/users/${params.id}`)
+      .get(`/users/${params.id}`)
       .then((responseFromApi) => {
         const userFromDb = responseFromApi.data;
         this.setState({
