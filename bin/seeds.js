@@ -1006,7 +1006,7 @@ const missions = [
     expertise_required: "Soutien des associations et des ESS",
     password: "testaadh2020",
     description:
-      "Nous renforçons actuellement nos équipes en cette période de rentrée : nous sommes à la recherche de bénévoles, avocats, juristes  et étudiants bénévoles pour aider les primo arrivants, demandeurs d’asile ou personnes en situation de grande précarité à comprendre et défendre leurs droits. Nous cherchons des renforts tant au siège à Paris que sur nos antennes en province à Besançon, Clermont Ferrand, Grenoble, Poitiers, Rouen, Toulouse et Tours.",
+         "Nous renforçons actuellement nos équipes en cette période de rentrée : nous sommes à la recherche de bénévoles, avocats, juristes  et étudiants bénévoles pour aider les primo arrivants, demandeurs d’asile ou personnes en situation de grande précarité à comprendre et défendre leurs droits. Nous cherchons des renforts tant au siège à Paris que sur nos antennes en province à Besançon, Clermont Ferrand, Grenoble, Poitiers, Rouen, Toulouse et Tours.",
     location: "Paris",
     start_date: "2022-09-02T00:00:00.000Z",
     end_date: "2022-09-02T00:00:00.000Z",
