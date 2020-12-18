@@ -19,6 +19,7 @@ class MissionDetails extends React.Component {
     requiredSkills: "",
     status: "",
     _id: "",
+    candidates: [],
   };
 
   componentDidMount() {
@@ -65,16 +66,29 @@ class MissionDetails extends React.Component {
     event.preventDefault();
     console.log("la missionId est ", missionId);
 
+    const { candidates, status } = this.state;
+
+    let candidatesCopy = [...candidates];
+    candidatesCopy.push(this.props.loggedInUser._id);
+    console.log("candidatesCopy", candidatesCopy);
+    //ajouter l'id du loggedinUser dans l'array candidates
+    this.setState({
+      candidates: candidatesCopy,
+      status: "En attente de confirmation",
+    });
+
+    console.log("this.state.candidates", this.state.candidates);
+
     service
       .put(`/missions/${missionId}`, {
-        candidates: this.props.loggedInUser._id,
-        status: "En attente de confirmation",
+        candidates,
+        status,
       })
       .then(() => {
         console.log(
           `la mission "${missionId}" à jour avec candidat "${this.props.loggedInUser._id}" et le status "En attente de confirmation"`
         );
-        this.getSingleMission();
+      //   this.getSingleMission();
         this.props.history.push(`/users/${this.props.loggedInUser._id}`);
       })
       .catch((err) => console.log("error", err));
