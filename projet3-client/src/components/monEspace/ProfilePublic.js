@@ -6,6 +6,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { VscLoading } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import service from "../auth-service.js";
+import { AiOutlineLock } from "react-icons/ai";
 
 class ProfilePublic extends React.Component {
   state = {
@@ -110,6 +111,15 @@ class ProfilePublic extends React.Component {
   render() {
     //   console.log('this.state', this.state);
     //   console.log('this.state.missions.length', this.state.missions.length);
+
+    if (!this.props.loggedInUser) {
+      return (
+        <div className="enChargement">
+          Merci de vous identifier
+          <AiOutlineLock size={120} />
+        </div>
+      );
+    }
 
     if (!this.state.user) {
       return (
