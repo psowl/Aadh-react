@@ -96,7 +96,7 @@ missionRoutes.get('/missions', (req, res, next) => {
    // console.log('dbquery🔢: ', dbquery);
 
    Mission.find(dbquery)
-   
+
       .sort({ createdAt: -1 })
       .then((allTheMissions) => {
          res.json(allTheMissions);
@@ -165,6 +165,27 @@ missionRoutes.put('/missions/:id', (req, res, next) => {
          res.json({
             message: `La mission avec l'id ${req.params.id} été mise à jour avec ${req.body}`,
          });
+      })
+      .catch((err) => {
+         res.json(err);
+      });
+});
+
+//route pour qu'il y ait plusieurs candidats
+//get la mission (find) et dans candidate pusher le nouvel id et save
+missionRoutes.get('/:missionId/addCandidate', (req, res, next) => {
+   if (!mongoose.Types.ObjectId.isValid(req.params.missionId)) {
+      res.status(400).json({ message: 'Specified id is not valid' });
+      return;
+   }
+   Mission.findById(req.params.missionId)
+      .then((mission) => {
+         console.log('🥕mission', mission);
+         const candidateId = req.session.currentUser._id;
+         mission.candidates.push(candidateId);
+         mission.save();
+         response.status = 'En attente de confirmation';
+         res.status(200).json(mission);
       })
       .catch((err) => {
          res.json(err);
