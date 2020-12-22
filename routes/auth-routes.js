@@ -23,10 +23,6 @@ authRoutes.post('/signup', (req, res, next) => {
       logo,
    } = req.body;
 
-   console.log('req.file', req.file);
-
-   console.log('🌽', req.body);
-
    // validations;
    if (!email || !password) {
       res.status(400).json({ message: "Merci d'entrer un email et un mot de passe" });
@@ -91,7 +87,6 @@ authRoutes.post('/login', (req, res, next) => {
    const { email, password } = req.body;
    User.findOne({ email })
       .then((user) => {
-         console.log('📍in then of login');
          if (!user) {
             res.status(400).json({
                message: 'Aucun compte relié à cet email',
@@ -116,7 +111,6 @@ authRoutes.post('/login', (req, res, next) => {
 authRoutes.get('/loggedin', (req, res, next) => {
    if (req.session.currentUser) {
       res.status(200).json(req.session.currentUser);
-      console.log(req.session.currentUser);
       return;
    }
    res.status(403).json({ message: 'Unauthorized' });

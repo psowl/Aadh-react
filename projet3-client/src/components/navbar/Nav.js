@@ -16,7 +16,6 @@ class Nav extends React.Component {
     event.preventDefault();
     logout()
       .then((response) => {
-        console.log("response logout❌ ", response);
         //supprimer le user qui est dans le state du App
         this.props.updateUser(null);
         this.props.history.push("/");

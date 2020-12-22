@@ -15,7 +15,6 @@ const Profile = (props) => {
       let missions = props.missions.map((el) => el.volonteerSelected === props.user._id);
       return missions.length;
    };
-   console.log('props.user', props.user);
 
    const styleTextStatus = (status) => {
       let styleText;

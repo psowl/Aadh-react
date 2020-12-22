@@ -28,7 +28,6 @@ missionRoutes.post('/missions', (req, res, next) => {
       requester_id: req.session.currentUser._id,
    })
       .then((response) => {
-         console.log('response🌠', response);
          res.json(response);
       })
       .catch((err) => {
@@ -49,18 +48,14 @@ missionRoutes.get('/missions', (req, res, next) => {
       start_date,
       end_date,
    } = req.query;
-   console.log('req.query🎒: ', req.query);
 
    let dbquery = {};
 
    if (searchfield) {
       dbquery.title = { $regex: req.query.searchfield, $options: 'i' };
-      console.log('dbquery ', dbquery);
-      console.log('dbquery.title ', dbquery.title);
    }
 
    if (availability_frequency) {
-      console.log('dbquery.availability_frequency ', dbquery.availability_frequency);
       dbquery.availability_frequency = req.query.availability_frequency;
    }
 
@@ -93,14 +88,11 @@ missionRoutes.get('/missions', (req, res, next) => {
       dbquery.end_date = { $lte: new Date(req.query.end_date) };
    }
 
-   // console.log('dbquery🔢: ', dbquery);
-
    Mission.find(dbquery)
-   
+
       .sort({ createdAt: -1 })
       .then((allTheMissions) => {
          res.json(allTheMissions);
-         // console.log('allTheMissions', allTheMissions);
       })
       .catch((err) => {
          console.log('error', err);
@@ -117,7 +109,6 @@ missionRoutes.get('/missions/:id', (req, res, next) => {
    Mission.findById(req.params.id)
       .populate('requester_id')
       .then((response) => {
-         console.log('mission', response);
          res.status(200).json(response);
          //redirect to the mission details?
       })
@@ -143,7 +134,6 @@ missionRoutes.get('/missions/user/:userId', (req, res, next) => {
       .populate('volonteerSelected')
       .populate('requester_id')
       .then((missionsFromDb) => {
-         console.log(missionsFromDb);
          res.status(200).json(missionsFromDb);
       })
       .catch((err) => {
@@ -161,10 +151,30 @@ missionRoutes.put('/missions/:id', (req, res, next) => {
 
    Mission.findByIdAndUpdate(req.params.id, req.body)
       .then(() => {
-         console.log('📍in update', req.params.id, 'req.body ', req.body);
          res.json({
             message: `La mission avec l'id ${req.params.id} été mise à jour avec ${req.body}`,
          });
+      })
+      .catch((err) => {
+         res.json(err);
+      });
+});
+
+//route pour qu'il y ait plusieurs candidats
+//get la mission (find) et dans candidate pusher le nouvel id et save
+missionRoutes.get('/:missionId/addCandidate', (req, res, next) => {
+   if (!mongoose.Types.ObjectId.isValid(req.params.missionId)) {
+      res.status(400).json({ message: 'Specified id is not valid' });
+      return;
+   }
+
+   Mission.findById(req.params.missionId)
+      .then((mission) => {
+         const candidateId = req.session.currentUser._id;
+         mission.candidates.push(candidateId);
+         mission.status = 'En attente de confirmation';
+         mission.save();
+         res.status(200).json(mission);
       })
       .catch((err) => {
          res.json(err);

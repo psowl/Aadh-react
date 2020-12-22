@@ -12,9 +12,7 @@ class Presentation extends React.Component {
    showSection = (event, sectionName) => {
       //retirer le css cliquée du bouton cliqué précédemment/de tous les boutons
       const allButtons = document.querySelectorAll('li .section_button');
-      console.log(allButtons);
       allButtons.forEach((el) => {
-         console.log(el);
          el.classList.remove('active_button');
       });
       //afficher le texte compliqué

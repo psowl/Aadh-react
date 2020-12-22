@@ -8,7 +8,6 @@ class OneCandidate extends React.Component {
    toggleSelection = (event) => {
       this.setState({ checked: !this.state.checked }, () => {
          //callback function pour asynchonous
-         console.log(this.state.checked);
          let candidateId = event.target.id;
          if (this.state.checked) {
             this.props.confirmCandidate(candidateId);

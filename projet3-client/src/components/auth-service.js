@@ -13,9 +13,8 @@ const errorHandler = (err) => {
 export default service;
 
 function handleUpload(theFiles) {
-   // console.log('file in service: ', theFile)
    return service
-      .post('/upload', theFiles)
+      .post('/api/upload', theFiles)
       .then((res) => res.data)
       .catch(errorHandler);
 }
@@ -37,7 +36,7 @@ function signup(
    logo
 ) {
    return service
-      .post('/signup', {
+      .post('/api/signup', {
          username,
          userType,
          email,
@@ -57,16 +56,16 @@ function signup(
 export { signup };
 
 function loggedin() {
-   return service.get('/loggedin').then((response) => response.data);
+   return service.get('/api/loggedin').then((response) => response.data);
 }
 export { loggedin };
 
 function login(email, password) {
-   return service.post('/login', { email, password }).then((response) => response.data);
+   return service.post('/api/login', { email, password }).then((response) => response.data);
 }
 export { login };
 
 function logout() {
-   return service.post('/logout', {}).then((response) => response.data);
+   return service.post('/api/logout', {}).then((response) => response.data);
 }
 export { logout };

@@ -28,10 +28,9 @@ class MissionDetails extends React.Component {
    getSingleMission = () => {
       const { params } = this.props.match;
       service
-         .get(`/missions/${params.id}`)
+         .get(`/api/missions/${params.id}`)
          .then((responseFromApi) => {
             const theMission = responseFromApi.data;
-            console.log('theMission', theMission);
             // this.setState(theMission);
             this.setState({
                start_date: this.formatDate(theMission.start_date),
@@ -61,15 +60,9 @@ class MissionDetails extends React.Component {
 
    //quand le user clique pour candidater, changer le state de candidates de mission en rajoutant son id
    toCandidate = (event, missionId) => {
-      // console.log("l'id du bénévole candidat est:" +this.props.loggedInUser._id+ "qui est logguée en tant que "+ this.props.loggedInUser.username);
       event.preventDefault();
-      console.log('la missionId est ', missionId);
-
       service
-         .put(`/missions/${missionId}`, {
-            candidates: this.props.loggedInUser._id,
-            status: 'En attente de confirmation',
-         })
+         .get(`/api/${missionId}/addCandidate`)
          .then(() => {
             console.log(
                `la mission "${missionId}" à jour avec candidat "${this.props.loggedInUser._id}" et le status "En attente de confirmation"`

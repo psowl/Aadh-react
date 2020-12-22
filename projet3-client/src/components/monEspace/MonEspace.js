@@ -27,10 +27,9 @@ class MonEspace extends React.Component {
    getUser = () => {
       const userId = this.props.match.params.id;
       service
-         .get(`/users/${userId}`)
+         .get(`/api/users/${userId}`)
          .then((userFromApi) => {
             this.setState({ user: userFromApi.data });
-            console.log('user', this.state.user);
          })
          .catch((err) => {
             console.log('err in getUser', err.response.data.message);
@@ -41,14 +40,13 @@ class MonEspace extends React.Component {
    // aller chercher en base les missions avec le requester_id du solliciteur (front filter)
    getMissions = () => {
       const { params } = this.props.match;
-      console.log('params', params);
       //si le user dont la fiche est demandé n'est pas logué (si dysynchro avec la fonction getUser)
       if (!this.props.loggedInUser) {
          this.setState({ validationCheck: false });
          return;
       }
       service
-         .get(`/missions/user/${params.id}`)
+         .get(`/api/missions/user/${params.id}`)
          .then((missionsFromDb) => {
             console.log('missionsFromDb', missionsFromDb);
 
@@ -72,7 +70,7 @@ class MonEspace extends React.Component {
    filterMissions = (query) => {
       //utilisation du package queryString
       let qs = queryString.stringify(query);
-      const url = `/missions?${qs}`;
+      const url = `/api/missions?${qs}`;
       service
          .get(url)
          .then((responseFromApi) => {
@@ -123,7 +121,7 @@ class MonEspace extends React.Component {
             </div>
          );
       }
-      
+
       //si un user veut accèder à la page perso d'un autre user
       if (this.state.validationCheck === false) {
          return (

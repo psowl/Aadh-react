@@ -32,22 +32,22 @@ class AddMission extends React.Component {
       requiredSkills,
     } = this.state;
 
-    service
-      .post("/missions", {
-        title,
-        sector,
-        expertise_required,
-        description,
-        location,
-        start_date,
-        end_date,
-        availability_frequency,
-        status,
-        requiredSkills,
-      })
-      .then(() => {
-        // this.props.getData();
-        // console.log("getData 🧩", this.props.getData())
+      service
+         .post('/api/missions', {
+            title,
+            sector,
+            expertise_required,
+            description,
+            location,
+            start_date,
+            end_date,
+            availability_frequency,
+            status,
+            requiredSkills,
+         })
+         .then(() => {
+            // this.props.getData();
+            // console.log("getData 🧩", this.props.getData())
 
         this.setState({
           title: "",
