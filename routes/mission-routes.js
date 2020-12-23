@@ -60,7 +60,6 @@ missionRoutes.get('/missions', (req, res, next) => {
    }
 
    if (expertise_required1 === 'true') {
-      //dbquery.expertise_required1 = true; //  boolean
       dbquery.expertise_required = "Droits de l'Homme et de l'enfant";
    }
 
@@ -89,9 +88,9 @@ missionRoutes.get('/missions', (req, res, next) => {
    }
 
    Mission.find(dbquery)
-
       .sort({ createdAt: -1 })
       .then((allTheMissions) => {
+         console.log('🤶 dbquery', dbquery);
          res.json(allTheMissions);
       })
       .catch((err) => {

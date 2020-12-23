@@ -42,16 +42,18 @@ class MissionsList extends React.Component {
    };
 
    onClick = (event, name) => {
-      // console.log("name", name);
-
       this.setState(
          {
+            //remettre à false les autres expertises (les autres boutons expertise de search, pour que la route ne s'arrete pas dessus
+            expertise_required1: false,
+            expertise_required2: false,
+            expertise_required3: false,
+            expertise_required4: false,
             [name]: !this.state[name], //we want to get in the value of the property of the name
          },
          () => {
             //getAllMissions if backend filtering to uncomment below
             this.getAllMissions();
-            // console.log("this.state", this.state[name]);
          }
       );
    };
@@ -90,7 +92,17 @@ class MissionsList extends React.Component {
       });
 
       const url = `/api/missions?${qs}`;
-      // console.log("URL", url);
+      console.log(
+         "droits de l'homme",
+         this.state.expertise_required1,
+         'soutien asso',
+         this.state.expertise_required2,
+         'etude',
+         this.state.expertise_required3,
+         'formation',
+         this.state.expertise_required4
+      );
+      console.log('url', url);
       service
          .get(url)
          .then((responseFromApi) => {
@@ -127,7 +139,6 @@ class MissionsList extends React.Component {
                start_date={this.state.start_date}
                end_date={this.state.end_date}
                location={this.state.location}
-               expertise_required1={this.state.expertise_required1}
                onChange={this.handleInputChange}
                onClick={this.onClick}
             />
