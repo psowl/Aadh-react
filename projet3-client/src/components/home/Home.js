@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Presentation from './Presentation';
-import ActuSolo from '../ActuSolo';
 import service from '../auth-service';
 import { VscLoading } from 'react-icons/vsc';
 import { FaRetweet } from 'react-icons/fa';

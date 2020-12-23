@@ -5,6 +5,7 @@ class StepOne extends React.Component {
       userType: this.props.userType,
       email: this.props.email,
       password: this.props.password,
+      passwordCheck: this.props.passwordCheck,
       step: 1,
       errorMessage: '',
    };
@@ -17,8 +18,8 @@ class StepOne extends React.Component {
 
    sendToBack = (event) => {
       event.preventDefault();
-      const { userType, email, password } = this.state;
-      if (userType === '' || email === '' || password === '') {
+      const { userType, email, password, passwordCheck } = this.state;
+      if (userType === '' || email === '' || password === '' || passwordCheck === '') {
          this.setState({ errorMessage: 'Merci de compléter le formulaire' });
       } else if (password.length < 7) {
          this.setState({ errorMessage: 'Merci de choisir un mot de passe plus long' });
@@ -28,31 +29,9 @@ class StepOne extends React.Component {
          this.props.liftState('userType', this.state.userType);
          this.props.liftState('email', this.state.email);
          this.props.liftState('password', this.state.password);
+         this.props.liftState('passwordCheck', this.state.passwordCheck);
          this.props.liftState('step', this.state.step + 1); //afficher le step2 du form
       }
-
-      //pour valider le email dès le step1
-      // service
-      //    .post('/unique', { email })
-      //    //si email unique
-      //    .then(() => {
-      //       //si un des champs n'est pas rempli
-      //       if (userType === '' || email === '' || password === '') {
-      //          this.setState({ errorMessage: 'Merci de compléter le formulaire' });
-      //       } else if (password.length < 7) {
-      //          this.setState({ errorMessage: 'Merci de choisir un mot de passe plus long' });
-      //       }
-      //       //si tous les champs de step1 userType, email, password sont remplis alors passer au step2 --> pb: la validation Mongoose ne fonctionne pas pour email unique
-      //       else {
-      //          this.props.liftState('userType', this.state.userType);
-      //          this.props.liftState('email', this.state.email);
-      //          this.props.liftState('password', this.state.password);
-      //          this.props.liftState('step', this.state.step + 1); //afficher le step2 du form
-      //       }
-      //    })
-      //    .catch((err) => {
-      //       this.setState({ errorMessage: 'Utilisateur invalide' });
-      //    });
    };
 
    render() {
@@ -85,6 +64,15 @@ class StepOne extends React.Component {
                   type='password'
                   name='password'
                   value={this.state.password}
+                  onChange={this.handleChange}
+                  placeholder='mot de passe'
+               ></input>
+            </div>
+            <div>
+               <input
+                  type='password'
+                  name='passwordCheck'
+                  value={this.state.passwordCheck}
                   onChange={this.handleChange}
                   placeholder='mot de passe'
                ></input>

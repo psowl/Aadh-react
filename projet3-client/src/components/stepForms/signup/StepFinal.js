@@ -10,6 +10,7 @@ class StepFinal extends React.Component {
 
    goBack = () => {
       this.props.liftState('step', this.state.step - 1); //afficher le step prédécent
+      this.props.removeError();
    };
 
    checkUserType = () => {

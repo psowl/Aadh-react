@@ -35,6 +35,7 @@ class StepThree extends React.Component {
 
    goBack = () => {
       this.props.liftState('step', this.state.step - 1); //afficher le step3 du form
+      this.props.removeError();
    };
 
    //upload image

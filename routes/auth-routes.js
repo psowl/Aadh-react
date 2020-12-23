@@ -12,6 +12,7 @@ authRoutes.post('/signup', (req, res, next) => {
       userType,
       email,
       password,
+      passwordCheck,
       location,
       expertise,
       description,
@@ -22,7 +23,8 @@ authRoutes.post('/signup', (req, res, next) => {
       profilePic,
       logo,
    } = req.body;
-
+   console.log('password', password, 'passwordCheck', passwordCheck);
+   
    // validations;
    if (!email || !password) {
       res.status(400).json({ message: "Merci d'entrer un email et un mot de passe" });
@@ -36,22 +38,31 @@ authRoutes.post('/signup', (req, res, next) => {
       return;
    }
 
+   if (password !== passwordCheck) {
+      res.status(400).json({
+         message: 'Les deux mots de passe ne sont pas identiques',
+      });
+      return;
+   }
+
    //vérification si user existe déjà
    User.findOne({ email })
       .then((foundUser) => {
          if (foundUser) {
             //comprends pas pourquoi 2 fois IF
 
-            res.status(400).json({ message: 'Email or password is not valid' });
+            res.status(400).json({ message: 'Email ou mot de passe invalide' });
             return;
          }
          //cryptage mot de passe
          const salt = bcrypt.genSaltSync(10);
          const hashPass = bcrypt.hashSync(password, salt);
+
          const aNewUser = new User({
             email: email,
             username: username,
             password: hashPass,
+            passwordCheck: hashPass,
             userType: userType,
             location: location,
             expertise: expertise,
