@@ -205,7 +205,7 @@ class MissionDetails extends React.Component {
                         this.toCandidate(event, this.state._id);
                      }}
                   >
-                     Proposer son aide{' '}
+                     Proposer son aide
                   </button>
 
                   <Link className='redirect_link' to={'/missions'}>

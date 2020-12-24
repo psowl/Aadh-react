@@ -82,19 +82,31 @@ function Search(props) {
             <h2>Filtrer par expertise recherchée</h2>
 
             <ul className='filterExpertise'>
-               <li onClick={(event) => props.onClick(event, 'expertise_required1')}>
+               <li
+                  className='expertise_required expertise_required1'
+                  onClick={(event) => props.onClick(event, 'expertise_required1')}
+               >
                   <h3>Droits de l'Homme et de l'enfant</h3>
                </li>
 
-               <li onClick={(event) => props.onClick(event, 'expertise_required2')}>
+               <li
+                  className='expertise_required expertise_required2'
+                  onClick={(event) => props.onClick(event, 'expertise_required2')}
+               >
                   <h3>Soutien des associations et des ESS</h3>
                </li>
 
-               <li onClick={(event) => props.onClick(event, 'expertise_required3')}>
+               <li
+                  className='expertise_required expertise_required3'
+                  onClick={(event) => props.onClick(event, 'expertise_required3')}
+               >
                   <h3>Etudes de droit comparé</h3>
                </li>
 
-               <li onClick={(event) => props.onClick(event, 'expertise_required4')}>
+               <li
+                  className='expertise_required expertise_required4'
+                  onClick={(event) => props.onClick(event, 'expertise_required4')}
+               >
                   <h3>Formation</h3>
                </li>
             </ul>

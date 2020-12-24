@@ -88,9 +88,9 @@ missionRoutes.get('/missions', (req, res, next) => {
    }
 
    Mission.find(dbquery)
+      .populate('requester_id')
       .sort({ createdAt: -1 })
       .then((allTheMissions) => {
-         console.log('🤶 dbquery', dbquery);
          res.json(allTheMissions);
       })
       .catch((err) => {

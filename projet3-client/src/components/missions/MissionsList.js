@@ -29,7 +29,6 @@ class MissionsList extends React.Component {
    handleInputChange = (event) => {
       let value = event.target.value;
       const name = event.target.name;
-
       this.setState(
          {
             [name]: value,
@@ -52,6 +51,10 @@ class MissionsList extends React.Component {
             [name]: !this.state[name], //we want to get in the value of the property of the name
          },
          () => {
+            let $expertise_required = document.querySelectorAll('.expertise_required');
+            let $selectedButton = document.querySelector(`.${name}`);
+            $expertise_required.forEach((el) => el.classList.remove('searchButtonActive'));
+            $selectedButton.classList.add('searchButtonActive');
             //getAllMissions if backend filtering to uncomment below
             this.getAllMissions();
          }
@@ -72,12 +75,6 @@ class MissionsList extends React.Component {
    }
 
    getAllMissions = () => {
-      // console.log("this.state.end_date", "/" + this.state.start_date + "/");
-      // console.log(
-      //   "encodURI",
-      //   "/" + encodeURIComponent(this.state.start_date) + "/"
-      // );
-
       //utilisation du package queryString
       let qs = queryString.stringify({
          searchfield: this.state.searchfield,
@@ -92,17 +89,6 @@ class MissionsList extends React.Component {
       });
 
       const url = `/api/missions?${qs}`;
-      console.log(
-         "droits de l'homme",
-         this.state.expertise_required1,
-         'soutien asso',
-         this.state.expertise_required2,
-         'etude',
-         this.state.expertise_required3,
-         'formation',
-         this.state.expertise_required4
-      );
-      console.log('url', url);
       service
          .get(url)
          .then((responseFromApi) => {
@@ -125,12 +111,6 @@ class MissionsList extends React.Component {
    };
 
    render() {
-      //console.log("data from MissionList", this.state.listOfMissions)
-
-      //front filtering
-      // let listOfMissions = this.state.listOfMissions
-      // listOfMissions = listOfMissions.filter(mission => mission.title.includes(this.state.searchfield));
-
       return (
          <div className='missionsList'>
             <Search
@@ -142,26 +122,6 @@ class MissionsList extends React.Component {
                onChange={this.handleInputChange}
                onClick={this.onClick}
             />
-            {/* <FiRefreshCcw displayAll={this.displayAll} /> */}
-            {/* testing filtering by clicking expertise */}
-
-            {/* <ul>
-          {this.state.expertise_required.map((expertise, index) => (
-            <li key={index}>
-              <Search onChange={this.handleInputChange} expertise={expertise} />
-            </li>
-          ))}
-        </ul> */}
-
-            {/* 
-        <h1 onClick={(event) => this.props.onChange()}>
-        {this.props.expertise}
-       </h1> */}
-
-            {/* for front filtering */}
-            {/* <MissionTable missions={listOfMissions} /> */}
-
-            {/* for back filtering  */}
             <MissionTable missions={this.state.listOfMissions} displayAll={this.displayAll} />
          </div>
       );

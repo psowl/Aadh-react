@@ -951,11 +951,12 @@ footer .footer_notes p {
 
 .missionCard h3:hover {
    text-decoration: underline;
-} 
+}
 
-/* .missionCardSingleContent{
-   height: 200px;
-} */
+.missionCardSingleContent img {
+   width: 100px;
+   margin-top: 10px;
+}
 
 .missionCardSingleContent p,
 .missionCardSingleContent h2,
@@ -963,8 +964,6 @@ footer .footer_notes p {
    color: white;
    text-shadow: 1px 2px var(--blue);
 }
-
-
 
 .missionCardSingle {
    /* display: flex;
@@ -1061,6 +1060,10 @@ footer .footer_notes p {
    flex-direction: row;
 }
 
+.searchButtonActive {
+   box-shadow: 8px 8px var(--blue);
+}
+
 @media (max-width: 425px) {
    .filterExpertise {
       flex-direction: column;
@@ -1086,7 +1089,6 @@ footer .footer_notes p {
       display: flex;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 5px 5px 2px 1px rgba(22, 40, 106);
       position: relative;
    }
 }
@@ -2347,8 +2349,6 @@ background-position: bottom -100px right -300px; */
 .actualitesPage {
    /* margin: 50px; */
    background: linear-gradient(#060080, rgba(156, 101, 156, 0.445));
-
-   
 }
 
 .actualitesPage .actuContainer {
