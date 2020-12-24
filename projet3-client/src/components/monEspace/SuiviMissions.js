@@ -8,11 +8,6 @@ class SuiviMissions extends React.Component {
       searchfield: '',
    };
 
-   formatDate = (date) => {
-      date = new Date(date);
-      return date.toDateString();
-   };
-
    colorBackground = (status) => {
       let backgroundStatus = { background: 'white' };
       if (status === 'Pourvue') {
@@ -70,9 +65,9 @@ class SuiviMissions extends React.Component {
                                        <Link to={`/missions/${el._id}`}>{el.title}</Link>
                                     </h3>
                                     <em>
-                                       {this.formatDate(el.start_date)}
+                                       {this.props.formatDate(el.start_date)}
                                        <em> au </em>
-                                       {this.formatDate(el.end_date)}
+                                       {this.props.formatDate(el.end_date)}
                                     </em>
                                  </div>
                                  <Link to={`/missions/${el._id}/edit`}>
@@ -131,8 +126,8 @@ class SuiviMissions extends React.Component {
                                  )}
                                  {el.requester_id.username && <p>{el.requester_id.username}</p>}
                               </td>
-                              <td>{this.formatDate(el.start_date)}</td>
-                              <td>{this.formatDate(el.end_date)}</td>
+                              <td>{this.props.formatDate(el.start_date)}</td>
+                              <td>{this.props.formatDate(el.end_date)}</td>
                               <td>{el.status}</td>
                            </tr>
                         ))}

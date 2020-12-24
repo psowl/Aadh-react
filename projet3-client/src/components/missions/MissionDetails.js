@@ -33,8 +33,8 @@ class MissionDetails extends React.Component {
             const theMission = responseFromApi.data;
             // this.setState(theMission);
             this.setState({
-               start_date: this.formatDate(theMission.start_date),
-               end_date: this.formatDate(theMission.end_date),
+               start_date: this.props.formatDate(theMission.start_date),
+               end_date: this.props.formatDate(theMission.end_date),
                location: theMission.location,
                description: theMission.description,
                title: theMission.title,
@@ -81,15 +81,6 @@ class MissionDetails extends React.Component {
    //     this.getSingleMission();
    //   }
    // }
-
-   formatDate = (date) => {
-      let stringDate = JSON.stringify(date);
-      // console.log("date", date);
-      // console.log("stringDate", stringDate);
-      const lastDate = stringDate.substring(1, 10);
-      // console.log("splitlastDate", lastDate); // 2020/12/17
-      return lastDate;
-   };
 
    styleTextStatus = (status) => {
       let styleText;
@@ -185,7 +176,6 @@ class MissionDetails extends React.Component {
                      {this.state.start_date}
                      <span> / Date de fin : </span>
                      {this.state.end_date}
-                     {/* {this.formatDate(this.state.start_date)} */}
                   </p>
 
                   <p>

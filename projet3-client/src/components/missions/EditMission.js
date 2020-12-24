@@ -157,8 +157,8 @@ class EditMission extends React.Component {
                      value={this.state.start_date}
                      onChange={this.handleChange}
                   ></input>
-               </p>{' '}
-               <em>{this.formatDate(this.state.start_date)}</em>
+               </p>
+               <em>{this.props.formatDate(this.state.start_date)}</em>
                <p>
                   <label>Fin de mission :</label>
                   <input
@@ -167,8 +167,8 @@ class EditMission extends React.Component {
                      value={this.state.end_date}
                      onChange={this.handleChange}
                   ></input>
-               </p>{' '}
-               <em>{this.formatDate(this.state.end_date)}</em>
+               </p>
+               <em>{this.props.formatDate(this.state.end_date)}</em>
                <p>
                   <label>Expertise attendue</label>
                   <select

@@ -20,7 +20,7 @@ const userSchema = new Schema(
       userType: {
          type: String,
          // required: [true, 'Merci de sélectionner votre profil'],
-         enum: ['solliciteur', 'bénévole'],
+         enum: ['solliciteur', 'bénévole', 'administrateur'],
       },
       location: {
          type: String,

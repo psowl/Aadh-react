@@ -12,11 +12,6 @@ class Home extends React.Component {
       this.getTweets();
    };
 
-   formatDate = (date) => {
-      date = new Date(date);
-      return date.toDateString();
-   };
-
    getTweets = () => {
       service
          .get('/api/tweets')
@@ -142,7 +137,7 @@ class Home extends React.Component {
                                     <h4>{this.state.retweets[i].user.name}</h4>
                                  </div>
                               )}
-                              <em>{this.formatDate(tweet.created_at)}</em>
+                              <em>{this.props.formatDate(tweet.created_at)}</em>
                               <p>{tweet.text}</p>
                               <a href={tweet.source}>Voir plus</a>
                            </div>

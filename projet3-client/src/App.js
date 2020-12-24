@@ -50,6 +50,19 @@ class App extends React.Component {
       });
    };
 
+   formatDate = (date) => {
+      //pour format long avec jour
+      // date = new Date(date);
+      // return date.toDateString();
+      //pour format court sans jour
+      console.log('date', date);
+      let stringDate = JSON.stringify(date);
+      console.log('stringDate', stringDate);
+      const lastDate = stringDate.substring(1, 11);
+      console.log('lastDate', lastDate);
+      return lastDate;
+   };
+
    render() {
       return (
          <div className='App'>
@@ -58,7 +71,11 @@ class App extends React.Component {
             {/*On récupère le state user logué pour l'affichage conditionnel de l'enfant */}
             <div className='content'>
                <Switch>
-                  <Route exact={true} path='/' component={Home} />
+                  <Route
+                     exact={true}
+                     path='/'
+                     render={(props) => <Home {...props} formatDate={this.formatDate} />}
+                  />
                   <Route exact={true} path='/actualites' component={Actualites} />
                   <Route exact={true} path='/' component={ActuSolo} />
                   <Route
@@ -75,7 +92,11 @@ class App extends React.Component {
                      exact={true}
                      path='/users/:id/edit'
                      render={(props) => (
-                        <EditUser {...props} loggedInUser={this.state.loggedInUser} /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
+                        <EditUser
+                           {...props}
+                           loggedInUser={this.state.loggedInUser}
+                           formatDate={this.formatDate}
+                        /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
                      )}
                   />
                   <Route exact={true} path='/missions' component={MissionsList} />
@@ -90,21 +111,33 @@ class App extends React.Component {
                      exact={true}
                      path='/missions/:id'
                      render={(props) => (
-                        <MissionDetails {...props} loggedInUser={this.state.loggedInUser} />
+                        <MissionDetails
+                           {...props}
+                           loggedInUser={this.state.loggedInUser}
+                           formatDate={this.formatDate}
+                        />
                      )}
                   />
                   <Route
                      exact={true}
                      path='/users/:id/public'
                      render={(props) => (
-                        <ProfilePublic {...props} loggedInUser={this.state.loggedInUser} />
+                        <ProfilePublic
+                           {...props}
+                           loggedInUser={this.state.loggedInUser}
+                           formatDate={this.formatDate}
+                        />
                      )}
                   />
                   <Route
                      exact={true}
                      path='/users/:id'
                      render={(props) => (
-                        <MonEspace {...props} loggedInUser={this.state.loggedInUser} />
+                        <MonEspace
+                           {...props}
+                           loggedInUser={this.state.loggedInUser}
+                           formatDate={this.formatDate}
+                        />
                      )}
                   />
 
@@ -112,7 +145,11 @@ class App extends React.Component {
                      exact={true}
                      path='/missions/:id/edit'
                      render={(props) => (
-                        <EditMission {...props} loggedInUser={this.state.loggedInUser} /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
+                        <EditMission
+                           {...props}
+                           loggedInUser={this.state.loggedInUser}
+                           formatDate={this.formatDate}
+                        /> //avec render, il faut repasser les props à l'enfant (avec component={} c'est automatique)
                      )}
                   />
                </Switch>

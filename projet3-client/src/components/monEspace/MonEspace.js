@@ -182,12 +182,14 @@ class MonEspace extends React.Component {
                   getMissions={this.getMissions}
                   otherMissions={this.state.otherMissions}
                   filterMissions={this.filterMissions}
+                  formatDate={this.props.formatDate}
                />
             ) : (
                <Profile
                   loggedInUser={this.props.loggedInUser}
                   user={this.state.user}
                   missions={this.state.missions}
+                  formatDate={this.props.formatDate}
                />
             )}
          </div>

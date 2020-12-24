@@ -47,11 +47,6 @@ class EditUser extends React.Component {
          });
    };
 
-   formatDate = (date) => {
-      date = new Date(date);
-      return date.toDateString();
-   };
-
    //soumission des nouvelles données
    handleFormSubmit = (event) => {
       const {
@@ -205,7 +200,7 @@ class EditUser extends React.Component {
                               onChange={this.handleChange}
                            ></input>
                         </div>
-                        <em>{this.formatDate(this.state.availability_start_date)}</em>
+                        <em>{this.props.formatDate(this.state.availability_start_date)}</em>
                      </p>
                      <p>
                         <div>
@@ -218,7 +213,7 @@ class EditUser extends React.Component {
                            ></input>
                         </div>
 
-                        <em>{this.formatDate(this.state.availability_end_date)}</em>
+                        <em>{this.props.formatDate(this.state.availability_end_date)}</em>
                      </p>
                   </div>
                )}

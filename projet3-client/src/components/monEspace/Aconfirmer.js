@@ -67,11 +67,6 @@ class Aconfirmer extends React.Component {
       return backgroundStatus;
    };
 
-   formatDate = (date) => {
-      date = new Date(date);
-      return date.toDateString();
-   };
-
    render() {
       return (
          <div className='missions_a_confirmer'>
@@ -146,8 +141,8 @@ class Aconfirmer extends React.Component {
                                  </Link>
                               )}
                               <em>
-                                 Du {this.formatDate(el.start_date)} au{' '}
-                                 {this.formatDate(el.end_date)}
+                                 Du {this.props.formatDate(el.start_date)} au
+                                 {this.props.formatDate(el.end_date)}
                               </em>
                               <p className='status' style={this.colorBackground(el.status)}>
                                  {el.status}

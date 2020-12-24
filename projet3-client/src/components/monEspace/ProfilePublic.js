@@ -65,11 +65,6 @@ class ProfilePublic extends React.Component {
          .catch((err) => console.log('err in getUser', err));
    };
 
-   formatDate = (date) => {
-      date = new Date(date);
-      return date.toDateString();
-   };
-
    //pour les bénévoles: compter le nbre de mission faites (missions avec ID du user dans volonteerSelected)
    countMissions = () => {
       let missions = this.state.missions.map((el) => el.volonteerSelected === this.state.user._id);
@@ -152,7 +147,7 @@ class ProfilePublic extends React.Component {
                   <ul className='list_non_modifiable'>
                      <li>
                         <p>Inscription faite le </p>
-                        <h4>{this.formatDate(this.state.user.createdAt)}</h4>
+                        <h4>{this.props.formatDate(this.state.user.createdAt)}</h4>
                      </li>
                      <li>
                         <p>Type de compte</p>
@@ -189,11 +184,15 @@ class ProfilePublic extends React.Component {
                            </li>
                            <li>
                               <p>Date de début de disponibilité</p>
-                              <h4>{this.formatDate(this.state.user.availability_start_date)}</h4>
+                              <h4>
+                                 {this.props.formatDate(this.state.user.availability_start_date)}
+                              </h4>
                            </li>
                            <li>
                               <p>Date de fin de disponibilité</p>
-                              <h4>{this.formatDate(this.state.user.availability_end_date)}</h4>
+                              <h4>
+                                 {this.props.formatDate(this.state.user.availability_end_date)}
+                              </h4>
                            </li>
                            <li>
                               <p>Rythme de disponibilité</p>
@@ -228,9 +227,9 @@ class ProfilePublic extends React.Component {
                                        <Link to={`/missions/${el._id}`}>{el.title}</Link>
                                     </h3>
                                     <em>
-                                       {this.formatDate(el.start_date)}
+                                       {this.props.formatDate(el.start_date)}
                                        <em> au </em>
-                                       {this.formatDate(el.end_date)}
+                                       {this.props.formatDate(el.end_date)}
                                     </em>
                                  </div>
                                  <Link to={`/missions/${el._id}/edit`}>

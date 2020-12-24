@@ -11,6 +11,7 @@ class DashboardSolliciteur extends React.Component {
                dashboard={this.props.dashboard}
                missionsAconfirmer={this.props.missionsAconfirmer}
                getMissions={this.props.getMissions}
+               formatDate={this.props.formatDate}
             />
             <SuiviMissions
                userType={this.props.userType}
@@ -18,6 +19,7 @@ class DashboardSolliciteur extends React.Component {
                otherMissions={this.props.otherMissions}
                filterMissions={this.props.filterMissions}
                getMissions={this.props.getMissions}
+               formatDate={this.props.formatDate}
             />
          </div>
       );
