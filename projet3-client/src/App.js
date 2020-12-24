@@ -55,11 +55,8 @@ class App extends React.Component {
       // date = new Date(date);
       // return date.toDateString();
       //pour format court sans jour
-      console.log('date', date);
       let stringDate = JSON.stringify(date);
-      console.log('stringDate', stringDate);
       const lastDate = stringDate.substring(1, 11);
-      console.log('lastDate', lastDate);
       return lastDate;
    };
 

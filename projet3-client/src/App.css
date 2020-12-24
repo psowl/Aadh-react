@@ -280,6 +280,15 @@ input:focus {
    color: white;
 }
 
+.searchContainer .searchIcon {
+   font-size: 20px;
+   left: 320px;
+   top: 5px;
+   position: relative;
+   /* cursor: pointer; */
+   color: grey;
+}
+
 @media (max-width: 768px) {
    .nav {
       flex-flow: wrap;
@@ -360,6 +369,16 @@ input:focus {
    }
    .nav {
       width: auto;
+      position: relative;
+      margin-right: 0;
+      margin-left: 0;
+   }
+   .searchContainer .searchIcon {
+      top: 0;
+      left: 0;
+   }
+   .nav .hiddenBurgerMenu {
+      display: none;
    }
 }
 
@@ -1014,15 +1033,6 @@ footer .footer_notes p {
    position: relative;
 }
 
-.searchContainer .searchIcon {
-   font-size: 20px;
-   left: 320px;
-   top: 5px;
-   position: relative;
-   /* cursor: pointer; */
-   color: grey;
-}
-
 .searchContainer .DateInput {
    height: 24px;
    top: 10px;
@@ -1411,6 +1421,16 @@ footer .footer_notes p {
    }
    .dashboard_missions {
       padding-bottom: 5px;
+   }
+   .mon_espace .otherMissions table {
+      width: 100%;
+   }
+
+   .mon_espace .otherMissions table td p {
+      font-size: 10px;
+   }
+   .mon_espace .otherMissions table td a {
+      margin-left: 0px;
    }
 }
 

@@ -117,7 +117,9 @@ class SuiviMissions extends React.Component {
                         {this.props.otherMissions.map((el) => (
                            <tr key={el._id}>
                               <td>
-                                 <Link to={`/missions/${el._id}`}>{el.title}</Link>
+                                 <Link to={`/missions/${el._id}`}>
+                                    <p>{el.title}</p>
+                                 </Link>
                               </td>
 
                               <td>
@@ -126,9 +128,15 @@ class SuiviMissions extends React.Component {
                                  )}
                                  {el.requester_id.username && <p>{el.requester_id.username}</p>}
                               </td>
-                              <td>{this.props.formatDate(el.start_date)}</td>
-                              <td>{this.props.formatDate(el.end_date)}</td>
-                              <td>{el.status}</td>
+                              <td>
+                                 <p>{this.props.formatDate(el.start_date)}</p>
+                              </td>
+                              <td>
+                                 <p>{this.props.formatDate(el.end_date)}</p>
+                              </td>
+                              <td>
+                                 <p>{el.status}</p>
+                              </td>
                            </tr>
                         ))}
                      </tbody>
