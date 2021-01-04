@@ -23,7 +23,7 @@ class EditMission extends React.Component {
    getSingleMission = () => {
       const { params } = this.props.match;
       service
-         .get(`/missions/${params.id}`)
+         .get(`/api/missions/${params.id}`)
          .then((responseFromApi) => {
             const theMission = responseFromApi.data;
             //set state chaque clé de theMission
@@ -63,7 +63,7 @@ class EditMission extends React.Component {
       event.preventDefault();
 
       service
-         .put(`/missions/${this.state.theMission._id}`, {
+         .put(`/api/missions/${this.state.theMission._id}`, {
             title,
             sector,
             expertise_required,
@@ -85,13 +85,7 @@ class EditMission extends React.Component {
 
    handleChange = (event) => {
       const { name, value } = event.target;
-      console.log('change from edit', name, value);
       this.setState({ [name]: value });
-   };
-
-   formatDate = (date) => {
-      date = new Date(date);
-      return date.toDateString();
    };
 
    // DELETE MISSION
@@ -107,8 +101,20 @@ class EditMission extends React.Component {
          });
    };
 
+   // DELETE MISSION
+   deleteMission = () => {
+      const { params } = this.props.match;
+      service
+         .delete(`/api/missions/${params.id}`)
+         .then(() => {
+            this.props.history.push('/missions');
+         })
+         .catch((err) => {
+            console.log('Error while deleting mission', err);
+         });
+   };
+
    render() {
-      console.log('state de EditMission:', this.state);
       if (!this.state.theMission) {
          return <div className='enChargement'>En chargement</div>;
       }
@@ -151,8 +157,8 @@ class EditMission extends React.Component {
                      value={this.state.start_date}
                      onChange={this.handleChange}
                   ></input>
-               </p>{' '}
-               <em>{this.formatDate(this.state.start_date)}</em>
+               </p>
+               <em>{this.props.formatDate(this.state.start_date)}</em>
                <p>
                   <label>Fin de mission :</label>
                   <input
@@ -161,8 +167,8 @@ class EditMission extends React.Component {
                      value={this.state.end_date}
                      onChange={this.handleChange}
                   ></input>
-               </p>{' '}
-               <em>{this.formatDate(this.state.end_date)}</em>
+               </p>
+               <em>{this.props.formatDate(this.state.end_date)}</em>
                <p>
                   <label>Expertise attendue</label>
                   <select

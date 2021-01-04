@@ -4,6 +4,7 @@ import { GrLocation } from 'react-icons/gr';
 import { GrStatusGoodSmall } from 'react-icons/gr';
 import service from '../auth-service';
 import { VscLoading } from 'react-icons/vsc';
+import { AiOutlineLock } from 'react-icons/ai';
 
 class MissionDetails extends React.Component {
    state = {
@@ -20,6 +21,7 @@ class MissionDetails extends React.Component {
       status: '',
       _id: '',
       candidates: [],
+      userLogged: false,
    };
 
    componentDidMount() {
@@ -29,14 +31,13 @@ class MissionDetails extends React.Component {
    getSingleMission = () => {
       const { params } = this.props.match;
       service
-         .get(`/missions/${params.id}`)
+         .get(`/api/missions/${params.id}`)
          .then((responseFromApi) => {
             const theMission = responseFromApi.data;
-            console.log('theMission', theMission);
             // this.setState(theMission);
             this.setState({
-               start_date: this.formatDate(theMission.start_date),
-               end_date: this.formatDate(theMission.end_date),
+               start_date: this.props.formatDate(theMission.start_date),
+               end_date: this.props.formatDate(theMission.end_date),
                location: theMission.location,
                description: theMission.description,
                title: theMission.title,
@@ -55,26 +56,20 @@ class MissionDetails extends React.Component {
          });
    };
 
-   // //récupérer les id des candidates checked dans l'enfant
-   // confirmCandidate = (candidateId) => {
-   //   console.log("bénévole qui candidate", candidateId);
-   //   this.setState({ candidating: candidateId });
-   // };
-
    //quand le user clique pour candidater, changer le state de candidates de mission en rajoutant son id
    toCandidate = (event, missionId) => {
-      // console.log("l'id du bénévole candidat est:" +this.props.loggedInUser._id+ "qui est logguée en tant que "+ this.props.loggedInUser.username);
       event.preventDefault();
-      console.log('la missionId est ', missionId);
-
       service
-         .get(`/${missionId}/addCandidate`)
+         .get(`/api/${missionId}/addCandidate`)
          .then(() => {
-            console.log(
-               `la mission "${missionId}" à jour avec candidat "${this.props.loggedInUser._id}" et le status "En attente de confirmation"`
-            );
-            this.getSingleMission();
-            this.props.history.push(`/users/${this.props.loggedInUser._id}`);
+            if (this.props.loggedInUser._id) {
+               console.log(
+                  `la mission "${missionId}" à jour avec candidat "${this.props.loggedInUser._id}" et le status "En attente de confirmation"`
+               );
+               this.setState({ userLogged: true });
+               this.getSingleMission();
+               this.props.history.push(`/users/${this.props.loggedInUser._id}`);
+            }
          })
          .catch((err) => console.log('error', err));
    };
@@ -86,15 +81,6 @@ class MissionDetails extends React.Component {
    //     this.getSingleMission();
    //   }
    // }
-
-   formatDate = (date) => {
-      let stringDate = JSON.stringify(date);
-      // console.log("date", date);
-      // console.log("stringDate", stringDate);
-      const lastDate = stringDate.substring(1, 10);
-      // console.log("splitlastDate", lastDate); // 2020/12/17
-      return lastDate;
-   };
 
    styleTextStatus = (status) => {
       let styleText;
@@ -137,6 +123,8 @@ class MissionDetails extends React.Component {
    };
 
    render() {
+      console.log('this.state', this.state);
+
       if (!this.state.title) {
          return (
             <div className='enChargement'>
@@ -145,7 +133,14 @@ class MissionDetails extends React.Component {
             </div>
          );
       }
-      console.log('this.state', this.state);
+      if (!this.props.loggedInUser) {
+         return (
+            <div className='enChargement'>
+               Merci de vous identifier
+               <AiOutlineLock size={120} />
+            </div>
+         );
+      }
       return (
          <div className='pageMission'>
             <div className='detailsMission'>
@@ -193,7 +188,6 @@ class MissionDetails extends React.Component {
                      {this.state.start_date}
                      <span> / Date de fin : </span>
                      {this.state.end_date}
-                     {/* {this.formatDate(this.state.start_date)} */}
                   </p>
 
                   <p>
@@ -213,7 +207,7 @@ class MissionDetails extends React.Component {
                         this.toCandidate(event, this.state._id);
                      }}
                   >
-                     Proposer son aide{' '}
+                     Proposer son aide
                   </button>
 
                   <Link className='redirect_link' to={'/missions'}>

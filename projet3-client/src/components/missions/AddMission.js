@@ -33,7 +33,7 @@ class AddMission extends React.Component {
       } = this.state;
 
       service
-         .post('/missions', {
+         .post('/api/missions', {
             title,
             sector,
             expertise_required,

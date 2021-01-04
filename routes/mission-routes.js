@@ -28,7 +28,6 @@ missionRoutes.post('/missions', (req, res, next) => {
       requester_id: req.session.currentUser._id,
    })
       .then((response) => {
-         console.log('response🌠', response);
          res.json(response);
       })
       .catch((err) => {
@@ -49,23 +48,18 @@ missionRoutes.get('/missions', (req, res, next) => {
       start_date,
       end_date,
    } = req.query;
-   console.log('req.query🎒: ', req.query);
 
    let dbquery = {};
 
    if (searchfield) {
       dbquery.title = { $regex: req.query.searchfield, $options: 'i' };
-      console.log('dbquery ', dbquery);
-      console.log('dbquery.title ', dbquery.title);
    }
 
    if (availability_frequency) {
-      console.log('dbquery.availability_frequency ', dbquery.availability_frequency);
       dbquery.availability_frequency = req.query.availability_frequency;
    }
 
    if (expertise_required1 === 'true') {
-      //dbquery.expertise_required1 = true; //  boolean
       dbquery.expertise_required = "Droits de l'Homme et de l'enfant";
    }
 
@@ -93,14 +87,11 @@ missionRoutes.get('/missions', (req, res, next) => {
       dbquery.end_date = { $lte: new Date(req.query.end_date) };
    }
 
-   // console.log('dbquery🔢: ', dbquery);
-
    Mission.find(dbquery)
-
+      .populate('requester_id')
       .sort({ createdAt: -1 })
       .then((allTheMissions) => {
          res.json(allTheMissions);
-         // console.log('allTheMissions', allTheMissions);
       })
       .catch((err) => {
          console.log('error', err);
@@ -117,7 +108,6 @@ missionRoutes.get('/missions/:id', (req, res, next) => {
    Mission.findById(req.params.id)
       .populate('requester_id')
       .then((response) => {
-         console.log('mission', response);
          res.status(200).json(response);
          //redirect to the mission details?
       })
@@ -143,7 +133,6 @@ missionRoutes.get('/missions/user/:userId', (req, res, next) => {
       .populate('volonteerSelected')
       .populate('requester_id')
       .then((missionsFromDb) => {
-         console.log(missionsFromDb);
          res.status(200).json(missionsFromDb);
       })
       .catch((err) => {
@@ -161,7 +150,6 @@ missionRoutes.put('/missions/:id', (req, res, next) => {
 
    Mission.findByIdAndUpdate(req.params.id, req.body)
       .then(() => {
-         console.log('📍in update', req.params.id, 'req.body ', req.body);
          res.json({
             message: `La mission avec l'id ${req.params.id} été mise à jour avec ${req.body}`,
          });
@@ -178,13 +166,13 @@ missionRoutes.get('/:missionId/addCandidate', (req, res, next) => {
       res.status(400).json({ message: 'Specified id is not valid' });
       return;
    }
+
    Mission.findById(req.params.missionId)
       .then((mission) => {
-         console.log('🥕mission', mission);
          const candidateId = req.session.currentUser._id;
          mission.candidates.push(candidateId);
+         mission.status = 'En attente de confirmation';
          mission.save();
-         response.status = 'En attente de confirmation';
          res.status(200).json(mission);
       })
       .catch((err) => {

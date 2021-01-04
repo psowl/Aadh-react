@@ -17,6 +17,7 @@ class MainSignup extends React.Component {
       userType: '',
       email: '',
       password: '',
+      passwordCheck: '',
       location: '',
       expertise: '',
       description: '',
@@ -29,11 +30,6 @@ class MainSignup extends React.Component {
       profilePic: '',
       logo: '',
    };
-
-   //methode plus simple pour steps
-   // nextStep = () => {
-   //    this.setState({step: step+1})
-   // }
 
    //récupérer les inputs remplis dans les steps
    stockInputs = (name, value) => {
@@ -48,6 +44,7 @@ class MainSignup extends React.Component {
          userType,
          email,
          password,
+         passwordCheck,
          location,
          expertise,
          description,
@@ -63,6 +60,7 @@ class MainSignup extends React.Component {
          userType,
          email,
          password,
+         passwordCheck,
          location,
          expertise,
          description,
@@ -74,7 +72,7 @@ class MainSignup extends React.Component {
          logo
       )
          .then((response) => {
-            console.log('response signup✅or❌', response);
+            console.log('response signup route', response);
             // handleUpload(uploadData)
             //   .then((response) => {
             //     console.log("response are: ", response);
@@ -90,6 +88,7 @@ class MainSignup extends React.Component {
                userType: userType,
                email: email,
                password: password,
+               passwordCheck: passwordCheck,
                location: location,
                expertise: expertise,
                description: description,
@@ -111,6 +110,10 @@ class MainSignup extends React.Component {
          });
    };
 
+   removeError = () => {
+      this.setState({ errorMessage: '' });
+   };
+
    render() {
       return (
          <div className='mainSinup logSignbackground'>
@@ -130,6 +133,7 @@ class MainSignup extends React.Component {
                      liftState={this.stockInputs}
                      userType={this.state.userType}
                      password={this.state.password}
+                     passwordCheck={this.state.passwordCheck}
                      email={this.state.email}
                   />
                )}
@@ -145,6 +149,7 @@ class MainSignup extends React.Component {
                         availability_frequency={this.state.availability_frequency}
                         cause={this.state.cause}
                         errorMessageSignup={this.state.errorMessage}
+                        removeError={this.removeError}
                      />
                   ) : (
                      <StepTwoSolliciteur
@@ -156,16 +161,22 @@ class MainSignup extends React.Component {
                         availability_end_date={this.state.availability_end_date}
                         availability_frequency={this.state.availability_frequency}
                         cause={this.state.cause}
+                        removeError={this.removeError}
                      />
                   ))}
                {this.state.step === 3 && (
-                  <StepThree liftState={this.stockInputs} description={this.state.description} />
+                  <StepThree
+                     liftState={this.stockInputs}
+                     description={this.state.description}
+                     removeError={this.removeError}
+                  />
                )}
                {this.state.step === 4 && (
                   <StepFinal
                      liftState={this.stockInputs}
                      finishSignup={this.handleFormSubmit}
                      signupstates={this.state}
+                     removeError={this.removeError}
                   />
                )}
                <div className='signupMessagesOnDark'>

@@ -5,17 +5,11 @@ import { FaRegEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Profile = (props) => {
-   const formatDate = (date) => {
-      date = new Date(date);
-      return date.toDateString();
-   };
-
    //pour les bénévoles: compter le nbre de mission faites (missions avec ID du user dans volonteerSelected)
    const countMissions = () => {
       let missions = props.missions.map((el) => el.volonteerSelected === props.user._id);
       return missions.length;
    };
-   console.log('props.user', props.user);
 
    const styleTextStatus = (status) => {
       let styleText;
@@ -55,7 +49,7 @@ const Profile = (props) => {
             <ul className='list_non_modifiable'>
                <li>
                   <p>Inscription faite le </p>
-                  <h4>{formatDate(props.user.createdAt)}</h4>
+                  <h4>{props.formatDate(props.user.createdAt)}</h4>
                </li>
                <li>
                   <p>Type de compte</p>
@@ -100,11 +94,11 @@ const Profile = (props) => {
                      </li>
                      <li>
                         <p>Date de début de disponibilité</p>
-                        <h4>{formatDate(props.user.availability_start_date)}</h4>
+                        <h4>{props.formatDate(props.user.availability_start_date)}</h4>
                      </li>
                      <li>
                         <p>Date de fin de disponibilité</p>
-                        <h4>{formatDate(props.user.availability_end_date)}</h4>
+                        <h4>{props.formatDate(props.user.availability_end_date)}</h4>
                      </li>
                      <li>
                         <p>Rythme de disponibilité</p>

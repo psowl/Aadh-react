@@ -54,12 +54,13 @@ class StepTwo extends React.Component {
 
    goBack = () => {
       this.props.liftState('step', this.state.step - 1); //afficher le step3 du form
+      this.props.removeError();
    };
 
    render() {
       return (
-         <div className="step_forms" >
-            <div >
+         <div className='step_forms'>
+            <div>
                <div>
                   <input
                      className='u-full-width required'
@@ -146,7 +147,7 @@ class StepTwo extends React.Component {
             </div>
             <button onClick={this.goBack}>Précédent</button>
             <button onClick={this.sendToBack}>Continuer</button>{' '}
-            <div className="messagesOnDark">{this.state.errorMessage}</div>
+            <div className='messagesOnDark'>{this.state.errorMessage}</div>
          </div>
       );
    }

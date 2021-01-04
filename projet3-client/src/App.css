@@ -280,6 +280,15 @@ input:focus {
    color: white;
 }
 
+.searchContainer .searchIcon {
+   font-size: 20px;
+   left: 320px;
+   top: 5px;
+   position: relative;
+   /* cursor: pointer; */
+   color: grey;
+}
+
 @media (max-width: 768px) {
    .nav {
       flex-flow: wrap;
@@ -359,9 +368,17 @@ input:focus {
       padding: 5px;
    }
    .nav {
-      width: 100vw;
-      margin: 0;
-      padding: 2px;
+      width: auto;
+      position: relative;
+      margin-right: 0;
+      margin-left: 0;
+   }
+   .searchContainer .searchIcon {
+      top: 0;
+      left: 0;
+   }
+   .nav .hiddenBurgerMenu {
+      display: none;
    }
 }
 
@@ -955,9 +972,11 @@ footer .footer_notes p {
    text-decoration: underline;
 }
 
-/* .missionCardSingleContent{
-   height: 200px;
-} */
+.missionCardSingleContent img {
+   width: 100px;
+   margin-top: 10px;
+   border-radius: 20%;
+}
 
 .missionCardSingleContent p,
 .missionCardSingleContent h2,
@@ -1014,15 +1033,6 @@ footer .footer_notes p {
    position: relative;
 }
 
-.searchContainer .searchIcon {
-   font-size: 20px;
-   left: 320px;
-   top: 5px;
-   position: relative;
-   /* cursor: pointer; */
-   color: grey;
-}
-
 .searchContainer .DateInput {
    height: 24px;
    top: 10px;
@@ -1059,6 +1069,10 @@ footer .footer_notes p {
    justify-content: center;
    text-align: center;
    flex-direction: row;
+}
+
+.searchButtonActive {
+   box-shadow: 8px 8px var(--blue);
 }
 
 @media (max-width: 425px) {
@@ -1098,7 +1112,6 @@ footer .footer_notes p {
       display: flex;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 5px 5px 2px 1px rgba(22, 40, 106);
       position: relative;
    }
 }
@@ -1420,6 +1433,16 @@ footer .footer_notes p {
    }
    .dashboard_missions {
       padding-bottom: 5px;
+   }
+   .mon_espace .otherMissions table {
+      width: 100%;
+   }
+
+   .mon_espace .otherMissions table td p {
+      font-size: 10px;
+   }
+   .mon_espace .otherMissions table td a {
+      margin-left: 0px;
    }
 }
 

@@ -9,18 +9,15 @@ class Aconfirmer extends React.Component {
 
    //récupérer les id des candidates checked dans l'enfant
    confirmCandidate = (candidateId) => {
-      console.log('candidat confirmé', candidateId);
       this.setState({ candidateChosenId: candidateId });
    };
 
    //updater la propriété "candidates" de la mission avec l'id du candidata séléctionné et le status "Pourvue"
    toConfirm = (event, missionId) => {
-      console.log('id candidat à ajouter à candidates', this.state.candidateChosenId);
       event.preventDefault();
-      console.log('missionId', missionId);
 
       service
-         .put(`/missions/${missionId}`, {
+         .put(`/api/missions/${missionId}`, {
             volonteerSelected: this.state.candidateChosenId,
             status: 'Pourvue',
          })
@@ -68,11 +65,6 @@ class Aconfirmer extends React.Component {
          backgroundStatus.color = 'white';
       }
       return backgroundStatus;
-   };
-
-   formatDate = (date) => {
-      date = new Date(date);
-      return date.toDateString();
    };
 
    render() {
@@ -149,8 +141,8 @@ class Aconfirmer extends React.Component {
                                  </Link>
                               )}
                               <em>
-                                 Du {this.formatDate(el.start_date)} au{' '}
-                                 {this.formatDate(el.end_date)}
+                                 Du {this.props.formatDate(el.start_date)} au
+                                 {this.props.formatDate(el.end_date)}
                               </em>
                               <p className='status' style={this.colorBackground(el.status)}>
                                  {el.status}
