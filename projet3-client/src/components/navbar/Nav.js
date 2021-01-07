@@ -32,7 +32,7 @@ class Nav extends React.Component {
          <div className='nav'>
             <NavLink className='link' to='/'>
                <img
-                  src='https://res.cloudinary.com/teamss/image/upload/v1608236219/aadh/logo_aadh_padbud.png'
+                  src='https://res.cloudinary.com/teamss/image/upload/v1610014746/aadh/logo_r1i60g.png'
                   alt='logo_aadh'
                />
             </NavLink>
