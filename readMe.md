@@ -17,4 +17,4 @@ cloudSecret = [see on Cloudinary accout]<br/>
 ## Live Demo 
 <a href="https://aadhdemo.herokuapp.com/">**Available here**</a>
 
-<img src="https://github.com/psowl/aadh-react/blob/master/public/images/screenshot.png" width="400" alt="homepage">
+<img src="https://github.com/psowl/aadh-react/blob/master/public/images/screenshot.png" width="800" alt="homepage">
