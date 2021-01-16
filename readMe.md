@@ -1,8 +1,9 @@
 # Aadh-demo 
 Website aiming at describing the charity, its news, its values and targets. The application is mobile responsive and allows 2 types of users (lawyers and NGOs) to meet and collaborate on missions. 
+Responsive website.
 
 ## Tech/Framework used
-Single-page Web application using the MERN stack (MongoDB, Express, React & Node.js) 
+Single-page Web application using the MERN stack : MongoDB/Express/React/Node.js.
 
 ## 🔧 Installation
 ---Config variable required:<br/>
