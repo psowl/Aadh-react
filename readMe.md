@@ -18,3 +18,12 @@ cloudSecret = [see on Cloudinary accout]<br/>
 <a href="https://aadhdemo.herokuapp.com/">**Available here**</a>
 
 <a href="https://aadhdemo.herokuapp.com/"> <img src="https://github.com/psowl/aadh-react/blob/master/public/images/screenshot.png" width="400" alt="homepage"></a>
+
+### Login available
+As a volonteer,
+Username: benevole22@gmail.com <br>
+Password: benevole
+
+As an NGO, 
+Username: ngo@gmail.com <br>
+Password: ngodemo 
