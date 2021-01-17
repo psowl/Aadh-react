@@ -6,7 +6,7 @@ Responsive website.
 Single-page Web application using the MERN stack : MongoDB/Express/React/Node.js.
 
 ## 🔧 Installation
----Config variable required:<br/>
+Config variable required:<br/>
 MONGODB_URI=[local mongoDB]<br/>
 TWITTER_BEARER_TOKEN=[create dev account on Twitter]<br/>
 //for Cloudinary<br/>
