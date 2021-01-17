@@ -1,5 +1,5 @@
 # Aadh-demo 
-Website aiming at describing the charity, its news, its values and targets. The application is mobile responsive and allows 2 types of users (lawyers and NGOs) to meet and collaborate on missions.  Coding training project.
+Website aiming at describing the charity, its news, its values and targets. The application is mobile responsive and allows 2 types of users (lawyers and NGOs) to meet and collaborate on missions.  Coding training project (integral revamp of the website in react and new features).
 Responsive website.
 
 ## Tech/Framework used
